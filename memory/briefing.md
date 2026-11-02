@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 24._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 25._
 
 ## What this is
 
@@ -10,15 +10,18 @@ AEC Studio 6, owned by Balaji (BuilderPluss): a local-first app for agentic AEC 
 - **Content (everything shared that is not code):** private repository `Balajisgit/aec-studio-content`, cloned next to the app (D:\aec-studio-content). Pipelines, agents, skills, checks, panels, solvers; the Library; canvas setups; settings; memory (this briefing, sessions, decisions, lessons).
 - **PC:** the database (projects, runs, model logs, chats) and folders (project files, backups, Object assets by fingerprint; R2 later). Project work moves between PCs only by export and import.
 - **Architecture:** the owner's doc *AEC Studio 6 — Architecture* (2 Nov 2026); the short version is `docs/architecture.md` in the app repository.
-- **The old app** (AEC Agent Studio 2, `Balajisgit/aec-agent-studio`, D:\aec-agent-studio-5.1) keeps running until phase 5, then is archived. Its pipelines, agents, checks and rules are not carried over.
+- **The old app** (AEC Agent Studio 2, `Balajisgit/aec-agent-studio`, D:\aec-agent-studio-5.1) is to be archived now that phase 5 is built (the owner's call). Its pipelines, agents, checks and rules are not carried over.
 
 ## Managers and build phases
 
-Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discussion (phase 2: the chat, sessions, briefing, decisions) · Projects and Canvas (phase 3) · Library (phase 4) · Pipelines (phase 5, new ones with the rules) · Files and Storage (phase 6, ready for hosting).
+Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discussion (phase 2: the chat, sessions, briefing, decisions) · Projects and Canvas (phase 3) · Library (phase 4) · Pipelines (phase 5, new ones with the rules) · Files and Storage (phase 6, ready for hosting). All six phases are built (2 Nov 2026).
+
+- **Online preview:** artifact "AEC Studio 6" (claude.ai/artifact/TeL8fLtYta3eXyqe1jVMt6), built from both repositories with the app's tools/online/build.mjs and republished on request; projects there are a sandbox in the browser, and chat, runs, files and storage need the PC.
+- **Pull requests always target main** (no stacked PRs).
 
 ## Words
 
-Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Stage, Decision, Output (pipelines). The word "type" is not used.
+Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Stage, Decision, Output (pipelines) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library). The word "type" is not used.
 
 ## The kernel (mesh-light)
 
@@ -40,19 +43,39 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- PR #6 (canvas host slot, Canvas13) waits for the owner's merge; then restart Studio and try the picker.
-- Phase 4 Library: Objects with a 2D symbol and a 3D primitive; furniture placed on both canvases (started next session).
-- Canvas13 gaps: drawing walls, wall justification (drawn on the centre line), dragging corners.
+- Restart Studio on the PC (server changed); try Brief to Library on a real deck: the first run with the real Claude agents. Tune agent instructions from what happens.
+- Optional: add COPY_DIR=D:\aec to .env for the folder copy.
+- Archive the old app (AEC Agent Studio 2) now that pipelines cover its work: the owner's call.
+- Propose kept Project Objects to the Library from a chat when the owner asks.
+- Canvas13 online: build it from bikalbaral13/canvas_shared source (needs read access), parked by the owner.
+- Canvas13 gaps: drawing walls, wall justification, dragging corners. Outputs picked up by a second pipeline.
 - Kernel later: arcs as true curves, holes inside rooms, 2.5D checks, Python helper for IFC export.
 - Owner: sign in to GitHub on the PC (GitHub Desktop) if not done yet, so the app can push records.
-- Save the proposed load skill (load aec studio) from the card in the claude.ai chat.
-- Then phase 5 Pipelines (new ones with the rules; archive the old app), phase 6 Files and Storage (ready for hosting).
-- Studio 2 publish task and old task trig_01Tq7yFcL7sCDtakyirzMmaq: delete when convenient.
-- Fix or confirm the example model's P1 parameters (w, h vs t, joint).
-- Old app clean-up on the PC: runs/ helper files (filing.md, fix-requests, fix-c, parity-bundle.tgz, context-export.json, wrapup-session.json).
+- Save the proposed load skill (load aec studio); delete Studio 2 publish task and trig_01Tq7yFcL7sCDtakyirzMmaq when convenient.
+- Fix or confirm the example model's P1 parameters; old app clean-up of runs/ helper files on the PC.
 - Carried: tell Bikal about Canvas13 gaps (catalogue objects not clickable in plan; API key not checked on read/edit).
 
 ## Recent sessions
+
+### Session 24 · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview
+All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
+
+Done:
+- Phase 4 Library (app #7 then #8; content #3): Objects with params and limits, 2D symbol and 3D primitive as safe formulas, checkObject; Library page; place, move, turn on both canvases; 8 starter Objects.
+- PR #7 merged into #6's branch (stacked), not main; #8 brought it to main. Stacked PRs are no longer used: every PR targets main.
+- Online preview (#9): tools/online builds the app for the browser from both repositories; artifact "AEC Studio 6" claude.ai/artifact/TeL8fLtYta3eXyqe1jVMt6, sandbox projects, Canvas13 left out (bundle too large to read).
+- Phase 5 Pipelines (app #10, content #4): Pipelines manager and page; runs in Projects with stages, agents, checks, retries, stop and say why, decisions; event log; Files core.
+- Brief to Library (Read, Match, What to make, Make, Keep) and Make an Object (freestyle), agents reader, matcher, maker; rules R1-R6; project_keep_object in the chat.
+- Kept Objects are Project Objects (project.<name>@1.0.0) in the model, shown in the canvas chooser under This project.
+- Phase 6 Files and Storage (#11): file previews and downloads; backups and restore at next start; export and import a project (log, runs, files); folder copy (COPY_DIR); assets by sha256.
+- Runner removes all its temporary files; checks green on main for both repositories (44 tests); online preview republished at app 5f6d15f, content 006262a.
+
+Decided:
+- Owner: "all merges done" (#6, #7, content #3); then "Merge 8 and 9 and make the artifact to get live at latest".
+- Owner: on Canvas13 in the online preview, "Let's see this later".
+- Owner: first pipeline "1st and freestyle" (Brief to Library, plus Make an Object as the freestyle action).
+- Owner: made Objects "Stay in the project" (Project Objects) until the owner asks for them to be proposed to the Library.
+- Owner: "5 then 6" for the build order; "Merge" (content #4, app #10, #11).
 
 ### Session 23 · 2026-11-02 · Canvas host slot: built-in canvas and Canvas13 as hosts (PR #6)
 The Canvas page now has a host slot: the built-in canvas is its first host and Canvas13 its second, chosen with a picker; app PR #6 is open with its checks green, waiting for the owner.
@@ -111,31 +134,9 @@ Done:
 Decided:
 - Owner: "wrap up".
 
-### Session 19 · 2026-11-02 · AEC Studio 6: rebuilt from first principles; phase 1 merged, phase 2 (memory) in review
-After stage 1 of the old app (automatic checks, follow main) the owner chose a rebuild: AEC Studio 6, eight managers around a mesh-light kernel, two repositories; phase 1 is merged and phase 2, sessions that record themselves, is in review.
-
-Done:
-- Old app, stage 1 merged (08adca4): automatic checks on every pull request (syntax, platform rule, strict parity on a test bundle); the local app follows GitHub main with backup, pause, roll back.
-- Architecture doc 'AEC Studio 6 — Architecture' written and settled with the owner: managers, words, pipelines as stages, change flow, where things live, build order, the design kernel.
-- Kernel defined from the owner's mesh-light note and Building IR schema; schema 2.0 in our words (library, placements, objectRef, contract, location).
-- Repositories Balajisgit/aec-studio and aec-studio-content created by the owner and opened to the Claude GitHub App.
-- Phase 1 merged: kernel (operations, invariants I1-I11, log, GlobalIds), server, shell, Studio Manager, Start-Studio.bat, automatic checks on both repositories.
-- Phase 2 built: the chat beside every page; memory_record commits sessions, decisions and the briefing to content; two-PC numbering and waiting records handled; Memory & Discussion page. App PR #2, content PR #2.
-- Sessions 1-18 moved from the old app into content memory, with a core rewritten for AEC Studio 6; this session recorded directly by the chat.
-- Owner's example model passes every invariant except I11 on P1 (params w, h not declared by its Library Object).
-
-Decided:
-- Owner: "can we recreate the app entirely as new one from the scratch first principle" with managers Studio, Pipeline, Library, Canvas, Storage, Files, Memory & Discussion.
-- Owner: "Local only as a new repo and app"; then "though it is local only app, it ll be hosted soon".
-- Owner: words "Object / Placement / Need"; pipelines option "B" (stages, outcomes, declared decisions); "two repositories (app + content)"; "plain modules with checked annotations"; "same bat file implementation".
-- Owner: "apart from project data - every thing shared is in git"; Library entries in Git, Object assets local, R2 later; memory and briefings in Git.
-- Owner: "dont use the word type"; "dont inherit older pipelines. lets create new once this is built"; "lets create rules later".
-- Owner: "pull requests stay something Claude opens from a chat"; associates (Bikal) get the content repository; detailed 3D after the pipelines phase.
-- Owner: JavaScript kernel ("Recommended"), Python helper later for IFC; the IR is not shared with another project.
-- Owner: memory brought forward to phase 2; "go" on each chat being a session and a running decisions list.
-
 ## Earlier sessions
 
+- **19** · 2026-11-02 · AEC Studio 6: rebuilt from first principles; phase 1 merged, phase 2 (memory) in review — After stage 1 of the old app (automatic checks, follow main) the owner chose a rebuild: AEC Studio 6, eight managers around a mesh-light kernel, two repositories; phase 1 is merged and phase 2, sessions that record themselves, is in review.
 - **18** · 2026-10-31 · Parity passed, delete library types, Types → Library, handover publishes outputs (B), library manager 0.3.0 live (C) — The parity test passed on the owner's data, the owner can now delete library types and the Types window is called Library, handovers publish outputs that orchestration routes (Request B), and library manager 0.3.0 was generated, released, fixed and synced into the Studio (Request C).
 - **17** · 2026-10-31 · Sync library-manager 0.3.0 — Synced library-manager 0.3.0 to the Studio: panels/preview-additions@0.1.0 and pipelines/library-manager@0.3.0 created.
 - **16** · 2026-10-31 · Fix REQ-038 version labels — Fixed version labels: library-manager 0.3.0, library agent 1.4.0. Sync blocked: preview-additions@0.1.0 panel and critics preview-only, housekeeping-reported missing from Studio.

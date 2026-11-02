@@ -53,3 +53,8 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-02 · Session 22** — Owner: "go next" and "go second phase": phase 3 built as Projects, then the built-in canvas; Canvas13 follows.
 - **2026-11-02 · Session 23** — Owner: "Ok" to the plan: host slot first, built-in canvas moved into it, Canvas13 through an adapter, default canvas from the shared setting with a picker.
 - **2026-11-02 · Session 23** — Owner: "wrap up and start phase 4".
+- **2026-11-02 · Session 24** — Owner: "all merges done" (#6, #7, content #3); then "Merge 8 and 9 and make the artifact to get live at latest".
+- **2026-11-02 · Session 24** — Owner: on Canvas13 in the online preview, "Let's see this later".
+- **2026-11-02 · Session 24** — Owner: first pipeline "1st and freestyle" (Brief to Library, plus Make an Object as the freestyle action).
+- **2026-11-02 · Session 24** — Owner: made Objects "Stay in the project" (Project Objects) until the owner asks for them to be proposed to the Library.
+- **2026-11-02 · Session 24** — Owner: "5 then 6" for the build order; "Merge" (content #4, app #10, #11).
