@@ -37,3 +37,11 @@ Every decision, newest last, with the session it was made in.
 - **2026-10-31 · Session 18** — A pipeline takes an output when one of its inputs has the output's type as id and a handover format; routing reads declared inputs, not a fixed next pipeline.
 - **2026-10-31 · Session 18** — Library types have no stable-approval button; they become stable only through a pipeline release gate.
 - **2026-10-31 · Session 18** — Requests filed from a session get explicit, checked-free REQ ids. Fix files for local sessions do not call memory_start.
+- **2026-11-02 · Session 19** — Owner: "can we recreate the app entirely as new one from the scratch first principle" with managers Studio, Pipeline, Library, Canvas, Storage, Files, Memory & Discussion.
+- **2026-11-02 · Session 19** — Owner: "Local only as a new repo and app"; then "though it is local only app, it ll be hosted soon".
+- **2026-11-02 · Session 19** — Owner: words "Object / Placement / Need"; pipelines option "B" (stages, outcomes, declared decisions); "two repositories (app + content)"; "plain modules with checked annotations"; "same bat file implementation".
+- **2026-11-02 · Session 19** — Owner: "apart from project data - every thing shared is in git"; Library entries in Git, Object assets local, R2 later; memory and briefings in Git.
+- **2026-11-02 · Session 19** — Owner: "dont use the word type"; "dont inherit older pipelines. lets create new once this is built"; "lets create rules later".
+- **2026-11-02 · Session 19** — Owner: "pull requests stay something Claude opens from a chat"; associates (Bikal) get the content repository; detailed 3D after the pipelines phase.
+- **2026-11-02 · Session 19** — Owner: JavaScript kernel ("Recommended"), Python helper later for IFC; the IR is not shared with another project.
+- **2026-11-02 · Session 19** — Owner: memory brought forward to phase 2; "go" on each chat being a session and a running decisions list.

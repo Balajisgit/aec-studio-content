@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 19._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 20._
 
 ## What this is
 
@@ -40,19 +40,39 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- On the PC: Library → Delete all (confirm the library is empty except types placed in test projects).
-- Studio 2: Update from GitHub to 45146d1 (has B, the version fix and the critic ports).
-- REQ-036 (A) and REQ-037 (B) are merged: record them as released in the Registry (owner's action).
-- On the PC: update reg_meta/engine to match engine.js on main 45146d1 (symbol2d, outputs, critic ports).
-- First real run: deck → design inventory → Publish → library manager 0.3.0 → 3D modelling, with an empty library.
-- Library manager next: freestyle publishes its project types as an output (project-types); housekeeping as its own mode with no project (today it runs at the end of every run).
-- Tracer fix: trace tube_along_path and profile_extrusion parts into symbol2d; count family-read params in type-representations; envelope vs primitive size of curved parts.
-- Clean up on the PC: runs/parity-bundle.tgz, runs/filing.md, runs/fix-requests/, runs/fix-c/, runs/wrapup-session.json; the empty session 14 entry.
-- Carried: tell Bikal about Canvas13 (catalogue objects not clickable in plan; /api/projects/<id> read and /edit skip the API key); Canvas13 gaps; chat status check still opens the project on screen.
-- Carried: file the BIM properties, marks and schedules request (S12 brief); data sync between PCs; Revit or Blender add-on; Quick start credit; delete old task trig_01Tq7yFcL7sCDtakyirzMmaq.
-- Carried: close REQ-001; promote preview components; install aec_sync.py; Simple plan template doesn't draw symbol2d.
+- Owner: review and merge phase 2 (app PR #2, content PR #2); then the app updates itself, or Update now on the Studio page.
+- Owner: run Start-Studio.bat from D:\aec-studio and try the chat; sign in to GitHub on the PC (GitHub Desktop) so records can be pushed.
+- Phase 3: Projects and Canvas managers (projects, model log, freestyle editing with Claude; built-in plan and 3D, Canvas13); kernel adds rooms from walls, wall outlines, areas.
+- Then phase 4 Library, phase 5 Pipelines (new ones with the rules; archive the old app), phase 6 Files and Storage (ready for hosting).
+- Studio 2 publish task: no longer needed (local only); delete it, and the old task trig_01Tq7yFcL7sCDtakyirzMmaq, when convenient.
+- Fix or confirm the example model's P1 parameters (w, h vs t, joint).
+- Old app clean-up on the PC: runs/ helper files (filing.md, fix-requests, fix-c, parity-bundle.tgz, context-export.json, wrapup-session.json).
+- Carried: tell Bikal about Canvas13 gaps (catalogue objects not clickable in plan; API key not checked on read/edit).
 
 ## Recent sessions
+
+### Session 19 · 2026-11-02 · AEC Studio 6: rebuilt from first principles; phase 1 merged, phase 2 (memory) in review
+After stage 1 of the old app (automatic checks, follow main) the owner chose a rebuild: AEC Studio 6, eight managers around a mesh-light kernel, two repositories; phase 1 is merged and phase 2, sessions that record themselves, is in review.
+
+Done:
+- Old app, stage 1 merged (08adca4): automatic checks on every pull request (syntax, platform rule, strict parity on a test bundle); the local app follows GitHub main with backup, pause, roll back.
+- Architecture doc 'AEC Studio 6 — Architecture' written and settled with the owner: managers, words, pipelines as stages, change flow, where things live, build order, the design kernel.
+- Kernel defined from the owner's mesh-light note and Building IR schema; schema 2.0 in our words (library, placements, objectRef, contract, location).
+- Repositories Balajisgit/aec-studio and aec-studio-content created by the owner and opened to the Claude GitHub App.
+- Phase 1 merged: kernel (operations, invariants I1-I11, log, GlobalIds), server, shell, Studio Manager, Start-Studio.bat, automatic checks on both repositories.
+- Phase 2 built: the chat beside every page; memory_record commits sessions, decisions and the briefing to content; two-PC numbering and waiting records handled; Memory & Discussion page. App PR #2, content PR #2.
+- Sessions 1-18 moved from the old app into content memory, with a core rewritten for AEC Studio 6; this session recorded directly by the chat.
+- Owner's example model passes every invariant except I11 on P1 (params w, h not declared by its Library Object).
+
+Decided:
+- Owner: "can we recreate the app entirely as new one from the scratch first principle" with managers Studio, Pipeline, Library, Canvas, Storage, Files, Memory & Discussion.
+- Owner: "Local only as a new repo and app"; then "though it is local only app, it ll be hosted soon".
+- Owner: words "Object / Placement / Need"; pipelines option "B" (stages, outcomes, declared decisions); "two repositories (app + content)"; "plain modules with checked annotations"; "same bat file implementation".
+- Owner: "apart from project data - every thing shared is in git"; Library entries in Git, Object assets local, R2 later; memory and briefings in Git.
+- Owner: "dont use the word type"; "dont inherit older pipelines. lets create new once this is built"; "lets create rules later".
+- Owner: "pull requests stay something Claude opens from a chat"; associates (Bikal) get the content repository; detailed 3D after the pipelines phase.
+- Owner: JavaScript kernel ("Recommended"), Python helper later for IFC; the IR is not shared with another project.
+- Owner: memory brought forward to phase 2; "go" on each chat being a session and a running decisions list.
 
 ### Session 18 · 2026-10-31 · Parity passed, delete library types, Types → Library, handover publishes outputs (B), library manager 0.3.0 live (C)
 The parity test passed on the owner's data, the owner can now delete library types and the Types window is called Library, handovers publish outputs that orchestration routes (Request B), and library manager 0.3.0 was generated, released, fixed and synced into the Studio (Request C).
@@ -106,11 +126,9 @@ Done:
 - Filed REQ-038 (C): Library manager 0.3.0: independent, any input, match or add as preview, housekeeping mode. Stage: queued.
 - Fix: backed up again (before-fix-requests), restored REQ-006/007/008 from their .original.json files, renumbered the new requests to REQ-036/037/038.
 
-### Session 14 · 2026-10-31 · Discussion: topic to be set by owner
-An empty discussion window; no work was recorded.
-
 ## Earlier sessions
 
+- **14** · 2026-10-31 · Discussion: topic to be set by owner — An empty discussion window; no work was recorded.
 - **13** · 2026-10-30 · Library items get a 2D symbol and a 3D primitive; library manager, handover and orchestration redesigned — Every library type can now carry a parametric 2D symbol beside its 3D primitive, with a check that they agree, editing in the Types window and a one-click upgrade for existing types (merged at f14ea98 and 04d351c); the library manager, handovers and orchestration were redesigned as Requests B and C.
 - **12** · 2026-10-30 · Canvas13 in the Studio; Layers and Levels; chat fixes — Bikal's Canvas13 renderers now run as a route 1 canvas in the Studio with Layers and Levels menus, and the chat no longer treats general questions or deleted projects as project work; all merged to main at f90fd61.
 - **11** · 2026-10-30 · Chat, projects, freestyle and canvas slot rework — The Studio got a real chat, multi-pipeline and untitled projects, freestyle model editing with Claude credit, the built-in canvas on route 1 with a canvas slot, and a claude.ai-style Explorer; all merged to main at 5943c1f with parity 11/11.
