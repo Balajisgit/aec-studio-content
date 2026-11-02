@@ -59,3 +59,4 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-02 · Session 24** — Owner: made Objects "Stay in the project" (Project Objects) until the owner asks for them to be proposed to the Library.
 - **2026-11-02 · Session 24** — Owner: "5 then 6" for the build order; "Merge" (content #4, app #10, #11).
 - **2026-11-02 · Session 25** — Owner: "create a new project named test1".
+- **2026-11-02 · Session 25** — Owner: "load that project and create a one bhk" (layout and sizes chosen by Claude, to confirm).

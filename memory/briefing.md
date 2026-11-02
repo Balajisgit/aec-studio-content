@@ -43,29 +43,31 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- Restart Studio on the PC (server changed); try Brief to Library on a real deck: the first run with the real Claude agents. Tune agent instructions from what happens.
+- Owner to review the 1 BHK layout in test1 (open it from the Projects page); sizes and room placement are Claude's defaults.
+- Restart Studio on the PC; try Brief to Library on a real deck (first run with the real Claude agents).
 - Optional: add COPY_DIR=D:\aec to .env for the folder copy.
-- Archive the old app (AEC Agent Studio 2) now that pipelines cover its work: the owner's call.
-- Propose kept Project Objects to the Library from a chat when the owner asks.
-- Canvas13 online: build it from bikalbaral13/canvas_shared source (needs read access), parked by the owner.
-- Canvas13 gaps: drawing walls, wall justification, dragging corners. Outputs picked up by a second pipeline.
-- Kernel later: arcs as true curves, holes inside rooms, 2.5D checks, Python helper for IFC export.
-- Owner: sign in to GitHub on the PC (GitHub Desktop) if not done yet, so the app can push records.
-- Save the proposed load skill (load aec studio); delete Studio 2 publish task and trig_01Tq7yFcL7sCDtakyirzMmaq when convenient.
-- Fix or confirm the example model's P1 parameters; old app clean-up of runs/ helper files on the PC.
-- Carried: tell Bikal about Canvas13 gaps (catalogue objects not clickable in plan; API key not checked on read/edit).
-- test1 is empty: what to draw in it is up to the owner.
+- Archive the old app (AEC Agent Studio 2): the owner's call.
+- Propose kept Project Objects to the Library when the owner asks.
+- Canvas13 online from bikalbaral13/canvas_shared (parked); Canvas13 gaps: drawing walls, justification, dragging corners; tell Bikal (objects not clickable, API key not checked).
+- Kernel later: true arcs, holes inside rooms, 2.5D checks, Python helper for IFC export.
+- Owner: sign in to GitHub on the PC so the app can push records.
+- Save the load skill (load aec studio); delete Studio 2 publish task and trig_01Tq7yFcL7sCDtakyirzMmaq.
+- Fix or confirm the example model's P1 parameters; old app clean-up of runs/ helper files.
 
 ## Recent sessions
 
-### Session 25 · 2026-11-02 · New project test1
-Created a new, empty project named test1 (p10d4d1726c) with its Ground floor level L0.
+### Session 25 · 2026-11-02 · New project test1 and a 1 BHK plan in it
+Created the empty project test1, then drew a 1 BHK on its ground floor: 8 m × 7 m with living, kitchen, bathroom, bedroom and a dress/store, with doors and windows.
 
 Done:
-- Created project 'test1' (p10d4d1726c): Ground floor L0, 3000 mm high, snap 5 mm; nothing drawn yet.
+- Created project 'test1' (p10d4d1726c): Ground floor L0, 3000 mm high, snap 5 mm.
+- Drew a 1 BHK, 8000 × 7000 mm: outer walls 200 mm, inner walls 100 mm, 3000 mm high; 5 spaces from the walls (step 2).
+- Spaces (net m2): Living 18.67, Kitchen 8.12, Bathroom 5.42, Bedroom 13.82, Dress / Store 5.27; slab 59.04 m2; no problems.
+- Doors: main 1000, kitchen 900, bathroom 750, bedroom 900, dress 800 (2100 high); windows: living and bedroom 1800, kitchen 1200, bathroom and dress 600 (step 3).
 
 Decided:
 - Owner: "create a new project named test1".
+- Owner: "load that project and create a one bhk" (layout and sizes chosen by Claude, to confirm).
 
 ### Session 24 · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview
 All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
