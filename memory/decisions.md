@@ -51,3 +51,5 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-02 · Session 22** — Owner: "merge #3" (merged by Claude at the owner's word, after its checks passed).
 - **2026-11-02 · Session 22** — Owner: the load skill works by app name: "load aec studio".
 - **2026-11-02 · Session 22** — Owner: "go next" and "go second phase": phase 3 built as Projects, then the built-in canvas; Canvas13 follows.
+- **2026-11-02 · Session 23** — Owner: "Ok" to the plan: host slot first, built-in canvas moved into it, Canvas13 through an adapter, default canvas from the shared setting with a picker.
+- **2026-11-02 · Session 23** — Owner: "wrap up and start phase 4".

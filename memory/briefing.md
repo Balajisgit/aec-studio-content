@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 23._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 24._
 
 ## What this is
 
@@ -40,12 +40,12 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- Restart Studio so the merged #4 and #5 run; try Canvas (Open on canvas from a project).
-- Canvas13 adapter in the Canvas manager (next pull request), then phase 4 Library (Objects with 2D symbol and 3D primitive; furniture on the canvas).
-- Session 20 was overwritten once (session 21): its wrap-up ran before #3's code; new wrap-ups close the session. Watch the next app wrap-up.
-- Save the proposed load skill (load aec studio) from the card in the claude.ai chat.
+- PR #6 (canvas host slot, Canvas13) waits for the owner's merge; then restart Studio and try the picker.
+- Phase 4 Library: Objects with a 2D symbol and a 3D primitive; furniture placed on both canvases (started next session).
+- Canvas13 gaps: drawing walls, wall justification (drawn on the centre line), dragging corners.
 - Kernel later: arcs as true curves, holes inside rooms, 2.5D checks, Python helper for IFC export.
 - Owner: sign in to GitHub on the PC (GitHub Desktop) if not done yet, so the app can push records.
+- Save the proposed load skill (load aec studio) from the card in the claude.ai chat.
 - Then phase 5 Pipelines (new ones with the rules; archive the old app), phase 6 Files and Storage (ready for hosting).
 - Studio 2 publish task and old task trig_01Tq7yFcL7sCDtakyirzMmaq: delete when convenient.
 - Fix or confirm the example model's P1 parameters (w, h vs t, joint).
@@ -53,6 +53,23 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - Carried: tell Bikal about Canvas13 gaps (catalogue objects not clickable in plan; API key not checked on read/edit).
 
 ## Recent sessions
+
+### Session 23 · 2026-11-02 · Canvas host slot: built-in canvas and Canvas13 as hosts (PR #6)
+The Canvas page now has a host slot: the built-in canvas is its first host and Canvas13 its second, chosen with a picker; app PR #6 is open with its checks green, waiting for the owner.
+
+Done:
+- Found the gap: Canvas13 was listed but not built, and the built-in canvas was wired into the page directly (no host slot).
+- Host slot (managers/canvas/slot.js): the page owns project, level, view, undo/redo, properties, chat context and Delete; a host owns only its drawing area and tool strip and sends every change back as a step.
+- Built-in canvas moved into the slot unchanged (hosts/built-in.js); its tools now sit in the slot's tool strip.
+- Canvas13 as the second host (hosts/canvas13.js): Bikal's renderers from the old app's bundle (vendor/canvas13, Canvas13 @ 0c05786), rebuild tool tools/canvas13/build.mjs; Layers, Detailed walls, All levels in 3D.
+- Translator hosts/to-canvas13.js (pure, no y-mirror now): levels, nodes, walls, spaces, doors and windows, Placements as a 500 mm block. Click selects; dragging a door, window or world Placement is a logged step "Canvas13: …".
+- Door swings match the built-in canvas in all 4 cases; canvas picker on the page (per browser), default from settings canvas.default.
+- Shell fix: a page still loading when the owner moves on no longer draws over the next page.
+- Checks: syntax, types, 30 tests, smoke, browser runs on both canvases; GitHub checks green on PR #6.
+
+Decided:
+- Owner: "Ok" to the plan: host slot first, built-in canvas moved into it, Canvas13 through an adapter, default canvas from the shared setting with a picker.
+- Owner: "wrap up and start phase 4".
 
 ### Session 22 · 2026-11-02 · Phase 3 built: Projects and the built-in canvas; every wrap-up a new session
 Every wrap-up now records a new session (app, core, load skill); phase 3 is built: Projects (PR #4, merged) and the built-in plan and 3D canvas (PR #5, merged).
@@ -117,32 +134,9 @@ Decided:
 - Owner: JavaScript kernel ("Recommended"), Python helper later for IFC; the IR is not shared with another project.
 - Owner: memory brought forward to phase 2; "go" on each chat being a session and a running decisions list.
 
-### Session 18 · 2026-10-31 · Parity passed, delete library types, Types → Library, handover publishes outputs (B), library manager 0.3.0 live (C)
-The parity test passed on the owner's data, the owner can now delete library types and the Types window is called Library, handovers publish outputs that orchestration routes (Request B), and library manager 0.3.0 was generated, released, fixed and synced into the Studio (Request C).
-
-Done:
-- Parity test at 04d351c on the owner's data bundle (run in the cloud: the PC workspace has no internet): 10/11 same, the 11th only the known 'General' chat header. Rerun on Request B: same.
-- Checked the 13 new 2D/3D preview versions: 4 passed; 9 failed (tracer skips tube and profile parts, Blender-only params count as unused, 5 primitives larger than their envelope). Owner chose to delete all types instead.
-- Merged 3ce3078 (req/delete-types): Library window deletes one version, all versions of a type, or the whole library; a version placed in a project is kept; deleted docs copied to library_deleted. Types window renamed Library.
-- Merged 2962991 (Request B, req/handover-output): the handover gate publishes the report as an output (inventory-report or stock-report), never a project; one matching pipeline starts in the same project and the owner is told, several ask, none waits.
-- Request B also: Outputs panel in every project (pick up own or another project's output; freestyle takes items in, several outputs, each once); chat tools list_outputs and pick_up_output; engine record_handover {output,type}, receive_handover {output}.
-- Filing went wrong: a session filed A, B, C over released REQ-006/007/008. Restored from backup before-filing-A-B-C; A, B, C re-filed as REQ-036 (built), REQ-037 (built), REQ-038.
-- REQ-038 (library manager 0.3.0) driven and released by the owner. Generate labelled the pipeline and the library agent 0.1.0; relabelled 0.3.0 and 1.4.0 with changelog notes; input renamed inventory-report so outputs route to it.
-- Merged 45146d1 (req/registry-draft-version): a draft of an existing component gets a higher version (plan's for pipelines, else next minor); release blocked otherwise. JS ports of the critics preview-only and housekeeping-reported.
-- Synced into the Studio: panels/preview-additions@0.1.0 and pipelines/library-manager@0.3.0 (intake, classify, report, approve-add, add, housekeeping, handover). Owner: 'it is live'. Helper sessions 15-17 recorded those steps.
-- Studio 2 updated by the owner to 3ce3078 (this chat was not allowed to start the publish task).
-
-Decided:
-- Owner: 'delete all the types and lets create new on the fly while doing projects. also give option to delete the types'.
-- Owner: 'change the Types name to Library - everywhere it needs to'. The canvas Library tool (O) keeps its name.
-- Owner: 'make A as built. continue b and c'; then 'merge' (delete-types), 'merge b', 'ok' (fix C's versions, input name and sync), 'merge' (registry-draft-version).
-- A placed library type can't be deleted (R10); deleted library docs are copied to library_deleted first (R12).
-- A pipeline takes an output when one of its inputs has the output's type as id and a handover format; routing reads declared inputs, not a fixed next pipeline.
-- Library types have no stable-approval button; they become stable only through a pipeline release gate.
-- Requests filed from a session get explicit, checked-free REQ ids. Fix files for local sessions do not call memory_start.
-
 ## Earlier sessions
 
+- **18** · 2026-10-31 · Parity passed, delete library types, Types → Library, handover publishes outputs (B), library manager 0.3.0 live (C) — The parity test passed on the owner's data, the owner can now delete library types and the Types window is called Library, handovers publish outputs that orchestration routes (Request B), and library manager 0.3.0 was generated, released, fixed and synced into the Studio (Request C).
 - **17** · 2026-10-31 · Sync library-manager 0.3.0 — Synced library-manager 0.3.0 to the Studio: panels/preview-additions@0.1.0 and pipelines/library-manager@0.3.0 created.
 - **16** · 2026-10-31 · Fix REQ-038 version labels — Fixed version labels: library-manager 0.3.0, library agent 1.4.0. Sync blocked: preview-additions@0.1.0 panel and critics preview-only, housekeeping-reported missing from Studio.
 - **15** · 2026-10-31 · Filing requests A, B, C — Fixed: REQ-006/007/008 restored to their original released state; new requests filed as REQ-036/037/038.
