@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 25._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 26._
 
 ## What this is
 
@@ -54,8 +54,18 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - Save the proposed load skill (load aec studio); delete Studio 2 publish task and trig_01Tq7yFcL7sCDtakyirzMmaq when convenient.
 - Fix or confirm the example model's P1 parameters; old app clean-up of runs/ helper files on the PC.
 - Carried: tell Bikal about Canvas13 gaps (catalogue objects not clickable in plan; API key not checked on read/edit).
+- test1 is empty: what to draw in it is up to the owner.
 
 ## Recent sessions
+
+### Session 25 · 2026-11-02 · New project test1
+Created a new, empty project named test1 (p10d4d1726c) with its Ground floor level L0.
+
+Done:
+- Created project 'test1' (p10d4d1726c): Ground floor L0, 3000 mm high, snap 5 mm; nothing drawn yet.
+
+Decided:
+- Owner: "create a new project named test1".
 
 ### Session 24 · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview
 All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
@@ -123,19 +133,9 @@ Done:
 Decided:
 - Owner: "create a room" (size, wall thickness and name chosen by Claude as defaults, to confirm).
 
-### Session 20 · 2026-11-02 · First chat in AEC Studio 6: phase 2 confirmed live, wrap-up only
-The first chat inside the new app found phase 2 (memory) merged and running on both repositories, and was wrapped up without other work.
-
-Done:
-- Checked the Studio status: app main at 03e54ee and content main at da7ecf9, both the merge of phase-2 PR #2; the app follows both and is not paused.
-- Memory & Discussion shows as built; the chat in the app works and records its own session (this one, session 20).
-- Phase 3 (Projects and Canvas) not started.
-
-Decided:
-- Owner: "wrap up".
-
 ## Earlier sessions
 
+- **20** · 2026-11-02 · First chat in AEC Studio 6: phase 2 confirmed live, wrap-up only — The first chat inside the new app found phase 2 (memory) merged and running on both repositories, and was wrapped up without other work.
 - **19** · 2026-11-02 · AEC Studio 6: rebuilt from first principles; phase 1 merged, phase 2 (memory) in review — After stage 1 of the old app (automatic checks, follow main) the owner chose a rebuild: AEC Studio 6, eight managers around a mesh-light kernel, two repositories; phase 1 is merged and phase 2, sessions that record themselves, is in review.
 - **18** · 2026-10-31 · Parity passed, delete library types, Types → Library, handover publishes outputs (B), library manager 0.3.0 live (C) — The parity test passed on the owner's data, the owner can now delete library types and the Types window is called Library, handovers publish outputs that orchestration routes (Request B), and library manager 0.3.0 was generated, released, fixed and synced into the Studio (Request C).
 - **17** · 2026-10-31 · Sync library-manager 0.3.0 — Synced library-manager 0.3.0 to the Studio: panels/preview-additions@0.1.0 and pipelines/library-manager@0.3.0 created.
