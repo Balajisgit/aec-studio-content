@@ -25,5 +25,21 @@ try { for (const n of readdirSync(sessDir)) { if (n === ".gitkeep") continue; co
   if (!meta.title || meta.title.length > 200) problems.push(`${rel}: title is missing or longer than 200 characters`);
   for (const sec of ["Done", "Decisions", "Open"]) if (!new RegExp(`^## ${sec}$`, "m").test(t)) problems.push(`${rel}: no "## ${sec}" section`);
 } } catch (e) { if (e.code !== "ENOENT") problems.push(`memory/sessions: ${e.message}`); }
+// library/objects/<contract>/<version>.json: the id matches the path, and the parts every Object needs are there.
+// (The full check, 2D symbol and 3D primitive agreeing at every parameter case, runs in the app: Library page, checkObject.)
+const ROLES = ["furniture", "fixture", "column", "beam", "footing", "stair", "railing", "panel", "fin", "louvre", "frame", "profile", "entourage", "vegetation", "vehicle", "site", "equipment", "generic"];
+const objDir = join(root, "library", "objects");
+try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; const cd = join(objDir, c);
+  if (!statSync(cd).isDirectory()) { problems.push(`library/objects/${c}: Objects live in a folder per contract`); continue; }
+  for (const v of readdirSync(cd)) { const rel = `library/objects/${c}/${v}`;
+    if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
+    let o; try { o = JSON.parse(readFileSync(join(cd, v), "utf8")); } catch { continue; } // reported above
+    if (o.id !== `${c}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${c}@${v.slice(0, -5)}`);
+    if (o.contract !== c) problems.push(`${rel}: contract must be ${c}`);
+    if (!o.name) problems.push(`${rel}: name is missing`);
+    if (!ROLES.includes(o.role)) problems.push(`${rel}: role must be one of ${ROLES.join(", ")}`);
+    for (const k of ["symbol2d", "primitive3d"]) if (!Array.isArray(o[k]) || !o[k].length) problems.push(`${rel}: ${k} is missing`);
+    if (o.params && typeof o.params !== "object") problems.push(`${rel}: params must be an object of defaults`);
+  } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/objects: ${e.message}`); }
 for (const p of problems) console.log("FAIL", p);
 console.log(`content: ${problems.length} problem${problems.length === 1 ? "" : "s"}`); process.exit(problems.length ? 1 : 0);

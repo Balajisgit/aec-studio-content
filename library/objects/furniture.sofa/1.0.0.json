@@ -1,0 +1,160 @@
+{
+  "id": "furniture.sofa@1.0.0",
+  "name": "Sofa",
+  "contract": "furniture.sofa",
+  "role": "furniture",
+  "about": "An upholstered sofa for 2 to 4: back, arms and one cushion per seat.",
+  "params": {
+    "width": 2100,
+    "depth": 900,
+    "height": 800,
+    "seats": 3,
+    "arm": 180
+  },
+  "limits": {
+    "width": {
+      "min": 1400,
+      "max": 3000,
+      "step": 50
+    },
+    "depth": {
+      "min": 750,
+      "max": 1100,
+      "step": 10
+    },
+    "height": {
+      "min": 650,
+      "max": 950,
+      "step": 10
+    },
+    "seats": {
+      "min": 2,
+      "max": 4,
+      "step": 1
+    },
+    "arm": {
+      "min": 120,
+      "max": 250,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "outline",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "fabric"
+    },
+    {
+      "name": "back",
+      "shape": "rect",
+      "at": [
+        "0",
+        "-depth / 2 + 100"
+      ],
+      "size": [
+        "width",
+        "200"
+      ]
+    },
+    {
+      "name": "arms",
+      "shape": "rect",
+      "count": "2",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 - arm / 2)",
+        "100"
+      ],
+      "size": [
+        "arm",
+        "depth - 200"
+      ]
+    },
+    {
+      "name": "seat joints",
+      "shape": "line",
+      "count": "seats - 1",
+      "from": [
+        "-width / 2 + arm + (width - 2 * arm) * (i + 1) / seats",
+        "-depth / 2 + 200"
+      ],
+      "to": [
+        "-width / 2 + arm + (width - 2 * arm) * (i + 1) / seats",
+        "depth / 2"
+      ],
+      "style": "hidden"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "back",
+      "shape": "box",
+      "at": [
+        "0",
+        "-depth / 2 + 100",
+        "0"
+      ],
+      "size": [
+        "width",
+        "200",
+        "height"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "arms",
+      "shape": "box",
+      "count": "2",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 - arm / 2)",
+        "100",
+        "0"
+      ],
+      "size": [
+        "arm",
+        "depth - 200",
+        "600"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "base",
+      "shape": "box",
+      "at": [
+        "0",
+        "100",
+        "0"
+      ],
+      "size": [
+        "width - 2 * arm",
+        "depth - 200",
+        "300"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "cushions",
+      "shape": "box",
+      "count": "seats",
+      "at": [
+        "-width / 2 + arm + (i + 0.5) * (width - 2 * arm) / seats",
+        "100",
+        "300"
+      ],
+      "size": [
+        "(width - 2 * arm) / seats - 10",
+        "depth - 210",
+        "130"
+      ],
+      "slot": "seat"
+    }
+  ]
+}

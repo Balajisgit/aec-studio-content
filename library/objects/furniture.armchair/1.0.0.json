@@ -1,0 +1,124 @@
+{
+  "id": "furniture.armchair@1.0.0",
+  "name": "Armchair",
+  "contract": "furniture.armchair",
+  "role": "furniture",
+  "about": "An upholstered armchair: back, two arms and a seat cushion.",
+  "params": {
+    "width": 800,
+    "depth": 820,
+    "height": 780,
+    "arm": 160
+  },
+  "limits": {
+    "width": {
+      "min": 650,
+      "max": 1000,
+      "step": 10
+    },
+    "depth": {
+      "min": 700,
+      "max": 1000,
+      "step": 10
+    },
+    "height": {
+      "min": 650,
+      "max": 950,
+      "step": 10
+    },
+    "arm": {
+      "min": 100,
+      "max": 250,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "outline",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "fabric"
+    },
+    {
+      "name": "back",
+      "shape": "rect",
+      "at": [
+        "0",
+        "-depth / 2 + 90"
+      ],
+      "size": [
+        "width",
+        "180"
+      ]
+    },
+    {
+      "name": "arms",
+      "shape": "rect",
+      "count": "2",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 - arm / 2)",
+        "90"
+      ],
+      "size": [
+        "arm",
+        "depth - 180"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "back",
+      "shape": "box",
+      "at": [
+        "0",
+        "-depth / 2 + 90",
+        "0"
+      ],
+      "size": [
+        "width",
+        "180",
+        "height"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "arms",
+      "shape": "box",
+      "count": "2",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 - arm / 2)",
+        "90",
+        "0"
+      ],
+      "size": [
+        "arm",
+        "depth - 180",
+        "600"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "seat",
+      "shape": "box",
+      "at": [
+        "0",
+        "90",
+        "0"
+      ],
+      "size": [
+        "width - 2 * arm",
+        "depth - 180",
+        "430"
+      ],
+      "slot": "seat"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "id": "furniture.wardrobe@1.0.0",
+  "name": "Wardrobe",
+  "contract": "furniture.wardrobe",
+  "role": "furniture",
+  "about": "A full-height wardrobe with 1 to 4 hinged doors on its front.",
+  "params": {
+    "width": 1200,
+    "depth": 600,
+    "height": 2100,
+    "doors": 2
+  },
+  "limits": {
+    "width": {
+      "min": 500,
+      "max": 2400,
+      "step": 50
+    },
+    "depth": {
+      "min": 450,
+      "max": 700,
+      "step": 10
+    },
+    "height": {
+      "min": 1800,
+      "max": 2600,
+      "step": 10
+    },
+    "doors": {
+      "min": 1,
+      "max": 4,
+      "step": 1
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "body",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "wood"
+    },
+    {
+      "name": "front",
+      "shape": "line",
+      "from": [
+        "-width / 2",
+        "depth / 2 - 20"
+      ],
+      "to": [
+        "width / 2",
+        "depth / 2 - 20"
+      ]
+    },
+    {
+      "name": "door joints",
+      "shape": "line",
+      "count": "doors - 1",
+      "from": [
+        "-width / 2 + width * (i + 1) / doors",
+        "depth / 2 - 20"
+      ],
+      "to": [
+        "-width / 2 + width * (i + 1) / doors",
+        "depth / 2"
+      ]
+    },
+    {
+      "name": "rail",
+      "shape": "line",
+      "from": [
+        "-width / 2 + 40",
+        "0"
+      ],
+      "to": [
+        "width / 2 - 40",
+        "0"
+      ],
+      "style": "hidden"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "body",
+      "shape": "box",
+      "at": [
+        "0",
+        "-10",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth - 20",
+        "height"
+      ],
+      "slot": "wood"
+    },
+    {
+      "name": "doors",
+      "shape": "box",
+      "count": "doors",
+      "at": [
+        "-width / 2 + (i + 0.5) * width / doors",
+        "depth / 2 - 10",
+        "20"
+      ],
+      "size": [
+        "width / doors - 4",
+        "20",
+        "height - 40"
+      ],
+      "slot": "frame"
+    }
+  ]
+}

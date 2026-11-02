@@ -1,0 +1,92 @@
+{
+  "id": "furniture.table@1.0.0",
+  "name": "Table",
+  "contract": "furniture.table",
+  "role": "furniture",
+  "about": "A rectangular dining or meeting table on four legs.",
+  "params": {
+    "width": 1600,
+    "depth": 900,
+    "height": 740
+  },
+  "limits": {
+    "width": {
+      "min": 700,
+      "max": 3600,
+      "step": 50
+    },
+    "depth": {
+      "min": 600,
+      "max": 1400,
+      "step": 10
+    },
+    "height": {
+      "min": 700,
+      "max": 1100,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "top",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "wood"
+    },
+    {
+      "name": "legs",
+      "shape": "rect",
+      "count": "4",
+      "at": [
+        "(i % 2 == 0 ? -1 : 1) * (width / 2 - 80)",
+        "(i < 2 ? -1 : 1) * (depth / 2 - 80)"
+      ],
+      "size": [
+        "60",
+        "60"
+      ],
+      "style": "hidden"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "legs",
+      "shape": "box",
+      "count": "4",
+      "at": [
+        "(i % 2 == 0 ? -1 : 1) * (width / 2 - 80)",
+        "(i < 2 ? -1 : 1) * (depth / 2 - 80)",
+        "0"
+      ],
+      "size": [
+        "60",
+        "60",
+        "height - 30"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "top",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "height - 30"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "30"
+      ],
+      "slot": "wood"
+    }
+  ]
+}
