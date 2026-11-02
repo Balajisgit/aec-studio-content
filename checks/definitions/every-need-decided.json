@@ -1,0 +1,6 @@
+{
+  "id": "every-need-decided",
+  "name": "Every Need is decided",
+  "about": "Every Need has one match: object or adapt (naming a Library Object that exists) or missing; each with a reason.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}
