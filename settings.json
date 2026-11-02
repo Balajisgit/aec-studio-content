@@ -1,0 +1,3 @@
+{
+  "models": { "quick": "haiku", "default": "sonnet", "complex": "opus" }
+}
