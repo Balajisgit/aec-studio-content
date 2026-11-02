@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 21._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 22._
 
 ## What this is
 
@@ -40,6 +40,8 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
+- Owner to confirm or change the room: size, wall thickness, name, project name; add doors or windows if wanted.
+- Memory bug to fix: a wrap-up recorded in the app did not close session 20, so the next record overwrote it.
 - Owner: sign in to GitHub on the PC (GitHub Desktop) if not done yet, so the app can push records to the content repository.
 - Phase 3: Projects and Canvas managers (projects, model log, freestyle editing with Claude; built-in plan and 3D, Canvas13); kernel adds rooms from walls, wall outlines, areas.
 - Then phase 4 Library, phase 5 Pipelines (new ones with the rules; archive the old app), phase 6 Files and Storage (ready for hosting).
@@ -49,6 +51,17 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - Carried: tell Bikal about Canvas13 gaps (catalogue objects not clickable in plan; API key not checked on read/edit).
 
 ## Recent sessions
+
+### Session 21 · 2026-11-02 · First project: a room on the ground floor
+Created the first project in AEC Studio 6 and drew a 4 m × 3 m room on the ground floor, its space made from the walls.
+
+Done:
+- Created project 'Untitled project' (pb8c080fd7a), Ground floor L0 at 3000 mm.
+- Drew 4 closed walls, 200 mm thick and 3000 mm high, through 0,0 / 4000,0 / 4000,3000 / 0,3000; made space 'Room 1' from the walls: gross 12 m2, net 10.64 m2, no problems. One step in the log, can be undone.
+- Memory slip: the first record of this chat replaced session 20 (the wrap-up had not closed it); session 20 was restored word for word and closed, and this work recorded as session 21.
+
+Decided:
+- Owner: "create a room" (size, wall thickness and name chosen by Claude as defaults, to confirm).
 
 ### Session 20 · 2026-11-02 · First chat in AEC Studio 6: phase 2 confirmed live, wrap-up only
 The first chat inside the new app found phase 2 (memory) merged and running on both repositories, and was wrapped up without other work.
@@ -117,17 +130,9 @@ Done:
 - Created panels/preview-additions@0.1.0 from reg_panels/preview-additions.
 - Created pipelines/library-manager@0.3.0 with inputs inventory-report (handover format), 7 steps: intake, classify, report, approve-add, add, housekeeping, handover.
 
-### Session 16 · 2026-10-31 · Fix REQ-038 version labels
-Fixed version labels: library-manager 0.3.0, library agent 1.4.0. Sync blocked: preview-additions@0.1.0 panel and critics preview-only, housekeeping-reported missing from Studio.
-
-Done:
-- Backed up the database (before-fix-c).
-- Verified reg_pipelines/library-manager was version 0.1.0 with steps: intake, classify, report, approve-add, add, housekeeping, handover.
-- Updated reg_pipelines/library-manager: version 0.3.0, path pipelines/library/library-manager/0.3.0/pipeline.json, inputs named for routing (inventory-report, project-types, library-catalog, mode), changelog note added.
-- Updated reg_agents/library: version 1.4.0, changelog note added.
-
 ## Earlier sessions
 
+- **16** · 2026-10-31 · Fix REQ-038 version labels — Fixed version labels: library-manager 0.3.0, library agent 1.4.0. Sync blocked: preview-additions@0.1.0 panel and critics preview-only, housekeeping-reported missing from Studio.
 - **15** · 2026-10-31 · Filing requests A, B, C — Fixed: REQ-006/007/008 restored to their original released state; new requests filed as REQ-036/037/038.
 - **14** · 2026-10-31 · Discussion: topic to be set by owner — An empty discussion window; no work was recorded.
 - **13** · 2026-10-30 · Library items get a 2D symbol and a 3D primitive; library manager, handover and orchestration redesigned — Every library type can now carry a parametric 2D symbol beside its 3D primitive, with a check that they agree, editing in the Types window and a one-click upgrade for existing types (merged at f14ea98 and 04d351c); the library manager, handovers and orchestration were redesigned as Requests B and C.

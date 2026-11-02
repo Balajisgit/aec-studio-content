@@ -46,3 +46,4 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-02 · Session 19** — Owner: JavaScript kernel ("Recommended"), Python helper later for IFC; the IR is not shared with another project.
 - **2026-11-02 · Session 19** — Owner: memory brought forward to phase 2; "go" on each chat being a session and a running decisions list.
 - **2026-11-02 · Session 20** — Owner: "wrap up".
+- **2026-11-02 · Session 21** — Owner: "create a room" (size, wall thickness and name chosen by Claude as defaults, to confirm).
