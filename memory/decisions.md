@@ -61,3 +61,4 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-02 · Session 25** — Owner: "create a new project named test1".
 - **2026-11-02 · Session 25** — Owner: "load that project and create a one bhk" (layout and sizes chosen by Claude, to confirm).
 - **2026-11-02 · Session 25** — Owner: "place furnitures" (choice and positions by Claude, to confirm).
+- **2026-11-02 · Session 25** — Owner: "make the kitchen and bathroom fittings" (made in the chat as Project Objects; sizes and positions by Claude, to confirm).

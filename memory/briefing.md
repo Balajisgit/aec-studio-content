@@ -43,12 +43,11 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- Owner to review the 1 BHK layout and furniture in test1 (open it from the Projects page); sizes, placement and furniture facing are Claude's defaults.
-- Kitchen and bathroom are empty: the Library has no counter, sink, WC or shower; could be made with Make an Object.
+- Owner to review test1 on the canvas: layout, furniture and the new fittings; facing of pieces turned 90° (east kitchen counter, fridge) is unchecked.
+- Propose the 5 fittings (kitchen counter, fridge, WC, basin, shower) to the Library when the owner asks.
 - Restart Studio on the PC; try Brief to Library on a real deck (first run with the real Claude agents).
 - Optional: add COPY_DIR=D:\aec to .env for the folder copy.
 - Archive the old app (AEC Agent Studio 2): the owner's call.
-- Propose kept Project Objects to the Library when the owner asks.
 - Canvas13 online from bikalbaral13/canvas_shared (parked); Canvas13 gaps: drawing walls, justification, dragging corners; tell Bikal (objects not clickable, API key not checked).
 - Kernel later: true arcs, holes inside rooms, 2.5D checks, Python helper for IFC export.
 - Owner: sign in to GitHub on the PC so the app can push records.
@@ -57,20 +56,23 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Recent sessions
 
-### Session 25 · 2026-11-02 · New project test1, a 1 BHK plan and furniture in it
-Created the project test1, drew an 8 m × 7 m 1 BHK on its ground floor (living, kitchen, bathroom, bedroom, dress/store, with doors and windows), then furnished the living room, bedroom and dress/store from the Library.
+### Session 25 · 2026-11-02 · New project test1, a 1 BHK plan, furniture and kitchen/bathroom fittings
+Created test1, drew an 8 m × 7 m 1 BHK, furnished it from the Library, then made 5 kitchen and bathroom fittings as Project Objects and placed them.
 
 Done:
 - Created project 'test1' (p10d4d1726c): Ground floor L0, 3000 mm high, snap 5 mm.
-- Drew a 1 BHK, 8000 × 7000 mm: outer walls 200 mm, inner walls 100 mm, 3000 mm high; 5 spaces from the walls (step 2).
-- Spaces (net m2): Living 18.67, Kitchen 8.12, Bathroom 5.42, Bedroom 13.82, Dress / Store 5.27; slab 59.04 m2; no problems.
-- Doors: main 1000, kitchen 900, bathroom 750, bedroom 900, dress 800 (2100 high); windows: living and bedroom 1800, kitchen 1200, bathroom and dress 600 (step 3).
-- Furniture (step 8): 6 Library Objects pinned; living: 3-seat sofa and armchair against the bedroom wall, 1200 × 800 dining table with 4 chairs by the window; bedroom: 1600 × 2100 bed, head on the living-room wall; dress/store: 2000 mm 4-door wardrobe. No problems.
+- Drew a 1 BHK, 8000 × 7000 mm: outer walls 200, inner 100, 3000 high; spaces Living 18.67, Kitchen 8.12, Bathroom 5.42, Bedroom 13.82, Dress / Store 5.27 m2 net.
+- Doors: main 1000, kitchen 900, bathroom 750, bedroom 900, dress 800; windows: living and bedroom 1800, kitchen 1200, bathroom and dress 600 high.
+- Furniture from the Library: sofa, armchair, 1200 × 800 table with 4 chairs, 1600 × 2100 bed, 2000 mm 4-door wardrobe.
+- Made and kept 5 Project Objects (all pass the Library check): project.kitchen-counter (optional sink and hob, movable along the run), project.fridge, project.wc, project.basin (on a vanity), project.shower (tray, half glass screen).
+- Placed them (step 'Fit out kitchen and bathroom'): L-shaped kitchen, 2850 counter with sink under the window, 1500 counter with hob on the east wall, fridge in the corner; bathroom: basin by the door, WC on the back wall, 900 × 900 shower in the far corner. No problems.
+- Noticed the owner's own canvas edits: bedroom window WN6 on the west wall and the bed moved; left as they are.
 
 Decided:
 - Owner: "create a new project named test1".
 - Owner: "load that project and create a one bhk" (layout and sizes chosen by Claude, to confirm).
 - Owner: "place furnitures" (choice and positions by Claude, to confirm).
+- Owner: "make the kitchen and bathroom fittings" (made in the chat as Project Objects; sizes and positions by Claude, to confirm).
 
 ### Session 24 · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview
 All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
