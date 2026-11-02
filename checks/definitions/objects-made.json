@@ -1,0 +1,6 @@
+{
+  "id": "objects-made",
+  "name": "Objects are made",
+  "about": "Every Need to make has an Object that passes the Library check, with a project.<name>@1.0.0 id not already in the project.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}

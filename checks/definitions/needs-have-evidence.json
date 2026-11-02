@@ -1,0 +1,6 @@
+{
+  "id": "needs-have-evidence",
+  "name": "Needs have evidence",
+  "about": "At least one Need; every Need has a name, a quantity of 1 or more, and evidence (a file and page, a photo, or the notes).",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}

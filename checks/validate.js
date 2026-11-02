@@ -41,5 +41,26 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
     for (const k of ["symbol2d", "primitive3d"]) if (!Array.isArray(o[k]) || !o[k].length) problems.push(`${rel}: ${k} is missing`);
     if (o.params && typeof o.params !== "object") problems.push(`${rel}: params must be an object of defaults`);
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/objects: ${e.message}`); }
+// pipelines/<id>/<version>.json: the id matches the path; stages name an agent in agents/ and checks in checks/definitions/;
+// decisions use a form the app knows. (What each check does is code in the app: managers/pipelines/checks.js.)
+const readDir = (rel) => { try { return readdirSync(join(root, rel)).filter((n) => n.endsWith(".json")); } catch { return []; } };
+const agents = new Set(readDir("agents").map((n) => n.slice(0, -5))), checks = new Set(readDir("checks/definitions").map((n) => n.slice(0, -5)));
+for (const n of readDir("agents")) { try { const a = JSON.parse(readFileSync(join(root, "agents", n), "utf8"));
+  if (a.id !== n.slice(0, -5)) problems.push(`agents/${n}: id must be ${n.slice(0, -5)}`);
+  if (!Array.isArray(a.instructions) || !a.instructions.length) problems.push(`agents/${n}: instructions are missing`); } catch { /* reported above */ } }
+const FORMS = ["pick-needs", "keep-objects"];
+try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(root, "pipelines", p); if (!statSync(pd).isDirectory()) continue;
+  for (const v of readdirSync(pd)) { const rel = `pipelines/${p}/${v}`;
+    if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
+    let d; try { d = JSON.parse(readFileSync(join(pd, v), "utf8")); } catch { continue; }
+    if (d.id !== `${p}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${p}@${v.slice(0, -5)}`);
+    if (!d.name) problems.push(`${rel}: name is missing`);
+    const steps = Array.isArray(d.steps) ? d.steps : []; if (!steps.some((s) => s.kind === "stage")) problems.push(`${rel}: needs at least one stage`);
+    const ids = new Set(); for (const s of steps) { if (ids.has(s.id)) problems.push(`${rel}: step id ${s.id} is used twice`); ids.add(s.id);
+      if (s.kind === "stage") { if (!s.outcome) problems.push(`${rel}: stage ${s.id} has no outcome`); if (!agents.has(s.agent)) problems.push(`${rel}: stage ${s.id} names agent ${s.agent}, which is not in agents/`);
+        if (!Array.isArray(s.checks) || !s.checks.length) problems.push(`${rel}: stage ${s.id} has no checks`); for (const c of s.checks || []) if (!checks.has(c)) problems.push(`${rel}: stage ${s.id} names check ${c}, which is not in checks/definitions/`); }
+      else if (s.kind === "decision") { if (!FORMS.includes(s.form)) problems.push(`${rel}: decision ${s.id} must use a form the app knows: ${FORMS.join(", ")}`); if (!s.question) problems.push(`${rel}: decision ${s.id} has no question`); }
+      else problems.push(`${rel}: step ${s.id} must be a stage or a decision`); }
+  } } } catch (e) { if (e.code !== "ENOENT") problems.push(`pipelines: ${e.message}`); }
 for (const p of problems) console.log("FAIL", p);
 console.log(`content: ${problems.length} problem${problems.length === 1 ? "" : "s"}`); process.exit(problems.length ? 1 : 0);
