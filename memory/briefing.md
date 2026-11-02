@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 20._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 21._
 
 ## What this is
 
@@ -40,8 +40,7 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- Owner: review and merge phase 2 (app PR #2, content PR #2); then the app updates itself, or Update now on the Studio page.
-- Owner: run Start-Studio.bat from D:\aec-studio and try the chat; sign in to GitHub on the PC (GitHub Desktop) so records can be pushed.
+- Owner: sign in to GitHub on the PC (GitHub Desktop) if not done yet, so the app can push records to the content repository.
 - Phase 3: Projects and Canvas managers (projects, model log, freestyle editing with Claude; built-in plan and 3D, Canvas13); kernel adds rooms from walls, wall outlines, areas.
 - Then phase 4 Library, phase 5 Pipelines (new ones with the rules; archive the old app), phase 6 Files and Storage (ready for hosting).
 - Studio 2 publish task: no longer needed (local only); delete it, and the old task trig_01Tq7yFcL7sCDtakyirzMmaq, when convenient.
@@ -50,6 +49,17 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - Carried: tell Bikal about Canvas13 gaps (catalogue objects not clickable in plan; API key not checked on read/edit).
 
 ## Recent sessions
+
+### Session 20 · 2026-11-02 · First chat in AEC Studio 6: phase 2 confirmed live, wrap-up only
+The first chat inside the new app found phase 2 (memory) merged and running on both repositories, and was wrapped up without other work.
+
+Done:
+- Checked the Studio status: app main at 03e54ee and content main at da7ecf9, both the merge of phase-2 PR #2; the app follows both and is not paused.
+- Memory & Discussion shows as built; the chat in the app works and records its own session (this one, session 20).
+- Phase 3 (Projects and Canvas) not started.
+
+Decided:
+- Owner: "wrap up".
 
 ### Session 19 · 2026-11-02 · AEC Studio 6: rebuilt from first principles; phase 1 merged, phase 2 (memory) in review
 After stage 1 of the old app (automatic checks, follow main) the owner chose a rebuild: AEC Studio 6, eight managers around a mesh-light kernel, two repositories; phase 1 is merged and phase 2, sessions that record themselves, is in review.
@@ -116,18 +126,9 @@ Done:
 - Updated reg_pipelines/library-manager: version 0.3.0, path pipelines/library/library-manager/0.3.0/pipeline.json, inputs named for routing (inventory-report, project-types, library-catalog, mode), changelog note added.
 - Updated reg_agents/library: version 1.4.0, changelog note added.
 
-### Session 15 · 2026-10-31 · Filing requests A, B, C
-Fixed: REQ-006/007/008 restored to their original released state; new requests filed as REQ-036/037/038.
-
-Done:
-- Backed up the database (before-filing-A-B-C).
-- Filed REQ-036 (A): Library items carry a 2D symbol and a 3D primitive, with a check that they agree. Stage: built.
-- Filed REQ-037 (B): A handover publishes its report as an output; orchestration routes it; only the owner creates projects. Stage: built.
-- Filed REQ-038 (C): Library manager 0.3.0: independent, any input, match or add as preview, housekeeping mode. Stage: queued.
-- Fix: backed up again (before-fix-requests), restored REQ-006/007/008 from their .original.json files, renumbered the new requests to REQ-036/037/038.
-
 ## Earlier sessions
 
+- **15** · 2026-10-31 · Filing requests A, B, C — Fixed: REQ-006/007/008 restored to their original released state; new requests filed as REQ-036/037/038.
 - **14** · 2026-10-31 · Discussion: topic to be set by owner — An empty discussion window; no work was recorded.
 - **13** · 2026-10-30 · Library items get a 2D symbol and a 3D primitive; library manager, handover and orchestration redesigned — Every library type can now carry a parametric 2D symbol beside its 3D primitive, with a check that they agree, editing in the Types window and a one-click upgrade for existing types (merged at f14ea98 and 04d351c); the library manager, handovers and orchestration were redesigned as Requests B and C.
 - **12** · 2026-10-30 · Canvas13 in the Studio; Layers and Levels; chat fixes — Bikal's Canvas13 renderers now run as a route 1 canvas in the Studio with Layers and Levels menus, and the chat no longer treats general questions or deleted projects as project work; all merged to main at f90fd61.
