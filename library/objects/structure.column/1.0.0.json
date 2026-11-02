@@ -1,0 +1,107 @@
+{
+  "id": "structure.column@1.0.0",
+  "name": "Column",
+  "contract": "structure.column",
+  "role": "column",
+  "about": "A concrete column, rectangular or circular, from the floor up.",
+  "params": {
+    "width": 300,
+    "depth": 300,
+    "height": 3000,
+    "circular": false
+  },
+  "limits": {
+    "width": {
+      "min": 200,
+      "max": 1200,
+      "step": 25
+    },
+    "depth": {
+      "min": 200,
+      "max": 1200,
+      "step": 25
+    },
+    "height": {
+      "min": 2400,
+      "max": 8000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "section",
+      "shape": "rect",
+      "when": "!circular",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "concrete"
+    },
+    {
+      "name": "cross",
+      "shape": "line",
+      "when": "!circular",
+      "count": "2",
+      "from": [
+        "-width / 2",
+        "(i == 0 ? -1 : 1) * depth / 2"
+      ],
+      "to": [
+        "width / 2",
+        "(i == 0 ? 1 : -1) * depth / 2"
+      ],
+      "style": "thin"
+    },
+    {
+      "name": "circular section",
+      "shape": "circle",
+      "when": "circular",
+      "at": [
+        "0",
+        "0"
+      ],
+      "r": "width / 2",
+      "style": "fill",
+      "slot": "concrete"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "shaft",
+      "shape": "box",
+      "when": "!circular",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "height"
+      ],
+      "slot": "concrete"
+    },
+    {
+      "name": "circular shaft",
+      "shape": "cylinder",
+      "when": "circular",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "height"
+      ],
+      "slot": "concrete"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "furniture.bed@1.0.0",
+  "name": "Bed",
+  "contract": "furniture.bed",
+  "role": "furniture",
+  "about": "A bed with headboard, mattress and one or two pillows; the head is at the back.",
+  "params": {
+    "width": 1600,
+    "depth": 2100,
+    "height": 500,
+    "headboard": 1000
+  },
+  "limits": {
+    "width": {
+      "min": 900,
+      "max": 2000,
+      "step": 50
+    },
+    "depth": {
+      "min": 1950,
+      "max": 2300,
+      "step": 10
+    },
+    "height": {
+      "min": 350,
+      "max": 650,
+      "step": 10
+    },
+    "headboard": {
+      "min": 700,
+      "max": 1400,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "frame",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "fabric"
+    },
+    {
+      "name": "headboard",
+      "shape": "line",
+      "from": [
+        "-width / 2",
+        "-depth / 2 + 60"
+      ],
+      "to": [
+        "width / 2",
+        "-depth / 2 + 60"
+      ]
+    },
+    {
+      "name": "pillows",
+      "shape": "rect",
+      "count": "width >= 1300 ? 2 : 1",
+      "at": [
+        "-width / 2 + (i + 0.5) * width / n",
+        "-depth / 2 + 260"
+      ],
+      "size": [
+        "width / n - 120",
+        "300"
+      ],
+      "radius": "60",
+      "style": "thin"
+    },
+    {
+      "name": "turn-down",
+      "shape": "line",
+      "from": [
+        "-width / 2 + 20",
+        "-depth / 2 + 650"
+      ],
+      "to": [
+        "width / 2 - 20",
+        "-depth / 2 + 650"
+      ],
+      "style": "thin"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "base",
+      "shape": "box",
+      "at": [
+        "0",
+        "30",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth - 60",
+        "height - 200"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "headboard",
+      "shape": "box",
+      "at": [
+        "0",
+        "-depth / 2 + 30",
+        "0"
+      ],
+      "size": [
+        "width",
+        "60",
+        "headboard"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "mattress",
+      "shape": "box",
+      "at": [
+        "0",
+        "40",
+        "height - 200"
+      ],
+      "size": [
+        "width - 40",
+        "depth - 120",
+        "200"
+      ],
+      "slot": "mattress"
+    },
+    {
+      "name": "pillows",
+      "shape": "box",
+      "count": "width >= 1300 ? 2 : 1",
+      "at": [
+        "-width / 2 + (i + 0.5) * width / n",
+        "-depth / 2 + 260",
+        "height"
+      ],
+      "size": [
+        "width / n - 120",
+        "300",
+        "120"
+      ],
+      "slot": "mattress"
+    }
+  ]
+}

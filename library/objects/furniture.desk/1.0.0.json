@@ -1,0 +1,124 @@
+{
+  "id": "furniture.desk@1.0.0",
+  "name": "Desk",
+  "contract": "furniture.desk",
+  "role": "furniture",
+  "about": "A work desk with panel ends; a drawer unit on the right if wanted.",
+  "params": {
+    "width": 1400,
+    "depth": 700,
+    "height": 740,
+    "drawers": true
+  },
+  "limits": {
+    "width": {
+      "min": 1000,
+      "max": 2000,
+      "step": 50
+    },
+    "depth": {
+      "min": 600,
+      "max": 900,
+      "step": 10
+    },
+    "height": {
+      "min": 680,
+      "max": 780,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "top",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "wood"
+    },
+    {
+      "name": "drawers",
+      "shape": "rect",
+      "when": "drawers",
+      "at": [
+        "width / 2 - 230",
+        "0"
+      ],
+      "size": [
+        "400",
+        "depth - 60"
+      ],
+      "style": "hidden"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "ends",
+      "shape": "box",
+      "count": "2",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 - 15)",
+        "0",
+        "0"
+      ],
+      "size": [
+        "30",
+        "depth",
+        "height - 25"
+      ],
+      "slot": "wood"
+    },
+    {
+      "name": "modesty panel",
+      "shape": "box",
+      "at": [
+        "0",
+        "-depth / 2 + 60",
+        "300"
+      ],
+      "size": [
+        "width - 60",
+        "18",
+        "height - 325"
+      ],
+      "slot": "wood"
+    },
+    {
+      "name": "drawers",
+      "shape": "box",
+      "when": "drawers",
+      "at": [
+        "width / 2 - 230",
+        "0",
+        "120"
+      ],
+      "size": [
+        "400",
+        "depth - 60",
+        "height - 260"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "top",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "height - 25"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "25"
+      ],
+      "slot": "wood"
+    }
+  ]
+}

@@ -15,7 +15,7 @@ See `docs/architecture.md` in the app repository for the whole design.
 pipelines/<id>/<version>.json     pipelines as stages, outcomes, checks and decisions (phase 5)
 agents/  skills/  solvers/  panels/
 checks/definitions/               check definitions with their pass and fail cases
-library/objects/<id>/<version>.json   Library Objects: parameters, 2D symbol, 3D primitive, materials, asset fingerprints
+library/objects/<contract>/<version>.json   Library Objects: parameters and limits, 2D symbol, 3D primitive (formulas of the parameters)
 library/materials/<id>.json
 canvases/<id>.json                canvas setups
 memory/sessions/<number>.md       one file per session, written by the app (phase 2)

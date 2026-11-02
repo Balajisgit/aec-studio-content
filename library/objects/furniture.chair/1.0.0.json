@@ -1,0 +1,144 @@
+{
+  "id": "furniture.chair@1.0.0",
+  "name": "Chair",
+  "contract": "furniture.chair",
+  "role": "furniture",
+  "about": "A dining or side chair: seat, four legs and a back; arms optional.",
+  "params": {
+    "width": 450,
+    "depth": 520,
+    "height": 820,
+    "seat_height": 450,
+    "arms": false
+  },
+  "limits": {
+    "width": {
+      "min": 380,
+      "max": 650,
+      "step": 10
+    },
+    "depth": {
+      "min": 420,
+      "max": 650,
+      "step": 10
+    },
+    "height": {
+      "min": 700,
+      "max": 1100,
+      "step": 10
+    },
+    "seat_height": {
+      "min": 380,
+      "max": 520,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "outline",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "seat"
+    },
+    {
+      "name": "back",
+      "shape": "line",
+      "from": [
+        "-width / 2",
+        "-depth / 2 + 40"
+      ],
+      "to": [
+        "width / 2",
+        "-depth / 2 + 40"
+      ]
+    },
+    {
+      "name": "arms",
+      "shape": "rect",
+      "when": "arms",
+      "count": "2",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 - 25)",
+        "20"
+      ],
+      "size": [
+        "50",
+        "depth - 40"
+      ],
+      "style": "thin"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "legs",
+      "shape": "box",
+      "count": "4",
+      "at": [
+        "(i % 2 == 0 ? -1 : 1) * (width / 2 - 20)",
+        "(i < 2 ? -1 : 1) * (depth / 2 - 20)",
+        "0"
+      ],
+      "size": [
+        "40",
+        "40",
+        "seat_height - 40"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "seat",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "seat_height - 40"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "40"
+      ],
+      "slot": "seat"
+    },
+    {
+      "name": "back",
+      "shape": "box",
+      "at": [
+        "0",
+        "-depth / 2 + 20",
+        "seat_height"
+      ],
+      "size": [
+        "width",
+        "40",
+        "height - seat_height"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "arms",
+      "shape": "box",
+      "when": "arms",
+      "count": "2",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 - 25)",
+        "20",
+        "seat_height"
+      ],
+      "size": [
+        "50",
+        "depth - 40",
+        "220"
+      ],
+      "slot": "frame"
+    }
+  ]
+}
