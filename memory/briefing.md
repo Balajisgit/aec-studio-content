@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 22._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 23._
 
 ## What this is
 
@@ -40,17 +40,37 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- Owner to confirm or change the room: size, wall thickness, name, project name; add doors or windows if wanted.
-- Memory bug to fix: a wrap-up recorded in the app did not close session 20, so the next record overwrote it.
-- Owner: sign in to GitHub on the PC (GitHub Desktop) if not done yet, so the app can push records to the content repository.
-- Phase 3: Projects and Canvas managers (projects, model log, freestyle editing with Claude; built-in plan and 3D, Canvas13); kernel adds rooms from walls, wall outlines, areas.
-- Then phase 4 Library, phase 5 Pipelines (new ones with the rules; archive the old app), phase 6 Files and Storage (ready for hosting).
-- Studio 2 publish task: no longer needed (local only); delete it, and the old task trig_01Tq7yFcL7sCDtakyirzMmaq, when convenient.
+- Restart Studio so the merged #4 and #5 run; try Canvas (Open on canvas from a project).
+- Canvas13 adapter in the Canvas manager (next pull request), then phase 4 Library (Objects with 2D symbol and 3D primitive; furniture on the canvas).
+- Session 20 was overwritten once (session 21): its wrap-up ran before #3's code; new wrap-ups close the session. Watch the next app wrap-up.
+- Save the proposed load skill (load aec studio) from the card in the claude.ai chat.
+- Kernel later: arcs as true curves, holes inside rooms, 2.5D checks, Python helper for IFC export.
+- Owner: sign in to GitHub on the PC (GitHub Desktop) if not done yet, so the app can push records.
+- Then phase 5 Pipelines (new ones with the rules; archive the old app), phase 6 Files and Storage (ready for hosting).
+- Studio 2 publish task and old task trig_01Tq7yFcL7sCDtakyirzMmaq: delete when convenient.
 - Fix or confirm the example model's P1 parameters (w, h vs t, joint).
 - Old app clean-up on the PC: runs/ helper files (filing.md, fix-requests, fix-c, parity-bundle.tgz, context-export.json, wrapup-session.json).
 - Carried: tell Bikal about Canvas13 gaps (catalogue objects not clickable in plan; API key not checked on read/edit).
 
 ## Recent sessions
+
+### Session 22 · 2026-11-02 · Phase 3 built: Projects and the built-in canvas; every wrap-up a new session
+Every wrap-up now records a new session (app, core, load skill); phase 3 is built: Projects (PR #4, merged) and the built-in plan and 3D canvas (PR #5, merged).
+
+Done:
+- Every wrap-up records a new session: app PR #3 (wrapUp closes the chat's session; chats list their sessions), core rule in content, merged.
+- Load skill rewritten as "load" plus an app name (load aec studio; load context defaults to it; studio 2 kept for reference); proposed for the owner to save.
+- Kernel: rooms from walls, wall outlines (mitred, squared T-junctions), gross/net areas, slab outlines; draw_walls, split_segment, add_rooms_from_walls; redo and history.
+- Projects manager (PR #4): projects on the PC, the log is the truth, steps all-or-nothing, undo/redo, import/export model.json, archive/delete, plan preview with areas; Claude edits projects from the chat as itself.
+- Canvas manager (PR #5): plan editing by hand (walls with snapping, 45°, typed lengths; doors, windows; drag corners and openings; properties; delete with dependants; levels), 3D view with vendored three.js, click to select.
+- Steps that change nothing are not logged; a manager counts as built once it has an api.js; the chat is told which project is open.
+- Checks: 26 tests, browser runs that draw and edit on the canvas, smoke check; all pass.
+
+Decided:
+- Owner: "always record as new session" (every wrap-up records a new session, never updates an earlier one).
+- Owner: "merge #3" (merged by Claude at the owner's word, after its checks passed).
+- Owner: the load skill works by app name: "load aec studio".
+- Owner: "go next" and "go second phase": phase 3 built as Projects, then the built-in canvas; Canvas13 follows.
 
 ### Session 21 · 2026-11-02 · First project: a room on the ground floor
 Created the first project in AEC Studio 6 and drew a 4 m × 3 m room on the ground floor, its space made from the walls.
@@ -121,17 +141,9 @@ Decided:
 - Library types have no stable-approval button; they become stable only through a pipeline release gate.
 - Requests filed from a session get explicit, checked-free REQ ids. Fix files for local sessions do not call memory_start.
 
-### Session 17 · 2026-10-31 · Sync library-manager 0.3.0
-Synced library-manager 0.3.0 to the Studio: panels/preview-additions@0.1.0 and pipelines/library-manager@0.3.0 created.
-
-Done:
-- Backed up database (before-sync-lm-030).
-- Verified engine.js has critics preview-only and housekeeping-reported.
-- Created panels/preview-additions@0.1.0 from reg_panels/preview-additions.
-- Created pipelines/library-manager@0.3.0 with inputs inventory-report (handover format), 7 steps: intake, classify, report, approve-add, add, housekeeping, handover.
-
 ## Earlier sessions
 
+- **17** · 2026-10-31 · Sync library-manager 0.3.0 — Synced library-manager 0.3.0 to the Studio: panels/preview-additions@0.1.0 and pipelines/library-manager@0.3.0 created.
 - **16** · 2026-10-31 · Fix REQ-038 version labels — Fixed version labels: library-manager 0.3.0, library agent 1.4.0. Sync blocked: preview-additions@0.1.0 panel and critics preview-only, housekeeping-reported missing from Studio.
 - **15** · 2026-10-31 · Filing requests A, B, C — Fixed: REQ-006/007/008 restored to their original released state; new requests filed as REQ-036/037/038.
 - **14** · 2026-10-31 · Discussion: topic to be set by owner — An empty discussion window; no work was recorded.

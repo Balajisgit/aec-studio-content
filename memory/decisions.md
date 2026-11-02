@@ -47,3 +47,7 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-02 · Session 19** — Owner: memory brought forward to phase 2; "go" on each chat being a session and a running decisions list.
 - **2026-11-02 · Session 20** — Owner: "wrap up".
 - **2026-11-02 · Session 21** — Owner: "create a room" (size, wall thickness and name chosen by Claude as defaults, to confirm).
+- **2026-11-02 · Session 22** — Owner: "always record as new session" (every wrap-up records a new session, never updates an earlier one).
+- **2026-11-02 · Session 22** — Owner: "merge #3" (merged by Claude at the owner's word, after its checks passed).
+- **2026-11-02 · Session 22** — Owner: the load skill works by app name: "load aec studio".
+- **2026-11-02 · Session 22** — Owner: "go next" and "go second phase": phase 3 built as Projects, then the built-in canvas; Canvas13 follows.
