@@ -1,0 +1,18 @@
+# Automatic checks on every pull request and push to main. A red check means don't merge.
+name: checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Layout and JSON
+        run: node checks/validate.js
