@@ -43,7 +43,8 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- Owner to review the 1 BHK layout in test1 (open it from the Projects page); sizes and room placement are Claude's defaults.
+- Owner to review the 1 BHK layout and furniture in test1 (open it from the Projects page); sizes, placement and furniture facing are Claude's defaults.
+- Kitchen and bathroom are empty: the Library has no counter, sink, WC or shower; could be made with Make an Object.
 - Restart Studio on the PC; try Brief to Library on a real deck (first run with the real Claude agents).
 - Optional: add COPY_DIR=D:\aec to .env for the folder copy.
 - Archive the old app (AEC Agent Studio 2): the owner's call.
@@ -56,18 +57,20 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Recent sessions
 
-### Session 25 · 2026-11-02 · New project test1 and a 1 BHK plan in it
-Created the empty project test1, then drew a 1 BHK on its ground floor: 8 m × 7 m with living, kitchen, bathroom, bedroom and a dress/store, with doors and windows.
+### Session 25 · 2026-11-02 · New project test1, a 1 BHK plan and furniture in it
+Created the project test1, drew an 8 m × 7 m 1 BHK on its ground floor (living, kitchen, bathroom, bedroom, dress/store, with doors and windows), then furnished the living room, bedroom and dress/store from the Library.
 
 Done:
 - Created project 'test1' (p10d4d1726c): Ground floor L0, 3000 mm high, snap 5 mm.
 - Drew a 1 BHK, 8000 × 7000 mm: outer walls 200 mm, inner walls 100 mm, 3000 mm high; 5 spaces from the walls (step 2).
 - Spaces (net m2): Living 18.67, Kitchen 8.12, Bathroom 5.42, Bedroom 13.82, Dress / Store 5.27; slab 59.04 m2; no problems.
 - Doors: main 1000, kitchen 900, bathroom 750, bedroom 900, dress 800 (2100 high); windows: living and bedroom 1800, kitchen 1200, bathroom and dress 600 (step 3).
+- Furniture (step 8): 6 Library Objects pinned; living: 3-seat sofa and armchair against the bedroom wall, 1200 × 800 dining table with 4 chairs by the window; bedroom: 1600 × 2100 bed, head on the living-room wall; dress/store: 2000 mm 4-door wardrobe. No problems.
 
 Decided:
 - Owner: "create a new project named test1".
 - Owner: "load that project and create a one bhk" (layout and sizes chosen by Claude, to confirm).
+- Owner: "place furnitures" (choice and positions by Claude, to confirm).
 
 ### Session 24 · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview
 All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
