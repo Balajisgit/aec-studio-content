@@ -3,16 +3,17 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { settingProblem } from "./settings.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", ".."), problems = [];
-const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
+const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
 for (const n of readdirSync(root)) if (!n.startsWith(".git") && !TOP.has(n)) problems.push(`${n}: not part of the content layout (see README.md)`);
 const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n === "node_modules") continue; const f = join(d, n); if (statSync(f).isDirectory()) walk(f); else if (n.endsWith(".json")) {
   try { JSON.parse(readFileSync(f, "utf8")); } catch (e) { problems.push(`${relative(root, f).split(sep).join("/")}: not valid JSON (${e.message})`); } } } };
 walk(root);
 try { const s = JSON.parse(readFileSync(join(root, "settings.json"), "utf8")); const m = s.models || {};
   for (const k of ["quick", "default", "complex"]) if (typeof m[k] !== "string" || !m[k]) problems.push(`settings.json: models.${k} must be a model name`);
-  const lr = (s.library || {}).review; if (lr !== undefined && !["off", "unsure", "always"].includes(lr)) problems.push("settings.json: library.review must be off, unsure or always");
+  const lr = (s.library || {}).review; if (lr !== undefined && settingProblem("library.review", lr)) problems.push(`settings.json: ${settingProblem("library.review", lr)}`);
 } catch (e) { problems.push(`settings.json: ${e.message}`); }
 // memory/sessions/<4 digits>.md: front matter with number (matching the file name), date and title; a headline; Done, Decisions, Open
 const sessDir = join(root, "memory", "sessions");
@@ -54,6 +55,14 @@ try { for (const n of readdirSync(propDir)) { if (n === ".gitkeep") continue; co
   if (m[1].startsWith("project.")) problems.push(`${rel}: a Library name can't start with project.`);
   if (!ROLES.includes(o.role)) problems.push(`${rel}: object.role must be one of ${ROLES.join(", ")}`);
 } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/proposals: ${e.message}`); }
+// requests/settings/<path>.json: requests the app commits when the owner asks for a setting to change; the settings-requests
+// Action turns each into a pull request that changes settings.json and removes the record.
+try { for (const n of readdirSync(join(root, "requests", "settings"))) { if (n === ".gitkeep") continue; const rel = `requests/settings/${n}`;
+  if (!n.endsWith(".json")) { problems.push(`${rel}: requests are JSON files named after the setting, e.g. library.review.json`); continue; }
+  let r; try { r = JSON.parse(readFileSync(join(root, "requests", "settings", n), "utf8")); } catch { continue; } // reported above
+  const path = n.slice(0, -5); if (r.path !== path) problems.push(`${rel}: path must be ${path}`); else { const bad = settingProblem(path, r.to); if (bad) problems.push(`${rel}: ${bad}`); }
+} } catch (e) { if (e.code !== "ENOENT") problems.push(`requests/settings: ${e.message}`); }
+for (const n of (() => { try { return readdirSync(join(root, "requests")); } catch { return []; } })()) if (n !== "settings" && n !== ".gitkeep") problems.push(`requests/${n}: only settings requests live here`);
 // pipelines/<id>/<version>.json: the id matches the path; stages name an agent in agents/ and checks in checks/definitions/;
 // decisions use a form the app knows. (What each check does is code in the app: managers/pipelines/checks.js.)
 const readDir = (rel) => { try { return readdirSync(join(root, rel)).filter((n) => n.endsWith(".json")); } catch { return []; } };
