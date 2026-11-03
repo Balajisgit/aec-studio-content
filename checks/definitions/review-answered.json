@@ -1,0 +1,6 @@
+{
+  "id": "review-answered",
+  "name": "Review is answered",
+  "about": "A verdict (looks-good or look-closer), a one-sentence description of at most 300 characters, and at most 5 short concerns (at least one when look-closer).",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}
