@@ -1,0 +1,158 @@
+{
+  "proposal": 1,
+  "at": "2026-11-03T13:32:02.156Z",
+  "object": {
+    "id": "furniture.entertainment-unit@1.0.0",
+    "name": "Entertainment unit",
+    "contract": "furniture.entertainment-unit",
+    "role": "furniture",
+    "about": "A low TV media console on a recessed plinth: an open centre bay for AV equipment between two door cupboards.",
+    "params": {
+      "width": 1800,
+      "depth": 450,
+      "height": 500,
+      "plinth": 80,
+      "open_bay": 600
+    },
+    "limits": {
+      "width": {
+        "min": 1200,
+        "max": 2400,
+        "step": 100
+      },
+      "depth": {
+        "min": 350,
+        "max": 600,
+        "step": 10
+      },
+      "height": {
+        "min": 400,
+        "max": 700,
+        "step": 10
+      },
+      "plinth": {
+        "min": 40,
+        "max": 150,
+        "step": 10
+      },
+      "open_bay": {
+        "min": 400,
+        "max": 800,
+        "step": 100
+      }
+    },
+    "symbol2d": [
+      {
+        "name": "body",
+        "shape": "rect",
+        "at": [
+          "0",
+          "0"
+        ],
+        "size": [
+          "width",
+          "depth"
+        ],
+        "style": "fill",
+        "slot": "wood"
+      },
+      {
+        "name": "front",
+        "shape": "line",
+        "from": [
+          "-width / 2",
+          "depth / 2 - 20"
+        ],
+        "to": [
+          "width / 2",
+          "depth / 2 - 20"
+        ]
+      },
+      {
+        "name": "bay sides",
+        "shape": "line",
+        "count": "2",
+        "from": [
+          "(i == 0 ? -1 : 1) * open_bay / 2",
+          "-depth / 2"
+        ],
+        "to": [
+          "(i == 0 ? -1 : 1) * open_bay / 2",
+          "depth / 2"
+        ]
+      },
+      {
+        "name": "plinth",
+        "shape": "rect",
+        "at": [
+          "0",
+          "0"
+        ],
+        "size": [
+          "width - 40",
+          "depth - 40"
+        ],
+        "style": "hidden"
+      }
+    ],
+    "primitive3d": [
+      {
+        "name": "plinth",
+        "shape": "box",
+        "at": [
+          "0",
+          "0",
+          "0"
+        ],
+        "size": [
+          "width - 40",
+          "depth - 40",
+          "plinth"
+        ],
+        "slot": "wood"
+      },
+      {
+        "name": "carcass",
+        "shape": "box",
+        "at": [
+          "0",
+          "-10",
+          "plinth"
+        ],
+        "size": [
+          "width",
+          "depth - 20",
+          "height - plinth"
+        ],
+        "slot": "wood"
+      },
+      {
+        "name": "doors",
+        "shape": "box",
+        "count": "2",
+        "at": [
+          "(i == 0 ? -1 : 1) * (width / 2 - (width - open_bay) / 4)",
+          "depth / 2 - 10",
+          "plinth + 10"
+        ],
+        "size": [
+          "(width - open_bay) / 2 - 4",
+          "20",
+          "height - plinth - 20"
+        ],
+        "slot": "frame"
+      }
+    ]
+  },
+  "from": {
+    "run": "run8b4b06a62b",
+    "pipeline": "Brief to Library",
+    "projects": []
+  },
+  "match": {
+    "kind": "new",
+    "unsure": false
+  },
+  "notes": [],
+  "review": null
+}
