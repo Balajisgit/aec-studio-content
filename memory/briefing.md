@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 26._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 27._
 
 ## What this is
 
@@ -36,6 +36,7 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## How a session should work
 
+- Shared memory is for shared work only (the app, pipelines, the Library, rules, settings, lessons for every project). Project work goes in the project's notes on the PC (project_note), never in a session; a chat that only works on projects records no session (owner, 3 Nov 2026).
 - Every wrap-up is a new session (owner, 2 Nov 2026: "always record as new session"). Never update an earlier session. In the app, Claude keeps the open session's record with `memory_record` as the chat goes; "wrap up" records it with `wrapUp: true`, which closes it. Anything after a wrap-up in the same chat is the next session number and covers only what came after.
 - A chat outside the app (claude.ai) writes a new record at each wrap-up, at the next free number: `memory/sessions/<number, 4 digits>.md` in the format the app writes (front matter: number, date, title, source; then the headline, Done, Decisions, Open), appends its decisions to `memory/decisions.md`, regenerates `memory/briefing.md` with the app's `managers/memory/format.js`, and commits to the content repository's main. No wrap-up JSON, no pasting.
 - Limits: title 200 characters, headline 400, at most 12 items of 300 characters in Done, Decisions and Open. Decisions quote the owner's words.
@@ -43,9 +44,10 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- Owner to review test1 on the canvas: layout, furniture and the new fittings; facing of pieces turned 90° (east kitchen counter, fridge) is unchecked.
-- Propose the 5 fittings (kitchen counter, fridge, WC, basin, shower) to the Library when the owner asks.
-- Restart Studio on the PC; try Brief to Library on a real deck (first run with the real Claude agents).
+- Restart Studio on the PC (server changed) so project notes and the automatic note run.
+- test1's open items (review layout and the pieces turned 90°) belong in its project note: Claude copies them there when next working on test1.
+- Propose test1's 5 fittings (kitchen counter, fridge, WC, basin, shower) to the Library when the owner asks.
+- Try Brief to Library on a real deck (first run with the real Claude agents).
 - Optional: add COPY_DIR=D:\aec to .env for the folder copy.
 - Archive the old app (AEC Agent Studio 2): the owner's call.
 - Canvas13 online from bikalbaral13/canvas_shared (parked); Canvas13 gaps: drawing walls, justification, dragging corners; tell Bikal (objects not clickable, API key not checked).
@@ -55,6 +57,21 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - Fix or confirm the example model's P1 parameters; old app clean-up of runs/ helper files.
 
 ## Recent sessions
+
+### Session 26 · 2026-11-03 · Project discussions stay with the project: project notes; online preview kept current
+Shared memory now holds only shared work: project chats keep a note with the project on the PC (app PR #12, merged), and the online preview was rebuilt twice from the latest main.
+
+Done:
+- Online preview rebuilt from the latest main twice (content 21e827a with session 25; then app fc70f86); same artifact link.
+- Project notes (app #12, merged): one note per chat and project (done, the owner's decisions, open), in a Notes card on the project's page, moved with a project's export.
+- In-app chat told what goes where: shared memory only for shared work; project work in project_note; a chat that only works on projects records no session; read project_notes before carrying on.
+- The app keeps the note itself when a chat reply changed a project and Claude didn't write it (steps added, newest 12); no need to say wrap up for project work.
+- Checks: 47 tests, smoke, browser check of the Notes card; GitHub checks green; #12 merged at fc70f86.
+
+Decided:
+- Owner: project sessions in shared memory duplicate the project log and chat: "Can we exclude project related discussions or store them separately?"; chose "Project notes" kept with the project on the PC.
+- Owner: session 25 "Leave it as history" (past sessions are never changed).
+- Owner: "Ok add to 12 and merge the 12" (the app keeps the note when Claude doesn't).
 
 ### Session 25 · 2026-11-02 · New project test1, a 1 BHK plan, furniture and kitchen/bathroom fittings
 Created test1, drew an 8 m × 7 m 1 BHK, furnished it from the Library, then made 5 kitchen and bathroom fittings as Project Objects and placed them.
@@ -129,19 +146,9 @@ Decided:
 - Owner: the load skill works by app name: "load aec studio".
 - Owner: "go next" and "go second phase": phase 3 built as Projects, then the built-in canvas; Canvas13 follows.
 
-### Session 21 · 2026-11-02 · First project: a room on the ground floor
-Created the first project in AEC Studio 6 and drew a 4 m × 3 m room on the ground floor, its space made from the walls.
-
-Done:
-- Created project 'Untitled project' (pb8c080fd7a), Ground floor L0 at 3000 mm.
-- Drew 4 closed walls, 200 mm thick and 3000 mm high, through 0,0 / 4000,0 / 4000,3000 / 0,3000; made space 'Room 1' from the walls: gross 12 m2, net 10.64 m2, no problems. One step in the log, can be undone.
-- Memory slip: the first record of this chat replaced session 20 (the wrap-up had not closed it); session 20 was restored word for word and closed, and this work recorded as session 21.
-
-Decided:
-- Owner: "create a room" (size, wall thickness and name chosen by Claude as defaults, to confirm).
-
 ## Earlier sessions
 
+- **21** · 2026-11-02 · First project: a room on the ground floor — Created the first project in AEC Studio 6 and drew a 4 m × 3 m room on the ground floor, its space made from the walls.
 - **20** · 2026-11-02 · First chat in AEC Studio 6: phase 2 confirmed live, wrap-up only — The first chat inside the new app found phase 2 (memory) merged and running on both repositories, and was wrapped up without other work.
 - **19** · 2026-11-02 · AEC Studio 6: rebuilt from first principles; phase 1 merged, phase 2 (memory) in review — After stage 1 of the old app (automatic checks, follow main) the owner chose a rebuild: AEC Studio 6, eight managers around a mesh-light kernel, two repositories; phase 1 is merged and phase 2, sessions that record themselves, is in review.
 - **18** · 2026-10-31 · Parity passed, delete library types, Types → Library, handover publishes outputs (B), library manager 0.3.0 live (C) — The parity test passed on the owner's data, the owner can now delete library types and the Types window is called Library, handovers publish outputs that orchestration routes (Request B), and library manager 0.3.0 was generated, released, fixed and synced into the Studio (Request C).

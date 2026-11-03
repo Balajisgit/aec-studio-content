@@ -62,3 +62,6 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-02 · Session 25** — Owner: "load that project and create a one bhk" (layout and sizes chosen by Claude, to confirm).
 - **2026-11-02 · Session 25** — Owner: "place furnitures" (choice and positions by Claude, to confirm).
 - **2026-11-02 · Session 25** — Owner: "make the kitchen and bathroom fittings" (made in the chat as Project Objects; sizes and positions by Claude, to confirm).
+- **2026-11-03 · Session 26** — Owner: project sessions in shared memory duplicate the project log and chat: "Can we exclude project related discussions or store them separately?"; chose "Project notes" kept with the project on the PC.
+- **2026-11-03 · Session 26** — Owner: session 25 "Leave it as history" (past sessions are never changed).
+- **2026-11-03 · Session 26** — Owner: "Ok add to 12 and merge the 12" (the app keeps the note when Claude doesn't).
