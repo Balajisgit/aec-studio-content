@@ -58,6 +58,7 @@ _The open requests (requests/ in the content repository)._
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
 - R10 · Library check-up pipeline
+- R13 · Context assembly: each stage declares what its agent sees
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
