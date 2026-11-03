@@ -27,6 +27,7 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 - **Code and definitions:** a pull request opened by Claude from a chat (or by an associate on content); automatic checks run on GitHub; only the owner merges. The app holds no GitHub token.
 - **Records** (sessions, decisions, lessons): committed straight to the content repository, by the app with the PC's Git sign-in, or by a chat outside the app.
+- **Proposals and settings requests:** the app commits a record (`library/proposals/`, `requests/settings/`) with the PC's Git sign-in; a content Action turns each into a pull request; only the owner merges, and a closed one removes its record. Project Objects reach the Library this way (Library page, "From your projects"); shared settings change this way (Studio page).
 - **Project work:** logged, invertible operations on the PC; the owner decides only at declared decisions.
 - The app follows GitHub main for both repositories by itself (database backup first; a server change waits for a restart; pause and roll back on the Studio page).
 

@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 27._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 28._
 
 ## What this is
 
@@ -31,6 +31,7 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 - **Code and definitions:** a pull request opened by Claude from a chat (or by an associate on content); automatic checks run on GitHub; only the owner merges. The app holds no GitHub token.
 - **Records** (sessions, decisions, lessons): committed straight to the content repository, by the app with the PC's Git sign-in, or by a chat outside the app.
+- **Proposals and settings requests:** the app commits a record (`library/proposals/`, `requests/settings/`) with the PC's Git sign-in; a content Action turns each into a pull request; only the owner merges, and a closed one removes its record. Project Objects reach the Library this way (Library page, "From your projects"); shared settings change this way (Studio page).
 - **Project work:** logged, invertible operations on the PC; the owner decides only at declared decisions.
 - The app follows GitHub main for both repositories by itself (database backup first; a server change waits for a restart; pause and roll back on the Studio page).
 
@@ -44,19 +45,41 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 
 ## Open now
 
-- Restart Studio on the PC (server changed) so project notes and the automatic note run.
+- Restart Studio on the PC (server files changed) so proposals, settings requests and project notes run.
+- Switch test1 to the Library's Kitchen counter and Fridge (Library page: Use the Library version in test1).
+- Propose test1's WC, basin and shower when the owner wants them in the Library.
+- Kitchen counter 1.0.0: hob and sink limits are loose and they can overlap; fix as a new version (and maybe fixture.kitchen-counter) if wanted.
+- Online preview: download links (export) do nothing there; give them the downloads capability if wanted.
 - test1's open items (review layout and the pieces turned 90°) belong in its project note: Claude copies them there when next working on test1.
-- Propose test1's 5 fittings (kitchen counter, fridge, WC, basin, shower) to the Library when the owner asks.
 - Try Brief to Library on a real deck (first run with the real Claude agents).
-- Optional: add COPY_DIR=D:\aec to .env for the folder copy.
-- Archive the old app (AEC Agent Studio 2): the owner's call.
+- Archive the old app (AEC Agent Studio 2): the owner's call. Delete Studio 2 publish task and trig_01Tq7yFcL7sCDtakyirzMmaq.
 - Canvas13 online from bikalbaral13/canvas_shared (parked); Canvas13 gaps: drawing walls, justification, dragging corners; tell Bikal (objects not clickable, API key not checked).
 - Kernel later: true arcs, holes inside rooms, 2.5D checks, Python helper for IFC export.
-- Owner: sign in to GitHub on the PC so the app can push records.
-- Save the load skill (load aec studio); delete Studio 2 publish task and trig_01Tq7yFcL7sCDtakyirzMmaq.
+- Optional: add COPY_DIR=D:\aec to .env for the folder copy.
 - Fix or confirm the example model's P1 parameters; old app clean-up of runs/ helper files.
 
 ## Recent sessions
+
+### Session 27 · 2026-11-03 · Library proposals: Project Objects reach the Library with one tap; the review setting and its button
+Project Objects now reach the Library without a chat: the app suggests them, one tap sends a pull request, and projects switch to the Library version after the merge. The quick review setting is shown and changed from the Studio page by pull request.
+
+Done:
+- Proposals (app #13, content #5, merged): suggest, propose with one tap, duplicate check and naming by role, record turned into a pull request by a content Action; swap_object switches a project to the Library version (undoable).
+- Quick review by Claude (quick tier) only when the code is unsure; setting library.review (off, unsure, always), written in settings.json (content #7) and shown on the Studio page (app #14).
+- Studio page button: Ask to change the review setting; a settings request becomes a pull request (app #16, content #9); chat tool settings_request for the models too.
+- First real proposals merged: Kitchen counter (content #6, furniture.kitchen-counter@1.0.0, review flagged loose hob limits) and Fridge (content #8).
+- Online preview fixed (app #15: the Library's PC side moved to store.js, guard test against Node imports) and republished at app 4d1ce5b, content ac909ef.
+- Fixed a flaky test: importing a project kept its notes' order when two share the same millisecond (in app #14).
+- Explained the Library manager, the kernel check (plain code, no tokens) and Object sizes (about 1.5 to 2.8 KB each in Git).
+- Checks: 57 tests, smoke, browser checks at phone width; stand-in GitHub runs of both Actions; GitHub checks green on every pull request.
+
+Decided:
+- Owner: "ok build this." (proposals: the app suggests, one tap proposes, a record that a GitHub Action turns into a pull request; review only when unsure).
+- Owner: "ok how to give", then push access to aec-studio-content granted to this chat.
+- Owner: "ok" to writing library.review into settings.json and showing it on the Studio page.
+- Owner: "ok" to a button for the setting that sends a pull request (option 1), not a direct change.
+- Owner merged app #13 to #16 and content #5 to #9, including the Kitchen counter (#6) as proposed, despite the review's notes.
+- Owner: "update the studio 6 artifact too", then "update the artifact".
 
 ### Session 26 · 2026-11-03 · Project discussions stay with the project: project notes; online preview kept current
 Shared memory now holds only shared work: project chats keep a note with the project on the PC (app PR #12, merged), and the online preview was rebuilt twice from the latest main.
@@ -128,26 +151,9 @@ Decided:
 - Owner: "Ok" to the plan: host slot first, built-in canvas moved into it, Canvas13 through an adapter, default canvas from the shared setting with a picker.
 - Owner: "wrap up and start phase 4".
 
-### Session 22 · 2026-11-02 · Phase 3 built: Projects and the built-in canvas; every wrap-up a new session
-Every wrap-up now records a new session (app, core, load skill); phase 3 is built: Projects (PR #4, merged) and the built-in plan and 3D canvas (PR #5, merged).
-
-Done:
-- Every wrap-up records a new session: app PR #3 (wrapUp closes the chat's session; chats list their sessions), core rule in content, merged.
-- Load skill rewritten as "load" plus an app name (load aec studio; load context defaults to it; studio 2 kept for reference); proposed for the owner to save.
-- Kernel: rooms from walls, wall outlines (mitred, squared T-junctions), gross/net areas, slab outlines; draw_walls, split_segment, add_rooms_from_walls; redo and history.
-- Projects manager (PR #4): projects on the PC, the log is the truth, steps all-or-nothing, undo/redo, import/export model.json, archive/delete, plan preview with areas; Claude edits projects from the chat as itself.
-- Canvas manager (PR #5): plan editing by hand (walls with snapping, 45°, typed lengths; doors, windows; drag corners and openings; properties; delete with dependants; levels), 3D view with vendored three.js, click to select.
-- Steps that change nothing are not logged; a manager counts as built once it has an api.js; the chat is told which project is open.
-- Checks: 26 tests, browser runs that draw and edit on the canvas, smoke check; all pass.
-
-Decided:
-- Owner: "always record as new session" (every wrap-up records a new session, never updates an earlier one).
-- Owner: "merge #3" (merged by Claude at the owner's word, after its checks passed).
-- Owner: the load skill works by app name: "load aec studio".
-- Owner: "go next" and "go second phase": phase 3 built as Projects, then the built-in canvas; Canvas13 follows.
-
 ## Earlier sessions
 
+- **22** · 2026-11-02 · Phase 3 built: Projects and the built-in canvas; every wrap-up a new session — Every wrap-up now records a new session (app, core, load skill); phase 3 is built: Projects (PR #4, merged) and the built-in plan and 3D canvas (PR #5, merged).
 - **21** · 2026-11-02 · First project: a room on the ground floor — Created the first project in AEC Studio 6 and drew a 4 m × 3 m room on the ground floor, its space made from the walls.
 - **20** · 2026-11-02 · First chat in AEC Studio 6: phase 2 confirmed live, wrap-up only — The first chat inside the new app found phase 2 (memory) merged and running on both repositories, and was wrapped up without other work.
 - **19** · 2026-11-02 · AEC Studio 6: rebuilt from first principles; phase 1 merged, phase 2 (memory) in review — After stage 1 of the old app (automatic checks, follow main) the owner chose a rebuild: AEC Studio 6, eight managers around a mesh-light kernel, two repositories; phase 1 is merged and phase 2, sessions that record themselves, is in review.

@@ -65,3 +65,9 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-03 · Session 26** — Owner: project sessions in shared memory duplicate the project log and chat: "Can we exclude project related discussions or store them separately?"; chose "Project notes" kept with the project on the PC.
 - **2026-11-03 · Session 26** — Owner: session 25 "Leave it as history" (past sessions are never changed).
 - **2026-11-03 · Session 26** — Owner: "Ok add to 12 and merge the 12" (the app keeps the note when Claude doesn't).
+- **2026-11-03 · Session 27** — Owner: "ok build this." (proposals: the app suggests, one tap proposes, a record that a GitHub Action turns into a pull request; review only when unsure).
+- **2026-11-03 · Session 27** — Owner: "ok how to give", then push access to aec-studio-content granted to this chat.
+- **2026-11-03 · Session 27** — Owner: "ok" to writing library.review into settings.json and showing it on the Studio page.
+- **2026-11-03 · Session 27** — Owner: "ok" to a button for the setting that sends a pull request (option 1), not a direct change.
+- **2026-11-03 · Session 27** — Owner merged app #13 to #16 and content #5 to #9, including the Kitchen counter (#6) as proposed, despite the review's notes.
+- **2026-11-03 · Session 27** — Owner: "update the studio 6 artifact too", then "update the artifact".
