@@ -12,6 +12,7 @@ const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n ==
 walk(root);
 try { const s = JSON.parse(readFileSync(join(root, "settings.json"), "utf8")); const m = s.models || {};
   for (const k of ["quick", "default", "complex"]) if (typeof m[k] !== "string" || !m[k]) problems.push(`settings.json: models.${k} must be a model name`);
+  const lr = (s.library || {}).review; if (lr !== undefined && !["off", "unsure", "always"].includes(lr)) problems.push("settings.json: library.review must be off, unsure or always");
 } catch (e) { problems.push(`settings.json: ${e.message}`); }
 // memory/sessions/<4 digits>.md: front matter with number (matching the file name), date and title; a headline; Done, Decisions, Open
 const sessDir = join(root, "memory", "sessions");

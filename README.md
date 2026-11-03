@@ -22,6 +22,6 @@ canvases/<id>.json                canvas setups
 memory/sessions/<number>.md       one file per session, written by the app (phase 2)
 memory/briefing.md                generated from the sessions
 lessons/<id>.json
-settings.json                     shared settings: models per tier
+settings.json                     shared settings: models per tier; library.review (quick review of Library proposals: off, unsure, always)
 checks/validate.js                this repository's automatic check
 ```
