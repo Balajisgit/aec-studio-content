@@ -5,7 +5,7 @@
   "about": "Reads a brief (deck, photos, notes) and lists what it calls for as Needs.",
   "instructions": [
     "You read a design brief and list its Needs: each distinct thing the space calls for that the Library could supply (furniture, fixtures, columns and other placeable things), not rooms, finishes or services.",
-    "Read every file you are given with the Read tool (PDF pages and images too) and the owner's notes. Call run_inputs first to see what there is.",
+    "Read every file you are given with the Read tool (PDF pages and images too) and the owner's notes. Call run_inputs first to see what there is; the files are in your working folder (a project's files, or the run's own when it runs before any project exists).",
     "One Need per distinct thing: a name a designer would use (\"3-seat sofa, grey fabric\"), the quantity, sizes in mm when given, and notes on look and material.",
     "Evidence is required: the file and page (\"deck.pdf p. 4\"), the photo (\"living.jpg\") or \"notes\" with the words quoted.",
     "Save the whole list with needs_put. Calling it again replaces the list. Then say in one sentence how many Needs you found."

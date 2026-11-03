@@ -63,7 +63,8 @@ try { for (const n of readdirSync(join(root, "requests", "settings"))) { if (n =
   const path = n.slice(0, -5); if (r.path !== path) problems.push(`${rel}: path must be ${path}`); else { const bad = settingProblem(path, r.to); if (bad) problems.push(`${rel}: ${bad}`); }
 } } catch (e) { if (e.code !== "ENOENT") problems.push(`requests/settings: ${e.message}`); }
 for (const n of (() => { try { return readdirSync(join(root, "requests")); } catch { return []; } })()) if (n !== "settings" && n !== ".gitkeep") problems.push(`requests/${n}: only settings requests live here`);
-// pipelines/<id>/<version>.json: the id matches the path; scopes (where it runs) are project, library or studio; stages name
+// pipelines/<id>/<version>.json: the id matches the path; scopes (where it runs) are project, library or studio, and a step
+// may run in only some of them; stages name
 // an agent in agents/ or a code stage, and checks in checks/definitions/; decisions use a form the app knows; "when" names a
 // condition. (What checks, code stages and conditions do is code in the app: managers/pipelines/checks.js and steps.js.)
 const readDir = (rel) => { try { return readdirSync(join(root, rel)).filter((n) => n.endsWith(".json")); } catch { return []; } };
@@ -71,7 +72,7 @@ const agents = new Set(readDir("agents").map((n) => n.slice(0, -5))), checks = n
 for (const n of readDir("agents")) { try { const a = JSON.parse(readFileSync(join(root, "agents", n), "utf8"));
   if (a.id !== n.slice(0, -5)) problems.push(`agents/${n}: id must be ${n.slice(0, -5)}`);
   if (!Array.isArray(a.instructions) || !a.instructions.length) problems.push(`agents/${n}: instructions are missing`); } catch { /* reported above */ } }
-const FORMS = ["pick-needs", "keep-objects", "send-proposal"], SCOPES = ["project", "library", "studio"];
+const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects"], SCOPES = ["project", "library", "studio"];
 try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(root, "pipelines", p); if (!statSync(pd).isDirectory()) continue;
   for (const v of readdirSync(pd)) { const rel = `pipelines/${p}/${v}`;
     if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
@@ -82,6 +83,8 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
     const steps = Array.isArray(d.steps) ? d.steps : []; if (!steps.some((s) => s.kind === "stage")) problems.push(`${rel}: needs at least one stage`);
     const ids = new Set(); for (const s of steps) { if (ids.has(s.id)) problems.push(`${rel}: step id ${s.id} is used twice`); ids.add(s.id);
       if (s.when !== undefined && !/^[a-z][a-z0-9-]*$/.test(String(s.when))) problems.push(`${rel}: step ${s.id}: when names a condition, like review-wanted`);
+      const scopes = Array.isArray(d.scopes) && d.scopes.length ? d.scopes : ["project"];
+      if (s.scopes !== undefined && (!Array.isArray(s.scopes) || !s.scopes.length || s.scopes.some((x) => !scopes.includes(x)))) problems.push(`${rel}: step ${s.id}: its scopes must be some of the pipeline's (${scopes.join(", ")})`);
       if (s.kind === "stage") { if (!s.outcome) problems.push(`${rel}: stage ${s.id} has no outcome`);
         if (s.code !== undefined) { if (!/^[a-z][a-z0-9-]*$/.test(String(s.code))) problems.push(`${rel}: stage ${s.id}: code names a code stage, like prepare-proposal`); if (s.agent !== undefined) problems.push(`${rel}: stage ${s.id}: a code stage has no agent`); }
         else if (!agents.has(s.agent)) problems.push(`${rel}: stage ${s.id} names agent ${s.agent}, which is not in agents/`);
