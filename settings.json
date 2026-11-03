@@ -1,3 +1,4 @@
 {
-  "models": { "quick": "haiku", "default": "sonnet", "complex": "opus" }
+  "models": { "quick": "haiku", "default": "sonnet", "complex": "opus" },
+  "library": { "review": "unsure" }
 }
