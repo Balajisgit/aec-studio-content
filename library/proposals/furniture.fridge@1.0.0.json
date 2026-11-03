@@ -1,0 +1,123 @@
+{
+  "proposal": 1,
+  "at": "2026-11-03T04:22:30.770Z",
+  "object": {
+    "id": "furniture.fridge@1.0.0",
+    "name": "Fridge",
+    "contract": "furniture.fridge",
+    "role": "furniture",
+    "about": "A free-standing fridge with one full-height door on its front.",
+    "params": {
+      "width": 700,
+      "depth": 700,
+      "height": 1800
+    },
+    "limits": {
+      "width": {
+        "min": 550,
+        "max": 950,
+        "step": 10
+      },
+      "depth": {
+        "min": 600,
+        "max": 800,
+        "step": 10
+      },
+      "height": {
+        "min": 1400,
+        "max": 2100,
+        "step": 10
+      }
+    },
+    "symbol2d": [
+      {
+        "name": "body",
+        "shape": "rect",
+        "at": [
+          "0",
+          "0"
+        ],
+        "size": [
+          "width",
+          "depth"
+        ],
+        "style": "fill",
+        "slot": "metal"
+      },
+      {
+        "name": "door",
+        "shape": "line",
+        "from": [
+          "-width / 2",
+          "depth / 2 - 40"
+        ],
+        "to": [
+          "width / 2",
+          "depth / 2 - 40"
+        ]
+      },
+      {
+        "name": "cross",
+        "shape": "line",
+        "from": [
+          "-width / 2",
+          "-depth / 2"
+        ],
+        "to": [
+          "width / 2",
+          "depth / 2 - 40"
+        ],
+        "style": "thin"
+      }
+    ],
+    "primitive3d": [
+      {
+        "name": "body",
+        "shape": "box",
+        "at": [
+          "0",
+          "-20",
+          "0"
+        ],
+        "size": [
+          "width",
+          "depth - 40",
+          "height"
+        ],
+        "slot": "metal"
+      },
+      {
+        "name": "door",
+        "shape": "box",
+        "at": [
+          "0",
+          "depth / 2 - 20",
+          "0"
+        ],
+        "size": [
+          "width",
+          "40",
+          "height"
+        ],
+        "slot": "metal"
+      }
+    ]
+  },
+  "from": {
+    "projectObject": [
+      "project.fridge@1.0.0"
+    ],
+    "projects": [
+      {
+        "name": "test1",
+        "uses": 1
+      }
+    ]
+  },
+  "match": {
+    "kind": "new",
+    "unsure": false
+  },
+  "notes": [],
+  "review": null
+}
