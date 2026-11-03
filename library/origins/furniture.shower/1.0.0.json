@@ -1,0 +1,10 @@
+{
+  "id": "furniture.shower@1.0.0",
+  "via": "project",
+  "projects": [
+    "test1"
+  ],
+  "made": "chat",
+  "review": null,
+  "proposed": "2026-11-03T13:16:35.726Z"
+}
