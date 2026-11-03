@@ -41,6 +41,18 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
     for (const k of ["symbol2d", "primitive3d"]) if (!Array.isArray(o[k]) || !o[k].length) problems.push(`${rel}: ${k} is missing`);
     if (o.params && typeof o.params !== "object") problems.push(`${rel}: params must be an object of defaults`);
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/objects: ${e.message}`); }
+// library/proposals/<contract>@<version>.json: records the app commits when the owner proposes a Project Object; the
+// library-proposals Action turns each into a pull request that adds it to library/objects/ and removes the record.
+const propDir = join(root, "library", "proposals");
+try { for (const n of readdirSync(propDir)) { if (n === ".gitkeep") continue; const rel = `library/proposals/${n}`, m = /^([a-z]+(?:\.[a-z0-9-]+)+)@(\d+\.\d+\.\d+)\.json$/.exec(n);
+  if (!m) { problems.push(`${rel}: name a proposal <contract>@<version>.json, e.g. fixture.wc@1.0.0.json`); continue; }
+  let r; try { r = JSON.parse(readFileSync(join(propDir, n), "utf8")); } catch { continue; } // reported above
+  const o = r && r.object; if (!o) { problems.push(`${rel}: no object`); continue; }
+  if (o.id !== `${m[1]}@${m[2]}`) problems.push(`${rel}: object.id must be ${m[1]}@${m[2]}`);
+  if (o.contract !== m[1]) problems.push(`${rel}: object.contract must be ${m[1]}`);
+  if (m[1].startsWith("project.")) problems.push(`${rel}: a Library name can't start with project.`);
+  if (!ROLES.includes(o.role)) problems.push(`${rel}: object.role must be one of ${ROLES.join(", ")}`);
+} } catch (e) { if (e.code !== "ENOENT") problems.push(`library/proposals: ${e.message}`); }
 // pipelines/<id>/<version>.json: the id matches the path; stages name an agent in agents/ and checks in checks/definitions/;
 // decisions use a form the app knows. (What each check does is code in the app: managers/pipelines/checks.js.)
 const readDir = (rel) => { try { return readdirSync(join(root, rel)).filter((n) => n.endsWith(".json")); } catch { return []; } };
