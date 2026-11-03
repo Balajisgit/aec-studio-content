@@ -16,6 +16,7 @@ pipelines/<id>/<version>.json     pipelines: the scopes they run in, stages (an 
 agents/  skills/  solvers/  panels/
 checks/definitions/               check definitions with their pass and fail cases
 library/objects/<contract>/<version>.json   Library Objects: parameters and limits, 2D symbol, 3D primitive (formulas of the parameters)
+library/origins/<contract>/<version>.json   where each Object came from (a project, a pipeline run, the starters); written by the Action with the Object
 library/materials/<id>.json
 library/proposals/<contract>@<version>.json   Project Objects the owner proposed (records from the app); an Action opens a pull request for each
 canvases/<id>.json                canvas setups

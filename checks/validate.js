@@ -1,6 +1,6 @@
 // checks/validate.js — the content repository's automatic check: every JSON file parses, settings.json has the right shape,
 // and nothing sits outside the agreed layout. Run on every pull request; run by hand with: node checks/validate.js
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { readdirSync, readFileSync, statSync, existsSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { settingProblem } from "./settings.mjs";
@@ -45,6 +45,18 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/objects: ${e.message}`); }
 // library/proposals/<contract>@<version>.json: records the app commits when the owner proposes a Project Object; the
 // library-proposals Action turns each into a pull request that adds it to library/objects/ and removes the record.
+// library/origins/<contract>/<version>.json: where an Object came from; its id matches the path and the Object is there.
+const VIA = ["project", "pipeline", "starter"], MADE = ["chat", "pipeline", "owner"];
+try { for (const c of readdirSync(join(root, "library", "origins"))) { const cd = join(root, "library", "origins", c);
+  if (!statSync(cd).isDirectory()) { problems.push(`library/origins/${c}: origins live in a folder per contract`); continue; }
+  for (const v of readdirSync(cd)) { const rel = `library/origins/${c}/${v}`, ver = v.replace(/\.json$/, "");
+    let o; try { o = JSON.parse(readFileSync(join(cd, v), "utf8")); } catch { continue; }
+    if (o.id !== `${c}@${ver}`) problems.push(`${rel}: id must be ${c}@${ver}`);
+    if (!existsSync(join(root, "library", "objects", c, v))) problems.push(`${rel}: there is no Object library/objects/${c}/${v}`);
+    if (!VIA.includes(o.via)) problems.push(`${rel}: via must be ${VIA.join(", ")}`);
+    if (o.made !== undefined && !MADE.includes(o.made)) problems.push(`${rel}: made must be ${MADE.join(", ")}`);
+    if (o.via === "pipeline" && !o.pipeline) problems.push(`${rel}: a pipeline origin names the pipeline`);
+  } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/origins: ${e.message}`); }
 const propDir = join(root, "library", "proposals");
 try { for (const n of readdirSync(propDir)) { if (n === ".gitkeep") continue; const rel = `library/proposals/${n}`, m = /^([a-z]+(?:\.[a-z0-9-]+)+)@(\d+\.\d+\.\d+)\.json$/.exec(n);
   if (!m) { problems.push(`${rel}: name a proposal <contract>@<version>.json, e.g. fixture.wc@1.0.0.json`); continue; }

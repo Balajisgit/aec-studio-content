@@ -1,0 +1,10 @@
+{
+  "id": "furniture.kitchen-counter@1.0.0",
+  "via": "project",
+  "projects": [
+    "test1"
+  ],
+  "made": "chat",
+  "review": "look-closer",
+  "proposed": "2026-11-03T03:30:46.610Z"
+}

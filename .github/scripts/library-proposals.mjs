@@ -1,6 +1,7 @@
 // .github/scripts/library-proposals.mjs — run by .github/workflows/library-proposals.yml.
 //   open            for every record in library/proposals/ on main without a branch yet: a branch library/<contract>-<version>
-//                   that adds library/objects/<contract>/<version>.json and removes the record, a pull request for the owner,
+//                   that adds library/objects/<contract>/<version>.json and its origin, library/origins/<contract>/<version>.json
+//                   (where it came from: a project, a pipeline run), and removes the record, a pull request for the owner,
 //                   and the content checks run on it (pull requests opened by an Action don't start other workflows).
 //   closed <branch> a proposal's pull request was closed without merging: remove its record from main and delete the branch.
 import { execFileSync } from "node:child_process";
@@ -43,6 +44,14 @@ function body(rec) {
   return lines.join("\n");
 }
 
+/** Where the Object came from, kept beside it (the app shows it as tags). Records made before the app sent an origin give one from "from". */
+function originOf(rec) {
+  if (rec.origin && rec.origin.via) return { id: rec.object.id, ...rec.origin };
+  const f = rec.from || {}, review = rec.review && rec.review.verdict ? rec.review.verdict : null;
+  if (f.run) return { id: rec.object.id, via: "pipeline", pipeline: f.pipeline, run: f.run, scope: f.scope || "studio", review, proposed: rec.at };
+  return { id: rec.object.id, via: "project", projects: (f.projects || []).map((p) => p.name), review, proposed: rec.at };
+}
+
 const [cmd, arg] = process.argv.slice(2);
 if (cmd === "open") {
   const files = existsSync(DIR) ? readdirSync(DIR).filter((f) => f.endsWith(".json")).sort() : []; let opened = 0, failed = 0;
@@ -54,7 +63,9 @@ if (cmd === "open") {
     if (existsSync(target)) { console.log(`::warning file=${DIR}/${file}::${target} is already in the Library; this record can be removed.`); continue; }
     git("checkout", "-q", "-B", branch, "origin/main");
     mkdirSync(join("library/objects", contract), { recursive: true }); writeFileSync(target, JSON.stringify(rec.object, null, 2) + "\n");
-    git("rm", "-q", join(DIR, file)); git("add", target);
+    const origin = `library/origins/${contract}/${version}.json`; mkdirSync(join("library/origins", contract), { recursive: true });
+    writeFileSync(origin, JSON.stringify(originOf(rec), null, 2) + "\n");
+    git("rm", "-q", join(DIR, file)); git("add", target, origin);
     git("commit", "-q", "-m", `Library: add ${rec.object.name} (${id})`);
     git("push", "-q", "origin", `HEAD:refs/heads/${branch}`);
     const url = gh("pr", "create", "--base", "main", "--head", branch, "--title", `Library: add ${rec.object.name} (${id})`, "--body", body(rec));

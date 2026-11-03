@@ -1,0 +1,10 @@
+{
+  "id": "furniture.fridge@1.0.0",
+  "via": "project",
+  "projects": [
+    "test1"
+  ],
+  "made": "chat",
+  "review": null,
+  "proposed": "2026-11-03T04:22:30.770Z"
+}
