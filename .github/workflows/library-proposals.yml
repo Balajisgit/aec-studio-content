@@ -1,0 +1,54 @@
+# Library proposals: AEC Studio commits a record library/proposals/<contract>@<version>.json to main when the owner taps
+# "Propose to the Library". This turns each record into a pull request that adds library/objects/<contract>/<version>.json
+# (and removes the record). Only the owner merges. A pull request closed without merging removes its record, so the Object
+# can be proposed again. Needs, in Settings → Actions → General: "Read and write permissions" and "Allow GitHub Actions to
+# create and approve pull requests".
+name: library proposals
+on:
+  push:
+    branches: [main]
+    paths: ["library/proposals/**"]
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+concurrency:
+  group: library-proposals
+  cancel-in-progress: false
+jobs:
+  open:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Open a pull request for each proposal
+        run: node .github/scripts/library-proposals.mjs open
+        env:
+          GH_TOKEN: ${{ github.token }}
+  closed:
+    if: github.event_name == 'pull_request' && !github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'library/') && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Remove the record of a proposal that was not merged
+        run: node .github/scripts/library-proposals.mjs closed "$BRANCH"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
