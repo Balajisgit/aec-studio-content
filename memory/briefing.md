@@ -54,6 +54,7 @@ _The open requests (requests/ in the content repository)._
 - R6 · Canvas13: online preview and its gaps
 - R7 · Kernel later: true arcs, holes inside rooms, 2.5D checks, Python helper for IFC export
 - R12 · Remove the old quick review path from the Library's code
+- R20 · Move Studio to a private server on the owner's Claude subscription
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
