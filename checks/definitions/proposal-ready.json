@@ -1,0 +1,6 @@
+{
+  "id": "proposal-ready",
+  "name": "Proposal is ready",
+  "about": "The Object passes the Library check and has a Library id (a group, a name and a version, like fixture.wc@1.0.0), not a project.<name> one.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}

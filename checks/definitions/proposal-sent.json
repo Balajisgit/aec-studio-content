@@ -1,0 +1,6 @@
+{
+  "id": "proposal-sent",
+  "name": "Proposal is sent",
+  "about": "The proposal record was written for the GitHub Action to turn into a pull request.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}

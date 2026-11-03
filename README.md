@@ -12,7 +12,7 @@ See `docs/architecture.md` in the app repository for the whole design.
 ## Layout
 
 ```
-pipelines/<id>/<version>.json     pipelines as stages, outcomes, checks and decisions (phase 5)
+pipelines/<id>/<version>.json     pipelines: the scopes they run in, stages (an agent or code), outcomes, checks and decisions
 agents/  skills/  solvers/  panels/
 checks/definitions/               check definitions with their pass and fail cases
 library/objects/<contract>/<version>.json   Library Objects: parameters and limits, 2D symbol, 3D primitive (formulas of the parameters)
