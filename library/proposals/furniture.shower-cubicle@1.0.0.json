@@ -1,0 +1,226 @@
+{
+  "proposal": 1,
+  "at": "2026-11-03T13:15:19.537Z",
+  "object": {
+    "id": "furniture.shower-cubicle@1.0.0",
+    "name": "Shower cubicle",
+    "contract": "furniture.shower-cubicle",
+    "role": "furniture",
+    "about": "A shower enclosure on a low tray: clear glass panels on back and sides, a fixed front panel and a hinged glass door; drain in the tray.",
+    "params": {
+      "width": 900,
+      "depth": 900,
+      "height": 2000,
+      "tray_height": 40,
+      "door_width": 600
+    },
+    "limits": {
+      "width": {
+        "min": 800,
+        "max": 1400,
+        "step": 10
+      },
+      "depth": {
+        "min": 800,
+        "max": 1400,
+        "step": 10
+      },
+      "height": {
+        "min": 1800,
+        "max": 2300,
+        "step": 10
+      },
+      "tray_height": {
+        "min": 30,
+        "max": 150,
+        "step": 5
+      },
+      "door_width": {
+        "min": 450,
+        "max": 700,
+        "step": 10
+      }
+    },
+    "symbol2d": [
+      {
+        "name": "outline",
+        "shape": "rect",
+        "at": [
+          "0",
+          "0"
+        ],
+        "size": [
+          "width",
+          "depth"
+        ],
+        "style": "fill",
+        "slot": "concrete"
+      },
+      {
+        "name": "inner",
+        "shape": "rect",
+        "at": [
+          "0",
+          "0"
+        ],
+        "size": [
+          "width - 16",
+          "depth - 16"
+        ],
+        "style": "thin"
+      },
+      {
+        "name": "drain",
+        "shape": "circle",
+        "at": [
+          "0",
+          "0"
+        ],
+        "r": "45",
+        "style": "thin"
+      },
+      {
+        "name": "door",
+        "shape": "line",
+        "from": [
+          "width / 2 - door_width",
+          "depth / 2 - 4"
+        ],
+        "to": [
+          "width / 2",
+          "depth / 2 - 4"
+        ],
+        "style": "outline"
+      },
+      {
+        "name": "swing",
+        "shape": "arc",
+        "at": [
+          "width / 2 - door_width",
+          "depth / 2 - 4"
+        ],
+        "r": "door_width - 8",
+        "start": "270",
+        "end": "360",
+        "style": "hidden"
+      }
+    ],
+    "primitive3d": [
+      {
+        "name": "tray",
+        "shape": "box",
+        "at": [
+          "0",
+          "0",
+          "0"
+        ],
+        "size": [
+          "width",
+          "depth",
+          "tray_height"
+        ],
+        "slot": "concrete"
+      },
+      {
+        "name": "drain",
+        "shape": "cylinder",
+        "at": [
+          "0",
+          "0",
+          "tray_height"
+        ],
+        "size": [
+          "90",
+          "2"
+        ],
+        "slot": "metal"
+      },
+      {
+        "name": "back_glass",
+        "shape": "box",
+        "at": [
+          "0",
+          "-depth / 2 + 4",
+          "tray_height"
+        ],
+        "size": [
+          "width",
+          "8",
+          "height - tray_height"
+        ],
+        "slot": "glass"
+      },
+      {
+        "name": "side_glass",
+        "shape": "box",
+        "count": "2",
+        "at": [
+          "(i == 0 ? -1 : 1) * (width / 2 - 4)",
+          "4",
+          "tray_height"
+        ],
+        "size": [
+          "8",
+          "depth - 8",
+          "height - tray_height"
+        ],
+        "slot": "glass"
+      },
+      {
+        "name": "front_fixed",
+        "shape": "box",
+        "at": [
+          "-door_width / 2 + 4",
+          "depth / 2 - 4",
+          "tray_height"
+        ],
+        "size": [
+          "width - door_width - 8",
+          "8",
+          "height - tray_height"
+        ],
+        "slot": "glass"
+      },
+      {
+        "name": "door",
+        "shape": "box",
+        "at": [
+          "width / 2 - door_width / 2 - 4",
+          "depth / 2 - 4",
+          "tray_height"
+        ],
+        "size": [
+          "door_width",
+          "8",
+          "height - tray_height"
+        ],
+        "slot": "glass"
+      },
+      {
+        "name": "handle",
+        "shape": "cylinder",
+        "at": [
+          "width / 2 - door_width + 40",
+          "depth / 2 - 30",
+          "tray_height + 1000"
+        ],
+        "size": [
+          "20",
+          "20"
+        ],
+        "slot": "metal"
+      }
+    ]
+  },
+  "from": {
+    "run": "runa2706aa35e",
+    "pipeline": "Brief to Library",
+    "projects": []
+  },
+  "match": {
+    "kind": "new",
+    "unsure": false
+  },
+  "notes": [],
+  "review": null
+}
