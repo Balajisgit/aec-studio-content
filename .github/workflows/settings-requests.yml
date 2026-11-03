@@ -1,0 +1,53 @@
+# Settings requests: AEC Studio commits a record requests/settings/<path>.json to main when the owner asks for a shared
+# setting to change (the Studio page, or a chat). This turns each into a pull request that changes settings.json and removes
+# the record. Only the owner merges. A pull request closed without merging removes its record, so nothing changes and the
+# setting can be asked for again. Uses the same repository settings as library-proposals.yml.
+name: settings requests
+on:
+  push:
+    branches: [main]
+    paths: ["requests/settings/**"]
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+concurrency:
+  group: settings-requests
+  cancel-in-progress: false
+jobs:
+  open:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Open a pull request for each settings request
+        run: node .github/scripts/settings-requests.mjs open
+        env:
+          GH_TOKEN: ${{ github.token }}
+  closed:
+    if: github.event_name == 'pull_request' && !github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'settings/') && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Remove the record of a request that was not merged
+        run: node .github/scripts/settings-requests.mjs closed "$BRANCH"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
