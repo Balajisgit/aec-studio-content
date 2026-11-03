@@ -74,7 +74,21 @@ try { for (const n of readdirSync(join(root, "requests", "settings"))) { if (n =
   let r; try { r = JSON.parse(readFileSync(join(root, "requests", "settings", n), "utf8")); } catch { continue; } // reported above
   const path = n.slice(0, -5); if (r.path !== path) problems.push(`${rel}: path must be ${path}`); else { const bad = settingProblem(path, r.to); if (bad) problems.push(`${rel}: ${bad}`); }
 } } catch (e) { if (e.code !== "ENOENT") problems.push(`requests/settings: ${e.message}`); }
-for (const n of (() => { try { return readdirSync(join(root, "requests")); } catch { return []; } })()) if (n !== "settings" && n !== ".gitkeep") problems.push(`requests/${n}: only settings requests live here`);
+// requests/R<4 digits>.md: the owner's requests (the app's managers/memory/requests.js writes them): front matter with number
+// (matching the name), title, kind, state and created; a request in a pull request names it. Files added to one: requests/files/R<n>/.
+const KINDS = ["app", "pipeline", "library", "setting", "bug", "other"], STATES = ["open", "planned", "in-pr", "done", "declined"];
+for (const n of (() => { try { return readdirSync(join(root, "requests")); } catch { return []; } })()) { if (!/^R\d{4}\.md$/.test(n)) continue; const rel = `requests/${n}`;
+  const t = readFileSync(join(root, "requests", n), "utf8").replace(/\r\n/g, "\n"), fm = /^---\n([\s\S]*?)\n---\n/.exec(t); if (!fm) { problems.push(`${rel}: no front matter`); continue; }
+  const m = Object.fromEntries(fm[1].split("\n").map((l) => /^([a-z]+):\s*(.*)$/.exec(l)).filter(Boolean).map((x) => [x[1], x[2].trim()]));
+  if (Number(m.number) !== Number(n.slice(1, 5))) problems.push(`${rel}: number ${m.number} does not match the file name`);
+  if (!m.title || m.title.length > 200) problems.push(`${rel}: title is missing or longer than 200 characters`);
+  if (!KINDS.includes(m.kind)) problems.push(`${rel}: kind must be ${KINDS.join(", ")}`);
+  if (!STATES.includes(m.state)) problems.push(`${rel}: state must be ${STATES.join(", ")}`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(m.created || "")) problems.push(`${rel}: created must be a date, YYYY-MM-DD`);
+  if (m.state === "in-pr" && !/^(aec-studio|aec-studio-content)#\d+$/.test(m.pr || "")) problems.push(`${rel}: a request in a pull request names it, like aec-studio#21`);
+  for (const f of (m.files || "").split(",").map((x) => x.trim()).filter(Boolean)) if (!existsSync(join(root, "requests", "files", n.slice(0, 5), f))) problems.push(`${rel}: its file ${f} is not in requests/files/${n.slice(0, 5)}/`);
+}
+for (const n of (() => { try { return readdirSync(join(root, "requests")); } catch { return []; } })()) if (n !== "settings" && n !== "files" && n !== ".gitkeep" && !/^R\d{4}\.md$/.test(n)) problems.push(`requests/${n}: only settings requests (requests/settings/), the owner's requests (requests/R<4 digits>.md) and their files (requests/files/) live here`);
 // pipelines/<id>/<version>.json: the id matches the path; scopes (where it runs) are project, library or studio, and a step
 // may run in only some of them; stages name
 // an agent in agents/ or a code stage, and checks in checks/definitions/; decisions use a form the app knows; "when" names a
