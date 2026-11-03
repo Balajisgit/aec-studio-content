@@ -63,6 +63,7 @@ _The open requests (requests/ in the content repository)._
 - R15 · Decisions carry a comment that feeds the next attempt
 - R16 · Lessons build up: the owner's corrections become lessons agents see
 - R17 · Each run shows the context its agents were given
+- R18 · Checks for sense, not just form
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
