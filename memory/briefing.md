@@ -59,6 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R36 · Doors and windows on curved walls: the kernel refuses them today · from project test3
 - R37 · project
+- R38 · chat
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
