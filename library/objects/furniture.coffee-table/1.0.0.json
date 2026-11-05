@@ -1,0 +1,104 @@
+{
+  "id": "furniture.coffee-table@1.0.0",
+  "name": "Coffee table",
+  "contract": "furniture.coffee-table",
+  "role": "furniture",
+  "about": "A low rectangular coffee table with a wooden top on four legs, to stand in front of a sofa. No style or materials beyond the wooden top were given, so the 30 mm top and 50 mm square legs are usual sizes.",
+  "params": {
+    "width": 1100,
+    "depth": 550,
+    "height": 400,
+    "top_thickness": 30,
+    "leg": 50
+  },
+  "limits": {
+    "width": {
+      "min": 800,
+      "max": 1500,
+      "step": 50
+    },
+    "depth": {
+      "min": 400,
+      "max": 800,
+      "step": 10
+    },
+    "height": {
+      "min": 300,
+      "max": 500,
+      "step": 10
+    },
+    "top_thickness": {
+      "min": 20,
+      "max": 50,
+      "step": 5
+    },
+    "leg": {
+      "min": 40,
+      "max": 80,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "top",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "wood"
+    },
+    {
+      "name": "legs",
+      "shape": "rect",
+      "count": "4",
+      "at": [
+        "(i % 2 == 0 ? -1 : 1) * (width / 2 - leg / 2 - 30)",
+        "(i < 2 ? -1 : 1) * (depth / 2 - leg / 2 - 30)"
+      ],
+      "size": [
+        "leg",
+        "leg"
+      ],
+      "style": "hidden"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "legs",
+      "shape": "box",
+      "count": "4",
+      "at": [
+        "(i % 2 == 0 ? -1 : 1) * (width / 2 - leg / 2 - 30)",
+        "(i < 2 ? -1 : 1) * (depth / 2 - leg / 2 - 30)",
+        "0"
+      ],
+      "size": [
+        "leg",
+        "leg",
+        "height - top_thickness"
+      ],
+      "slot": "wood"
+    },
+    {
+      "name": "top",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "height - top_thickness"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "top_thickness"
+      ],
+      "slot": "wood"
+    }
+  ]
+}
