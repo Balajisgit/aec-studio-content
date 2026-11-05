@@ -67,7 +67,7 @@ _The open requests (requests/ in the content repository)._
 - R15 · Decisions carry a comment that feeds the next attempt
 - R16 · Lessons build up: the owner's corrections become lessons agents see
 - R18 · Checks for sense, not just form
-- R19 · Review decision after Make: see each Object, accept or send it back
+- R19 · Review decision after Make: see each Object, accept or send it back (in aec-studio#23)
 - R26 · A kept Object wasn't on the canvas: keep and place it, and say when it isn't placed (in aec-studio#23) · from project test1
 
 **The Library**
