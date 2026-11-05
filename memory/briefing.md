@@ -58,7 +58,7 @@ _The open requests (requests/ in the content repository)._
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R24 · Show previews in the chat (a size or spot on the plan; Objects at decisions), not just words · from project test1
-- R25 · Show Claude's progress in the chat as it works; add files (picker, drag, paste, allowed folders)
+- R25 · Show Claude's progress in the chat as it works; add files (picker, drag, paste, allowed folders) (in aec-studio#22)
 - R27 · Select text in the chat: Reply, or Add to request · from project test1
 
 **A pipeline**
