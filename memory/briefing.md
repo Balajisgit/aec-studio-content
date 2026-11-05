@@ -60,6 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R28 · Canvas · from project test1
 - R30 · chat (in aec-studio#25)
 - R31 · kernel · from project test2
+- R32 · Project · from project test2
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
