@@ -60,6 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R28 · Canvas · from project test1
 - R32 · Project · from project test2
 - R33 · Studio · from project test2
+- R34 · Chat · from project test2
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
