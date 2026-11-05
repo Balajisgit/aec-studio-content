@@ -59,6 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R24 · chat ui · from project test1
 - R25 · chat ui
+- R27 · chat ui · from project test1
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
