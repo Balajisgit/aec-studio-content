@@ -57,7 +57,6 @@ _The open requests (requests/ in the content repository)._
 - R20 · Move Studio to a private server on the owner's Claude subscription
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
 - R22 · Studio for clients: accounts, each on their own Claude key
-- R25 · Show Claude's progress in the chat as it works; add files (picker, drag, paste, allowed folders) (in aec-studio#22)
 - R27 · Select text in the chat: Reply, or Add to request (in aec-studio#22) · from project test1
 
 **A pipeline**
