@@ -59,6 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R28 · Canvas · from project test1
 - R30 · chat (in aec-studio#25)
+- R31 · kernel · from project test2
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
