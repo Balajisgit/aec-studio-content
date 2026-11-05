@@ -64,7 +64,7 @@ _The open requests (requests/ in the content repository)._
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
 - R10 · Library check-up pipeline
-- R15 · Decisions carry a comment that feeds the next attempt
+- R15 · Decisions carry a comment that feeds the next attempt (in aec-studio#23)
 - R16 · Lessons build up: the owner's corrections become lessons agents see
 - R18 · Checks for sense, not just form
 - R19 · Review decision after Make: see each Object, accept or send it back (in aec-studio#23)
