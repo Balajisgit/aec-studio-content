@@ -63,7 +63,7 @@ _The open requests (requests/ in the content repository)._
 - R4 · Try Brief to Library on a real deck
 - R10 · Library check-up pipeline
 - R13 · Context assembly: each stage declares what its agent sees (in aec-studio#21)
-- R14 · Stages pass on their reasons, not just their results
+- R14 · Stages pass on their reasons, not just their results (in aec-studio#21)
 - R15 · Decisions carry a comment that feeds the next attempt
 - R16 · Lessons build up: the owner's corrections become lessons agents see
 - R17 · Each run shows the context its agents were given
