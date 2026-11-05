@@ -110,6 +110,7 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
     const steps = Array.isArray(d.steps) ? d.steps : []; if (!steps.some((s) => s.kind === "stage")) problems.push(`${rel}: needs at least one stage`);
     const ids = new Set(); for (const s of steps) { if (ids.has(s.id)) problems.push(`${rel}: step id ${s.id} is used twice`); ids.add(s.id);
       if (s.when !== undefined && !/^[a-z][a-z0-9-]*$/.test(String(s.when))) problems.push(`${rel}: step ${s.id}: when names a condition, like review-wanted`);
+      if (s.kind === "decision" && s.sendBack !== undefined && !(typeof s.sendBack === "string" && steps.findIndex((x) => x.id === s.sendBack) >= 0 && steps.findIndex((x) => x.id === s.sendBack) < steps.indexOf(s))) problems.push(`${rel}: decision ${s.id}: sendBack names a stage before it, like make`);
       if (s.context !== undefined && (!Array.isArray(s.context) || !s.context.length || s.context.some((c) => !/^[a-z][a-z0-9-]*$/.test(String(c))))) problems.push(`${rel}: step ${s.id}: context is a list of source names, like ["brief", "run-so-far"]`);
       if (s.contextLimit !== undefined && !(Number.isInteger(s.contextLimit) && s.contextLimit >= 1000 && s.contextLimit <= 150000)) problems.push(`${rel}: step ${s.id}: contextLimit is tokens, 1000 to 150000`);
       const scopes = Array.isArray(d.scopes) && d.scopes.length ? d.scopes : ["project"];
