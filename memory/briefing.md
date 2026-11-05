@@ -66,7 +66,7 @@ _The open requests (requests/ in the content repository)._
 - R14 · Stages pass on their reasons, not just their results (in aec-studio#21)
 - R15 · Decisions carry a comment that feeds the next attempt
 - R16 · Lessons build up: the owner's corrections become lessons agents see
-- R17 · Each run shows the context its agents were given
+- R17 · Each run shows the context its agents were given (in aec-studio#21)
 - R18 · Checks for sense, not just form
 - R19 · Review decision after Make: see each Object, accept or send it back
 
