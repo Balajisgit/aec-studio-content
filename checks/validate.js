@@ -89,7 +89,7 @@ for (const n of (() => { try { return readdirSync(join(root, "requests")); } cat
   for (const f of (m.files || "").split(",").map((x) => x.trim()).filter(Boolean)) if (!existsSync(join(root, "requests", "files", n.slice(0, 5), f))) problems.push(`${rel}: its file ${f} is not in requests/files/${n.slice(0, 5)}/`);
 }
 for (const n of (() => { try { return readdirSync(join(root, "requests")); } catch { return []; } })()) if (n !== "settings" && n !== "files" && n !== ".gitkeep" && !/^R\d{4}\.md$/.test(n)) problems.push(`requests/${n}: only settings requests (requests/settings/), the owner's requests (requests/R<4 digits>.md) and their files (requests/files/) live here`);
-// pipelines/<id>/<version>.json: the id matches the path; scopes (where it runs) are project, library or studio, and a step
+// pipelines/<id>/<version>.json (what each stage's agent sees is its "context": source names the app knows): the id matches the path; scopes (where it runs) are project, library or studio, and a step
 // may run in only some of them; stages name
 // an agent in agents/ or a code stage, and checks in checks/definitions/; decisions use a form the app knows; "when" names a
 // condition. (What checks, code stages and conditions do is code in the app: managers/pipelines/checks.js and steps.js.)
@@ -105,10 +105,13 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
     let d; try { d = JSON.parse(readFileSync(join(pd, v), "utf8")); } catch { continue; }
     if (d.id !== `${p}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${p}@${v.slice(0, -5)}`);
     if (!d.name) problems.push(`${rel}: name is missing`);
+    if (d.useWhen !== undefined && (typeof d.useWhen !== "string" || d.useWhen.length > 400)) problems.push(`${rel}: useWhen is one sentence (at most 400 characters): when the chat should offer this pipeline`);
     if (d.scopes !== undefined && (!Array.isArray(d.scopes) || !d.scopes.length || d.scopes.some((x) => !SCOPES.includes(x)))) problems.push(`${rel}: scopes must be a list of ${SCOPES.join(", ")}`);
     const steps = Array.isArray(d.steps) ? d.steps : []; if (!steps.some((s) => s.kind === "stage")) problems.push(`${rel}: needs at least one stage`);
     const ids = new Set(); for (const s of steps) { if (ids.has(s.id)) problems.push(`${rel}: step id ${s.id} is used twice`); ids.add(s.id);
       if (s.when !== undefined && !/^[a-z][a-z0-9-]*$/.test(String(s.when))) problems.push(`${rel}: step ${s.id}: when names a condition, like review-wanted`);
+      if (s.context !== undefined && (!Array.isArray(s.context) || !s.context.length || s.context.some((c) => !/^[a-z][a-z0-9-]*$/.test(String(c))))) problems.push(`${rel}: step ${s.id}: context is a list of source names, like ["brief", "run-so-far"]`);
+      if (s.contextLimit !== undefined && !(Number.isInteger(s.contextLimit) && s.contextLimit >= 1000 && s.contextLimit <= 150000)) problems.push(`${rel}: step ${s.id}: contextLimit is tokens, 1000 to 150000`);
       const scopes = Array.isArray(d.scopes) && d.scopes.length ? d.scopes : ["project"];
       if (s.scopes !== undefined && (!Array.isArray(s.scopes) || !s.scopes.length || s.scopes.some((x) => !scopes.includes(x)))) problems.push(`${rel}: step ${s.id}: its scopes must be some of the pipeline's (${scopes.join(", ")})`);
       if (s.kind === "stage") { if (!s.outcome) problems.push(`${rel}: stage ${s.id} has no outcome`);
@@ -118,5 +121,7 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
       else if (s.kind === "decision") { if (!FORMS.includes(s.form)) problems.push(`${rel}: decision ${s.id} must use a form the app knows: ${FORMS.join(", ")}`); if (!s.question) problems.push(`${rel}: decision ${s.id} has no question`); }
       else problems.push(`${rel}: step ${s.id} must be a stage or a decision`); }
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`pipelines: ${e.message}`); }
+// lessons/<agent id>.md and lessons/all.md: Markdown, one lesson per line (agents that name the lessons source are given them).
+for (const n of (() => { try { return readdirSync(join(root, "lessons")); } catch { return []; } })()) if (n !== ".gitkeep" && n !== "README.md" && !(/^[a-z][a-z0-9-]*\.md$/.test(n) && (n === "all.md" || agents.has(n.slice(0, -3))))) problems.push(`lessons/${n}: lessons are lessons/all.md or lessons/<agent id>.md for an agent in agents/`);
 for (const p of problems) console.log("FAIL", p);
 console.log(`content: ${problems.length} problem${problems.length === 1 ? "" : "s"}`); process.exit(problems.length ? 1 : 0);
