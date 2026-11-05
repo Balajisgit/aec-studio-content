@@ -68,7 +68,7 @@ _The open requests (requests/ in the content repository)._
 - R16 · Lessons build up: the owner's corrections become lessons agents see
 - R18 · Checks for sense, not just form
 - R19 · Review decision after Make: see each Object, accept or send it back
-- R26 · A kept Object wasn't on the canvas: keep and place it, and say when it isn't placed · from project test1
+- R26 · A kept Object wasn't on the canvas: keep and place it, and say when it isn't placed (in aec-studio#23) · from project test1
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
