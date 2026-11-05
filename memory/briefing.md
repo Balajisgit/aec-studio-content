@@ -59,7 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R28 · Canvas (in aec-studio#28) · from project test1
 - R32 · Project (in aec-studio#28) · from project test2
-- R33 · Studio · from project test2
+- R33 · Studio (in aec-studio#28) · from project test2
 - R34 · Chat (in aec-studio#27) · from project test2
 - R35 · kernel (in aec-studio#27) · from project test2
 
