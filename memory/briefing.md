@@ -58,6 +58,7 @@ _The open requests (requests/ in the content repository)._
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R28 · Canvas · from project test1
+- R29 · Make the chat and the 2D plans look more professional
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
