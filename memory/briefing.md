@@ -57,9 +57,9 @@ _The open requests (requests/ in the content repository)._
 - R20 · Move Studio to a private server on the owner's Claude subscription
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
 - R22 · Studio for clients: accounts, each on their own Claude key
-- R24 · chat ui · from project test1
-- R25 · chat ui
-- R27 · chat ui · from project test1
+- R24 · Show previews in the chat (a size or spot on the plan; Objects at decisions), not just words · from project test1
+- R25 · Show Claude's progress in the chat as it works; add files (picker, drag, paste, allowed folders)
+- R27 · Select text in the chat: Reply, or Add to request · from project test1
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
@@ -68,7 +68,7 @@ _The open requests (requests/ in the content repository)._
 - R16 · Lessons build up: the owner's corrections become lessons agents see
 - R18 · Checks for sense, not just form
 - R19 · Review decision after Make: see each Object, accept or send it back
-- R26 · chat ui · from project test1
+- R26 · A kept Object wasn't on the canvas: keep and place it, and say when it isn't placed · from project test1
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
