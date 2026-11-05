@@ -59,7 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R24 · Show previews in the chat (a size or spot on the plan; Objects at decisions), not just words · from project test1
 - R25 · Show Claude's progress in the chat as it works; add files (picker, drag, paste, allowed folders) (in aec-studio#22)
-- R27 · Select text in the chat: Reply, or Add to request · from project test1
+- R27 · Select text in the chat: Reply, or Add to request (in aec-studio#22) · from project test1
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
