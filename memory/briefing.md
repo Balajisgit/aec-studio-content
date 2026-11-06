@@ -61,7 +61,6 @@ _The open requests (requests/ in the content repository)._
 - R37 · project
 - R38 · chat
 - R40 · Files
-- R44 · kernel (in aec-studio#32)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
