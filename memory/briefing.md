@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 28._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 29._
 
 ## What this is
 
@@ -81,6 +81,31 @@ _The open requests (requests/ in the content repository)._
 
 ## Recent sessions
 
+### Session 28 · 2026-11-06 · Runs anywhere, requests, context assembly, chat and plan polish, real curves, a Claude-like layout
+Pipelines run in a project, the Library or the studio; requests are noted from any page and worked through; agents and the chat get assembled context; the chat takes files and drives runs; plans are drafted with real curves; the canvas is home, and app updates restart the server by themselves.
+
+Done:
+- Runs with scopes (project, library, studio); Propose to Library is a pipeline; Brief to Library in the studio with files and origin tags (app #17-#19, content #10, #11, #15).
+- Requests: noted with + Request or in the chat, kept in requests/, worked through in groups; tools/requests.mjs; a merge marks them done (app #20, content #16).
+- Context assembly: stages declare the context they get; the chat as orchestrator with focus on a run, its decisions posted in the chat (app #21, content #17; R13, R14, R17, R23).
+- Chat panel: steps as they happen, files by picker, drag or paste, ALLOWED_FOLDERS, Reply and Add to request; Keep and place with plan previews, 3D of the made Object, Send back with a comment (app #22, #23, content #19).
+- R29 polish: chat restyled (icons, plain replies, one composer); plans drafted (poché walls, door swings, glazing, dimensions, scale bar) (app #24).
+- R30 page_open: the chat opens a project on the canvas or any page (app #25). R31 real arcs in the kernel and every canvas, draw_circle, curve-aware checks; Canvas13 drafting look from our side (app #26).
+- R34, R35: the server works out the files it runs; an update to them restarts it when Claude is idle (Start-Studio.bat loop, exit 75) and pages reload (app #27).
+- R33 canvas home, collapsible left panel (Studio, Memory, Storage at the bottom), inspector toggle, chat floats on the canvas; R28 Add to Library in the inspector; R32 no runs yet (app #28).
+- Online preview (artifact AEC Studio 6) republished up to version 15 (app 0e0d039).
+- Checks every time: syntax, types, tests (87 now), smoke, browser checks at phone width with screenshots.
+
+Decided:
+- Owner: "Can we make this as a pipeline" and "why cant we make that general?": runs anywhere, Propose to Library as a pipeline.
+- Owner on requests: "1. the content repository ... 3. me as for now": requests kept in the content repository, settled by merge.
+- Owner: "Context assembly for the chat agent, the orchestrator" then "build it now".
+- Owner: "Upload from the local drive too..", "Allowed folders too. Build two groups", "3d preview of object should be there after make ?".
+- Owner: "Chat ui and 2d svg shud look more professional. Add this as request and build" (R29).
+- Owner: "also the svg upgrade done only in built in canvas do that in canvas 13 too" with R31.
+- Owner: "drop it" for the request files extra (branch request-files left on GitHub; delete by hand).
+- Owner merged app #17-#28 ("Merge 18", "Merge it", "merge 25", "ok merge", "merge all in order") and content #10, #11, #15-#17, #19.
+
 ### Session 27 · 2026-11-03 · Library proposals: Project Objects reach the Library with one tap; the review setting and its button
 Project Objects now reach the Library without a chat: the app suggests them, one tap sends a pull request, and projects switch to the Library version after the merge. The quick review setting is shown and changed from the Studio page by pull request.
 
@@ -155,25 +180,9 @@ Decided:
 - Owner: made Objects "Stay in the project" (Project Objects) until the owner asks for them to be proposed to the Library.
 - Owner: "5 then 6" for the build order; "Merge" (content #4, app #10, #11).
 
-### Session 23 · 2026-11-02 · Canvas host slot: built-in canvas and Canvas13 as hosts (PR #6)
-The Canvas page now has a host slot: the built-in canvas is its first host and Canvas13 its second, chosen with a picker; app PR #6 is open with its checks green, waiting for the owner.
-
-Done:
-- Found the gap: Canvas13 was listed but not built, and the built-in canvas was wired into the page directly (no host slot).
-- Host slot (managers/canvas/slot.js): the page owns project, level, view, undo/redo, properties, chat context and Delete; a host owns only its drawing area and tool strip and sends every change back as a step.
-- Built-in canvas moved into the slot unchanged (hosts/built-in.js); its tools now sit in the slot's tool strip.
-- Canvas13 as the second host (hosts/canvas13.js): Bikal's renderers from the old app's bundle (vendor/canvas13, Canvas13 @ 0c05786), rebuild tool tools/canvas13/build.mjs; Layers, Detailed walls, All levels in 3D.
-- Translator hosts/to-canvas13.js (pure, no y-mirror now): levels, nodes, walls, spaces, doors and windows, Placements as a 500 mm block. Click selects; dragging a door, window or world Placement is a logged step "Canvas13: …".
-- Door swings match the built-in canvas in all 4 cases; canvas picker on the page (per browser), default from settings canvas.default.
-- Shell fix: a page still loading when the owner moves on no longer draws over the next page.
-- Checks: syntax, types, 30 tests, smoke, browser runs on both canvases; GitHub checks green on PR #6.
-
-Decided:
-- Owner: "Ok" to the plan: host slot first, built-in canvas moved into it, Canvas13 through an adapter, default canvas from the shared setting with a picker.
-- Owner: "wrap up and start phase 4".
-
 ## Earlier sessions
 
+- **23** · 2026-11-02 · Canvas host slot: built-in canvas and Canvas13 as hosts (PR #6) — The Canvas page now has a host slot: the built-in canvas is its first host and Canvas13 its second, chosen with a picker; app PR #6 is open with its checks green, waiting for the owner.
 - **22** · 2026-11-02 · Phase 3 built: Projects and the built-in canvas; every wrap-up a new session — Every wrap-up now records a new session (app, core, load skill); phase 3 is built: Projects (PR #4, merged) and the built-in plan and 3D canvas (PR #5, merged).
 - **21** · 2026-11-02 · First project: a room on the ground floor — Created the first project in AEC Studio 6 and drew a 4 m × 3 m room on the ground floor, its space made from the walls.
 - **20** · 2026-11-02 · First chat in AEC Studio 6: phase 2 confirmed live, wrap-up only — The first chat inside the new app found phase 2 (memory) merged and running on both repositories, and was wrapped up without other work.

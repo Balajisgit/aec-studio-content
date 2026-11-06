@@ -71,3 +71,11 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-03 · Session 27** — Owner: "ok" to a button for the setting that sends a pull request (option 1), not a direct change.
 - **2026-11-03 · Session 27** — Owner merged app #13 to #16 and content #5 to #9, including the Kitchen counter (#6) as proposed, despite the review's notes.
 - **2026-11-03 · Session 27** — Owner: "update the studio 6 artifact too", then "update the artifact".
+- **2026-11-06 · Session 28** — Owner: "Can we make this as a pipeline" and "why cant we make that general?": runs anywhere, Propose to Library as a pipeline.
+- **2026-11-06 · Session 28** — Owner on requests: "1. the content repository ... 3. me as for now": requests kept in the content repository, settled by merge.
+- **2026-11-06 · Session 28** — Owner: "Context assembly for the chat agent, the orchestrator" then "build it now".
+- **2026-11-06 · Session 28** — Owner: "Upload from the local drive too..", "Allowed folders too. Build two groups", "3d preview of object should be there after make ?".
+- **2026-11-06 · Session 28** — Owner: "Chat ui and 2d svg shud look more professional. Add this as request and build" (R29).
+- **2026-11-06 · Session 28** — Owner: "also the svg upgrade done only in built in canvas do that in canvas 13 too" with R31.
+- **2026-11-06 · Session 28** — Owner: "drop it" for the request files extra (branch request-files left on GitHub; delete by hand).
+- **2026-11-06 · Session 28** — Owner merged app #17-#28 ("Merge 18", "Merge it", "merge 25", "ok merge", "merge all in order") and content #10, #11, #15-#17, #19.
