@@ -76,6 +76,9 @@ _The open requests (requests/ in the content repository)._
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
 
+**Something broken**
+- R42 · Windows stacked one above the other on a wall through two floors are refused as overlapping · from project test4
+
 **Other**
 - R5 · Archive the old app (AEC Agent Studio 2)
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
