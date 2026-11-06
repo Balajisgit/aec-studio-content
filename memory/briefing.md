@@ -76,9 +76,6 @@ _The open requests (requests/ in the content repository)._
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
 
-**Something broken**
-- R43 · An opening (no door) doesn't show as open: probably drawn as a closed door on Canvas13 (in aec-studio#32) · from project test4
-
 **Other**
 - R5 · Archive the old app (AEC Agent Studio 2)
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
