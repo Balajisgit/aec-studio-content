@@ -1,0 +1,590 @@
+{
+  "id": "furniture.deer-wall-art@1.0.0",
+  "name": "Geometric deer wall art",
+  "contract": "furniture.deer-wall-art",
+  "role": "furniture",
+  "about": "Flat matte black laser-cut metal wall art: a tall thin portrait frame with an open back, holding a standing antlered deer whose head, antlers, chest and front legs are faceted line-work inside the frame, while its rear body and hind legs break out past the frame's left side as a solid cut-out silhouette. Its back goes against the wall (front is +y); diagonal lines are stepped because the 3D has only boxes. Sizes are not given in the brief: 600 x 1200 mm frame, 350 mm break-out, 20 mm depth and 1000 mm hanging height are usual sizes judged by eye.",
+  "params": {
+    "frame_width": 600,
+    "overhang": 350,
+    "height": 1200,
+    "depth": 20,
+    "frame_bar": 20,
+    "line_width": 10,
+    "hang_height": 1000
+  },
+  "limits": {
+    "frame_width": {
+      "min": 500,
+      "max": 800,
+      "step": 10
+    },
+    "overhang": {
+      "min": 200,
+      "max": 500,
+      "step": 10
+    },
+    "height": {
+      "min": 900,
+      "max": 1500,
+      "step": 100
+    },
+    "depth": {
+      "min": 10,
+      "max": 40,
+      "step": 10
+    },
+    "frame_bar": {
+      "min": 10,
+      "max": 40,
+      "step": 10
+    },
+    "line_width": {
+      "min": 6,
+      "max": 16,
+      "step": 2
+    },
+    "hang_height": {
+      "min": 600,
+      "max": 1500,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "overall",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "frame_width + overhang",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "metal"
+    },
+    {
+      "name": "frame",
+      "shape": "rect",
+      "at": [
+        "overhang / 2",
+        "0"
+      ],
+      "size": [
+        "frame_width",
+        "depth"
+      ],
+      "style": "outline"
+    },
+    {
+      "name": "frame inner edges",
+      "shape": "line",
+      "count": "2",
+      "from": [
+        "overhang / 2 + (i == 0 ? -1 : 1) * (frame_width / 2 - frame_bar)",
+        "-depth / 2"
+      ],
+      "to": [
+        "overhang / 2 + (i == 0 ? -1 : 1) * (frame_width / 2 - frame_bar)",
+        "depth / 2"
+      ],
+      "style": "thin"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "frame sides",
+      "shape": "box",
+      "count": "2",
+      "at": [
+        "overhang / 2 + (i == 0 ? -1 : 1) * (frame_width / 2 - frame_bar / 2)",
+        "0",
+        "hang_height"
+      ],
+      "size": [
+        "frame_bar",
+        "depth",
+        "height"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "frame bottom and top",
+      "shape": "box",
+      "count": "2",
+      "at": [
+        "overhang / 2",
+        "0",
+        "hang_height + (i == 0 ? 0 : height - frame_bar)"
+      ],
+      "size": [
+        "frame_width - 2 * frame_bar",
+        "depth",
+        "frame_bar"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "rump silhouette",
+      "shape": "box",
+      "count": "12",
+      "at": [
+        "(overhang - frame_width) / 2 - round(0.9 * overhang * sqrt(1 - ((i + 0.5) / 6 - 1) * ((i + 0.5) / 6 - 1))) / 2",
+        "0",
+        "hang_height + round(height * 0.3) + i * round(height * 0.22 / 12)"
+      ],
+      "size": [
+        "round(0.9 * overhang * sqrt(1 - ((i + 0.5) / 6 - 1) * ((i + 0.5) / 6 - 1)))",
+        "depth / 2",
+        "round(height * 0.22 / 12)"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "rear hind leg silhouette",
+      "shape": "box",
+      "count": "11",
+      "at": [
+        "-(frame_width + overhang) / 2 + round(overhang * 0.25 * (10 - i) / 10) + round(overhang * (0.1 - 0.006 * i))",
+        "0",
+        "hang_height + round(height * 0.02) + (10 - i) * round(height * 0.31 / 11)"
+      ],
+      "size": [
+        "2 * round(overhang * (0.1 - 0.006 * i))",
+        "depth / 2",
+        "round(height * 0.31 / 11)"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "near hind leg silhouette",
+      "shape": "box",
+      "count": "11",
+      "at": [
+        "(overhang - frame_width) / 2 - round(overhang * (0.35 + 0.005 * i))",
+        "0",
+        "hang_height + round(height * 0.02) + (10 - i) * round(height * 0.31 / 11)"
+      ],
+      "size": [
+        "2 * round(overhang * (0.1 - 0.006 * i))",
+        "depth / 2",
+        "round(height * 0.31 / 11)"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "antler beams",
+      "shape": "box",
+      "count": "24",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.5 + (i < 12 ? -1 : 1) * (0.06 + 0.19 * ((i % 12) + 0.5) / 12))",
+        "0",
+        "hang_height + height * (0.72 + 0.24 * ((i % 12) + 0.5) / 12) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.19 / 12) + line_width",
+        "depth / 2",
+        "round(height * 0.24 / 12) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "antler outer tines",
+      "shape": "box",
+      "count": "12",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.5 + (i < 6 ? -1 : 1) * (0.14 + 0.18 * ((i % 6) + 0.5) / 6))",
+        "0",
+        "hang_height + height * (0.82 + 0.04 * ((i % 6) + 0.5) / 6) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.18 / 6) + line_width",
+        "depth / 2",
+        "round(height * 0.04 / 6) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "antler top tines",
+      "shape": "box",
+      "count": "10",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.5 + (i < 5 ? -1 : 1) * (0.2 - 0.09 * ((i % 5) + 0.5) / 5))",
+        "0",
+        "hang_height + height * (0.9 + 0.07 * ((i % 5) + 0.5) / 5) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.09 / 5) + line_width",
+        "depth / 2",
+        "round(height * 0.07 / 5) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "head top",
+      "shape": "box",
+      "at": [
+        "overhang / 2",
+        "0",
+        "hang_height + height * 0.72 - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.2)",
+        "depth / 2",
+        "line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "head sides",
+      "shape": "box",
+      "count": "16",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.5 + (i < 8 ? -1 : 1) * (0.1 - 0.1 * ((i % 8) + 0.5) / 8))",
+        "0",
+        "hang_height + height * (0.72 - 0.14 * ((i % 8) + 0.5) / 8) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.1 / 8) + line_width",
+        "depth / 2",
+        "round(height * 0.14 / 8) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "ears",
+      "shape": "box",
+      "count": "8",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.5 + (i < 4 ? -1 : 1) * (0.1 + 0.12 * ((i % 4) + 0.5) / 4))",
+        "0",
+        "hang_height + height * (0.71 + 0.03 * ((i % 4) + 0.5) / 4) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.12 / 4) + line_width",
+        "depth / 2",
+        "round(height * 0.03 / 4) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "face bridge",
+      "shape": "box",
+      "at": [
+        "overhang / 2",
+        "0",
+        "hang_height + height * 0.58"
+      ],
+      "size": [
+        "line_width",
+        "depth / 2",
+        "round(height * 0.14)"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "face cross",
+      "shape": "box",
+      "at": [
+        "overhang / 2",
+        "0",
+        "hang_height + height * 0.66 - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.12)",
+        "depth / 2",
+        "line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "neck left",
+      "shape": "box",
+      "count": "6",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.42 - 0.12 * (i + 0.5) / 6)",
+        "0",
+        "hang_height + height * (0.62 - 0.12 * (i + 0.5) / 6) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.12 / 6) + line_width",
+        "depth / 2",
+        "round(height * 0.12 / 6) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "neck right",
+      "shape": "box",
+      "count": "8",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.58 + 0.04 * (i + 0.5) / 8)",
+        "0",
+        "hang_height + height * (0.62 - 0.16 * (i + 0.5) / 8) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.04 / 8) + line_width",
+        "depth / 2",
+        "round(height * 0.16 / 8) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "neck facet",
+      "shape": "box",
+      "count": "4",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.5 - 0.08 * (i + 0.5) / 4)",
+        "0",
+        "hang_height + height * (0.58 - 0.08 * (i + 0.5) / 4) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.08 / 4) + line_width",
+        "depth / 2",
+        "round(height * 0.08 / 4) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "neck base facet",
+      "shape": "box",
+      "count": "6",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.42 + 0.2 * (i + 0.5) / 6)",
+        "0",
+        "hang_height + height * (0.5 - 0.04 * (i + 0.5) / 6) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.2 / 6) + line_width",
+        "depth / 2",
+        "round(height * 0.04 / 6) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "back line",
+      "shape": "box",
+      "count": "10",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.3 - 0.3 * (i + 0.5) / 10)",
+        "0",
+        "hang_height + height * (0.5 + 0.02 * (i + 0.5) / 10) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.3 / 10) + line_width",
+        "depth / 2",
+        "round(height * 0.02 / 10) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "chest line",
+      "shape": "box",
+      "count": "6",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.62 - 0.12 * (i + 0.5) / 6)",
+        "0",
+        "hang_height + height * (0.46 - 0.12 * (i + 0.5) / 6) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.12 / 6) + line_width",
+        "depth / 2",
+        "round(height * 0.12 / 6) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "belly line",
+      "shape": "box",
+      "count": "10",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.5 - 0.5 * (i + 0.5) / 10)",
+        "0",
+        "hang_height + height * (0.34 - 0.02 * (i + 0.5) / 10) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.5 / 10) + line_width",
+        "depth / 2",
+        "round(height * 0.02 / 10) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "body facet down",
+      "shape": "box",
+      "count": "8",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.3 - 0.05 * (i + 0.5) / 8)",
+        "0",
+        "hang_height + height * (0.5 - 0.17 * (i + 0.5) / 8) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.05 / 8) + line_width",
+        "depth / 2",
+        "round(height * 0.17 / 8) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "body facet forward",
+      "shape": "box",
+      "count": "8",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.3 + 0.2 * (i + 0.5) / 8)",
+        "0",
+        "hang_height + height * (0.5 - 0.16 * (i + 0.5) / 8) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.2 / 8) + line_width",
+        "depth / 2",
+        "round(height * 0.16 / 8) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "body facet rear upper",
+      "shape": "box",
+      "count": "8",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.3 - 0.3 * (i + 0.5) / 8)",
+        "0",
+        "hang_height + height * (0.5 - 0.1 * (i + 0.5) / 8) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.3 / 8) + line_width",
+        "depth / 2",
+        "round(height * 0.1 / 8) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "body facet rear lower",
+      "shape": "box",
+      "count": "8",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.25 * (i + 0.5) / 8)",
+        "0",
+        "hang_height + height * (0.4 - 0.07 * (i + 0.5) / 8) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.25 / 8) + line_width",
+        "depth / 2",
+        "round(height * 0.07 / 8) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "left leg outer line",
+      "shape": "box",
+      "count": "12",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.12 + 0.04 * (i + 0.5) / 12)",
+        "0",
+        "hang_height + height * (0.32 - 0.3 * (i + 0.5) / 12) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.04 / 12) + line_width",
+        "depth / 2",
+        "round(height * 0.3 / 12) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "left leg inner line",
+      "shape": "box",
+      "count": "12",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.25 - 0.03 * (i + 0.5) / 12)",
+        "0",
+        "hang_height + height * (0.33 - 0.31 * (i + 0.5) / 12) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.03 / 12) + line_width",
+        "depth / 2",
+        "round(height * 0.31 / 12) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "right leg outer line",
+      "shape": "box",
+      "count": "12",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.5 - 0.04 * (i + 0.5) / 12)",
+        "0",
+        "hang_height + height * (0.34 - 0.32 * (i + 0.5) / 12) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.04 / 12) + line_width",
+        "depth / 2",
+        "round(height * 0.32 / 12) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "right leg inner line",
+      "shape": "box",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * 0.38",
+        "0",
+        "hang_height + height * 0.01"
+      ],
+      "size": [
+        "line_width",
+        "depth / 2",
+        "round(height * 0.32)"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "knee lines",
+      "shape": "box",
+      "count": "2",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (i == 0 ? 0.19 : 0.43)",
+        "0",
+        "hang_height + height * 0.18 - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.11)",
+        "depth / 2",
+        "line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "left leg facet",
+      "shape": "box",
+      "count": "6",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.25 - 0.11 * (i + 0.5) / 6)",
+        "0",
+        "hang_height + height * (0.33 - 0.15 * (i + 0.5) / 6) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.11 / 6) + line_width",
+        "depth / 2",
+        "round(height * 0.15 / 6) + line_width"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "right leg facet",
+      "shape": "box",
+      "count": "6",
+      "at": [
+        "(overhang - frame_width) / 2 + frame_width * (0.5 - 0.12 * (i + 0.5) / 6)",
+        "0",
+        "hang_height + height * (0.34 - 0.16 * (i + 0.5) / 6) - line_width / 2"
+      ],
+      "size": [
+        "round(frame_width * 0.12 / 6) + line_width",
+        "depth / 2",
+        "round(height * 0.16 / 6) + line_width"
+      ],
+      "slot": "metal"
+    }
+  ]
+}
