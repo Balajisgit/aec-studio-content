@@ -61,7 +61,7 @@ _The open requests (requests/ in the content repository)._
 - R37 · project
 - R38 · chat
 - R40 · Files
-- R41 · Kernel 2D/3D: what R39 left open
+- R41 · Kernel 2D/3D: what R39 left open (in aec-studio#32)
 - R44 · kernel
 
 **A pipeline**
