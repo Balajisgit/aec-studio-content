@@ -1,0 +1,28 @@
+{
+  "id": "structure.stair@1.0.0",
+  "name": "Stair",
+  "contract": "structure.stair",
+  "role": "stair",
+  "about": "A straight stair of solid steps, going up along +y from its start at the bottom (y = -length / 2). Placed on a floor with role stair, it cuts its outline out of the slab of the floor above.",
+  "params": {
+    "width": 1000,
+    "length": 4200,
+    "rise": 3500,
+    "steps": 18
+  },
+  "limits": {
+    "width": { "min": 750, "max": 2400, "step": 25 },
+    "length": { "min": 2000, "max": 7000, "step": 50 },
+    "rise": { "min": 1500, "max": 5000, "step": 25 },
+    "steps": { "min": 8, "max": 30, "step": 1 }
+  },
+  "symbol2d": [
+    { "name": "outline", "shape": "rect", "at": ["0", "0"], "size": ["width", "length"], "style": "fill", "slot": "concrete" },
+    { "name": "treads", "shape": "line", "count": "steps - 1", "from": ["-width / 2", "-length / 2 + (i + 1) * length / steps"], "to": ["width / 2", "-length / 2 + (i + 1) * length / steps"], "style": "thin" },
+    { "name": "walkline", "shape": "line", "from": ["0", "-length / 2 + length / steps / 2"], "to": ["0", "length / 2 - length / steps / 2"] },
+    { "name": "arrow", "shape": "polyline", "points": [["-width / 6", "length / 2 - length / steps / 2 - width / 5"], ["0", "length / 2 - length / steps / 2"], ["width / 6", "length / 2 - length / steps / 2 - width / 5"]] }
+  ],
+  "primitive3d": [
+    { "name": "steps", "shape": "box", "count": "steps", "at": ["0", "-length / 2 + (i + 0.5) * length / steps", "0"], "size": ["width", "length / steps", "(i + 1) * rise / steps"], "slot": "concrete" }
+  ]
+}
