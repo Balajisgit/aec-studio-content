@@ -60,7 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R36 · Doors and windows on curved walls: the kernel refuses them today · from project test3
 - R37 · project
 - R38 · chat
-- R39 · Kernel: one schema for 2D and 3D (heights through levels, spaces as volumes, kernel solids) (in aec-studio#30)
+- R39 · Kernel: one schema for 2D and 3D (heights through levels, spaces as volumes, kernel solids) (in aec-studio#31)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
