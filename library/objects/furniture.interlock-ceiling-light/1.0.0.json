@@ -1,0 +1,322 @@
+{
+  "id": "furniture.interlock-ceiling-light@1.0.0",
+  "name": "Interlocking LED ceiling light",
+  "contract": "furniture.interlock-ceiling-light",
+  "role": "furniture",
+  "about": "A flush LED ceiling light of two hollow square frames in flat bars, offset along their diagonal and woven so each passes in front of the other at one of the two crossings, leaving the ceiling visible through the open centre: one matte black metal, one white with a warm LED diffuser on its room-facing side. Modelled hanging from the ceiling (ceiling_height is the top of the light). In the photo it is turned 45 degrees to the room, so place it rotated 45. Sizes are not given in the brief: 600 mm frames, 50 mm bars, 150 mm offset and 90 mm body are usual sizes judged by eye, and 750 mm is the overall size that follows.",
+  "params": {
+    "frame_size": 600,
+    "offset": 150,
+    "bar": 50,
+    "height": 90,
+    "ceiling_height": 2700
+  },
+  "limits": {
+    "frame_size": {
+      "min": 500,
+      "max": 800,
+      "step": 10
+    },
+    "offset": {
+      "min": 100,
+      "max": 250,
+      "step": 10
+    },
+    "bar": {
+      "min": 30,
+      "max": 80,
+      "step": 10
+    },
+    "height": {
+      "min": 60,
+      "max": 120,
+      "step": 10
+    },
+    "ceiling_height": {
+      "min": 2400,
+      "max": 3600,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "black frame",
+      "shape": "rect",
+      "at": [
+        "-offset / 2",
+        "-offset / 2"
+      ],
+      "size": [
+        "frame_size",
+        "frame_size"
+      ],
+      "style": "hidden"
+    },
+    {
+      "name": "black frame opening",
+      "shape": "rect",
+      "at": [
+        "-offset / 2",
+        "-offset / 2"
+      ],
+      "size": [
+        "frame_size - 2 * bar",
+        "frame_size - 2 * bar"
+      ],
+      "style": "thin"
+    },
+    {
+      "name": "white frame",
+      "shape": "rect",
+      "at": [
+        "offset / 2",
+        "offset / 2"
+      ],
+      "size": [
+        "frame_size",
+        "frame_size"
+      ],
+      "style": "hidden"
+    },
+    {
+      "name": "white frame opening",
+      "shape": "rect",
+      "at": [
+        "offset / 2",
+        "offset / 2"
+      ],
+      "size": [
+        "frame_size - 2 * bar",
+        "frame_size - 2 * bar"
+      ],
+      "style": "thin"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "black left bar",
+      "shape": "box",
+      "at": [
+        "-offset / 2 - frame_size / 2 + bar / 2",
+        "-offset / 2",
+        "ceiling_height - height"
+      ],
+      "size": [
+        "bar",
+        "frame_size",
+        "height"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "black front bar",
+      "shape": "box",
+      "at": [
+        "-offset / 2 + bar / 2",
+        "-offset / 2 - frame_size / 2 + bar / 2",
+        "ceiling_height - height"
+      ],
+      "size": [
+        "frame_size - bar",
+        "bar",
+        "height"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "black back bar, room side of the crossing",
+      "shape": "box",
+      "at": [
+        "-offset / 2",
+        "-offset / 2 + frame_size / 2 - bar / 2",
+        "ceiling_height - height"
+      ],
+      "size": [
+        "frame_size - 2 * bar",
+        "bar",
+        "height / 2"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "black right bar, ceiling side of the crossing",
+      "shape": "box",
+      "at": [
+        "-offset / 2 + frame_size / 2 - bar / 2",
+        "-offset / 2",
+        "ceiling_height - height / 2"
+      ],
+      "size": [
+        "bar",
+        "frame_size - 2 * bar",
+        "height / 2"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "black corner joint",
+      "shape": "box",
+      "at": [
+        "-offset / 2 + frame_size / 2 - bar / 2",
+        "-offset / 2 + frame_size / 2 - bar / 2",
+        "ceiling_height - height"
+      ],
+      "size": [
+        "bar",
+        "bar",
+        "height"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "white right bar",
+      "shape": "box",
+      "at": [
+        "offset / 2 + frame_size / 2 - bar / 2",
+        "offset / 2",
+        "ceiling_height - height + 8"
+      ],
+      "size": [
+        "bar",
+        "frame_size",
+        "height - 8"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "white back bar",
+      "shape": "box",
+      "at": [
+        "offset / 2 - bar / 2",
+        "offset / 2 + frame_size / 2 - bar / 2",
+        "ceiling_height - height + 8"
+      ],
+      "size": [
+        "frame_size - bar",
+        "bar",
+        "height - 8"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "white front bar, room side of the crossing",
+      "shape": "box",
+      "at": [
+        "offset / 2",
+        "offset / 2 - frame_size / 2 + bar / 2",
+        "ceiling_height - height + 8"
+      ],
+      "size": [
+        "frame_size - 2 * bar",
+        "bar",
+        "height / 2 - 8"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "white left bar, ceiling side of the crossing",
+      "shape": "box",
+      "at": [
+        "offset / 2 - frame_size / 2 + bar / 2",
+        "offset / 2",
+        "ceiling_height - height / 2 + 8"
+      ],
+      "size": [
+        "bar",
+        "frame_size - 2 * bar",
+        "height / 2 - 8"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "white corner joint",
+      "shape": "box",
+      "at": [
+        "offset / 2 - frame_size / 2 + bar / 2",
+        "offset / 2 - frame_size / 2 + bar / 2",
+        "ceiling_height - height + 8"
+      ],
+      "size": [
+        "bar",
+        "bar",
+        "height - 8"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "LED right",
+      "shape": "box",
+      "at": [
+        "offset / 2 + frame_size / 2 - bar / 2",
+        "offset / 2",
+        "ceiling_height - height"
+      ],
+      "size": [
+        "bar",
+        "frame_size",
+        "8"
+      ],
+      "slot": "glass"
+    },
+    {
+      "name": "LED back",
+      "shape": "box",
+      "at": [
+        "offset / 2 - bar / 2",
+        "offset / 2 + frame_size / 2 - bar / 2",
+        "ceiling_height - height"
+      ],
+      "size": [
+        "frame_size - bar",
+        "bar",
+        "8"
+      ],
+      "slot": "glass"
+    },
+    {
+      "name": "LED front",
+      "shape": "box",
+      "at": [
+        "offset / 2",
+        "offset / 2 - frame_size / 2 + bar / 2",
+        "ceiling_height - height"
+      ],
+      "size": [
+        "frame_size - 2 * bar",
+        "bar",
+        "8"
+      ],
+      "slot": "glass"
+    },
+    {
+      "name": "LED left",
+      "shape": "box",
+      "at": [
+        "offset / 2 - frame_size / 2 + bar / 2",
+        "offset / 2",
+        "ceiling_height - height / 2"
+      ],
+      "size": [
+        "bar",
+        "frame_size - 2 * bar",
+        "8"
+      ],
+      "slot": "glass"
+    },
+    {
+      "name": "LED corner",
+      "shape": "box",
+      "at": [
+        "offset / 2 - frame_size / 2 + bar / 2",
+        "offset / 2 - frame_size / 2 + bar / 2",
+        "ceiling_height - height"
+      ],
+      "size": [
+        "bar",
+        "bar",
+        "8"
+      ],
+      "slot": "glass"
+    }
+  ]
+}
