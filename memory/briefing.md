@@ -79,7 +79,7 @@ _The open requests (requests/ in the content repository)._
 
 **Something broken**
 - R42 · Windows stacked one above the other on a wall through two floors are refused as overlapping (in aec-studio#32) · from project test4
-- R43 · An opening (no door) doesn't show as open: probably drawn as a closed door on Canvas13 · from project test4
+- R43 · An opening (no door) doesn't show as open: probably drawn as a closed door on Canvas13 (in aec-studio#32) · from project test4
 
 **Other**
 - R5 · Archive the old app (AEC Agent Studio 2)
