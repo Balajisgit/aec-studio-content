@@ -56,6 +56,7 @@ _The open requests (requests/ in the content repository)._
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R46 · Python helper on the server for IFC export
 - R49 · chat · from project test5
+- R50 · Kernel split: design kernel and a swappable geometry engine
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
