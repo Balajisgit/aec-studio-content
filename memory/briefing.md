@@ -66,6 +66,7 @@ _The open requests (requests/ in the content repository)._
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
+- R54 · Library use counts
 
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
