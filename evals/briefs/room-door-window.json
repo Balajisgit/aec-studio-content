@@ -1,0 +1,13 @@
+{
+ "id": "room-door-window",
+ "name": "A bedroom with a door and a window",
+ "ask": "On the ground floor of this empty project, draw a 4 m × 3 m room with 200 mm walls, put a door and a window in it, and make it a space called Bedroom.",
+ "expect": [
+  { "check": "spaces", "min": 1, "max": 1 },
+  { "check": "space", "name": "bedroom", "min": 9, "max": 12.5 },
+  { "check": "openings", "kind": "door", "min": 1 },
+  { "check": "openings", "kind": "window", "min": 1 },
+  { "check": "no-errors" },
+  { "check": "rooms-claimed" }
+ ]
+}
