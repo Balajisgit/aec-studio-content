@@ -60,7 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R51 · Corrections reader: learn from the owner's corrections of agent steps (in aec-studio#42)
 - R52 · Replayed briefs: measure whether the agents get better
 - R53 · Layout patterns from accepted work
-- R55 · Lessons tied to operations and rules
+- R55 · Lessons tied to operations and rules (in aec-studio#42)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
