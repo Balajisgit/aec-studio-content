@@ -58,6 +58,7 @@ _The open requests (requests/ in the content repository)._
 - R49 · chat · from project test5
 - R50 · Kernel split: design kernel and a swappable geometry engine
 - R51 · Corrections reader: learn from the owner's corrections of agent steps
+- R52 · Replayed briefs: measure whether the agents get better
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
