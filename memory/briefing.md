@@ -65,7 +65,7 @@ _The open requests (requests/ in the content repository)._
 **A pipeline**
 - R4 · Try Brief to Library on a real deck
 - R10 · Library check-up pipeline
-- R16 · Lessons build up: the owner's corrections become lessons agents see
+- R16 · Lessons build up: the owner's corrections become lessons agents see (planned)
 - R18 · Checks for sense, not just form
 
 **The Library**
