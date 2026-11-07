@@ -52,7 +52,7 @@ _The open requests (requests/ in the content repository)._
 **The app**
 - R3 · Online preview: export download links do nothing (planned)
 - R6 · Canvas13: online preview and its gaps
-- R7 · Kernel later: true arcs, holes inside rooms, 2.5D checks, Python helper for IFC export
+- R7 · Kernel later: true arcs, holes inside rooms, 2.5D checks, Python helper for IFC export (planned)
 - R12 · Remove the old quick review path from the Library's code (planned)
 - R20 · Move Studio to a private server on the owner's Claude subscription
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
