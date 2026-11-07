@@ -56,6 +56,7 @@ _The open requests (requests/ in the content repository)._
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R46 · Python helper on the server for IFC export
 - R47 · canavs13 ui
+- R48 · chat
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
