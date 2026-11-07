@@ -58,7 +58,7 @@ _The open requests (requests/ in the content repository)._
 - R49 · chat · from project test5
 - R50 · Kernel split: design kernel and a swappable geometry engine (in aec-studio#41)
 - R51 · Corrections reader: learn from the owner's corrections of agent steps (in aec-studio#42)
-- R52 · Replayed briefs: measure whether the agents get better
+- R52 · Replayed briefs: measure whether the agents get better (in aec-studio#44)
 - R53 · Layout patterns from accepted work (in aec-studio#43)
 - R55 · Lessons tied to operations and rules (in aec-studio#42)
 
