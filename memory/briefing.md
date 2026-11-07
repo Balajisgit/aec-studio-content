@@ -63,7 +63,7 @@ _The open requests (requests/ in the content repository)._
 - R40 · Files (planned)
 
 **A pipeline**
-- R4 · Try Brief to Library on a real deck
+- R4 · Try Brief to Library on a real deck (planned)
 - R10 · Library check-up pipeline (planned)
 - R16 · Lessons build up: the owner's corrections become lessons agents see (planned)
 - R18 · Checks for sense, not just form (planned)
