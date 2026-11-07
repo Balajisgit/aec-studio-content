@@ -56,7 +56,6 @@ _The open requests (requests/ in the content repository)._
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R46 · Python helper on the server for IFC export
 - R49 · chat · from project test5
-- R55 · Lessons tied to operations and rules (in aec-studio#42)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
