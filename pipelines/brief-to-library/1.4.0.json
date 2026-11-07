@@ -1,0 +1,153 @@
+{
+  "id": "brief-to-library@1.4.0",
+  "name": "Brief to Library",
+  "about": "A deck, photos or notes become Needs; each is matched to the Library or marked missing; the missing ones you pick are made as Objects. In a project you keep them in the project; run in the studio, before any project exists, you pick which to propose to the Library.",
+  "input": {
+    "notes": true,
+    "files": true,
+    "about": "The brief: a deck (PDF), photos or drawings, and any notes. In a project, from its files; in the studio, added when you start the run (kept with the run)."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "Every Need cites its evidence: the file and page (or photo) it came from, or the line of the notes."
+    },
+    {
+      "id": "R2",
+      "text": "Every Need gets one outcome with a reason: matched to a Library Object, an Object to adapt (with the parameters that change), or missing."
+    },
+    {
+      "id": "R3",
+      "text": "Agents never change the Library or a project's model. They write the run's Needs, matches and draft Objects; only the owner's decisions change anything: Keep (in a project) or Propose (in the studio, each Object by its own Propose to Library run and pull request)."
+    },
+    {
+      "id": "R4",
+      "text": "A made Object passes the Library check: its 2D symbol and 3D primitive agree at every parameter setting, every parameter has limits and changes something, sizes are whole millimetres."
+    },
+    {
+      "id": "R5",
+      "text": "A made Object is a Project Object: its id is project.<name>@1.0.0. In a project it stays there until the owner asks for it to be proposed; in the studio it reaches the Library only if the owner picks it to propose."
+    },
+    {
+      "id": "R6",
+      "text": "Measure in millimetres. When a size is not given, use a usual size for the kind of thing and say so in the Need's notes."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "read",
+      "name": "Read",
+      "outcome": "The brief becomes a list of Needs, each with its evidence.",
+      "agent": "reader",
+      "tools": [
+        "run_inputs",
+        "needs_put"
+      ],
+      "files": true,
+      "checks": [
+        "needs-have-evidence"
+      ],
+      "retries": 2,
+      "context": [
+        "brief",
+        "brief-files",
+        "owner-notes",
+        "lessons",
+        "owner-comments"
+      ]
+    },
+    {
+      "kind": "stage",
+      "id": "match",
+      "name": "Match",
+      "outcome": "Every Need is matched to a Library Object, an Object to adapt, or marked missing, with a reason.",
+      "agent": "matcher",
+      "tools": [
+        "run_state",
+        "library_list",
+        "library_get",
+        "matches_put"
+      ],
+      "checks": [
+        "every-need-decided"
+      ],
+      "retries": 2,
+      "context": [
+        "run-so-far",
+        "library-index",
+        "library-similar",
+        "evidence",
+        "project",
+        "lessons",
+        "owner-comments"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "choose",
+      "name": "What to make",
+      "question": "Which missing Needs are worth making as Objects?",
+      "form": "pick-needs"
+    },
+    {
+      "kind": "stage",
+      "id": "make",
+      "name": "Make",
+      "outcome": "Each picked Need has an Object whose 2D symbol and 3D primitive agree at every parameter setting.",
+      "agent": "maker",
+      "tools": [
+        "run_state",
+        "library_get",
+        "library_check",
+        "object_put",
+        "placement_put"
+      ],
+      "checks": [
+        "objects-made",
+        "objects-make-sense"
+      ],
+      "retries": 3,
+      "context": [
+        "evidence",
+        "run-so-far",
+        "library-similar",
+        "project",
+        "lessons",
+        "owner-comments"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "keep",
+      "name": "Keep and place",
+      "question": "Keep these Objects in the project, and place them where suggested? Each is shown on the plan; untick Place to keep it in the project's list only. Not right? Write what to do differently and send it back to Make.",
+      "form": "keep-objects",
+      "scopes": [
+        "project"
+      ],
+      "sendBack": "make"
+    },
+    {
+      "kind": "decision",
+      "id": "propose",
+      "name": "Propose to the Library",
+      "scopes": [
+        "studio"
+      ],
+      "question": "Which of these Objects should go to the Library? Each one is proposed by its own Propose to Library run: reviewed when needed, then a pull request you merge.",
+      "form": "propose-objects",
+      "sendBack": "make"
+    }
+  ],
+  "output": {
+    "id": "stock-report",
+    "name": "Stock report",
+    "about": "Every Need with its evidence, what it matched, and the Objects made: kept in the project, or proposed to the Library."
+  },
+  "scopes": [
+    "project",
+    "studio"
+  ],
+  "useWhen": "The owner has a brief (a deck, photos, drawings or notes) and wants what it calls for found in the Library, with the missing pieces made as Objects."
+}

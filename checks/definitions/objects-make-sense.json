@@ -1,0 +1,6 @@
+{
+  "id": "objects-make-sense",
+  "name": "Objects make sense",
+  "about": "Each made Object makes sense, not just form: finishes that suit their parts (a shower tray ceramic, not concrete; a cushion fabric), a description that says what it is, and sizes within 15% of the ones the brief gave for its Need.",
+  "implementedBy": "app: managers/pipelines/checks.js (rules in managers/pipelines/sense.js)"
+}

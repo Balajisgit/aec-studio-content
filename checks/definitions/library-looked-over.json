@@ -1,0 +1,6 @@
+{
+  "id": "library-looked-over",
+  "name": "The Library is looked over",
+  "about": "Every Library Object went through the Library check and the checks for sense, and the report lists what to look at.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}
