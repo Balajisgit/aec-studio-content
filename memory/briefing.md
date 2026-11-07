@@ -60,7 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R36 · Doors and windows on curved walls: the kernel refuses them today (planned) · from project test3
 - R37 · project (in aec-studio#33)
 - R38 · chat
-- R40 · Files (planned)
+- R40 · Files (in aec-studio#33)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
