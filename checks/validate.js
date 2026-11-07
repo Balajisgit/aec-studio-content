@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { settingProblem } from "./settings.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", ".."), problems = [];
-const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
+const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "patterns", "evals", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
 for (const n of readdirSync(root)) if (!n.startsWith(".git") && !TOP.has(n)) problems.push(`${n}: not part of the content layout (see README.md)`);
 const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n === "node_modules") continue; const f = join(d, n); if (statSync(f).isDirectory()) walk(f); else if (n.endsWith(".json")) {
   try { JSON.parse(readFileSync(f, "utf8")); } catch (e) { problems.push(`${relative(root, f).split(sep).join("/")}: not valid JSON (${e.message})`); } } } };
@@ -124,5 +124,23 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`pipelines: ${e.message}`); }
 // lessons/<agent id>.md and lessons/all.md: Markdown, one lesson per line (agents that name the lessons source are given them).
 for (const n of (() => { try { return readdirSync(join(root, "lessons")); } catch { return []; } })()) if (n !== ".gitkeep" && n !== "README.md" && !(/^[a-z][a-z0-9-]*\.md$/.test(n) && (n === "all.md" || agents.has(n.slice(0, -3))))) problems.push(`lessons/${n}: lessons are lessons/all.md or lessons/<agent id>.md for an agent in agents/`);
+// patterns/<id>.json: layout patterns the owner kept (R53): rooms with their walls, openings and Placements, relative to a corner.
+for (const n of (() => { try { return readdirSync(join(root, "patterns")); } catch { return []; } })()) { if (n === ".gitkeep" || n === "README.md") continue; const rel = `patterns/${n}`;
+  if (!/^[a-z0-9][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a pattern is patterns/<id>.json`); continue; }
+  let p = null; try { p = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON`); continue; }
+  if (p.id !== n.slice(0, -5)) problems.push(`${rel}: its id must be ${n.slice(0, -5)}`); if (!p.name) problems.push(`${rel}: no name`);
+  for (const k of ["nodes", "segments", "openings", "spaces", "placements"]) if (!Array.isArray(p[k])) problems.push(`${rel}: ${k} must be a list`);
+  if (Array.isArray(p.spaces) && !p.spaces.length) problems.push(`${rel}: a pattern has at least one space`); }
+// evals/briefs/<id>.json: replayed briefs (R52): the owner's message and the checks the result must pass; evals/results: what each replay scored.
+const EVAL_CHECKS = ["spaces", "space", "openings", "levels", "placements", "no-errors", "rooms-claimed"];
+for (const n of (() => { try { return readdirSync(join(root, "evals", "briefs")); } catch { return []; } })()) { if (n === ".gitkeep") continue; const rel = `evals/briefs/${n}`;
+  if (!/^[a-z0-9][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a brief is evals/briefs/<id>.json`); continue; }
+  let b = null; try { b = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON`); continue; }
+  if (b.id !== n.slice(0, -5)) problems.push(`${rel}: its id must be ${n.slice(0, -5)}`); if (!b.name || !b.ask) problems.push(`${rel}: needs a name and an ask`);
+  if (!Array.isArray(b.expect) || !b.expect.length) problems.push(`${rel}: needs checks (expect)`); else for (const c of b.expect) if (!EVAL_CHECKS.includes(c.check)) problems.push(`${rel}: unknown check ${c.check} (${EVAL_CHECKS.join(", ")})`); }
+for (const n of (() => { try { return readdirSync(join(root, "evals", "results")); } catch { return []; } })()) { if (n === ".gitkeep") continue; const rel = `evals/results/${n}`;
+  let r = null; try { r = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON`); continue; }
+  if (typeof r.passed !== "number" || typeof r.total !== "number" || !Array.isArray(r.results)) problems.push(`${rel}: a result has passed, total and results`); }
+for (const n of (() => { try { return readdirSync(join(root, "evals")); } catch { return []; } })()) if (!["briefs", "results", "README.md", ".gitkeep"].includes(n)) problems.push(`evals/${n}: evals holds briefs/ and results/`);
 for (const p of problems) console.log("FAIL", p);
 console.log(`content: ${problems.length} problem${problems.length === 1 ? "" : "s"}`); process.exit(problems.length ? 1 : 0);

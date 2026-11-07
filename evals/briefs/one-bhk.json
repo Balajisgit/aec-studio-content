@@ -1,0 +1,15 @@
+{
+ "id": "one-bhk",
+ "name": "A compact 1BHK",
+ "ask": "On the ground floor of this empty project, lay out a compact 1BHK of about 45 m² net: a living room, a bedroom, a kitchen and a bathroom, each a space with its name, with doors between them and an entrance door. Outer walls 200 mm, inner walls 115 mm.",
+ "expect": [
+  { "check": "spaces", "min": 4, "max": 6 },
+  { "check": "space", "name": "living", "min": 12 },
+  { "check": "space", "name": "bedroom", "min": 9 },
+  { "check": "space", "name": "kitchen", "min": 4 },
+  { "check": "space", "name": "bath", "min": 2.5, "max": 7 },
+  { "check": "openings", "kind": "door", "min": 4 },
+  { "check": "no-errors" },
+  { "check": "rooms-claimed" }
+ ]
+}
