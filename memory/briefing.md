@@ -62,6 +62,7 @@ _The open requests (requests/ in the content repository)._
 - R38 · chat
 - R40 · Files (in aec-studio#33)
 - R45 · Built-in canvas 3D: filter by floor level, with an "all levels in 3D" checkbox like Canvas13 · from project test4
+- R46 · Python helper on the server for IFC export
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
