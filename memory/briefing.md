@@ -51,7 +51,6 @@ _The open requests (requests/ in the content repository)._
 
 **The app**
 - R6 · Canvas13: online preview and its gaps
-- R12 · Remove the old quick review path from the Library's code (in aec-studio#33)
 - R20 · Move Studio to a private server on the owner's Claude subscription
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
 - R22 · Studio for clients: accounts, each on their own Claude key
