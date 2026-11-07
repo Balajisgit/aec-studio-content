@@ -54,7 +54,6 @@ _The open requests (requests/ in the content repository)._
 - R20 · Move Studio to a private server on the owner's Claude subscription
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
 - R22 · Studio for clients: accounts, each on their own Claude key
-- R45 · Built-in canvas 3D: filter by floor level, with an "all levels in 3D" checkbox like Canvas13 (in aec-studio#36) · from project test4
 - R46 · Python helper on the server for IFC export
 
 **A pipeline**
