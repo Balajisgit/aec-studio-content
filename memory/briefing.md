@@ -63,7 +63,6 @@ _The open requests (requests/ in the content repository)._
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
-- R16 · Lessons build up: the owner's corrections become lessons agents see (in aec-studio#34)
 - R18 · Checks for sense, not just form (in aec-studio#34)
 
 **The Library**
