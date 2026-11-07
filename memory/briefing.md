@@ -63,7 +63,7 @@ _The open requests (requests/ in the content repository)._
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
-- R2 · Kitchen counter 1.0.0: hob and sink limits are loose and they can overlap
+- R2 · Kitchen counter 1.0.0: hob and sink limits are loose and they can overlap (in aec-studio-content#24)
 
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
