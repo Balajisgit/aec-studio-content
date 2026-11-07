@@ -83,7 +83,7 @@ _The open requests (requests/ in the content repository)._
 **Other**
 - R5 · Archive the old app (AEC Agent Studio 2)
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
-- R11 · Columns should cut walls: needs an app change (pull request from Claude Code). (planned) · from project test1
+- R11 · Columns should cut walls: needs an app change (pull request from Claude Code). (in aec-studio#35) · from project test1
 
 ## Recent sessions
 
