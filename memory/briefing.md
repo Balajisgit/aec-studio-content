@@ -55,7 +55,7 @@ _The open requests (requests/ in the content repository)._
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R46 · Python helper on the server for IFC export
-- R49 · chat · from project test5
+- R49 · chat (in aec-studio#45) · from project test5
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
