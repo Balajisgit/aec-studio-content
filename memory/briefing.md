@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 29._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 30._
 
 ## What this is
 
@@ -71,6 +71,29 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 29 · 2026-11-08 · One kernel for 2D and 3D, BuilderPluss Studio and Innowa, the kernel split, agents that learn
+The kernel became one schema for plan and 3D and then a design kernel with its own geometry engine; the app is BuilderPluss Studio with Innowa as its assistant; the canvas got a floating tool bar; and agents now learn from corrections, start from patterns and are measured by replayed briefs.
+
+Done:
+- Topologic studied; kernel design settled with the owner: faces from walls, one schema for 2D and 3D, derived views, attachment hosts, beams and columns as segments and Placements, spaces as volumes (md write-up).
+- R39 kernel 2D/3D: heights through levels, spaces as volumes, voids and slab holes, levels share walls, slabs as elements, solidsOf/planOf (app #30, #31). R41-R44 (#32).
+- Requests in three groups, built in the owner's order: small fixes (#33), pipelines that learn and check (#34, content #23), kernel geometry (#35); Canvas13 openings and corners R43, R45, R6 part (#36); content #22, #24.
+- Rename: BuilderPluss Studio; the chat assistant Innowa (built on Claude); Start-Builderpluss.bat beside the old start file (app #37, content #25).
+- Canvas: project top left, views top right, left panel with level, canvas and options; a floating vertical tool bar of symbols (tools, Library picker, zoom, fit, undo, redo), full on Canvas13 too; the closed chat's button shows an open conversation (R47, R48; app #38-#40).
+- R50 kernel split: kernel/ is the design kernel, geom/light/ its geometry engine behind kernel/engine.js, geom/occt/ reserved; boundaries enforced; no output changed (app #41).
+- R51 corrections reader and R55 tagged lessons: From your corrections on the Pipelines page; lessons by topic; Innowa can list and remove lessons; set-aside proposals come back (app #42).
+- R53 layout patterns (keep from the Canvas, Innowa starts from them) and R54 Library use counts (app #43); R52 replayed briefs on the Studio page with three starter briefs (app #44, content #26).
+- Online preview republished as BuilderPluss Studio with downloads declared (app 7250417, content 707acb3). Checks: 145 tests, boundaries, smoke and browser checks.
+
+Decided:
+- Owner: "BuilderPluss Studio / Innowa / keep their own names / as u suggest / Rename the start file to `Start-Builderpluss.bat`".
+- Owner: "build it in this order - 2, 3 and 1. rest ll look later" (request groups).
+- Owner on the canvas: "the top bar options can be moved to left(another) collapsible panel, remove the name canvas" and "let project be in the top left".
+- Owner: "give a movable canvas tool floating bar with zoom, undo redo select lib picker etc", "tool bar be vertical. no names, only symbols", "views can be moved to tob bar right".
+- Owner: "So how we can separate our kernel from the occt overlap and make it for what actually it is." then "Ok record the kernel split and agent native discussions as requests and build then."
+- Owner: "Lessons can be revoked rit?" then "Ok" (Innowa removes lessons; set-aside proposals come back).
+- Owner merged app #30-#44 and content #22-#26 ("merge", "Merge", "Ok now merge all in the other u suggested").
 
 ### Session 28 · 2026-11-06 · Runs anywhere, requests, context assembly, chat and plan polish, real curves, a Claude-like layout
 Pipelines run in a project, the Library or the studio; requests are noted from any page and worked through; agents and the chat get assembled context; the chat takes files and drives runs; plans are drafted with real curves; the canvas is home, and app updates restart the server by themselves.
@@ -151,28 +174,9 @@ Decided:
 - Owner: "place furnitures" (choice and positions by Claude, to confirm).
 - Owner: "make the kitchen and bathroom fittings" (made in the chat as Project Objects; sizes and positions by Claude, to confirm).
 
-### Session 24 · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview
-All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
-
-Done:
-- Phase 4 Library (app #7 then #8; content #3): Objects with params and limits, 2D symbol and 3D primitive as safe formulas, checkObject; Library page; place, move, turn on both canvases; 8 starter Objects.
-- PR #7 merged into #6's branch (stacked), not main; #8 brought it to main. Stacked PRs are no longer used: every PR targets main.
-- Online preview (#9): tools/online builds the app for the browser from both repositories; artifact "AEC Studio 6" claude.ai/artifact/TeL8fLtYta3eXyqe1jVMt6, sandbox projects, Canvas13 left out (bundle too large to read).
-- Phase 5 Pipelines (app #10, content #4): Pipelines manager and page; runs in Projects with stages, agents, checks, retries, stop and say why, decisions; event log; Files core.
-- Brief to Library (Read, Match, What to make, Make, Keep) and Make an Object (freestyle), agents reader, matcher, maker; rules R1-R6; project_keep_object in the chat.
-- Kept Objects are Project Objects (project.<name>@1.0.0) in the model, shown in the canvas chooser under This project.
-- Phase 6 Files and Storage (#11): file previews and downloads; backups and restore at next start; export and import a project (log, runs, files); folder copy (COPY_DIR); assets by sha256.
-- Runner removes all its temporary files; checks green on main for both repositories (44 tests); online preview republished at app 5f6d15f, content 006262a.
-
-Decided:
-- Owner: "all merges done" (#6, #7, content #3); then "Merge 8 and 9 and make the artifact to get live at latest".
-- Owner: on Canvas13 in the online preview, "Let's see this later".
-- Owner: first pipeline "1st and freestyle" (Brief to Library, plus Make an Object as the freestyle action).
-- Owner: made Objects "Stay in the project" (Project Objects) until the owner asks for them to be proposed to the Library.
-- Owner: "5 then 6" for the build order; "Merge" (content #4, app #10, #11).
-
 ## Earlier sessions
 
+- **24** · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview — All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
 - **23** · 2026-11-02 · Canvas host slot: built-in canvas and Canvas13 as hosts (PR #6) — The Canvas page now has a host slot: the built-in canvas is its first host and Canvas13 its second, chosen with a picker; app PR #6 is open with its checks green, waiting for the owner.
 - **22** · 2026-11-02 · Phase 3 built: Projects and the built-in canvas; every wrap-up a new session — Every wrap-up now records a new session (app, core, load skill); phase 3 is built: Projects (PR #4, merged) and the built-in plan and 3D canvas (PR #5, merged).
 - **21** · 2026-11-02 · First project: a room on the ground floor — Created the first project in AEC Studio 6 and drew a 4 m × 3 m room on the ground floor, its space made from the walls.

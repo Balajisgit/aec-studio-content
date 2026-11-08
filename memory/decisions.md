@@ -79,3 +79,10 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-06 · Session 28** — Owner: "also the svg upgrade done only in built in canvas do that in canvas 13 too" with R31.
 - **2026-11-06 · Session 28** — Owner: "drop it" for the request files extra (branch request-files left on GitHub; delete by hand).
 - **2026-11-06 · Session 28** — Owner merged app #17-#28 ("Merge 18", "Merge it", "merge 25", "ok merge", "merge all in order") and content #10, #11, #15-#17, #19.
+- **2026-11-08 · Session 29** — Owner: "BuilderPluss Studio / Innowa / keep their own names / as u suggest / Rename the start file to `Start-Builderpluss.bat`".
+- **2026-11-08 · Session 29** — Owner: "build it in this order - 2, 3 and 1. rest ll look later" (request groups).
+- **2026-11-08 · Session 29** — Owner on the canvas: "the top bar options can be moved to left(another) collapsible panel, remove the name canvas" and "let project be in the top left".
+- **2026-11-08 · Session 29** — Owner: "give a movable canvas tool floating bar with zoom, undo redo select lib picker etc", "tool bar be vertical. no names, only symbols", "views can be moved to tob bar right".
+- **2026-11-08 · Session 29** — Owner: "So how we can separate our kernel from the occt overlap and make it for what actually it is." then "Ok record the kernel split and agent native discussions as requests and build then."
+- **2026-11-08 · Session 29** — Owner: "Lessons can be revoked rit?" then "Ok" (Innowa removes lessons; set-aside proposals come back).
+- **2026-11-08 · Session 29** — Owner merged app #30-#44 and content #22-#26 ("merge", "Merge", "Ok now merge all in the other u suggested").
