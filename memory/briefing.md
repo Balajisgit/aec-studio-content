@@ -51,7 +51,6 @@ _The open requests (requests/ in the content repository)._
 
 **The app**
 - R6 · Canvas13: online preview and its gaps
-- R20 · Move Studio to a private server on the owner's Claude subscription (in aec-studio#46)
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R46 · Python helper on the server for IFC export
