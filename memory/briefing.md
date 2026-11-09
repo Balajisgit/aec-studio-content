@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 30._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 31._
 
 ## What this is
 
@@ -54,6 +54,7 @@ _The open requests (requests/ in the content repository)._
 - R21 · PC helper: desktop apps (Blender and others) for a server-hosted Studio
 - R22 · Studio for clients: accounts, each on their own Claude key
 - R46 · Python helper on the server for IFC export
+- R56 · RBAC from first principles: platform roles, organizations, workspaces, project roles, FDEs, agents
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
@@ -69,6 +70,29 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 30 · 2026-11-09 · Hosted at studio.builderpluss.com, the Helper, organizations and roles, knowledge layers, staging and security
+BuilderPluss Studio runs on the Hostinger server at studio.builderpluss.com; PCs connect out through the Helper with their own Claude; firms, workspaces, roles, guests, FDEs and platform roles are built from first principles, each firm with its own knowledge layer and Claude usage; a staging site and two-factor sign-in complete it (R20, R21 step 2a, R22, R56).
+
+Done:
+- R20 phase 1: server mode (sign-in, owner account by setup code, sessions, offsite copies to R2), setup.sh and the deploy action (app #46); fixes #47, #48.
+- Live at https://studio.builderpluss.com behind nginx with Let's Encrypt; owner account made.
+- R21 step 2a, the Helper: pair a PC with a one-time code, it connects out, runs Claude there with no built-in tools, the Studio's tools called back; files_read/files_glob over the run's folders (#49); the Helper as one download that pairs by itself, Start-Helper.bat, Mac/Linux script (#51).
+- R22 first part: team accounts by invitation (#50).
+- R56 step 1: organizations, workspaces, roles per level, can(), the platform plane, migration (BuilderPluss, workspace Main closed), support access with emergency grant (#52).
+- R56 step 2: project guests from other firms; the shared memory only for the platform's people (#53). Step 3: Claude usage per firm, workspace, project, person; monthly limits; runs on each person's own Helper (#54).
+- R56 step 4: knowledge layers per firm; Innowa drafts firm pipelines; pipeline stages edit the model; check model-changed-soundly (#55, content #27).
+- R56 step 5: staging site beside production (#56); two-factor sign-in and its requirement, access reviews, audit across firms (#57).
+- Leaks found and closed on the way: shared memory readable by anyone signed in (#53); the corrections reader and Library suggestions reading every firm's projects (#55).
+- Checks: 162 tests at the end.
+
+Decided:
+- Owner: "Studio on server, Helper on the client pc which connects claude code and studio"; "Hostinger server"; "no tailscale needed.. lets deploy in www.studio.builderpluss.com".
+- Owner: team access "Own projects only"; then "lets create a actual rbac type of user management along with creating organozation and workspace from the first primciple - aec saas"; FDE and platform roles added.
+- Owner: staging "second site on the same box"; break-glass "Platform Owner approve it in an emergency (with the client told afterwards)"; "you as Platform Owner and Ops, Bikal as Developer & Platform FDE".
+- Owner: the standalone Helper (option C), not a company API key on the server.
+- Owner: "I want to use subscription now. I am testing only. Not going commercial" (API keys or Anthropic's approval before going commercial).
+- Owner on firm code: "let that runs in the Helper", not on the server (recorded on R21 with step 2c).
 
 ### Session 29 · 2026-11-08 · One kernel for 2D and 3D, BuilderPluss Studio and Innowa, the kernel split, agents that learn
 The kernel became one schema for plan and 3D and then a design kernel with its own geometry engine; the app is BuilderPluss Studio with Innowa as its assistant; the canvas got a floating tool bar; and agents now learn from corrections, start from patterns and are measured by replayed briefs.
@@ -154,26 +178,9 @@ Decided:
 - Owner: session 25 "Leave it as history" (past sessions are never changed).
 - Owner: "Ok add to 12 and merge the 12" (the app keeps the note when Claude doesn't).
 
-### Session 25 · 2026-11-02 · New project test1, a 1 BHK plan, furniture and kitchen/bathroom fittings
-Created test1, drew an 8 m × 7 m 1 BHK, furnished it from the Library, then made 5 kitchen and bathroom fittings as Project Objects and placed them.
-
-Done:
-- Created project 'test1' (p10d4d1726c): Ground floor L0, 3000 mm high, snap 5 mm.
-- Drew a 1 BHK, 8000 × 7000 mm: outer walls 200, inner 100, 3000 high; spaces Living 18.67, Kitchen 8.12, Bathroom 5.42, Bedroom 13.82, Dress / Store 5.27 m2 net.
-- Doors: main 1000, kitchen 900, bathroom 750, bedroom 900, dress 800; windows: living and bedroom 1800, kitchen 1200, bathroom and dress 600 high.
-- Furniture from the Library: sofa, armchair, 1200 × 800 table with 4 chairs, 1600 × 2100 bed, 2000 mm 4-door wardrobe.
-- Made and kept 5 Project Objects (all pass the Library check): project.kitchen-counter (optional sink and hob, movable along the run), project.fridge, project.wc, project.basin (on a vanity), project.shower (tray, half glass screen).
-- Placed them (step 'Fit out kitchen and bathroom'): L-shaped kitchen, 2850 counter with sink under the window, 1500 counter with hob on the east wall, fridge in the corner; bathroom: basin by the door, WC on the back wall, 900 × 900 shower in the far corner. No problems.
-- Noticed the owner's own canvas edits: bedroom window WN6 on the west wall and the bed moved; left as they are.
-
-Decided:
-- Owner: "create a new project named test1".
-- Owner: "load that project and create a one bhk" (layout and sizes chosen by Claude, to confirm).
-- Owner: "place furnitures" (choice and positions by Claude, to confirm).
-- Owner: "make the kitchen and bathroom fittings" (made in the chat as Project Objects; sizes and positions by Claude, to confirm).
-
 ## Earlier sessions
 
+- **25** · 2026-11-02 · New project test1, a 1 BHK plan, furniture and kitchen/bathroom fittings — Created test1, drew an 8 m × 7 m 1 BHK, furnished it from the Library, then made 5 kitchen and bathroom fittings as Project Objects and placed them.
 - **24** · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview — All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
 - **23** · 2026-11-02 · Canvas host slot: built-in canvas and Canvas13 as hosts (PR #6) — The Canvas page now has a host slot: the built-in canvas is its first host and Canvas13 its second, chosen with a picker; app PR #6 is open with its checks green, waiting for the owner.
 - **22** · 2026-11-02 · Phase 3 built: Projects and the built-in canvas; every wrap-up a new session — Every wrap-up now records a new session (app, core, load skill); phase 3 is built: Projects (PR #4, merged) and the built-in plan and 3D canvas (PR #5, merged).

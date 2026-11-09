@@ -86,3 +86,9 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-08 · Session 29** — Owner: "So how we can separate our kernel from the occt overlap and make it for what actually it is." then "Ok record the kernel split and agent native discussions as requests and build then."
 - **2026-11-08 · Session 29** — Owner: "Lessons can be revoked rit?" then "Ok" (Innowa removes lessons; set-aside proposals come back).
 - **2026-11-08 · Session 29** — Owner merged app #30-#44 and content #22-#26 ("merge", "Merge", "Ok now merge all in the other u suggested").
+- **2026-11-09 · Session 30** — Owner: "Studio on server, Helper on the client pc which connects claude code and studio"; "Hostinger server"; "no tailscale needed.. lets deploy in www.studio.builderpluss.com".
+- **2026-11-09 · Session 30** — Owner: team access "Own projects only"; then "lets create a actual rbac type of user management along with creating organozation and workspace from the first primciple - aec saas"; FDE and platform roles added.
+- **2026-11-09 · Session 30** — Owner: staging "second site on the same box"; break-glass "Platform Owner approve it in an emergency (with the client told afterwards)"; "you as Platform Owner and Ops, Bikal as Developer & Platform FDE".
+- **2026-11-09 · Session 30** — Owner: the standalone Helper (option C), not a company API key on the server.
+- **2026-11-09 · Session 30** — Owner: "I want to use subscription now. I am testing only. Not going commercial" (API keys or Anthropic's approval before going commercial).
+- **2026-11-09 · Session 30** — Owner on firm code: "let that runs in the Helper", not on the server (recorded on R21 with step 2c).
