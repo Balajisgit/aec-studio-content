@@ -1,0 +1,6 @@
+{
+  "id": "model-changed-soundly",
+  "name": "The model was changed, soundly",
+  "about": "A stage that changes the project's model (project_edit) did change it, and the model breaks no rule afterwards.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}
