@@ -1,0 +1,6 @@
+{
+  "id": "footprint-within-setbacks",
+  "name": "The walls are inside the setbacks",
+  "about": "The footprint picked is inside the setbacks, and the outer face of the walls drawn for it is too.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}
