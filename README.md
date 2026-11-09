@@ -25,6 +25,8 @@ memory/sessions/<number>.md       one file per session, written by the app (phas
 memory/briefing.md                generated from the sessions
 lessons/<id>.json
 requests/settings/<path>.json      a settings change the owner asked for in the app (a record); an Action opens a pull request for it
+docs/<id>.md                      guides shown on the app's Docs page; each says its audience (platform: BuilderPluss's own; firms: everyone)
+scripts/<name>/<version>.js       platform scripts (with a manifest .json) that run on PCs' Helpers; a firm's own live in its layer
 settings.json                     shared settings: models per tier; library.review (quick review of Library proposals: off, unsure, always)
 checks/validate.js                this repository's automatic check
 ```

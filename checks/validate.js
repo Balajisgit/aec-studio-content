@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { settingProblem } from "./settings.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", ".."), problems = [];
-const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "patterns", "evals", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
+const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "patterns", "evals", "docs", "scripts", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
 for (const n of readdirSync(root)) if (!n.startsWith(".git") && !TOP.has(n)) problems.push(`${n}: not part of the content layout (see README.md)`);
 const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n === "node_modules") continue; const f = join(d, n); if (statSync(f).isDirectory()) walk(f); else if (n.endsWith(".json")) {
   try { JSON.parse(readFileSync(f, "utf8")); } catch (e) { problems.push(`${relative(root, f).split(sep).join("/")}: not valid JSON (${e.message})`); } } } };
