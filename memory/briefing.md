@@ -57,6 +57,7 @@ _The open requests (requests/ in the content repository)._
 - R56 · RBAC from first principles: platform roles, organizations, workspaces, project roles, FDEs, agents
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
 - R58 · requests · from project test1
+- R59 · requetst
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
