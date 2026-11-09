@@ -58,9 +58,11 @@ _The open requests (requests/ in the content repository)._
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
 - R58 · requests · from project test1
 - R59 · requetst
+- R61 · project
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
+- R60 · Fit to plot: the largest rectangle inside an irregular plot's setbacks, as the ground floor's outer walls
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
