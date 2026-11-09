@@ -1,0 +1,6 @@
+{
+  "id": "site-set",
+  "name": "The project has a plot",
+  "about": "The project has a plot: its corners in order, the front edge and the setbacks.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}
