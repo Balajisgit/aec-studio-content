@@ -1,0 +1,21 @@
+{
+  "id": "survey-point",
+  "name": "Survey point",
+  "behaviour": "none",
+  "on": [
+    "node"
+  ],
+  "about": "A surveyed point or benchmark: its label and its level above the datum.",
+  "values": {
+    "label": {
+      "name": "Label",
+      "kind": "text"
+    },
+    "level": {
+      "name": "Level above datum",
+      "kind": "mm",
+      "min": -100000,
+      "max": 1000000
+    }
+  }
+}

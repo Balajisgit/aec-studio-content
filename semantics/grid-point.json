@@ -1,0 +1,19 @@
+{
+  "id": "grid-point",
+  "name": "Grid point",
+  "behaviour": "none",
+  "on": [
+    "node"
+  ],
+  "about": "Where two structural grid lines cross, with their labels (A and 1).",
+  "values": {
+    "gridX": {
+      "name": "Grid along x",
+      "kind": "text"
+    },
+    "gridY": {
+      "name": "Grid along y",
+      "kind": "text"
+    }
+  }
+}

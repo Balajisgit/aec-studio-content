@@ -1,0 +1,25 @@
+{
+  "id": "column-position",
+  "name": "Column position",
+  "behaviour": "none",
+  "on": [
+    "node"
+  ],
+  "about": "Where a column goes, and its size. A column Object can be placed here later (by hand or by a pipeline).",
+  "values": {
+    "width": {
+      "name": "Width",
+      "kind": "mm",
+      "default": 300,
+      "min": 100,
+      "max": 3000
+    },
+    "depth": {
+      "name": "Depth",
+      "kind": "mm",
+      "default": 300,
+      "min": 100,
+      "max": 3000
+    }
+  }
+}
