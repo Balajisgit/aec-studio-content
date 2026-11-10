@@ -1,0 +1,19 @@
+{
+  "id": "own-setback",
+  "name": "Own setback",
+  "behaviour": "none",
+  "on": [
+    "edge"
+  ],
+  "about": "An edge of a plot with its own setback, instead of the front, rear or side one.",
+  "values": {
+    "setback": {
+      "name": "Setback",
+      "kind": "mm",
+      "default": 3000,
+      "min": 0,
+      "max": 100000,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "parking-bay",
+  "name": "Parking bay",
+  "behaviour": "area",
+  "on": [
+    "face"
+  ],
+  "about": "An area for parked cars, with the size of one stall.",
+  "values": {
+    "stallWidth": {
+      "name": "Stall width",
+      "kind": "mm",
+      "default": 2500,
+      "min": 2000,
+      "max": 4000
+    },
+    "stallLength": {
+      "name": "Stall length",
+      "kind": "mm",
+      "default": 5000,
+      "min": 4000,
+      "max": 7000
+    }
+  }
+}

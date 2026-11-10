@@ -1,0 +1,28 @@
+{
+  "id": "room",
+  "name": "Room",
+  "behaviour": "room",
+  "on": [
+    "face"
+  ],
+  "about": "A room on a face: its name and number, finishes and ceiling.",
+  "values": {
+    "name": {
+      "name": "Name",
+      "kind": "text",
+      "default": "Room"
+    },
+    "number": {
+      "name": "Number",
+      "kind": "text"
+    },
+    "category": {
+      "name": "Category",
+      "kind": "text"
+    },
+    "zone": {
+      "name": "Zone",
+      "kind": "text"
+    }
+  }
+}

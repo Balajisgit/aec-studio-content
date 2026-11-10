@@ -1,0 +1,25 @@
+{
+  "id": "window",
+  "name": "Window",
+  "behaviour": "opening",
+  "on": [
+    "part"
+  ],
+  "about": "A window on part of a wall.",
+  "values": {
+    "height": {
+      "name": "Height",
+      "kind": "mm",
+      "default": 1200,
+      "min": 100,
+      "max": 6000
+    },
+    "sill": {
+      "name": "Sill",
+      "kind": "mm",
+      "default": 900,
+      "min": 0,
+      "max": 6000
+    }
+  }
+}

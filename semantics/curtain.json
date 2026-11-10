@@ -1,0 +1,47 @@
+{
+  "id": "curtain",
+  "name": "Curtain wall",
+  "behaviour": "wall",
+  "on": [
+    "segment"
+  ],
+  "about": "A glazed wall on a line.",
+  "values": {
+    "thickness": {
+      "name": "Thickness",
+      "kind": "mm",
+      "default": 200,
+      "min": 10,
+      "max": 2000
+    },
+    "height": {
+      "name": "Height",
+      "kind": "mm",
+      "min": 100,
+      "max": 30000
+    },
+    "baseOffset": {
+      "name": "Base offset",
+      "kind": "mm",
+      "min": -10000,
+      "max": 10000
+    },
+    "justification": {
+      "name": "Justification",
+      "kind": "choice",
+      "options": [
+        "centre",
+        "left",
+        "right"
+      ]
+    },
+    "isExternal": {
+      "name": "External",
+      "kind": "yes-no"
+    },
+    "loadBearing": {
+      "name": "Load bearing",
+      "kind": "yes-no"
+    }
+  }
+}

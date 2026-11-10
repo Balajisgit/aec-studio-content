@@ -1,0 +1,10 @@
+{
+  "id": "separator",
+  "name": "Room separator",
+  "behaviour": "line",
+  "on": [
+    "segment"
+  ],
+  "about": "A line that divides rooms with nothing built on it.",
+  "values": {}
+}

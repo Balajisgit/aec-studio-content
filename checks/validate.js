@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { settingProblem } from "./settings.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", ".."), problems = [];
-const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "patterns", "evals", "docs", "scripts", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
+const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "patterns", "evals", "docs", "scripts", "semantics", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
 for (const n of readdirSync(root)) if (!n.startsWith(".git") && !TOP.has(n)) problems.push(`${n}: not part of the content layout (see README.md)`);
 const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n === "node_modules") continue; const f = join(d, n); if (statSync(f).isDirectory()) walk(f); else if (n.endsWith(".json")) {
   try { JSON.parse(readFileSync(f, "utf8")); } catch (e) { problems.push(`${relative(root, f).split(sep).join("/")}: not valid JSON (${e.message})`); } } } };
@@ -142,5 +142,16 @@ for (const n of (() => { try { return readdirSync(join(root, "evals", "results")
   let r = null; try { r = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON`); continue; }
   if (typeof r.passed !== "number" || typeof r.total !== "number" || !Array.isArray(r.results)) problems.push(`${rel}: a result has passed, total and results`); }
 for (const n of (() => { try { return readdirSync(join(root, "evals")); } catch { return []; } })()) if (!["briefs", "results", "README.md", ".gitkeep"].includes(n)) problems.push(`evals/${n}: evals holds briefs/ and results/`);
+// semantics/<id>.json: the roles a piece of a model's sketch can be given (R62): a behaviour the app has, what it goes on, its values
+const BEHAVIOURS = ["wall", "line", "opening", "room", "slab", "placed", "area", "none"], ON = ["segment", "part", "face", "edge", "node", "point"], VK = ["mm", "number", "text", "choice", "yes-no"];
+for (const n of (() => { try { return readdirSync(join(root, "semantics")); } catch { return []; } })()) { const rel = `semantics/${n}`; if (n === ".gitkeep") continue;
+  if (!/^[a-z][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a role is semantics/<id>.json`); continue; }
+  let r = null; try { r = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch { problems.push(`${rel}: not valid JSON`); continue; }
+  if (r.id !== n.replace(/\.json$/, "")) problems.push(`${rel}: id must be ${n.replace(/\.json$/, "")}`);
+  if (!String(r.name || "").trim()) problems.push(`${rel}: name is required`);
+  if (!BEHAVIOURS.includes(r.behaviour)) problems.push(`${rel}: behaviour must be one of ${BEHAVIOURS.join(", ")}`);
+  if (!Array.isArray(r.on) || !r.on.length || r.on.some((x) => !ON.includes(x))) problems.push(`${rel}: on must list some of ${ON.join(", ")}`);
+  for (const [k, v] of Object.entries(r.values || {})) { if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(k)) problems.push(`${rel}: value ${k}: letters and digits only`);
+    if (!v || !VK.includes(v.kind)) problems.push(`${rel}: value ${k}: kind must be ${VK.join(", ")}`); else if (v.kind === "choice" && !(Array.isArray(v.options) && v.options.length)) problems.push(`${rel}: value ${k}: a choice needs options`); } }
 for (const p of problems) console.log("FAIL", p);
 console.log(`content: ${problems.length} problem${problems.length === 1 ? "" : "s"}`); process.exit(problems.length ? 1 : 0);

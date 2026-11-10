@@ -1,0 +1,32 @@
+{
+  "id": "plot",
+  "name": "Plot",
+  "behaviour": "area",
+  "on": [
+    "face"
+  ],
+  "about": "The site: the face of the plot, with its setbacks. Mark its road edge with Front; an edge with a different setback with Own setback.",
+  "values": {
+    "setbackFront": {
+      "name": "Front setback",
+      "kind": "mm",
+      "default": 3000,
+      "min": 0,
+      "max": 100000
+    },
+    "setbackRear": {
+      "name": "Rear setback",
+      "kind": "mm",
+      "default": 3000,
+      "min": 0,
+      "max": 100000
+    },
+    "setbackSide": {
+      "name": "Side setback",
+      "kind": "mm",
+      "default": 1500,
+      "min": 0,
+      "max": 100000
+    }
+  }
+}

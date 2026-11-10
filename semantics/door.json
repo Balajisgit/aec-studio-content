@@ -1,0 +1,25 @@
+{
+  "id": "door",
+  "name": "Door",
+  "behaviour": "opening",
+  "on": [
+    "part"
+  ],
+  "about": "A door on part of a wall.",
+  "values": {
+    "height": {
+      "name": "Height",
+      "kind": "mm",
+      "default": 2100,
+      "min": 500,
+      "max": 6000
+    },
+    "sill": {
+      "name": "Sill",
+      "kind": "mm",
+      "default": 0,
+      "min": 0,
+      "max": 3000
+    }
+  }
+}

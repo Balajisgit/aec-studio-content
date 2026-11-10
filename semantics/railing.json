@@ -1,0 +1,23 @@
+{
+  "id": "railing",
+  "name": "Railing",
+  "behaviour": "line",
+  "on": [
+    "segment"
+  ],
+  "about": "A railing along a line.",
+  "values": {
+    "height": {
+      "name": "Height",
+      "kind": "mm",
+      "min": 100,
+      "max": 30000
+    },
+    "baseOffset": {
+      "name": "Base offset",
+      "kind": "mm",
+      "min": -10000,
+      "max": 10000
+    }
+  }
+}
