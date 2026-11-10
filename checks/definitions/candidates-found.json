@@ -1,0 +1,6 @@
+{
+  "id": "candidates-found",
+  "name": "Candidates found",
+  "about": "The solver gave candidates, each with the operations it would make.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}

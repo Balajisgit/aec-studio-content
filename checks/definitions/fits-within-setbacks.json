@@ -1,6 +1,0 @@
-{
-  "id": "fits-within-setbacks",
-  "name": "Footprints are inside the setbacks",
-  "about": "Every footprint found is a rectangle wholly inside the plot and at least each edge's setback from it.",
-  "implementedBy": "app: managers/pipelines/checks.js"
-}

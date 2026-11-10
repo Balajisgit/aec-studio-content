@@ -98,7 +98,7 @@ const agents = new Set(readDir("agents").map((n) => n.slice(0, -5))), checks = n
 for (const n of readDir("agents")) { try { const a = JSON.parse(readFileSync(join(root, "agents", n), "utf8"));
   if (a.id !== n.slice(0, -5)) problems.push(`agents/${n}: id must be ${n.slice(0, -5)}`);
   if (!Array.isArray(a.instructions) || !a.instructions.length) problems.push(`agents/${n}: instructions are missing`); } catch { /* reported above */ } }
-const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects", "pick-footprint", "pick-candidate"], SCOPES = ["project", "library", "studio"];
+const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects", "pick-candidate"], SCOPES = ["project", "library", "studio"];
 try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(root, "pipelines", p); if (!statSync(pd).isDirectory()) continue;
   for (const v of readdirSync(pd)) { const rel = `pipelines/${p}/${v}`;
     if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
