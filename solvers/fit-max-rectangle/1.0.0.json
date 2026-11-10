@@ -1,0 +1,14 @@
+{
+  "id": "fit-max-rectangle",
+  "name": "Fit the largest rectangle",
+  "about": "The largest rectangles that fit a plot inside its setbacks, at any angle: the best and up to two others. Reads the face with the Plot role (its front, rear and side setbacks), its edge marked Front, and any edge with its own setback. Each candidate draws the ground floor's outer walls with their outer face on the rectangle.",
+  "roles": ["plot", "front", "own-setback"],
+  "settings": {
+    "maxCoverage": { "name": "Most of the plot to cover (0 to 1)", "kind": "number", "min": 0, "max": 1 },
+    "minSide": { "name": "Shortest side", "kind": "mm", "min": 0 },
+    "wallThickness": { "name": "Wall thickness", "kind": "mm", "default": 230, "min": 50, "max": 600 },
+    "wallHeight": { "name": "Wall height (the floor's when not set)", "kind": "mm", "min": 2000, "max": 10000 },
+    "top": { "name": "How many to offer", "kind": "number", "default": 3, "min": 1, "max": 6 }
+  },
+  "timeoutSeconds": 20
+}

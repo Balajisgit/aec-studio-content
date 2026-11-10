@@ -98,7 +98,7 @@ const agents = new Set(readDir("agents").map((n) => n.slice(0, -5))), checks = n
 for (const n of readDir("agents")) { try { const a = JSON.parse(readFileSync(join(root, "agents", n), "utf8"));
   if (a.id !== n.slice(0, -5)) problems.push(`agents/${n}: id must be ${n.slice(0, -5)}`);
   if (!Array.isArray(a.instructions) || !a.instructions.length) problems.push(`agents/${n}: instructions are missing`); } catch { /* reported above */ } }
-const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects"], SCOPES = ["project", "library", "studio"];
+const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects", "pick-footprint", "pick-candidate"], SCOPES = ["project", "library", "studio"];
 try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(root, "pipelines", p); if (!statSync(pd).isDirectory()) continue;
   for (const v of readdirSync(pd)) { const rel = `pipelines/${p}/${v}`;
     if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
@@ -116,7 +116,9 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
       const scopes = Array.isArray(d.scopes) && d.scopes.length ? d.scopes : ["project"];
       if (s.scopes !== undefined && (!Array.isArray(s.scopes) || !s.scopes.length || s.scopes.some((x) => !scopes.includes(x)))) problems.push(`${rel}: step ${s.id}: its scopes must be some of the pipeline's (${scopes.join(", ")})`);
       if (s.kind === "stage") { if (!s.outcome) problems.push(`${rel}: stage ${s.id} has no outcome`);
-        if (s.code !== undefined) { if (!/^[a-z][a-z0-9-]*$/.test(String(s.code))) problems.push(`${rel}: stage ${s.id}: code names a code stage, like prepare-proposal`); if (s.agent !== undefined) problems.push(`${rel}: stage ${s.id}: a code stage has no agent`); }
+        if (s.solver !== undefined) { const sid = String(s.solver).split("@")[0]; if (!existsSync(join(root, "solvers", sid))) problems.push(`${rel}: stage ${s.id} names solver ${s.solver}, which is not in solvers/`);
+          if (s.agent !== undefined || s.code !== undefined) problems.push(`${rel}: stage ${s.id}: a solver stage has no agent or code`); }
+        else if (s.code !== undefined) { if (!/^[a-z][a-z0-9-]*$/.test(String(s.code))) problems.push(`${rel}: stage ${s.id}: code names a code stage, like prepare-proposal`); if (s.agent !== undefined) problems.push(`${rel}: stage ${s.id}: a code stage has no agent`); }
         else if (!agents.has(s.agent)) problems.push(`${rel}: stage ${s.id} names agent ${s.agent}, which is not in agents/`);
         if (!Array.isArray(s.checks) || !s.checks.length) problems.push(`${rel}: stage ${s.id} has no checks`); for (const c of s.checks || []) if (!checks.has(c)) problems.push(`${rel}: stage ${s.id} names check ${c}, which is not in checks/definitions/`); }
       else if (s.kind === "decision") { if (!FORMS.includes(s.form)) problems.push(`${rel}: decision ${s.id} must use a form the app knows: ${FORMS.join(", ")}`); if (!s.question) problems.push(`${rel}: decision ${s.id} has no question`); }
@@ -153,5 +155,15 @@ for (const n of (() => { try { return readdirSync(join(root, "semantics")); } ca
   if (!Array.isArray(r.on) || !r.on.length || r.on.some((x) => !ON.includes(x))) problems.push(`${rel}: on must list some of ${ON.join(", ")}`);
   for (const [k, v] of Object.entries(r.values || {})) { if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(k)) problems.push(`${rel}: value ${k}: letters and digits only`);
     if (!v || !VK.includes(v.kind)) problems.push(`${rel}: value ${k}: kind must be ${VK.join(", ")}`); else if (v.kind === "choice" && !(Array.isArray(v.options) && v.options.length)) problems.push(`${rel}: value ${k}: a choice needs options`); } }
+// solvers/<id>/<version>.js with its manifest <version>.json (R62 step 3): code that defines solve(input, geo); the manifest says what it reads
+for (const id of (() => { try { return readdirSync(join(root, "solvers")); } catch { return []; } })()) { if (id === ".gitkeep") continue;
+  if (!/^[a-z0-9-]+$/.test(id)) { problems.push(`solvers/${id}: a solver's folder is its id, lower case with hyphens`); continue; }
+  for (const f of readdirSync(join(root, "solvers", id))) { const rel = `solvers/${id}/${f}`, m = /^(\d+\.\d+\.\d+)\.(js|json)$/.exec(f);
+    if (!m) { problems.push(`${rel}: a solver is <version>.js with its manifest <version>.json`); continue; }
+    const other = join(root, "solvers", id, `${m[1]}.${m[2] === "js" ? "json" : "js"}`); if (!existsSync(other)) problems.push(`${rel}: its ${m[2] === "js" ? "manifest .json" : "code .js"} is missing`);
+    if (m[2] === "json") { let j = null; try { j = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch { problems.push(`${rel}: not valid JSON`); continue; }
+      if (j.id !== id) problems.push(`${rel}: id must be ${id}`); if (!String(j.name || "").trim() || !String(j.about || "").trim()) problems.push(`${rel}: name and about are required`);
+      if (j.roles !== undefined && !(Array.isArray(j.roles) && j.roles.every((r) => /^[a-z][a-z0-9-]*$/.test(r)))) problems.push(`${rel}: roles lists role ids`); }
+    else if (!/function solve\s*\(/.test(readFileSync(join(root, rel), "utf8"))) problems.push(`${rel}: it must define function solve(input, geo)`); } }
 for (const p of problems) console.log("FAIL", p);
 console.log(`content: ${problems.length} problem${problems.length === 1 ? "" : "s"}`); process.exit(problems.length ? 1 : 0);
