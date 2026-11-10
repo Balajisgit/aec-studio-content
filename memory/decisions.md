@@ -92,3 +92,6 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-09 · Session 30** — Owner: the standalone Helper (option C), not a company API key on the server.
 - **2026-11-09 · Session 30** — Owner: "I want to use subscription now. I am testing only. Not going commercial" (API keys or Anthropic's approval before going commercial).
 - **2026-11-09 · Session 30** — Owner on firm code: "let that runs in the Helper", not on the server (recorded on R21 with step 2c).
+- **2026-11-10 · Session 31** — Owner: improving the app is either code or a pipeline; docs as "Two documents - one for platform users and another for firms. Both enabled in Builderpluss and only one in firms account", in "a docs tab in the app next to storage updated from git content".
+- **2026-11-10 · Session 31** — Owner: "Request to BuilderPluss" that the platform's people see, without showing the firm the internal list.
+- **2026-11-10 · Session 31** — Owner on Fit to plot: "Any angle, best area"; setbacks "Front, rear and sides"; plot input "all three above" (canvas, coordinates or survey file read by an agent, notes); result "Outer walls on the ground floor".

@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 31._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 32._
 
 ## What this is
 
@@ -75,6 +75,25 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 31 · 2026-11-10 · The Helper runs PC apps and firm scripts, a Docs tab, staging live, and Fit to plot (R60)
+Firms' apps and scripts run on their own Helper (R21 step 2c); the Studio gained a Docs tab with guides for the platform and for firms, plus requests and offers to BuilderPluss; staging went live; Fit to plot fits the largest rectangle at any angle inside a plot's setbacks and draws it as the ground floor's outer walls, now deployed with the fixes from its first live run.
+
+Done:
+- R21 step 2c: PC apps (MCP servers in helper-tools.json) and the firm's scripts run on the Helper, scripts under Node's permission model; tools pc_tools, app_tool, script_run (#58).
+- Docs tab beside Storage, read from content docs/*.md by audience: the platform guide for BuilderPluss, the firm guide for firms; a firm's Request to BuilderPluss and Offer to BuilderPluss, without showing the firm the internal list (#59, content #28).
+- Staging live at staging.studio.builderpluss.com (DNS, deploy setup with target staging, certificate).
+- Fit to plot (R60): model.site with set_site and clear_site; kernel/site.js finds the largest rectangle at any angle inside front, rear and side setbacks (matches a search every 0.5°); Site tool on the canvas (P); code stages, the pick-footprint decision and checks (#60, content #29).
+- First live run's fixes: the chat could not answer any run's decision when hosted (run_decide access keyed on the wrong field; a test now checks every chat tool's key); the chat's footprint pick; the canvas frames a new plot; Canvas13 draws it (#62).
+- The Site reader never makes up a plot: with no plot and an empty brief the run stops and asks for the Site tool (#62, content #30).
+- Checks on main green again: the smoke check expects the Docs tab (#61); a test no longer writes a file named undefined (removed in #60).
+- Deployed to production: app 59f473c, content 4365796; 175 tests pass.
+- Discussed: HuskyBIM is complementary (their MCP connectors could plug into our Helper; check their terms); safe Claude marketing wording ("built on Claude by Anthropic", no logo or endorsement without permission).
+
+Decided:
+- Owner: improving the app is either code or a pipeline; docs as "Two documents - one for platform users and another for firms. Both enabled in Builderpluss and only one in firms account", in "a docs tab in the app next to storage updated from git content".
+- Owner: "Request to BuilderPluss" that the platform's people see, without showing the firm the internal list.
+- Owner on Fit to plot: "Any angle, best area"; setbacks "Front, rear and sides"; plot input "all three above" (canvas, coordinates or survey file read by an agent, notes); result "Outer walls on the ground floor".
 
 ### Session 30 · 2026-11-09 · Hosted at studio.builderpluss.com, the Helper, organizations and roles, knowledge layers, staging and security
 BuilderPluss Studio runs on the Hostinger server at studio.builderpluss.com; PCs connect out through the Helper with their own Claude; firms, workspaces, roles, guests, FDEs and platform roles are built from first principles, each firm with its own knowledge layer and Claude usage; a staging site and two-factor sign-in complete it (R20, R21 step 2a, R22, R56).
@@ -168,23 +187,9 @@ Decided:
 - Owner merged app #13 to #16 and content #5 to #9, including the Kitchen counter (#6) as proposed, despite the review's notes.
 - Owner: "update the studio 6 artifact too", then "update the artifact".
 
-### Session 26 · 2026-11-03 · Project discussions stay with the project: project notes; online preview kept current
-Shared memory now holds only shared work: project chats keep a note with the project on the PC (app PR #12, merged), and the online preview was rebuilt twice from the latest main.
-
-Done:
-- Online preview rebuilt from the latest main twice (content 21e827a with session 25; then app fc70f86); same artifact link.
-- Project notes (app #12, merged): one note per chat and project (done, the owner's decisions, open), in a Notes card on the project's page, moved with a project's export.
-- In-app chat told what goes where: shared memory only for shared work; project work in project_note; a chat that only works on projects records no session; read project_notes before carrying on.
-- The app keeps the note itself when a chat reply changed a project and Claude didn't write it (steps added, newest 12); no need to say wrap up for project work.
-- Checks: 47 tests, smoke, browser check of the Notes card; GitHub checks green; #12 merged at fc70f86.
-
-Decided:
-- Owner: project sessions in shared memory duplicate the project log and chat: "Can we exclude project related discussions or store them separately?"; chose "Project notes" kept with the project on the PC.
-- Owner: session 25 "Leave it as history" (past sessions are never changed).
-- Owner: "Ok add to 12 and merge the 12" (the app keeps the note when Claude doesn't).
-
 ## Earlier sessions
 
+- **26** · 2026-11-03 · Project discussions stay with the project: project notes; online preview kept current — Shared memory now holds only shared work: project chats keep a note with the project on the PC (app PR #12, merged), and the online preview was rebuilt twice from the latest main.
 - **25** · 2026-11-02 · New project test1, a 1 BHK plan, furniture and kitchen/bathroom fittings — Created test1, drew an 8 m × 7 m 1 BHK, furnished it from the Library, then made 5 kitchen and bathroom fittings as Project Objects and placed them.
 - **24** · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview — All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
 - **23** · 2026-11-02 · Canvas host slot: built-in canvas and Canvas13 as hosts (PR #6) — The Canvas page now has a host slot: the built-in canvas is its first host and Canvas13 its second, chosen with a picker; app PR #6 is open with its checks green, waiting for the owner.
