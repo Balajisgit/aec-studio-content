@@ -60,6 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R59 · requetst
 - R61 · project
 - R62 · Model 3.0: geometry, semantics and parameters; solvers as pipeline content; pipelines on the canvas (in aec-studio#68)
+- R63 · Primers and meanings: nodes, segments and faces with roles by category; functions from the Library; walls, doors and windows out of the kernel
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
