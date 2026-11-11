@@ -1,9 +1,9 @@
 {
   "id": "front",
   "name": "Front",
-  "behaviour": "none",
+  "category": "position",
   "on": [
-    "edge"
+    "segment"
   ],
   "about": "The edge of a plot on the road. The edge facing away from it is the rear; the others are sides.",
   "values": {}

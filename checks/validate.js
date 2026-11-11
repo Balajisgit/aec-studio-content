@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { settingProblem } from "./settings.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", ".."), problems = [];
-const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "patterns", "evals", "docs", "scripts", "semantics", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
+const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "docs", "scripts", "semantics", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
 for (const n of readdirSync(root)) if (!n.startsWith(".git") && !TOP.has(n)) problems.push(`${n}: not part of the content layout (see README.md)`);
 const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n === "node_modules") continue; const f = join(d, n); if (statSync(f).isDirectory()) walk(f); else if (n.endsWith(".json")) {
   try { JSON.parse(readFileSync(f, "utf8")); } catch (e) { problems.push(`${relative(root, f).split(sep).join("/")}: not valid JSON (${e.message})`); } } } };
@@ -126,33 +126,20 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`pipelines: ${e.message}`); }
 // lessons/<agent id>.md and lessons/all.md: Markdown, one lesson per line (agents that name the lessons source are given them).
 for (const n of (() => { try { return readdirSync(join(root, "lessons")); } catch { return []; } })()) if (n !== ".gitkeep" && n !== "README.md" && !(/^[a-z][a-z0-9-]*\.md$/.test(n) && (n === "all.md" || agents.has(n.slice(0, -3))))) problems.push(`lessons/${n}: lessons are lessons/all.md or lessons/<agent id>.md for an agent in agents/`);
-// patterns/<id>.json: layout patterns the owner kept (R53): rooms with their walls, openings and Placements, relative to a corner.
-for (const n of (() => { try { return readdirSync(join(root, "patterns")); } catch { return []; } })()) { if (n === ".gitkeep" || n === "README.md") continue; const rel = `patterns/${n}`;
-  if (!/^[a-z0-9][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a pattern is patterns/<id>.json`); continue; }
-  let p = null; try { p = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON`); continue; }
-  if (p.id !== n.slice(0, -5)) problems.push(`${rel}: its id must be ${n.slice(0, -5)}`); if (!p.name) problems.push(`${rel}: no name`);
-  for (const k of ["nodes", "segments", "openings", "spaces", "placements"]) if (!Array.isArray(p[k])) problems.push(`${rel}: ${k} must be a list`);
-  if (Array.isArray(p.spaces) && !p.spaces.length) problems.push(`${rel}: a pattern has at least one space`); }
-// evals/briefs/<id>.json: replayed briefs (R52): the owner's message and the checks the result must pass; evals/results: what each replay scored.
-const EVAL_CHECKS = ["spaces", "space", "openings", "levels", "placements", "no-errors", "rooms-claimed"];
-for (const n of (() => { try { return readdirSync(join(root, "evals", "briefs")); } catch { return []; } })()) { if (n === ".gitkeep") continue; const rel = `evals/briefs/${n}`;
-  if (!/^[a-z0-9][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a brief is evals/briefs/<id>.json`); continue; }
-  let b = null; try { b = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON`); continue; }
-  if (b.id !== n.slice(0, -5)) problems.push(`${rel}: its id must be ${n.slice(0, -5)}`); if (!b.name || !b.ask) problems.push(`${rel}: needs a name and an ask`);
-  if (!Array.isArray(b.expect) || !b.expect.length) problems.push(`${rel}: needs checks (expect)`); else for (const c of b.expect) if (!EVAL_CHECKS.includes(c.check)) problems.push(`${rel}: unknown check ${c.check} (${EVAL_CHECKS.join(", ")})`); }
-for (const n of (() => { try { return readdirSync(join(root, "evals", "results")); } catch { return []; } })()) { if (n === ".gitkeep") continue; const rel = `evals/results/${n}`;
-  let r = null; try { r = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON`); continue; }
-  if (typeof r.passed !== "number" || typeof r.total !== "number" || !Array.isArray(r.results)) problems.push(`${rel}: a result has passed, total and results`); }
-for (const n of (() => { try { return readdirSync(join(root, "evals")); } catch { return []; } })()) if (!["briefs", "results", "README.md", ".gitkeep"].includes(n)) problems.push(`evals/${n}: evals holds briefs/ and results/`);
-// semantics/<id>.json: the roles a piece of a model's sketch can be given (R62): a behaviour the app has, what it goes on, its values
-const BEHAVIOURS = ["wall", "line", "opening", "room", "slab", "placed", "area", "none"], ON = ["segment", "part", "face", "edge", "node", "point"], VK = ["mm", "number", "text", "choice", "yes-no"];
-for (const n of (() => { try { return readdirSync(join(root, "semantics")); } catch { return []; } })()) { const rel = `semantics/${n}`; if (n === ".gitkeep") continue;
-  if (!/^[a-z][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a role is semantics/<id>.json`); continue; }
+// meanings (R63): what a node, a segment or a face can mean. library/meanings/<id>.json holds functions (what it is: a
+// wall, a door, a plot), semantics/<id>.json positions (where it is in a face: front, own-setback). Each names its category,
+// what it goes on (node, segment, face: a position not a face) and its values.
+const PRIMERS = ["node", "segment", "face"], VK = ["mm", "number", "text", "choice", "yes-no"];
+for (const [dir, cat] of [["semantics", "position"], ["library/meanings", "function"]]) for (const n of (() => { try { return readdirSync(join(root, dir)); } catch { return []; } })()) {
+  const rel = `${dir}/${n}`; if (n === ".gitkeep") continue;
+  if (!/^[a-z][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a meaning is ${dir}/<id>.json`); continue; }
   let r = null; try { r = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch { problems.push(`${rel}: not valid JSON`); continue; }
   if (r.id !== n.replace(/\.json$/, "")) problems.push(`${rel}: id must be ${n.replace(/\.json$/, "")}`);
   if (!String(r.name || "").trim()) problems.push(`${rel}: name is required`);
-  if (!BEHAVIOURS.includes(r.behaviour)) problems.push(`${rel}: behaviour must be one of ${BEHAVIOURS.join(", ")}`);
-  if (!Array.isArray(r.on) || !r.on.length || r.on.some((x) => !ON.includes(x))) problems.push(`${rel}: on must list some of ${ON.join(", ")}`);
+  if (r.category !== cat) problems.push(`${rel}: ${dir} holds ${cat}s: category must be ${cat}`);
+  if (!Array.isArray(r.on) || !r.on.length || r.on.some((x) => !PRIMERS.includes(x))) problems.push(`${rel}: on must list some of ${PRIMERS.join(", ")}`);
+  else if (cat === "position" && r.on.includes("face")) problems.push(`${rel}: a position goes on a member of a face (node or segment), not a face`);
+  if (r.contract != null && !/^[a-z]+(\.[a-z0-9-]+)+$/.test(String(r.contract))) problems.push(`${rel}: contract must be a Library contract (furniture.chair)`);
   for (const [k, v] of Object.entries(r.values || {})) { if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(k)) problems.push(`${rel}: value ${k}: letters and digits only`);
     if (!v || !VK.includes(v.kind)) problems.push(`${rel}: value ${k}: kind must be ${VK.join(", ")}`); else if (v.kind === "choice" && !(Array.isArray(v.options) && v.options.length)) problems.push(`${rel}: value ${k}: a choice needs options`); } }
 // solvers/<id>/<version>.js with its manifest <version>.json (R62 step 3): code that defines solve(input, geo); the manifest says what it reads

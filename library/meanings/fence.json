@@ -1,11 +1,11 @@
 {
-  "id": "beam",
-  "name": "Beam",
-  "behaviour": "line",
+  "id": "fence",
+  "name": "Fence",
+  "category": "function",
   "on": [
     "segment"
   ],
-  "about": "A beam along a line, hanging below the level above.",
+  "about": "A fence along a line.",
   "values": {
     "height": {
       "name": "Height",

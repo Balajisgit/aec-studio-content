@@ -1,0 +1,10 @@
+{
+  "id": "rear",
+  "name": "Rear",
+  "category": "position",
+  "on": [
+    "segment"
+  ],
+  "about": "The edge of a plot facing away from its front. Worked out from Front; set it by hand only where that guess is wrong.",
+  "values": {}
+}

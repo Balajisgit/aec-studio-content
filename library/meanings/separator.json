@@ -1,7 +1,7 @@
 {
   "id": "separator",
   "name": "Room separator",
-  "behaviour": "line",
+  "category": "function",
   "on": [
     "segment"
   ],

@@ -1,11 +1,11 @@
 {
   "id": "door",
   "name": "Door",
-  "behaviour": "opening",
+  "category": "function",
   "on": [
-    "part"
+    "segment"
   ],
-  "about": "A door on part of a wall.",
+  "about": "A door: the piece of a line between its jambs.",
   "values": {
     "height": {
       "name": "Height",

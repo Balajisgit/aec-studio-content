@@ -1,0 +1,10 @@
+{
+  "id": "gate",
+  "name": "Gate",
+  "category": "function",
+  "on": [
+    "segment"
+  ],
+  "about": "A gate: the piece of a fence or boundary line it fills.",
+  "values": {}
+}

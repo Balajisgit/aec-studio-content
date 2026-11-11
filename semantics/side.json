@@ -1,0 +1,10 @@
+{
+  "id": "side",
+  "name": "Side",
+  "category": "position",
+  "on": [
+    "segment"
+  ],
+  "about": "An edge of a plot between its front and rear. Worked out from Front; set it by hand only where that guess is wrong.",
+  "values": {}
+}

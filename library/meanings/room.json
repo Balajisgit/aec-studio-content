@@ -1,7 +1,7 @@
 {
   "id": "room",
   "name": "Room",
-  "behaviour": "room",
+  "category": "function",
   "on": [
     "face"
   ],

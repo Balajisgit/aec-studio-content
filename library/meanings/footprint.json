@@ -1,0 +1,27 @@
+{
+  "id": "footprint",
+  "name": "Footprint",
+  "category": "function",
+  "on": [
+    "face"
+  ],
+  "about": "Where the building stands on the plot: a face, nothing built yet. Fit to plot draws one; walls come later.",
+  "values": {
+    "width": {
+      "name": "Width",
+      "kind": "mm",
+      "min": 0
+    },
+    "depth": {
+      "name": "Depth",
+      "kind": "mm",
+      "min": 0
+    },
+    "angle": {
+      "name": "Angle (\u00b0)",
+      "kind": "number",
+      "min": 0,
+      "max": 180
+    }
+  }
+}

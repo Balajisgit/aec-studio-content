@@ -1,7 +1,7 @@
 {
   "id": "column-position",
   "name": "Column position",
-  "behaviour": "none",
+  "category": "function",
   "on": [
     "node"
   ],

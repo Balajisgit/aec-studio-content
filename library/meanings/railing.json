@@ -1,7 +1,7 @@
 {
   "id": "railing",
   "name": "Railing",
-  "behaviour": "line",
+  "category": "function",
   "on": [
     "segment"
   ],

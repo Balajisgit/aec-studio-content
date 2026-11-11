@@ -1,7 +1,7 @@
 {
   "id": "parking-bay",
   "name": "Parking bay",
-  "behaviour": "area",
+  "category": "function",
   "on": [
     "face"
   ],
