@@ -1,0 +1,10 @@
+{
+  "id": "stair",
+  "name": "Stair",
+  "category": "function",
+  "on": [
+    "node"
+  ],
+  "about": "A stair at a point, rising to the level above. Its flights and size come from the Library Object it carries.",
+  "values": {}
+}

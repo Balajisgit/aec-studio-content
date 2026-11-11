@@ -1,0 +1,10 @@
+{
+  "id": "furniture",
+  "name": "Furniture",
+  "category": "function",
+  "on": [
+    "node"
+  ],
+  "about": "A piece of furniture standing at a point: a chair, a bed, a wardrobe. Which one, and its size, come from the Library Object it carries; the point says where it stands and which way it faces.",
+  "values": {}
+}

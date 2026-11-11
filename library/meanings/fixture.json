@@ -1,0 +1,10 @@
+{
+  "id": "fixture",
+  "name": "Fixture",
+  "category": "function",
+  "on": [
+    "node"
+  ],
+  "about": "A fixture at a point: a basin, a WC, a light. Which one comes from the Library Object it carries.",
+  "values": {}
+}
