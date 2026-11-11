@@ -66,7 +66,7 @@ _The open requests (requests/ in the content repository)._
 - R69 · Easy drawing 2/5: typed lengths, live dimensions, edit a dimension (in aec-studio#86)
 - R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes (in aec-studio#87)
 - R71 · Easy drawing 4/5: box select, set on all, Match (in aec-studio#88)
-- R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection
+- R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection (in aec-studio#89)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
