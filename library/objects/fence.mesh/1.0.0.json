@@ -1,0 +1,62 @@
+{
+  "id": "fence.mesh@1.0.0",
+  "name": "Mesh fence",
+  "contract": "fence.mesh",
+  "role": "fence",
+  "on": "segment",
+  "meaning": "fence",
+  "about": "A mesh fence along its line, one thickness from the ground to its height; it runs on into the fences it meets at a corner.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "height": 1500,
+    "thickness": 50
+  },
+  "limits": {
+    "height": {
+      "min": 300,
+      "max": 4000,
+      "step": 50
+    },
+    "thickness": {
+      "min": 10,
+      "max": 300,
+      "step": 5
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "fence",
+      "shape": "rect",
+      "style": "hidden",
+      "at": [
+        "(end_ext - start_ext) / 2",
+        "0"
+      ],
+      "size": [
+        "length + start_ext + end_ext",
+        "thickness"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "fence",
+      "shape": "box",
+      "slot": "metal",
+      "at": [
+        "(end_ext - start_ext) / 2",
+        "0",
+        "0"
+      ],
+      "size": [
+        "length + start_ext + end_ext",
+        "thickness",
+        "height"
+      ]
+    }
+  ]
+}

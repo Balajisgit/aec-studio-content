@@ -1,0 +1,61 @@
+{
+  "id": "wall.brick-230@1.0.0",
+  "name": "Brick wall 230",
+  "contract": "wall.brick-230",
+  "role": "wall",
+  "on": "segment",
+  "meaning": "wall",
+  "about": "A brick wall, one thickness from floor to its height; it runs on into the walls it meets at a corner.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 230,
+    "height": 3000
+  },
+  "limits": {
+    "thickness": {
+      "min": 100,
+      "max": 1000,
+      "step": 5
+    },
+    "height": {
+      "min": 300,
+      "max": 30000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "wall",
+      "shape": "rect",
+      "style": "fill",
+      "at": [
+        "(end_ext - start_ext) / 2",
+        "0"
+      ],
+      "size": [
+        "length + start_ext + end_ext",
+        "thickness"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "wall",
+      "shape": "box",
+      "at": [
+        "(end_ext - start_ext) / 2",
+        "0",
+        "0"
+      ],
+      "size": [
+        "length + start_ext + end_ext",
+        "thickness",
+        "height"
+      ]
+    }
+  ]
+}

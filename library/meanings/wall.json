@@ -5,36 +5,8 @@
   "on": [
     "segment"
   ],
-  "about": "A wall on a line: it has a thickness and a height, joins the walls it meets and bounds rooms.",
+  "about": "A wall on a line. How it is built (its thickness and height) comes from the Library Object it carries.",
   "values": {
-    "thickness": {
-      "name": "Thickness",
-      "kind": "mm",
-      "default": 200,
-      "min": 10,
-      "max": 2000
-    },
-    "height": {
-      "name": "Height",
-      "kind": "mm",
-      "min": 100,
-      "max": 30000
-    },
-    "baseOffset": {
-      "name": "Base offset",
-      "kind": "mm",
-      "min": -10000,
-      "max": 10000
-    },
-    "justification": {
-      "name": "Justification",
-      "kind": "choice",
-      "options": [
-        "centre",
-        "left",
-        "right"
-      ]
-    },
     "isExternal": {
       "name": "External",
       "kind": "yes-no"

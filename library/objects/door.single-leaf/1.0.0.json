@@ -1,0 +1,97 @@
+{
+  "id": "door.single-leaf@1.0.0",
+  "name": "Single-leaf door",
+  "contract": "door.single-leaf",
+  "role": "door",
+  "on": "segment",
+  "meaning": "door",
+  "about": "A hinged door filling its line: the leaf, its swing in plan, and the wall it stands in carried on above it.",
+  "length": {
+    "default": 900,
+    "min": 600,
+    "max": 1500
+  },
+  "params": {
+    "height": 2100,
+    "hinge": "start",
+    "swing": "left"
+  },
+  "limits": {
+    "height": {
+      "min": 1800,
+      "max": 3000,
+      "step": 50
+    },
+    "hinge": {
+      "options": [
+        "start",
+        "end"
+      ]
+    },
+    "swing": {
+      "options": [
+        "left",
+        "right"
+      ]
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "leaf",
+      "shape": "line",
+      "from": [
+        "hinge == 'start' ? -length / 2 : length / 2",
+        "0"
+      ],
+      "to": [
+        "hinge == 'start' ? -length / 2 : length / 2",
+        "swing == 'left' ? length : -length"
+      ]
+    },
+    {
+      "name": "swing",
+      "shape": "arc",
+      "style": "thin",
+      "at": [
+        "hinge == 'start' ? -length / 2 : length / 2",
+        "0"
+      ],
+      "r": "length",
+      "start": "hinge == 'start' ? (swing == 'left' ? 0 : 270) : (swing == 'left' ? 90 : 180)",
+      "end": "(hinge == 'start' ? (swing == 'left' ? 0 : 270) : (swing == 'left' ? 90 : 180)) + 90"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "leaf",
+      "shape": "box",
+      "slot": "wood",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "40",
+        "height"
+      ]
+    },
+    {
+      "name": "wall above",
+      "shape": "box",
+      "slot": "host",
+      "when": "host_thickness > 0 && host_height > height",
+      "at": [
+        "0",
+        "0",
+        "height"
+      ],
+      "size": [
+        "length",
+        "host_thickness",
+        "host_height - height"
+      ]
+    }
+  ]
+}
