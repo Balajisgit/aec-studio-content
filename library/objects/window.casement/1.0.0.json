@@ -1,0 +1,106 @@
+{
+  "id": "window.casement@1.0.0",
+  "name": "Casement window",
+  "contract": "window.casement",
+  "role": "window",
+  "on": "segment",
+  "meaning": "window",
+  "about": "A glazed window filling its line between its sill and head, with the wall it stands in carried on below and above it.",
+  "length": {
+    "default": 1200,
+    "min": 300,
+    "max": 4000
+  },
+  "params": {
+    "height": 1200,
+    "sill": 900
+  },
+  "limits": {
+    "height": {
+      "min": 300,
+      "max": 3000,
+      "step": 50
+    },
+    "sill": {
+      "min": 0,
+      "max": 2400,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "frame",
+      "shape": "rect",
+      "style": "thin",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "host_thickness > 0 ? host_thickness : 100"
+      ]
+    },
+    {
+      "name": "glass",
+      "shape": "line",
+      "from": [
+        "-length / 2",
+        "0"
+      ],
+      "to": [
+        "length / 2",
+        "0"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "glass",
+      "shape": "box",
+      "slot": "glass",
+      "at": [
+        "0",
+        "0",
+        "sill"
+      ],
+      "size": [
+        "length",
+        "20",
+        "height"
+      ]
+    },
+    {
+      "name": "wall below",
+      "shape": "box",
+      "slot": "host",
+      "when": "host_thickness > 0 && sill > 0",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "host_thickness",
+        "sill"
+      ]
+    },
+    {
+      "name": "wall above",
+      "shape": "box",
+      "slot": "host",
+      "when": "host_thickness > 0 && host_height > sill + height",
+      "at": [
+        "0",
+        "0",
+        "sill + height"
+      ],
+      "size": [
+        "length",
+        "host_thickness",
+        "host_height - sill - height"
+      ]
+    }
+  ]
+}

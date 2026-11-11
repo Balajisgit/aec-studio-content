@@ -1,0 +1,61 @@
+{
+  "id": "wall.partition-115@1.0.0",
+  "name": "Partition wall 115",
+  "contract": "wall.partition-115",
+  "role": "wall",
+  "on": "segment",
+  "meaning": "wall",
+  "about": "A half-brick or block partition, one thickness from floor to its height; it runs on into the walls it meets at a corner.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 115,
+    "height": 3000
+  },
+  "limits": {
+    "thickness": {
+      "min": 50,
+      "max": 300,
+      "step": 5
+    },
+    "height": {
+      "min": 300,
+      "max": 30000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "wall",
+      "shape": "rect",
+      "style": "fill",
+      "at": [
+        "(end_ext - start_ext) / 2",
+        "0"
+      ],
+      "size": [
+        "length + start_ext + end_ext",
+        "thickness"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "wall",
+      "shape": "box",
+      "at": [
+        "(end_ext - start_ext) / 2",
+        "0",
+        "0"
+      ],
+      "size": [
+        "length + start_ext + end_ext",
+        "thickness",
+        "height"
+      ]
+    }
+  ]
+}

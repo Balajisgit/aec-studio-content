@@ -1,0 +1,69 @@
+{
+  "id": "gate.swing@1.0.0",
+  "name": "Swing gate",
+  "contract": "gate.swing",
+  "role": "gate",
+  "on": "segment",
+  "meaning": "gate",
+  "about": "A gate filling its line in a fence or a boundary: one leaf, drawn across in plan.",
+  "length": {
+    "default": 3000,
+    "min": 600,
+    "max": 8000
+  },
+  "params": {
+    "height": 1500
+  },
+  "limits": {
+    "height": {
+      "min": 600,
+      "max": 4000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "gate",
+      "shape": "rect",
+      "style": "outline",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "60"
+      ]
+    },
+    {
+      "name": "brace",
+      "shape": "line",
+      "style": "thin",
+      "from": [
+        "-length / 2",
+        "-30"
+      ],
+      "to": [
+        "length / 2",
+        "30"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "leaf",
+      "shape": "box",
+      "slot": "metal",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "50",
+        "height"
+      ]
+    }
+  ]
+}

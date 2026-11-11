@@ -5,21 +5,6 @@
   "on": [
     "segment"
   ],
-  "about": "A door: the piece of a line between its jambs.",
-  "values": {
-    "height": {
-      "name": "Height",
-      "kind": "mm",
-      "default": 2100,
-      "min": 500,
-      "max": 6000
-    },
-    "sill": {
-      "name": "Sill",
-      "kind": "mm",
-      "default": 0,
-      "min": 0,
-      "max": 3000
-    }
-  }
+  "about": "A door: the piece of a line between its jambs. Its leaf and height come from the Library Object it carries.",
+  "values": {}
 }
