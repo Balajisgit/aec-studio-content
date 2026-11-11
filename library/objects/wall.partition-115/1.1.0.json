@@ -1,0 +1,53 @@
+{
+  "id": "wall.partition-115@1.1.0",
+  "name": "Partition wall 115",
+  "contract": "wall.partition-115",
+  "role": "wall",
+  "on": "segment",
+  "meaning": "wall",
+  "about": "A half-brick or block partition, one thickness from floor to its height. Where it meets other walls the Studio joins them: a mitre at a corner, the through wall carrying on at a T.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 115,
+    "height": 3000
+  },
+  "limits": {
+    "thickness": {
+      "min": 50,
+      "max": 300,
+      "step": 5
+    },
+    "height": {
+      "min": 300,
+      "max": 30000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "style": "fill",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ],
+      "z": "0",
+      "height": "height"
+    }
+  ]
+}
