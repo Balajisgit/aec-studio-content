@@ -1,0 +1,54 @@
+{
+  "id": "fence.mesh@1.1.0",
+  "name": "Mesh fence",
+  "contract": "fence.mesh",
+  "role": "fence",
+  "on": "segment",
+  "meaning": "fence",
+  "about": "A mesh fence along its line, one thickness from the ground to its height. Where it meets other fences the Studio joins them.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "height": 1500,
+    "thickness": 50
+  },
+  "limits": {
+    "height": {
+      "min": 300,
+      "max": 4000,
+      "step": 50
+    },
+    "thickness": {
+      "min": 10,
+      "max": 300,
+      "step": 5
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "fence",
+      "shape": "band",
+      "style": "hidden",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "fence",
+      "shape": "band",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ],
+      "z": "0",
+      "height": "height",
+      "slot": "metal"
+    }
+  ]
+}
