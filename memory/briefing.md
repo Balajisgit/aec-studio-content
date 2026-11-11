@@ -65,6 +65,7 @@ _The open requests (requests/ in the content repository)._
 - R68 · Easy drawing 1/5: draw-as presets and house defaults (as templates in content)
 - R69 · Easy drawing 2/5: typed lengths, live dimensions, edit a dimension
 - R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes
+- R71 · Easy drawing 4/5: box select, set on all, Match
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
