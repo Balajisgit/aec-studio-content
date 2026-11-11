@@ -60,7 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R59 · requetst
 - R61 · project
 - R63 · Primers and meanings: nodes, segments and faces with roles by category; functions from the Library; walls, doors and windows out of the kernel (in aec-studio#71)
-- R64 · Attach Objects to meanings: Library Objects give primers their real geometry and parameters (walls, doors, windows on segments; slabs and rooms on faces; furniture and columns on nodes)
+- R64 · Attach Objects to meanings: Library Objects give primers their real geometry and parameters (walls, doors, windows on segments; slabs and rooms on faces; furniture and columns on nodes) (planned)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
