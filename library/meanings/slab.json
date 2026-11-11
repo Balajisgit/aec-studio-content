@@ -5,21 +5,6 @@
   "on": [
     "face"
   ],
-  "about": "A floor or roof plate over a face.",
-  "values": {
-    "thickness": {
-      "name": "Thickness",
-      "kind": "mm",
-      "default": 200,
-      "min": 50,
-      "max": 2000
-    },
-    "offset": {
-      "name": "Offset",
-      "kind": "mm",
-      "default": 0,
-      "min": -5000,
-      "max": 5000
-    }
-  }
+  "about": "A floor or roof plate over a face. Its thickness and how far it reaches come from the Library Object it carries.",
+  "values": {}
 }
