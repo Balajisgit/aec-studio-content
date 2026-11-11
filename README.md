@@ -29,6 +29,8 @@ docs/<id>.md                      guides shown on the app's Docs page; each says
 scripts/<name>/<version>.js       platform scripts (with a manifest .json) that run on PCs' Helpers; a firm's own live in its layer
 solvers/<id>/<version>.js          a solver (R62): solve(input, geo) gives candidates from a model's roles; with its manifest <version>.json; runs on the server, locked down
 semantics/<id>.json               positions: where a line or point is in a face (front, rear, side, own-setback), what it goes on, its values (R63)
+templates/<id>/<version>.json      house defaults (R68): draw-as presets, house rules (outer and inner walls, every room a Room + Slab),
+                                  the usual openings and floor height; templates/default.json names the one new projects follow
 library/meanings/<id>.json        functions: what a node, line or face is (wall, door, gate, room, plot…), one per primer, picked from the Library (R63); a firm adds its own in its layer
 settings.json                     shared settings: models per tier; library.review (quick review of Library proposals: off, unsure, always)
 checks/validate.js                this repository's automatic check

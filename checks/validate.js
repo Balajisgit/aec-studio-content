@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { settingProblem } from "./settings.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", ".."), problems = [];
-const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "docs", "scripts", "semantics", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
+const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "docs", "scripts", "semantics", "templates", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
 for (const n of readdirSync(root)) if (!n.startsWith(".git") && !TOP.has(n)) problems.push(`${n}: not part of the content layout (see README.md)`);
 const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n === "node_modules") continue; const f = join(d, n); if (statSync(f).isDirectory()) walk(f); else if (n.endsWith(".json")) {
   try { JSON.parse(readFileSync(f, "utf8")); } catch (e) { problems.push(`${relative(root, f).split(sep).join("/")}: not valid JSON (${e.message})`); } } } };
@@ -51,6 +51,17 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
       if (o.meaning == null) problems.push(`${rel}: an Object on a segment says which meaning it is for (meaning)`);
       if (!(Number.isInteger(l.min) && Number.isInteger(l.max) && Number.isInteger(l.default) && 0 < l.min && l.min <= l.default && l.default <= l.max)) problems.push(`${rel}: an Object on a segment needs length {default, min, max} in whole mm`); }
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/objects: ${e.message}`); }
+// templates/<id>/<version>.json (R68): house defaults; every Object they name is in the Library, every meaning exists.
+try { const td = join(root, "templates");
+  for (const id of readdirSync(td)) { const dir = join(td, id); if (id === "default.json") { try { const d = JSON.parse(readFileSync(dir, "utf8")); if (!existsSync(join(td, String(d.template)))) problems.push(`templates/default.json: there is no template ${d.template}`); } catch (e) { problems.push(`templates/default.json: ${e.message}`); } continue; }
+    if (!statSync(dir).isDirectory()) { problems.push(`templates/${id}: a template lives in a folder per id`); continue; }
+    for (const v of readdirSync(dir)) { const rel = `templates/${id}/${v}`; let t; try { t = JSON.parse(readFileSync(join(dir, v), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
+      if (t.id !== `${id}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${id}@${v.slice(0, -5)}`);
+      const refs = [...(t.presets || []), ...((t.rules && t.rules.faces) || [])].map((p) => p.objectRef).concat(Object.values(t.openings || {})).filter(Boolean);
+      for (const r of refs) { const [c, ver] = String(r).split("@"); if (!existsSync(join(root, "library", "objects", c, `${ver}.json`))) problems.push(`${rel}: there is no Library Object ${r}`); }
+      for (const p of [...(t.presets || []), ...((t.rules && t.rules.faces) || [])]) if (p.role && !existsSync(join(root, "library", "meanings", `${p.role}.json`))) problems.push(`${rel}: there is no meaning ${p.role}`);
+      const ids = new Set((t.presets || []).map((p) => p.id)); const L = t.rules && t.rules.lines; if (L) for (const k of ["outer", "inner"]) if (!ids.has(L[k])) problems.push(`${rel}: rules.lines.${k} must name a preset`); } }
+} catch (e) { if (e.code !== "ENOENT") problems.push(`templates: ${e.message}`); }
 // library/proposals/<contract>@<version>.json: records the app commits when the owner proposes a Project Object; the
 // library-proposals Action turns each into a pull request that adds it to library/objects/ and removes the record.
 // library/origins/<contract>/<version>.json: where an Object came from; its id matches the path and the Object is there.
