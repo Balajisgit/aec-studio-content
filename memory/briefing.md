@@ -64,7 +64,7 @@ _The open requests (requests/ in the content repository)._
 - R67 · Move the 2.x/3.0 kernel into kernel/legacy/ (kept only to open, replay and convert older projects) (in aec-studio#84)
 - R68 · Easy drawing 1/5: draw-as presets and house defaults (as templates in content) (in aec-studio#85)
 - R69 · Easy drawing 2/5: typed lengths, live dimensions, edit a dimension (in aec-studio#86)
-- R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes
+- R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes (in aec-studio#87)
 - R71 · Easy drawing 4/5: box select, set on all, Match
 - R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection
 
