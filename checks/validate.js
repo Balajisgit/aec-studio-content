@@ -144,15 +144,20 @@ for (const n of (() => { try { return readdirSync(join(root, "evals", "results")
   let r = null; try { r = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON`); continue; }
   if (typeof r.passed !== "number" || typeof r.total !== "number" || !Array.isArray(r.results)) problems.push(`${rel}: a result has passed, total and results`); }
 for (const n of (() => { try { return readdirSync(join(root, "evals")); } catch { return []; } })()) if (!["briefs", "results", "README.md", ".gitkeep"].includes(n)) problems.push(`evals/${n}: evals holds briefs/ and results/`);
-// semantics/<id>.json: the roles a piece of a model's sketch can be given (R62): a behaviour the app has, what it goes on, its values
-const BEHAVIOURS = ["wall", "line", "opening", "room", "slab", "placed", "area", "none"], ON = ["segment", "part", "face", "edge", "node", "point"], VK = ["mm", "number", "text", "choice", "yes-no"];
-for (const n of (() => { try { return readdirSync(join(root, "semantics")); } catch { return []; } })()) { const rel = `semantics/${n}`; if (n === ".gitkeep") continue;
-  if (!/^[a-z][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a role is semantics/<id>.json`); continue; }
+// meanings (R63): what a node, a segment or a face can mean. library/meanings/<id>.json holds functions (what it is: a
+// wall, a door, a plot), semantics/<id>.json positions (where it is in a face: front, own-setback). Each names its category,
+// what it goes on (node, segment, face: a position not a face) and its values.
+const PRIMERS = ["node", "segment", "face"], VK = ["mm", "number", "text", "choice", "yes-no"];
+for (const [dir, cat] of [["semantics", "position"], ["library/meanings", "function"]]) for (const n of (() => { try { return readdirSync(join(root, dir)); } catch { return []; } })()) {
+  const rel = `${dir}/${n}`; if (n === ".gitkeep") continue;
+  if (!/^[a-z][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a meaning is ${dir}/<id>.json`); continue; }
   let r = null; try { r = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch { problems.push(`${rel}: not valid JSON`); continue; }
   if (r.id !== n.replace(/\.json$/, "")) problems.push(`${rel}: id must be ${n.replace(/\.json$/, "")}`);
   if (!String(r.name || "").trim()) problems.push(`${rel}: name is required`);
-  if (!BEHAVIOURS.includes(r.behaviour)) problems.push(`${rel}: behaviour must be one of ${BEHAVIOURS.join(", ")}`);
-  if (!Array.isArray(r.on) || !r.on.length || r.on.some((x) => !ON.includes(x))) problems.push(`${rel}: on must list some of ${ON.join(", ")}`);
+  if (r.category !== cat) problems.push(`${rel}: ${dir} holds ${cat}s: category must be ${cat}`);
+  if (!Array.isArray(r.on) || !r.on.length || r.on.some((x) => !PRIMERS.includes(x))) problems.push(`${rel}: on must list some of ${PRIMERS.join(", ")}`);
+  else if (cat === "position" && r.on.includes("face")) problems.push(`${rel}: a position goes on a member of a face (node or segment), not a face`);
+  if (r.contract != null && !/^[a-z]+(\.[a-z0-9-]+)+$/.test(String(r.contract))) problems.push(`${rel}: contract must be a Library contract (furniture.chair)`);
   for (const [k, v] of Object.entries(r.values || {})) { if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(k)) problems.push(`${rel}: value ${k}: letters and digits only`);
     if (!v || !VK.includes(v.kind)) problems.push(`${rel}: value ${k}: kind must be ${VK.join(", ")}`); else if (v.kind === "choice" && !(Array.isArray(v.options) && v.options.length)) problems.push(`${rel}: value ${k}: a choice needs options`); } }
 // solvers/<id>/<version>.js with its manifest <version>.json (R62 step 3): code that defines solve(input, geo); the manifest says what it reads

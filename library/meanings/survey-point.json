@@ -1,7 +1,7 @@
 {
   "id": "survey-point",
   "name": "Survey point",
-  "behaviour": "none",
+  "category": "function",
   "on": [
     "node"
   ],

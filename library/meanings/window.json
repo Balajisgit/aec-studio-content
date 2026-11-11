@@ -1,11 +1,11 @@
 {
   "id": "window",
   "name": "Window",
-  "behaviour": "opening",
+  "category": "function",
   "on": [
-    "part"
+    "segment"
   ],
-  "about": "A window on part of a wall.",
+  "about": "A window: the piece of a line it fills.",
   "values": {
     "height": {
       "name": "Height",

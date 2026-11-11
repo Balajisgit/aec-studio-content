@@ -1,9 +1,9 @@
 {
   "id": "own-setback",
   "name": "Own setback",
-  "behaviour": "none",
+  "category": "position",
   "on": [
-    "edge"
+    "segment"
   ],
   "about": "An edge of a plot with its own setback, instead of the front, rear or side one.",
   "values": {

@@ -1,7 +1,7 @@
 {
   "id": "wall",
   "name": "Wall",
-  "behaviour": "wall",
+  "category": "function",
   "on": [
     "segment"
   ],

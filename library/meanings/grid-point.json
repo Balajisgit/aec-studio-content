@@ -1,7 +1,7 @@
 {
   "id": "grid-point",
   "name": "Grid point",
-  "behaviour": "none",
+  "category": "function",
   "on": [
     "node"
   ],

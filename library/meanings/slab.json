@@ -1,7 +1,7 @@
 {
   "id": "slab",
   "name": "Slab",
-  "behaviour": "slab",
+  "category": "function",
   "on": [
     "face"
   ],
