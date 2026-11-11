@@ -59,7 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R58 · requests · from project test1
 - R59 · requetst
 - R61 · project
-- R63 · Primers and meanings: nodes, segments and faces with roles by category; functions from the Library; walls, doors and windows out of the kernel
+- R63 · Primers and meanings: nodes, segments and faces with roles by category; functions from the Library; walls, doors and windows out of the kernel (in aec-studio#71)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
