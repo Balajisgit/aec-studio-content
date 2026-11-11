@@ -95,3 +95,9 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-10 · Session 31** — Owner: improving the app is either code or a pipeline; docs as "Two documents - one for platform users and another for firms. Both enabled in Builderpluss and only one in firms account", in "a docs tab in the app next to storage updated from git content".
 - **2026-11-10 · Session 31** — Owner: "Request to BuilderPluss" that the platform's people see, without showing the firm the internal list.
 - **2026-11-10 · Session 31** — Owner on Fit to plot: "Any angle, best area"; setbacks "Front, rear and sides"; plot input "all three above" (canvas, coordinates or survey file read by an agent, notes); result "Outer walls on the ground floor".
+- **2026-11-11 · Session 32** — Owner on R62: "model should have - three layers - geometric, semantic and paarmetric and solver should be pipeline code - no app code".
+- **2026-11-11 · Session 32** — Owner on R63: "nodes, segments and faces are the primers. kernel draws only these with meanings - as of now. next will attach objects".
+- **2026-11-11 · Session 32** — Owner: "remove door, window and wall if it has. these should be in the library and attached as a role. roles dropdown - give option as select form library".
+- **2026-11-11 · Session 32** — Owner's answers for R63: existing projects "convert them - i agree", status "later", member meanings "Automatic", "One function per primer", functions from the Library "as u suggested".
+- **2026-11-11 · Session 32** — Owner on features resting on walls: "Remove them now"; shipping: "Stacked PRs, staging, merge together".
+- **2026-11-11 · Session 32** — Owner on faces: "Made it auto detect and form" (the Face tool removed).

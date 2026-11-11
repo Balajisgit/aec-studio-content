@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 32._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 33._
 
 ## What this is
 
@@ -76,6 +76,27 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 32 · 2026-11-11 · The model becomes primers and meanings: R62's three layers shipped, then R63 (model 4.0) built and on staging
+R62 shipped and runs on production: geometry, roles and Objects, with solvers in content and a Run tab on the canvas. R63 then made the kernel draw only nodes, segments and faces with their meanings. That is four stacked PRs plus content #35, all on staging and waiting for the owner's merge. Faces now form by themselves.
+
+Done:
+- R62 (model 3.0) merged (#63 to #70), live on production: three layers, sandboxed solvers in content (fit-max-rectangle), Run tab on the canvas, plot face with setback line, staging reads its own content branch, records go only to content main (#70).
+- R63 recorded, then built as stacked PRs: #71 model 4.0 kernel (nodes, segments, faces; roles by category; members worked out; old projects convert in one logged step), #72 meanings from the Library, #73 canvas, #74 pipelines.
+- Canvas 4.0: Select, Line and Point tools. The inspector shows function ("From the Library…"), positions per face and greyed worked-out meanings. The plan draws each primer by what it means.
+- Faces form by themselves: every area the lines close becomes a face. A line across a bare face splits it; a face with a meaning stays (faces_from_lines auto).
+- Fit to plot 3.0 draws the pick as a face with the Footprint function, nothing built (solver fit-max-rectangle 2.0.0); the Site reader draws lines and a plot face.
+- Content #35: functions moved to library/meanings (gate and footprint added), positions in semantics (rear and side added, plot-corner dropped), make-object 1.4.0 and brief-to-library 1.5.0 without placing, patterns/ and evals/ removed.
+- Removed from the app: layout patterns, Canvas13, the 3D wall view, placing made Objects, the chat's plan previews, studio brief replays.
+- Staging runs the whole set (app f10ec3d, content staging = r63-meanings). R63 marked in-pr.
+
+Decided:
+- Owner on R62: "model should have - three layers - geometric, semantic and paarmetric and solver should be pipeline code - no app code".
+- Owner on R63: "nodes, segments and faces are the primers. kernel draws only these with meanings - as of now. next will attach objects".
+- Owner: "remove door, window and wall if it has. these should be in the library and attached as a role. roles dropdown - give option as select form library".
+- Owner's answers for R63: existing projects "convert them - i agree", status "later", member meanings "Automatic", "One function per primer", functions from the Library "as u suggested".
+- Owner on features resting on walls: "Remove them now"; shipping: "Stacked PRs, staging, merge together".
+- Owner on faces: "Made it auto detect and form" (the Face tool removed).
 
 ### Session 31 · 2026-11-10 · The Helper runs PC apps and firm scripts, a Docs tab, staging live, and Fit to plot (R60)
 Firms' apps and scripts run on their own Helper (R21 step 2c); the Studio gained a Docs tab with guides for the platform and for firms, plus requests and offers to BuilderPluss; staging went live; Fit to plot fits the largest rectangle at any angle inside a plot's setbacks and draws it as the ground floor's outer walls, now deployed with the fixes from its first live run.
@@ -167,29 +188,9 @@ Decided:
 - Owner: "drop it" for the request files extra (branch request-files left on GitHub; delete by hand).
 - Owner merged app #17-#28 ("Merge 18", "Merge it", "merge 25", "ok merge", "merge all in order") and content #10, #11, #15-#17, #19.
 
-### Session 27 · 2026-11-03 · Library proposals: Project Objects reach the Library with one tap; the review setting and its button
-Project Objects now reach the Library without a chat: the app suggests them, one tap sends a pull request, and projects switch to the Library version after the merge. The quick review setting is shown and changed from the Studio page by pull request.
-
-Done:
-- Proposals (app #13, content #5, merged): suggest, propose with one tap, duplicate check and naming by role, record turned into a pull request by a content Action; swap_object switches a project to the Library version (undoable).
-- Quick review by Claude (quick tier) only when the code is unsure; setting library.review (off, unsure, always), written in settings.json (content #7) and shown on the Studio page (app #14).
-- Studio page button: Ask to change the review setting; a settings request becomes a pull request (app #16, content #9); chat tool settings_request for the models too.
-- First real proposals merged: Kitchen counter (content #6, furniture.kitchen-counter@1.0.0, review flagged loose hob limits) and Fridge (content #8).
-- Online preview fixed (app #15: the Library's PC side moved to store.js, guard test against Node imports) and republished at app 4d1ce5b, content ac909ef.
-- Fixed a flaky test: importing a project kept its notes' order when two share the same millisecond (in app #14).
-- Explained the Library manager, the kernel check (plain code, no tokens) and Object sizes (about 1.5 to 2.8 KB each in Git).
-- Checks: 57 tests, smoke, browser checks at phone width; stand-in GitHub runs of both Actions; GitHub checks green on every pull request.
-
-Decided:
-- Owner: "ok build this." (proposals: the app suggests, one tap proposes, a record that a GitHub Action turns into a pull request; review only when unsure).
-- Owner: "ok how to give", then push access to aec-studio-content granted to this chat.
-- Owner: "ok" to writing library.review into settings.json and showing it on the Studio page.
-- Owner: "ok" to a button for the setting that sends a pull request (option 1), not a direct change.
-- Owner merged app #13 to #16 and content #5 to #9, including the Kitchen counter (#6) as proposed, despite the review's notes.
-- Owner: "update the studio 6 artifact too", then "update the artifact".
-
 ## Earlier sessions
 
+- **27** · 2026-11-03 · Library proposals: Project Objects reach the Library with one tap; the review setting and its button — Project Objects now reach the Library without a chat: the app suggests them, one tap sends a pull request, and projects switch to the Library version after the merge. The quick review setting is shown and changed from the Studio page by pull request.
 - **26** · 2026-11-03 · Project discussions stay with the project: project notes; online preview kept current — Shared memory now holds only shared work: project chats keep a note with the project on the PC (app PR #12, merged), and the online preview was rebuilt twice from the latest main.
 - **25** · 2026-11-02 · New project test1, a 1 BHK plan, furniture and kitchen/bathroom fittings — Created test1, drew an 8 m × 7 m 1 BHK, furnished it from the Library, then made 5 kitchen and bathroom fittings as Project Objects and placed them.
 - **24** · 2026-11-02 · Phases 4, 5 and 6 built: Library, Pipelines, Files and Storage; online preview — All six phases are now on main: the Library with checked Objects, pipelines that run stages with checks and owner decisions (Brief to Library, Make an Object), Files and Storage; and an online preview artifact built from both repositories.
