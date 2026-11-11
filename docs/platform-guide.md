@@ -18,7 +18,7 @@ Every improvement is one of three kinds. Knowing which one a change needs is mos
 |---|---|---|---|
 | **Code** | What the app **can** do | The app repository (`Balajisgit/aec-studio`) | The kernel and its operations; tools agents use; the logic of checks; code stages; pages; the Helper; security; hosting |
 | **Knowledge** | **How** the work is done with what the app can do | The content repository (`Balajisgit/aec-studio-content`) for the platform; each firm's own layer for that firm | Pipelines, agents' instructions, which checks a stage uses, Library Objects, layout patterns, lessons, scripts |
-| **Feedback** | Knowledge grows **from use** | Made by the app, confirmed by a person | Corrections become lesson proposals; repeated ones become rule requests; kept patterns; Project Objects suggested for the Library |
+| **Feedback** | Knowledge grows **from use** | Made by the app, confirmed by a person | Corrections become lesson proposals; repeated ones become rule requests; Project Objects suggested for the Library |
 
 **The rule of thumb**
 
@@ -39,7 +39,7 @@ That is the line between *changed* and *improved*.
 | **Platform Owner** | Balaji | Anything | Sets priorities; decides; merges code and platform knowledge; approves support access in an emergency; reviews access every 90 days |
 | **Ops** | Balaji | Capacity, cost, incidents | The server, deploys (the GitHub *deploy* action), backups and off-site copies, staging, keys and secrets |
 | **Developer** | Bikal | Capabilities the code lacks | Code, by pull request, tried on staging, merged by the Platform Owner |
-| **Platform FDE** | Bikal | Gaps seen across firms | The platform's knowledge: pipelines, agents, the Library, patterns, lessons, replayed briefs, platform scripts; and, when a firm invites them, that firm's knowledge as its FDE |
+| **Platform FDE** | Bikal | Gaps seen across firms | The platform's knowledge: pipelines, agents, the Library and its meanings, lessons, platform scripts; and, when a firm invites them, that firm's knowledge as its FDE |
 | **Support** | (none yet) | Problems firms report | Reads metadata and error logs; asks a firm for support access when it must look inside |
 
 A platform role **never** opens a firm's projects. That takes being in the firm (invited), being a guest on a project, or
@@ -123,8 +123,8 @@ Knowledge files live in the content repository and change by pull request too:
 | Agents | `agents/<id>.json` | Instructions in plain sentences; a model tier (quick, default, complex) |
 | Checks | `checks/definitions/<id>.json` | Names a check the app implements; its logic is code |
 | Library Objects | `library/objects/<contract>/<version>.json` | A published version never changes; a new version for any change; it must pass the Library check |
-| Layout patterns | `patterns/<id>.json` | Kept from accepted rooms |
-| Lessons | `lessons/<agent>.md` | One per line; tags (`[draw_walls, wall]`) so an agent gets it only when it is relevant |
+| Meanings | `library/meanings/<id>.json` (functions), `semantics/<id>.json` (positions) | What a line, face or point can mean |
+| Lessons | `lessons/<agent>.md` | One per line; tags (`[assign_role, wall]`) so an agent gets it only when it is relevant |
 | Replayed briefs | `evals/briefs/` | The fixed briefs that measure every version |
 | Scripts | `scripts/<name>/<version>.js` and `.json` | Run on PCs' Helpers, never on the server |
 | Guides | `docs/<id>.md` | This page and the firms' guide; each says its audience |
@@ -139,7 +139,7 @@ the firm (the request's state does that). The firm's own copy stays theirs.
 ### 5.3 A firm's knowledge (Firm FDE)
 
 When a firm invites you as its FDE (with an end date), Studio → *Knowledge: <firm>* shows its layer: lessons, Library
-Objects, patterns, pipelines, agents, checks and scripts, on top of the platform's. Inside the firm's work Innowa uses both.
+Objects, meanings, pipelines, agents, checks and scripts, on top of the platform's. Inside the firm's work Innowa uses both.
 Your changes are proposals the firm's owner or an admin approves, unless the firm lets its FDE change it directly. Ask
 Innowa in the firm's chat to draft a pipeline or a script with the firm's people; it saves it with `knowledge_put` once they
 agree, checked first.
@@ -150,7 +150,6 @@ Never copy one firm's knowledge to another, or to the platform, except through t
 
 - **Corrections → lessons:** Pipelines page → *From your corrections*: proposals with how often they came up and where. Keep (edit the words and tags first if you like), make it a request for a rule, or set it aside.
 - **Lessons → rules:** a proposal that keeps coming up (three times or more) offers *Make it a request*: it becomes a check (code) or a pipeline step (knowledge).
-- **Patterns:** a room the owner accepts can be kept as a pattern (canvas); Innowa then starts from it.
 - **Library suggestions:** Library → *From your projects*.
 - Inside a firm, all of this lands in the **firm's** layer and never reaches the platform except by its offer.
 
@@ -179,7 +178,7 @@ A = asks, D = does, ✓ = approves, i = is told.
 | A Library Object for everyone | A (suggested) | A (offer) | A | — | D | ✓ (merge) |
 | A platform lesson | (correction) | — | — | — | D | ✓ (keep) |
 | The firm's own pipeline, agent, script | A | ✓ / D | D (proposal) | — | (as FDE) | — |
-| The firm's own lesson, pattern, Object | (correction) | ✓ / D | D (proposal) | — | (as FDE) | — |
+| The firm's own lesson, meaning, Object | (correction) | ✓ / D | D (proposal) | — | (as FDE) | — |
 | A firm's knowledge becoming the platform's | — | ✓ (offer, consent) | A | — | D | ✓ |
 | People and roles in a firm | — | D | — | — | — | (support only) |
 | Platform roles, new firms | — | — | — | — | — | D |
@@ -189,7 +188,7 @@ A = asks, D = does, ✓ = approves, i = is told.
 ## 8. Platform and firms: what is shared, what is private
 
 - **Shared by everyone:** the app (code), the platform's knowledge (content repository), the guides.
-- **Private to a firm:** its projects, chats, files, runs, usage, and its knowledge layer (its lessons, Objects, patterns, pipelines, agents, checks, scripts).
+- **Private to a firm:** its projects, chats, files, runs, usage, and its knowledge layer (its lessons, Objects, meanings, pipelines, agents, checks, scripts).
 - **Private to BuilderPluss:** its own working memory (sessions, decisions, requests, lessons list): the platform's people only. Firms see their own requests to BuilderPluss, not the list.
 - **What a firm's work teaches** (its corrections, its Objects) stays in the firm. The platform learns from a firm only when the firm offers something, with consent.
 - **A guest** sees one project and the platform's knowledge, never the host firm's layer.
@@ -249,7 +248,7 @@ agent; the app checks them; the firm's owner approves. Only the firm has it. Mon
 FDE makes a general version for every firm.
 
 **"Walls are always 230 mm" (feedback).** An architect corrects wall thickness three times. *From your corrections*
-proposes the lesson "[wall, draw_walls] Walls are 230 mm"; the owner keeps it. Inside a firm it is the firm's lesson. If it
+proposes the lesson "[wall, assign_role] Walls are 230 mm"; the owner keeps it. Inside a firm it is the firm's lesson. If it
 keeps coming up anyway, *Make it a request*: a check that flags walls of another thickness.
 
 **A client's sign-off (roles).** The Lead invites the client as a Reviewer on one project. The pipeline stops at its
