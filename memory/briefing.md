@@ -60,7 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R59 · requetst
 - R61 · project
 - R63 · Primers and meanings: nodes, segments and faces with roles by category; functions from the Library; walls, doors and windows out of the kernel (in aec-studio#71)
-- R66 · Levels in model 4.0: heights from levels, walls through floors, columns in walls, stair and void holes in slabs
+- R66 · Levels in model 4.0: heights from levels, walls through floors, columns in walls, stair and void holes in slabs (in aec-studio#80)
 - R67 · Move the 2.x/3.0 kernel into kernel/legacy/ (kept only to open, replay and convert older projects)
 - R68 · Easy drawing 1/5: draw-as presets and house defaults (as templates in content)
 - R69 · Easy drawing 2/5: typed lengths, live dimensions, edit a dimension
