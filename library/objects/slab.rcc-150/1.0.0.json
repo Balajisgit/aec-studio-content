@@ -1,0 +1,45 @@
+{
+  "id": "slab.rcc-150@1.0.0",
+  "name": "RCC slab 150",
+  "contract": "slab.rcc-150",
+  "role": "slab",
+  "on": "face",
+  "meaning": "slab",
+  "about": "A reinforced concrete slab under its face, its top at the floor. It reaches the walls' outer faces, and meets the next room's slab under the wall between them.",
+  "params": {
+    "thickness": 150,
+    "edge": "outer"
+  },
+  "limits": {
+    "thickness": {
+      "min": 75,
+      "max": 500,
+      "step": 5
+    },
+    "edge": {
+      "options": [
+        "outer",
+        "centre",
+        "inner"
+      ]
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "slab edge",
+      "shape": "area",
+      "style": "hidden",
+      "edge": "edge"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "slab",
+      "shape": "area",
+      "slot": "concrete",
+      "edge": "edge",
+      "z": "-thickness",
+      "height": "thickness"
+    }
+  ]
+}

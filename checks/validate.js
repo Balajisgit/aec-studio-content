@@ -30,7 +30,7 @@ try { for (const n of readdirSync(sessDir)) { if (n === ".gitkeep") continue; co
 // library/objects/<contract>/<version>.json: the id matches the path, and the parts every Object needs are there; an Object on
 // a segment (R64) names a meaning that exists and the length of line it fits.
 // (The full check, 2D symbol and 3D primitive agreeing at every parameter case, runs in the app: Library page, checkObject.)
-const ROLES = ["wall", "door", "window", "fence", "gate", "furniture", "fixture", "column", "beam", "footing", "stair", "railing", "panel", "fin", "louvre", "frame", "profile", "entourage", "vegetation", "vehicle", "site", "equipment", "generic"];
+const ROLES = ["wall", "door", "window", "fence", "gate", "slab", "room", "furniture", "fixture", "column", "beam", "footing", "stair", "railing", "panel", "fin", "louvre", "frame", "profile", "entourage", "vegetation", "vehicle", "site", "equipment", "generic"];
 const objDir = join(root, "library", "objects");
 try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; const cd = join(objDir, c);
   if (!statSync(cd).isDirectory()) { problems.push(`library/objects/${c}: Objects live in a folder per contract`); continue; }
@@ -44,7 +44,8 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
     for (const k of ["symbol2d", "primitive3d"]) if (!Array.isArray(o[k]) || !o[k].length) problems.push(`${rel}: ${k} is missing`);
     if (o.params && typeof o.params !== "object") problems.push(`${rel}: params must be an object of defaults`);
     // R64: an Object on a segment (a wall, a door) says the meaning it is for (one in library/meanings/) and the stretch of line it fits
-    if (o.on != null && !["node", "segment"].includes(o.on)) problems.push(`${rel}: on must be node or segment`);
+    if (o.on != null && !["node", "segment", "face"].includes(o.on)) problems.push(`${rel}: on must be node, segment or face`);
+    if (o.on === "face" && o.meaning == null) problems.push(`${rel}: an Object on a face says which meaning it is for (meaning)`);
     if (o.meaning != null && !existsSync(join(root, "library", "meanings", `${o.meaning}.json`))) problems.push(`${rel}: meaning ${o.meaning} is not in library/meanings/`);
     if (o.on === "segment") { const l = o.length || {};
       if (o.meaning == null) problems.push(`${rel}: an Object on a segment says which meaning it is for (meaning)`);
