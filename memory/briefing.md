@@ -61,6 +61,7 @@ _The open requests (requests/ in the content repository)._
 - R61 · project
 - R63 · Primers and meanings: nodes, segments and faces with roles by category; functions from the Library; walls, doors and windows out of the kernel (in aec-studio#71)
 - R66 · Levels in model 4.0: heights from levels, walls through floors, columns in walls, stair and void holes in slabs
+- R67 · Move the 2.x/3.0 kernel into kernel/legacy/ (kept only to open, replay and convert older projects)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
