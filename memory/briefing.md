@@ -60,7 +60,6 @@ _The open requests (requests/ in the content repository)._
 - R59 · requetst
 - R61 · project
 - R63 · Primers and meanings: nodes, segments and faces with roles by category; functions from the Library; walls, doors and windows out of the kernel (in aec-studio#71)
-- R65 · Put in a wall: a canvas tool that places a door, window or gate Object into an existing wall or fence line (in aec-studio#79)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
