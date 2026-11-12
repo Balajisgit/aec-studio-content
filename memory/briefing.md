@@ -64,7 +64,6 @@ _The open requests (requests/ in the content repository)._
 - R71 · Easy drawing 4/5: box select, set on all, Match (in aec-studio#88)
 - R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection (in aec-studio#89)
 - R77 · Save as firm template, and making new templates (in aec-studio#90)
-- R79 · Runs belong nowhere: typed outputs kept in the run, placed by the owner into a project's files (indexed), a model, the Library or as detail; inputs from anywhere, chaining; no scopes (in aec-studio#96)
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
 
