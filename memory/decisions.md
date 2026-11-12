@@ -105,3 +105,7 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-12 · Session 33** — Owner on rendering: "Planning to take normal and quick render in blender and enhance it thru ai image gen tools" and "I want something done in 30 secs from blender."
 - **2026-11-12 · Session 33** — Owner: "I am gonna use this doc for building it as a pipeline in my builderpluss studio artifact"; "Exclude 3js part. Also include ur step by step logs, scripts etc inside each process."
 - **2026-11-12 · Session 33** — Owner on writing the doc in Studio's terms and noting the four gaps as requests: "Ok".
+- **2026-11-12 · Session 34** — Owner on files a pipeline makes: kept "on approval"; "Folder per pipeline".
+- **2026-11-12 · Session 34** — Owner: "Also heavy files can have a option to stored locally with its file path stored in the db as usual. For eg files of proposed detail an object pipeline."
+- **2026-11-12 · Session 34** — Owner on grouping R73, R75 and R78 as one piece of work: "Ok".
+- **2026-11-12 · Session 34** — Owner: "Build all in the order" (R78, R75, R73, then the pipeline drafts).
