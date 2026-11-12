@@ -67,6 +67,7 @@ _The open requests (requests/ in the content repository)._
 - R77 · Save as firm template, and making new templates (in aec-studio#90)
 - R78 · Files a pipeline makes go to the project on approval: a folder per pipeline, versioned names, where each came from; heavy files can stay on the PC by path (in aec-studio#91)
 - R79 · Runs belong nowhere: typed outputs kept in the run, placed by the owner into a project's files (indexed), a model, the Library or as detail; inputs from anywhere, chaining; no scopes
+- R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
