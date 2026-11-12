@@ -1,0 +1,6 @@
+{
+  "id": "detail-checked",
+  "name": "The detail is checked",
+  "about": "R73: the Objects placed in the project without a detailed version are listed (they are rendered with their plain 3D shape); none is fine.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}

@@ -16,9 +16,15 @@ const ROLES = ["furniture", "fixture", "column", "beam", "footing", "stair", "ra
 git("config", "user.name", "github-actions[bot]"); git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com");
 
 /** What is wrong with a record, if anything. */
+/** An Object's detail (R73): records of its detailed files (for renders only), kept beside it as <version>.detail.json. */
+function detailProblems(file, d) {
+  if (!d || !Array.isArray(d.files) || !d.files.length) return [`${file}: detail.files must list the detailed files`];
+  return d.files.flatMap((f, k) => (!f || !f.name || !/^[a-f0-9]{64}$/.test(String(f.sha256 || "")) || !["assets", "pc"].includes(f.kept) ? [`${file}: detail file ${k + 1} needs a name, its sha256 and where it is kept (assets or pc)`] : []));
+}
 function problems(file, rec) {
   const m = NAME.exec(file), o = rec && rec.object, out = [];
   if (!m) return [`${file}: name it <contract>@<version>.json`];
+  if (rec && rec.detailOnly) return [...(rec.id !== `${m[1]}@${m[2]}` ? [`${file}: id must be ${m[1]}@${m[2]}`] : []), ...(existsSync(`library/objects/${m[1]}/${m[2]}.json`) ? [] : [`${file}: ${m[1]}@${m[2]} is not in the Library`]), ...detailProblems(file, rec.detail)];
   if (!o || typeof o !== "object") return [`${file}: no object`];
   if (o.id !== `${m[1]}@${m[2]}`) out.push(`${file}: object.id must be ${m[1]}@${m[2]}`);
   if (o.contract !== m[1]) out.push(`${file}: object.contract must be ${m[1]}`);
@@ -60,12 +66,20 @@ if (cmd === "open") {
     const bad = problems(file, rec); if (bad.length) { for (const b of bad) console.log(`::error file=${DIR}/${file}::${b}`); failed++; continue; }
     const [, contract, version] = NAME.exec(file), id = `${contract}@${version}`, branch = `library/${contract}-${version}`, target = `library/objects/${contract}/${version}.json`;
     if (tryGit("ls-remote", "--exit-code", "--heads", "origin", branch) !== null) { console.log(`${id}: its pull request is already open (branch ${branch}).`); continue; }
+    if (rec.detailOnly) { // R73: only the detail of an Object already in the Library, beside it
+      const det = `library/objects/${contract}/${version}.detail.json`, dbranch = `library/${contract}-${version}-detail`;
+      if (tryGit("ls-remote", "--exit-code", "--heads", "origin", dbranch) !== null) { console.log(`${id}: its detail's pull request is already open.`); continue; }
+      git("checkout", "-q", "-B", dbranch, "origin/main"); writeFileSync(det, JSON.stringify(rec.detail, null, 2) + "\n");
+      git("rm", "-q", join(DIR, file)); git("add", det); git("commit", "-q", "-m", `Library: the detailed version of ${id}`); git("push", "-q", "origin", `HEAD:refs/heads/${dbranch}`);
+      const url = gh("pr", "create", "--base", "main", "--head", dbranch, "--title", `Library: the detailed version of ${id}`, "--body", `The detailed files of ${id} for renders (${rec.detail.files.map((f) => f.name).join(", ")}). Only records: the files stay on the PC that made them. Merge to add it.`);
+      console.log(`${id} detail: ${url}`); opened++; git("checkout", "-q", "main"); git("reset", "-q", "--hard", "origin/main"); continue; }
     if (existsSync(target)) { console.log(`::warning file=${DIR}/${file}::${target} is already in the Library; this record can be removed.`); continue; }
     git("checkout", "-q", "-B", branch, "origin/main");
     mkdirSync(join("library/objects", contract), { recursive: true }); writeFileSync(target, JSON.stringify(rec.object, null, 2) + "\n");
     const origin = `library/origins/${contract}/${version}.json`; mkdirSync(join("library/origins", contract), { recursive: true });
     writeFileSync(origin, JSON.stringify(originOf(rec), null, 2) + "\n");
-    git("rm", "-q", join(DIR, file)); git("add", target, origin);
+    const det = rec.detail ? `library/objects/${contract}/${version}.detail.json` : null; if (det) writeFileSync(det, JSON.stringify(rec.detail, null, 2) + "\n"); // R73: its detail comes with it
+    git("rm", "-q", join(DIR, file)); git("add", target, origin, ...(det ? [det] : []));
     git("commit", "-q", "-m", `Library: add ${rec.object.name} (${id})`);
     git("push", "-q", "origin", `HEAD:refs/heads/${branch}`);
     const url = gh("pr", "create", "--base", "main", "--head", branch, "--title", `Library: add ${rec.object.name} (${id})`, "--body", body(rec));

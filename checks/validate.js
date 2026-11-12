@@ -35,6 +35,11 @@ const objDir = join(root, "library", "objects");
 try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; const cd = join(objDir, c);
   if (!statSync(cd).isDirectory()) { problems.push(`library/objects/${c}: Objects live in a folder per contract`); continue; }
   for (const v of readdirSync(cd)) { const rel = `library/objects/${c}/${v}`;
+    // R73: an Object version's detail beside it (records of its detailed files, for renders only)
+    if (/^\d+\.\d+\.\d+\.detail\.json$/.test(v)) { let dd = null; try { dd = JSON.parse(readFileSync(join(cd, v), "utf8")); } catch { continue; }
+      if (!existsSync(join(cd, v.replace(".detail.json", ".json")))) problems.push(`${rel}: a detail sits beside its Object version, and ${v.replace(".detail.json", ".json")} is not there`);
+      if (!dd || !Array.isArray(dd.files) || !dd.files.length || dd.files.some((f) => !f || !f.name || !/^[a-f0-9]{64}$/.test(String(f.sha256 || "")) || !["assets", "pc"].includes(f.kept))) problems.push(`${rel}: detail.files lists each detailed file with its name, sha256 and where it is kept (assets or pc)`);
+      continue; }
     if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
     let o; try { o = JSON.parse(readFileSync(join(cd, v), "utf8")); } catch { continue; } // reported above
     if (o.id !== `${c}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${c}@${v.slice(0, -5)}`);
