@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 33._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 34._
 
 ## What this is
 
@@ -89,6 +89,25 @@ _The open requests (requests/ in the content repository)._
 
 ## Recent sessions
 
+### Session 33 · 2026-11-12 · A visualization pipeline from a design deck: three phases documented as Studio pipelines, four requests noted (R73-R76)
+The Collab 01 work (deck to 3D assets in Blender, an assumed layout, a 24 s quick render enhanced by Krea) was written up as a playbook of three Studio pipelines, Deck to 3D assets, Assemble layout and Hybrid render, each closed by an owner review. Studio fits as the orchestrator; four gaps were noted as requests.
+
+Done:
+- Playbook doc "BuilderPluss Visualization Pipeline" (claude.ai/artifact/LjMr6xYTAyWC1djhxBZDky): each step as a Stage or Decision with tools, command, outputs, checks and real logs; tabs for code and the run log; scripts zip with sha256 fingerprints.
+- Clean re-runs from an empty folder: 24 assets and the layout rebuild in 30-46 s, 70/70 instancing audits PASS; they found two fixes (a textures folder never created, a layout floor zone never saved).
+- Hybrid render tested: Blender quick preset 960x600, 8 samples, denoised, 24 s on 2 CPU cores with a product mask in 1 s; Krea Enhance to 2400x1500 95 credits, Magnific Precise 176, Ideogram masked edit 163.
+- Fit with Studio checked against the content repository: stages, decisions with send-back, checks and the Helper (app_tool, script_run) map directly; Brief to Library covers reading the deck (R4's real-deck test).
+- R73 noted: Objects that carry a detailed mesh (.blend/.usdc/.glb by fingerprint).
+- R74 noted: Python and Blender scripts on the Helper.
+- R75 noted: an image review decision (reference, before, after).
+- R76 noted: Hybrid render stage with the firm's own Krea key.
+
+Decided:
+- Owner: "Divid this ork in three phases. 1. Generate 3d assets same to same with same level of depth and detail 2. Assemble to match same layout 3. Render the scene from the same/desired angles."
+- Owner on rendering: "Planning to take normal and quick render in blender and enhance it thru ai image gen tools" and "I want something done in 30 secs from blender."
+- Owner: "I am gonna use this doc for building it as a pipeline in my builderpluss studio artifact"; "Exclude 3js part. Also include ur step by step logs, scripts etc inside each process."
+- Owner on writing the doc in Studio's terms and noting the four gaps as requests: "Ok".
+
 ### Session 32 · 2026-11-11 · The model becomes primers and meanings: R62's three layers shipped, then R63 (model 4.0) built and on staging
 R62 shipped and runs on production: geometry, roles and Objects, with solvers in content and a Run tab on the canvas. R63 then made the kernel draw only nodes, segments and faces with their meanings. That is four stacked PRs plus content #35, all on staging and waiting for the owner's merge. Faces now form by themselves.
 
@@ -175,33 +194,9 @@ Decided:
 - Owner: "Lessons can be revoked rit?" then "Ok" (Innowa removes lessons; set-aside proposals come back).
 - Owner merged app #30-#44 and content #22-#26 ("merge", "Merge", "Ok now merge all in the other u suggested").
 
-### Session 28 · 2026-11-06 · Runs anywhere, requests, context assembly, chat and plan polish, real curves, a Claude-like layout
-Pipelines run in a project, the Library or the studio; requests are noted from any page and worked through; agents and the chat get assembled context; the chat takes files and drives runs; plans are drafted with real curves; the canvas is home, and app updates restart the server by themselves.
-
-Done:
-- Runs with scopes (project, library, studio); Propose to Library is a pipeline; Brief to Library in the studio with files and origin tags (app #17-#19, content #10, #11, #15).
-- Requests: noted with + Request or in the chat, kept in requests/, worked through in groups; tools/requests.mjs; a merge marks them done (app #20, content #16).
-- Context assembly: stages declare the context they get; the chat as orchestrator with focus on a run, its decisions posted in the chat (app #21, content #17; R13, R14, R17, R23).
-- Chat panel: steps as they happen, files by picker, drag or paste, ALLOWED_FOLDERS, Reply and Add to request; Keep and place with plan previews, 3D of the made Object, Send back with a comment (app #22, #23, content #19).
-- R29 polish: chat restyled (icons, plain replies, one composer); plans drafted (poché walls, door swings, glazing, dimensions, scale bar) (app #24).
-- R30 page_open: the chat opens a project on the canvas or any page (app #25). R31 real arcs in the kernel and every canvas, draw_circle, curve-aware checks; Canvas13 drafting look from our side (app #26).
-- R34, R35: the server works out the files it runs; an update to them restarts it when Claude is idle (Start-Studio.bat loop, exit 75) and pages reload (app #27).
-- R33 canvas home, collapsible left panel (Studio, Memory, Storage at the bottom), inspector toggle, chat floats on the canvas; R28 Add to Library in the inspector; R32 no runs yet (app #28).
-- Online preview (artifact AEC Studio 6) republished up to version 15 (app 0e0d039).
-- Checks every time: syntax, types, tests (87 now), smoke, browser checks at phone width with screenshots.
-
-Decided:
-- Owner: "Can we make this as a pipeline" and "why cant we make that general?": runs anywhere, Propose to Library as a pipeline.
-- Owner on requests: "1. the content repository ... 3. me as for now": requests kept in the content repository, settled by merge.
-- Owner: "Context assembly for the chat agent, the orchestrator" then "build it now".
-- Owner: "Upload from the local drive too..", "Allowed folders too. Build two groups", "3d preview of object should be there after make ?".
-- Owner: "Chat ui and 2d svg shud look more professional. Add this as request and build" (R29).
-- Owner: "also the svg upgrade done only in built in canvas do that in canvas 13 too" with R31.
-- Owner: "drop it" for the request files extra (branch request-files left on GitHub; delete by hand).
-- Owner merged app #17-#28 ("Merge 18", "Merge it", "merge 25", "ok merge", "merge all in order") and content #10, #11, #15-#17, #19.
-
 ## Earlier sessions
 
+- **28** · 2026-11-06 · Runs anywhere, requests, context assembly, chat and plan polish, real curves, a Claude-like layout — Pipelines run in a project, the Library or the studio; requests are noted from any page and worked through; agents and the chat get assembled context; the chat takes files and drives runs; plans are drafted with real curves; the canvas is home, and app updates restart the server by themselves.
 - **27** · 2026-11-03 · Library proposals: Project Objects reach the Library with one tap; the review setting and its button — Project Objects now reach the Library without a chat: the app suggests them, one tap sends a pull request, and projects switch to the Library version after the merge. The quick review setting is shown and changed from the Studio page by pull request.
 - **26** · 2026-11-03 · Project discussions stay with the project: project notes; online preview kept current — Shared memory now holds only shared work: project chats keep a note with the project on the PC (app PR #12, merged), and the online preview was rebuilt twice from the latest main.
 - **25** · 2026-11-02 · New project test1, a 1 BHK plan, furniture and kitchen/bathroom fittings — Created test1, drew an 8 m × 7 m 1 BHK, furnished it from the Library, then made 5 kitchen and bathroom fittings as Project Objects and placed them.

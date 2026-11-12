@@ -101,3 +101,7 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-11 · Session 32** — Owner's answers for R63: existing projects "convert them - i agree", status "later", member meanings "Automatic", "One function per primer", functions from the Library "as u suggested".
 - **2026-11-11 · Session 32** — Owner on features resting on walls: "Remove them now"; shipping: "Stacked PRs, staging, merge together".
 - **2026-11-11 · Session 32** — Owner on faces: "Made it auto detect and form" (the Face tool removed).
+- **2026-11-12 · Session 33** — Owner: "Divid this ork in three phases. 1. Generate 3d assets same to same with same level of depth and detail 2. Assemble to match same layout 3. Render the scene from the same/desired angles."
+- **2026-11-12 · Session 33** — Owner on rendering: "Planning to take normal and quick render in blender and enhance it thru ai image gen tools" and "I want something done in 30 secs from blender."
+- **2026-11-12 · Session 33** — Owner: "I am gonna use this doc for building it as a pipeline in my builderpluss studio artifact"; "Exclude 3js part. Also include ur step by step logs, scripts etc inside each process."
+- **2026-11-12 · Session 33** — Owner on writing the doc in Studio's terms and noting the four gaps as requests: "Ok".
