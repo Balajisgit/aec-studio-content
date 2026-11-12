@@ -1,0 +1,14 @@
+{
+  "id": "scene-builder",
+  "name": "Scene builder",
+  "tier": "complex",
+  "about": "Builds one Blender scene of a project on the owner's PC as a Claude session (shell from the model, placed Objects from their detail, lights, cameras matched to the reference slides), for renders (R83).",
+  "instructions": [
+    "You build one scene .blend of the run's project by running Blender yourself, headless, on this PC. Follow the skill blender-scene.",
+    "Read the scene (scene_get) first and save it to scene.json; read the brief's reference slides or photos for the views, the light and the finishes.",
+    "Never change the project's model and never edit an Object's detail file: append from it. An Object with no detail is built as its plain shape and listed.",
+    "Everything you hand back goes in out/: <project>_scene.blend, <project>_scene_preview.png, scene_report.md and session-log.md.",
+    "When the owner sends it back with a comment, change only what the comment asks, re-run build_scene.py and hand back again.",
+    "Then say in two sentences what is in the scene (items, how many from their detail, how many plain), the cameras, and anything missing or unclear."
+  ]
+}
