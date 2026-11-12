@@ -1,0 +1,89 @@
+{
+  "id": "read-a-brief@1.0.0",
+  "name": "Read a brief",
+  "about": "A deck, photos or notes become the asset list: every item the brief calls for, with the slide or photo it comes from, matched to the Library or marked missing. Each missing item has a Make button (Make an Object), and each made Object can be detailed next (Detail an Object).",
+  "useWhen": "The owner has a brief (a deck, photos, drawings or notes) and wants the list of what it calls for, with what the Library already has and what is missing.",
+  "scopes": [
+    "project",
+    "studio"
+  ],
+  "input": {
+    "notes": true,
+    "files": true,
+    "about": "The brief: a deck (PDF), photos or drawings, and any notes. In a project, from its files; in the studio, added when you start the run (kept with the run)."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "Every Need cites its evidence: the file and page (or photo) it came from, or the line of the notes."
+    },
+    {
+      "id": "R2",
+      "text": "Every Need gets one outcome with a reason: matched to a Library Object, an Object to adapt (with the parameters that change), or missing."
+    },
+    {
+      "id": "R3",
+      "text": "Agents never change the Library or a project's model. They write the run's Needs, matches and draft Objects; only the owner's decisions change anything: Keep (in a project) or Propose (in the studio, each Object by its own Propose to Library run and pull request)."
+    },
+    {
+      "id": "R6",
+      "text": "Measure in millimetres. When a size is not given, use a usual size for the kind of thing and say so in the Need's notes."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "read",
+      "name": "Read",
+      "outcome": "The brief becomes a list of Needs, each with its evidence.",
+      "agent": "reader",
+      "tools": [
+        "run_inputs",
+        "needs_put"
+      ],
+      "files": true,
+      "checks": [
+        "needs-have-evidence"
+      ],
+      "retries": 2,
+      "context": [
+        "brief",
+        "brief-files",
+        "owner-notes",
+        "lessons",
+        "owner-comments"
+      ]
+    },
+    {
+      "kind": "stage",
+      "id": "match",
+      "name": "Match",
+      "outcome": "Every Need is matched to a Library Object, an Object to adapt, or marked missing, with a reason.",
+      "agent": "matcher",
+      "tools": [
+        "run_state",
+        "library_list",
+        "library_get",
+        "matches_put"
+      ],
+      "checks": [
+        "every-need-decided"
+      ],
+      "retries": 2,
+      "context": [
+        "run-so-far",
+        "library-index",
+        "library-similar",
+        "evidence",
+        "project",
+        "lessons",
+        "owner-comments"
+      ]
+    }
+  ],
+  "output": {
+    "id": "asset-list",
+    "name": "Asset list",
+    "about": "Every item the brief calls for with its evidence, what it matched in the Library, and a Make button for each missing one."
+  }
+}

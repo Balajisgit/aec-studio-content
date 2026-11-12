@@ -1,0 +1,131 @@
+{
+  "id": "render-views@1.1.0",
+  "name": "Render views",
+  "about": "The views rendered quickly in Blender on a PC, each with a mask that protects the products, then enhanced by Krea within a budget; you review each result beside its reference and the render before it. In a project the Objects come from the model, each from its detailed version (those without one show their plain 3D shape and are listed), and kept results go to Renders/; in the studio the scene is uploaded and approved results stay with the run.",
+  "useWhen": "The owner wants images of the project's views (from the cameras of its Blender scene) for a review or a client, matching the brief's reference images.",
+  "scopes": [
+    "project",
+    "studio"
+  ],
+  "input": {
+    "notes": true,
+    "files": true,
+    "about": "In a project: the scene (.blend) and reference images (named like the cameras, e.g. CAM_SLIDE51.jpg) from its files. In the studio: upload them. In the notes: which cameras, the pass (faithful, realism or masked edit) and the credit budget."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "Blender gets the geometry, colours and light right in a quick render; resolution and fine detail come from the enhance step."
+    },
+    {
+      "id": "R2",
+      "text": "Products are protected: the furniture, feature walls, ceiling raft, pendants and plants are black in the mask, and an edit may change only the white areas."
+    },
+    {
+      "id": "R3",
+      "text": "Every Krea call is quoted first; nothing runs above the budget the owner set (400 credits when none is set)."
+    },
+    {
+      "id": "R4",
+      "text": "Colours are kept as rendered; a result that changes a product's shape or colour is not offered."
+    },
+    {
+      "id": "R5",
+      "text": "Only the owner's review puts images in the project's files, in Renders/, and nothing there is overwritten."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "details",
+      "name": "Check the detail",
+      "scopes": [
+        "project"
+      ],
+      "outcome": "Every Object placed in the project is known to have its detailed version, or is listed as rendered with its plain 3D shape.",
+      "code": "detail-check",
+      "checks": [
+        "detail-checked"
+      ],
+      "retries": 0
+    },
+    {
+      "kind": "stage",
+      "id": "render",
+      "name": "Render",
+      "outcome": "Each camera has a quick render and a product mask: <CAMERA>_cycles.png and <CAMERA>_mask.png.",
+      "agent": "renderer",
+      "tools": [
+        "run_inputs",
+        "run_state",
+        "pc_tools",
+        "script_run"
+      ],
+      "files": true,
+      "checks": [
+        "files-made"
+      ],
+      "retries": 2,
+      "context": [
+        "brief",
+        "owner-notes",
+        "owner-comments"
+      ]
+    },
+    {
+      "kind": "stage",
+      "id": "enhance",
+      "name": "Enhance",
+      "outcome": "Each render is enhanced by Krea within the budget, its products unchanged: <CAMERA>_enhanced.png.",
+      "agent": "renderer",
+      "tools": [
+        "run_inputs",
+        "run_state",
+        "pc_tools",
+        "script_run"
+      ],
+      "checks": [
+        "files-made"
+      ],
+      "retries": 1,
+      "context": [
+        "brief",
+        "owner-notes",
+        "owner-comments",
+        "run-so-far"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "review",
+      "name": "Review",
+      "question": "Does each result match its reference, with the products unchanged? Keep the ones that pass; or pin a comment on an image and send it back.",
+      "form": "review-images",
+      "sendBack": "enhance",
+      "compare": {
+        "reference": [
+          "*.jpg",
+          "*.jpeg",
+          "*.png"
+        ],
+        "before": [
+          "*_cycles.png"
+        ],
+        "after": [
+          "*_enhanced.png"
+        ]
+      }
+    }
+  ],
+  "output": {
+    "id": "views",
+    "name": "Views",
+    "about": "Each view made, and the ones kept in the project's files (Renders/).",
+    "files": {
+      "folder": "Renders",
+      "keep": [
+        "*_enhanced.png"
+      ]
+    }
+  }
+}

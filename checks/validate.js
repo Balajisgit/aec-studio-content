@@ -35,6 +35,11 @@ const objDir = join(root, "library", "objects");
 try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; const cd = join(objDir, c);
   if (!statSync(cd).isDirectory()) { problems.push(`library/objects/${c}: Objects live in a folder per contract`); continue; }
   for (const v of readdirSync(cd)) { const rel = `library/objects/${c}/${v}`;
+    // R73: an Object version's detail beside it (records of its detailed files, for renders only)
+    if (/^\d+\.\d+\.\d+\.detail\.json$/.test(v)) { let dd = null; try { dd = JSON.parse(readFileSync(join(cd, v), "utf8")); } catch { continue; }
+      if (!existsSync(join(cd, v.replace(".detail.json", ".json")))) problems.push(`${rel}: a detail sits beside its Object version, and ${v.replace(".detail.json", ".json")} is not there`);
+      if (!dd || !Array.isArray(dd.files) || !dd.files.length || dd.files.some((f) => !f || !f.name || !/^[a-f0-9]{64}$/.test(String(f.sha256 || "")) || !["assets", "pc"].includes(f.kept))) problems.push(`${rel}: detail.files lists each detailed file with its name, sha256 and where it is kept (assets or pc)`);
+      continue; }
     if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
     let o; try { o = JSON.parse(readFileSync(join(cd, v), "utf8")); } catch { continue; } // reported above
     if (o.id !== `${c}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${c}@${v.slice(0, -5)}`);
@@ -106,7 +111,7 @@ const agents = new Set(readDir("agents").map((n) => n.slice(0, -5))), checks = n
 for (const n of readDir("agents")) { try { const a = JSON.parse(readFileSync(join(root, "agents", n), "utf8"));
   if (a.id !== n.slice(0, -5)) problems.push(`agents/${n}: id must be ${n.slice(0, -5)}`);
   if (!Array.isArray(a.instructions) || !a.instructions.length) problems.push(`agents/${n}: instructions are missing`); } catch { /* reported above */ } }
-const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects", "pick-candidate"], SCOPES = ["project", "library", "studio"];
+const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects", "pick-candidate", "keep-files", "review-images", "keep-detail"], SCOPES = ["project", "library", "studio"];
 try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(root, "pipelines", p); if (!statSync(pd).isDirectory()) continue;
   for (const v of readdirSync(pd)) { const rel = `pipelines/${p}/${v}`;
     if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
