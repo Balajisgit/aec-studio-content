@@ -5,7 +5,7 @@
   "useWhen": "The owner wants an Object's full model for renders: a Project Object (in a project) or a Library Object (from the Library), matching the real product in its photos.",
   "input": {
     "notes": true,
-    "about": "In a project: the Project Object to detail (params.object) and its photos from the project's files. From the Library: the Library Object is the run's subject. Anything to know in the notes."
+    "about": "In a project: the Project Object to detail (params.object) and its photos from the project's files. From the Library: the Library Object is the run's subject. From a chat: photos uploaded in the chat come with the run. Anything to know in the notes."
   },
   "rules": [
     {
@@ -58,7 +58,7 @@
       "kind": "decision",
       "id": "keep",
       "name": "Keep the detail",
-      "question": "Does the preview match the photos? Keep the files as the Object's detail, or send it back with what to change.",
+      "question": "Does the preview look like the real product: its photos if the run had any, otherwise the Object's description? Keep the files as the Object's detail, or send it back with what to change.",
       "form": "keep-detail",
       "sendBack": "build"
     }
