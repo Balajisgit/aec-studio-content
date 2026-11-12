@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 33._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 35._
 
 ## What this is
 
@@ -60,20 +60,26 @@ _The open requests (requests/ in the content repository)._
 - R59 · requetst
 - R61 · project
 - R63 · Primers and meanings: nodes, segments and faces with roles by category; functions from the Library; walls, doors and windows out of the kernel (in aec-studio#71)
-- R66 · Levels in model 4.0: heights from levels, walls through floors, columns in walls, stair and void holes in slabs (in aec-studio#81)
-- R67 · Move the 2.x/3.0 kernel into kernel/legacy/ (kept only to open, replay and convert older projects)
-- R68 · Easy drawing 1/5: draw-as presets and house defaults (as templates in content)
-- R69 · Easy drawing 2/5: typed lengths, live dimensions, edit a dimension
-- R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes
-- R71 · Easy drawing 4/5: box select, set on all, Match
-- R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection
+- R66 · Levels in model 4.0: heights from levels, walls through floors, columns in walls, stair and void holes in slabs (in aec-studio#83)
+- R67 · Move the 2.x/3.0 kernel into kernel/legacy/ (kept only to open, replay and convert older projects) (in aec-studio#84)
+- R68 · Easy drawing 1/5: draw-as presets and house defaults (as templates in content) (in aec-studio#85)
+- R69 · Easy drawing 2/5: typed lengths, live dimensions, edit a dimension (in aec-studio#86)
+- R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes (in aec-studio#87)
+- R71 · Easy drawing 4/5: box select, set on all, Match (in aec-studio#88)
+- R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection (in aec-studio#89)
+- R74 · Python and Blender scripts on the Helper: a firm script that runs Blender in the background with a Python bundle
+- R75 · An image review decision: see renders side by side (reference, before, after), approve or send back with marks (in aec-studio#92)
+- R77 · Save as firm template, and making new templates (in aec-studio#90)
+- R78 · Files a pipeline makes go to the project on approval: a folder per pipeline, versioned names, where each came from; heavy files can stay on the PC by path (in aec-studio#91)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
 - R60 · Fit to plot: the largest rectangle inside an irregular plot's setbacks, as the ground floor's outer walls
+- R76 · Hybrid render: a quick Blender render and product mask, then Krea enhance as a firm script with the firm's own Krea key
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
+- R73 · Objects that carry a detailed mesh: a .blend/.usdc/.glb kept by fingerprint, beside the 2D symbol and 3D primitive (in aec-studio#93)
 
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
@@ -83,6 +89,41 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 34 · 2026-11-12 · Where the visualization pipelines fit in Studio, and files a pipeline makes reach the project on approval (R78)
+The five pipelines were read against the three visualization phases: Brief to Library covers reading the deck, Fit to plot is the pattern for reading CAD, and Render views and Detail an Object are new. Files a pipeline makes reach the project only on approval, in a folder per pipeline (R78); R73, R75 and R78 are grouped and planned.
+
+Done:
+- Existing pipelines checked: Brief to Library (read, match, make, keep, propose) fits phase 1 except detailed meshes; Fit to plot's read-the-plot is the pattern for reading CAD; nothing covers rendering.
+- Proposed three new pipelines, none changed: Detail an Object (Blender detail on the Helper, image review), Read the CAD (lines, faces, Placements), Render views (quick render, Krea, image review).
+- Checked what a project run keeps: kept Objects are pinned into the model (pin_object), Fit to plot draws a face; a Helper script's files stay in the run's folder, never the project's Files.
+- R78 noted: files a pipeline makes go to the project's Files on approval, a folder per pipeline, versioned names, each file's run, stage, PC and date; heavy files may stay on the PC by the Helper's named folder and path.
+- R73, R75 and R78 grouped as one piece of work and marked planned; build order R78, R75, R73, then R74 and R76.
+
+Decided:
+- Owner on files a pipeline makes: kept "on approval"; "Folder per pipeline".
+- Owner: "Also heavy files can have a option to stored locally with its file path stored in the db as usual. For eg files of proposed detail an object pipeline."
+- Owner on grouping R73, R75 and R78 as one piece of work: "Ok".
+- Owner: "Build all in the order" (R78, R75, R73, then the pipeline drafts).
+
+### Session 33 · 2026-11-12 · A visualization pipeline from a design deck: three phases documented as Studio pipelines, four requests noted (R73-R76)
+The Collab 01 work (deck to 3D assets in Blender, an assumed layout, a 24 s quick render enhanced by Krea) was written up as a playbook of three Studio pipelines, Deck to 3D assets, Assemble layout and Hybrid render, each closed by an owner review. Studio fits as the orchestrator; four gaps were noted as requests.
+
+Done:
+- Playbook doc "BuilderPluss Visualization Pipeline" (claude.ai/artifact/LjMr6xYTAyWC1djhxBZDky): each step as a Stage or Decision with tools, command, outputs, checks and real logs; tabs for code and the run log; scripts zip with sha256 fingerprints.
+- Clean re-runs from an empty folder: 24 assets and the layout rebuild in 30-46 s, 70/70 instancing audits PASS; they found two fixes (a textures folder never created, a layout floor zone never saved).
+- Hybrid render tested: Blender quick preset 960x600, 8 samples, denoised, 24 s on 2 CPU cores with a product mask in 1 s; Krea Enhance to 2400x1500 95 credits, Magnific Precise 176, Ideogram masked edit 163.
+- Fit with Studio checked against the content repository: stages, decisions with send-back, checks and the Helper (app_tool, script_run) map directly; Brief to Library covers reading the deck (R4's real-deck test).
+- R73 noted: Objects that carry a detailed mesh (.blend/.usdc/.glb by fingerprint).
+- R74 noted: Python and Blender scripts on the Helper.
+- R75 noted: an image review decision (reference, before, after).
+- R76 noted: Hybrid render stage with the firm's own Krea key.
+
+Decided:
+- Owner: "Divid this ork in three phases. 1. Generate 3d assets same to same with same level of depth and detail 2. Assemble to match same layout 3. Render the scene from the same/desired angles."
+- Owner on rendering: "Planning to take normal and quick render in blender and enhance it thru ai image gen tools" and "I want something done in 30 secs from blender."
+- Owner: "I am gonna use this doc for building it as a pipeline in my builderpluss studio artifact"; "Exclude 3js part. Also include ur step by step logs, scripts etc inside each process."
+- Owner on writing the doc in Studio's terms and noting the four gaps as requests: "Ok".
 
 ### Session 32 · 2026-11-11 · The model becomes primers and meanings: R62's three layers shipped, then R63 (model 4.0) built and on staging
 R62 shipped and runs on production: geometry, roles and Objects, with solvers in content and a Run tab on the canvas. R63 then made the kernel draw only nodes, segments and faces with their meanings. That is four stacked PRs plus content #35, all on staging and waiting for the owner's merge. Faces now form by themselves.
@@ -147,56 +188,10 @@ Decided:
 - Owner: "I want to use subscription now. I am testing only. Not going commercial" (API keys or Anthropic's approval before going commercial).
 - Owner on firm code: "let that runs in the Helper", not on the server (recorded on R21 with step 2c).
 
-### Session 29 · 2026-11-08 · One kernel for 2D and 3D, BuilderPluss Studio and Innowa, the kernel split, agents that learn
-The kernel became one schema for plan and 3D and then a design kernel with its own geometry engine; the app is BuilderPluss Studio with Innowa as its assistant; the canvas got a floating tool bar; and agents now learn from corrections, start from patterns and are measured by replayed briefs.
-
-Done:
-- Topologic studied; kernel design settled with the owner: faces from walls, one schema for 2D and 3D, derived views, attachment hosts, beams and columns as segments and Placements, spaces as volumes (md write-up).
-- R39 kernel 2D/3D: heights through levels, spaces as volumes, voids and slab holes, levels share walls, slabs as elements, solidsOf/planOf (app #30, #31). R41-R44 (#32).
-- Requests in three groups, built in the owner's order: small fixes (#33), pipelines that learn and check (#34, content #23), kernel geometry (#35); Canvas13 openings and corners R43, R45, R6 part (#36); content #22, #24.
-- Rename: BuilderPluss Studio; the chat assistant Innowa (built on Claude); Start-Builderpluss.bat beside the old start file (app #37, content #25).
-- Canvas: project top left, views top right, left panel with level, canvas and options; a floating vertical tool bar of symbols (tools, Library picker, zoom, fit, undo, redo), full on Canvas13 too; the closed chat's button shows an open conversation (R47, R48; app #38-#40).
-- R50 kernel split: kernel/ is the design kernel, geom/light/ its geometry engine behind kernel/engine.js, geom/occt/ reserved; boundaries enforced; no output changed (app #41).
-- R51 corrections reader and R55 tagged lessons: From your corrections on the Pipelines page; lessons by topic; Innowa can list and remove lessons; set-aside proposals come back (app #42).
-- R53 layout patterns (keep from the Canvas, Innowa starts from them) and R54 Library use counts (app #43); R52 replayed briefs on the Studio page with three starter briefs (app #44, content #26).
-- Online preview republished as BuilderPluss Studio with downloads declared (app 7250417, content 707acb3). Checks: 145 tests, boundaries, smoke and browser checks.
-
-Decided:
-- Owner: "BuilderPluss Studio / Innowa / keep their own names / as u suggest / Rename the start file to `Start-Builderpluss.bat`".
-- Owner: "build it in this order - 2, 3 and 1. rest ll look later" (request groups).
-- Owner on the canvas: "the top bar options can be moved to left(another) collapsible panel, remove the name canvas" and "let project be in the top left".
-- Owner: "give a movable canvas tool floating bar with zoom, undo redo select lib picker etc", "tool bar be vertical. no names, only symbols", "views can be moved to tob bar right".
-- Owner: "So how we can separate our kernel from the occt overlap and make it for what actually it is." then "Ok record the kernel split and agent native discussions as requests and build then."
-- Owner: "Lessons can be revoked rit?" then "Ok" (Innowa removes lessons; set-aside proposals come back).
-- Owner merged app #30-#44 and content #22-#26 ("merge", "Merge", "Ok now merge all in the other u suggested").
-
-### Session 28 · 2026-11-06 · Runs anywhere, requests, context assembly, chat and plan polish, real curves, a Claude-like layout
-Pipelines run in a project, the Library or the studio; requests are noted from any page and worked through; agents and the chat get assembled context; the chat takes files and drives runs; plans are drafted with real curves; the canvas is home, and app updates restart the server by themselves.
-
-Done:
-- Runs with scopes (project, library, studio); Propose to Library is a pipeline; Brief to Library in the studio with files and origin tags (app #17-#19, content #10, #11, #15).
-- Requests: noted with + Request or in the chat, kept in requests/, worked through in groups; tools/requests.mjs; a merge marks them done (app #20, content #16).
-- Context assembly: stages declare the context they get; the chat as orchestrator with focus on a run, its decisions posted in the chat (app #21, content #17; R13, R14, R17, R23).
-- Chat panel: steps as they happen, files by picker, drag or paste, ALLOWED_FOLDERS, Reply and Add to request; Keep and place with plan previews, 3D of the made Object, Send back with a comment (app #22, #23, content #19).
-- R29 polish: chat restyled (icons, plain replies, one composer); plans drafted (poché walls, door swings, glazing, dimensions, scale bar) (app #24).
-- R30 page_open: the chat opens a project on the canvas or any page (app #25). R31 real arcs in the kernel and every canvas, draw_circle, curve-aware checks; Canvas13 drafting look from our side (app #26).
-- R34, R35: the server works out the files it runs; an update to them restarts it when Claude is idle (Start-Studio.bat loop, exit 75) and pages reload (app #27).
-- R33 canvas home, collapsible left panel (Studio, Memory, Storage at the bottom), inspector toggle, chat floats on the canvas; R28 Add to Library in the inspector; R32 no runs yet (app #28).
-- Online preview (artifact AEC Studio 6) republished up to version 15 (app 0e0d039).
-- Checks every time: syntax, types, tests (87 now), smoke, browser checks at phone width with screenshots.
-
-Decided:
-- Owner: "Can we make this as a pipeline" and "why cant we make that general?": runs anywhere, Propose to Library as a pipeline.
-- Owner on requests: "1. the content repository ... 3. me as for now": requests kept in the content repository, settled by merge.
-- Owner: "Context assembly for the chat agent, the orchestrator" then "build it now".
-- Owner: "Upload from the local drive too..", "Allowed folders too. Build two groups", "3d preview of object should be there after make ?".
-- Owner: "Chat ui and 2d svg shud look more professional. Add this as request and build" (R29).
-- Owner: "also the svg upgrade done only in built in canvas do that in canvas 13 too" with R31.
-- Owner: "drop it" for the request files extra (branch request-files left on GitHub; delete by hand).
-- Owner merged app #17-#28 ("Merge 18", "Merge it", "merge 25", "ok merge", "merge all in order") and content #10, #11, #15-#17, #19.
-
 ## Earlier sessions
 
+- **29** · 2026-11-08 · One kernel for 2D and 3D, BuilderPluss Studio and Innowa, the kernel split, agents that learn — The kernel became one schema for plan and 3D and then a design kernel with its own geometry engine; the app is BuilderPluss Studio with Innowa as its assistant; the canvas got a floating tool bar; and agents now learn from corrections, start from patterns and are measured by replayed briefs.
+- **28** · 2026-11-06 · Runs anywhere, requests, context assembly, chat and plan polish, real curves, a Claude-like layout — Pipelines run in a project, the Library or the studio; requests are noted from any page and worked through; agents and the chat get assembled context; the chat takes files and drives runs; plans are drafted with real curves; the canvas is home, and app updates restart the server by themselves.
 - **27** · 2026-11-03 · Library proposals: Project Objects reach the Library with one tap; the review setting and its button — Project Objects now reach the Library without a chat: the app suggests them, one tap sends a pull request, and projects switch to the Library version after the merge. The quick review setting is shown and changed from the Studio page by pull request.
 - **26** · 2026-11-03 · Project discussions stay with the project: project notes; online preview kept current — Shared memory now holds only shared work: project chats keep a note with the project on the PC (app PR #12, merged), and the online preview was rebuilt twice from the latest main.
 - **25** · 2026-11-02 · New project test1, a 1 BHK plan, furniture and kitchen/bathroom fittings — Created test1, drew an 8 m × 7 m 1 BHK, furnished it from the Library, then made 5 kitchen and bathroom fittings as Project Objects and placed them.

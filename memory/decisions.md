@@ -101,3 +101,11 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-11 · Session 32** — Owner's answers for R63: existing projects "convert them - i agree", status "later", member meanings "Automatic", "One function per primer", functions from the Library "as u suggested".
 - **2026-11-11 · Session 32** — Owner on features resting on walls: "Remove them now"; shipping: "Stacked PRs, staging, merge together".
 - **2026-11-11 · Session 32** — Owner on faces: "Made it auto detect and form" (the Face tool removed).
+- **2026-11-12 · Session 33** — Owner: "Divid this ork in three phases. 1. Generate 3d assets same to same with same level of depth and detail 2. Assemble to match same layout 3. Render the scene from the same/desired angles."
+- **2026-11-12 · Session 33** — Owner on rendering: "Planning to take normal and quick render in blender and enhance it thru ai image gen tools" and "I want something done in 30 secs from blender."
+- **2026-11-12 · Session 33** — Owner: "I am gonna use this doc for building it as a pipeline in my builderpluss studio artifact"; "Exclude 3js part. Also include ur step by step logs, scripts etc inside each process."
+- **2026-11-12 · Session 33** — Owner on writing the doc in Studio's terms and noting the four gaps as requests: "Ok".
+- **2026-11-12 · Session 34** — Owner on files a pipeline makes: kept "on approval"; "Folder per pipeline".
+- **2026-11-12 · Session 34** — Owner: "Also heavy files can have a option to stored locally with its file path stored in the db as usual. For eg files of proposed detail an object pipeline."
+- **2026-11-12 · Session 34** — Owner on grouping R73, R75 and R78 as one piece of work: "Ok".
+- **2026-11-12 · Session 34** — Owner: "Build all in the order" (R78, R75, R73, then the pipeline drafts).
