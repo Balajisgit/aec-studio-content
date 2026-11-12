@@ -1,0 +1,89 @@
+{
+  "id": "propose-to-library@1.2.0",
+  "name": "Propose to Library",
+  "about": "A Project Object goes to the shared Library: the code checks and names it, Claude reviews it when the review setting asks, you say go when there is a review to read, and its record becomes a pull request you merge.",
+  "input": {
+    "about": "A Project Object from your projects: tap Propose on the Library page (From your projects), or ask in a chat."
+  },
+  "rules": [
+    {
+      "id": "R3",
+      "text": "Agents never change the Library, a project or the Object. They write only the run's data; here, a review."
+    },
+    {
+      "id": "R7",
+      "text": "The Library changes only by pull request, merged by the owner. This run's last step writes a proposal record; the content repository's GitHub Action turns it into that pull request."
+    },
+    {
+      "id": "R8",
+      "text": "A review never changes the Object. Only a missing description may be taken from the review's one-sentence about."
+    },
+    {
+      "id": "R9",
+      "text": "The review runs only when the shared setting library.review asks: always, or only when the code is unsure (the default), never when it is off."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "prepare",
+      "name": "Prepare",
+      "outcome": "The Project Object passes the Library check, is not in the Library already, and has a Library name and version.",
+      "code": "prepare-proposal",
+      "checks": [
+        "proposal-ready"
+      ],
+      "retries": 0
+    },
+    {
+      "kind": "stage",
+      "id": "review",
+      "name": "Review",
+      "when": "review-wanted",
+      "outcome": "A short review: does it look right for the Library, a one-sentence description, and what to look at.",
+      "agent": "reviewer",
+      "tools": [
+        "run_state",
+        "library_list",
+        "library_get",
+        "review_put"
+      ],
+      "checks": [
+        "review-answered"
+      ],
+      "retries": 2,
+      "context": [
+        "run-so-far",
+        "library-similar",
+        "lessons",
+        "owner-comments"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "send",
+      "name": "Send to the Library?",
+      "when": "reviewed",
+      "question": "Send this Object to the Library as a pull request?",
+      "form": "send-proposal"
+    },
+    {
+      "kind": "stage",
+      "id": "record",
+      "name": "Send",
+      "when": "not-declined",
+      "outcome": "The proposal record is committed; GitHub turns it into a pull request for the owner to merge.",
+      "code": "commit-proposal",
+      "checks": [
+        "proposal-sent"
+      ],
+      "retries": 0
+    }
+  ],
+  "output": {
+    "id": "proposal",
+    "name": "Proposal",
+    "about": "The Object's Library name, the review if one ran, and whether its record was sent."
+  },
+  "useWhen": "The owner wants a Project Object (or an Object made in a studio run) in the shared Library; started with Propose on the Library page."
+}

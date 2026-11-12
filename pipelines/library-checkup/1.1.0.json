@@ -1,0 +1,34 @@
+{
+  "id": "library-checkup@1.1.0",
+  "name": "Library check-up",
+  "about": "Looks over every Object in the Library: the Library check (2D and 3D agree, limits, every parameter does something) and the checks for sense (finishes that suit their parts, a description that says what it is). Plain code, no tokens; nothing is changed. The report says what to look at.",
+  "input": {
+    "library": true,
+    "about": "Nothing: it looks over the whole Library. Run it after Objects are merged, or now and then."
+  },
+  "rules": [
+    {
+      "id": "R3",
+      "text": "Nothing changes: the Library changes only by pull request. The report is the output; fixes are new versions, proposed as usual."
+    }
+  ],
+  "steps": [
+    {
+      "id": "look",
+      "kind": "stage",
+      "name": "Look over the Library",
+      "outcome": "Every Library Object checked for form and sense, with what to look at for each.",
+      "code": "library-checkup",
+      "checks": [
+        "library-looked-over"
+      ],
+      "retries": 0
+    }
+  ],
+  "output": {
+    "id": "checkup",
+    "name": "Library check-up",
+    "about": "Every Object, sound or with what to look at."
+  },
+  "useWhen": "The owner wants to know which Library Objects need fixing (after merges, or now and then)."
+}
