@@ -1,0 +1,83 @@
+{
+  "id": "make-object@1.6.0",
+  "name": "Make an Object",
+  "freestyle": true,
+  "about": "Describe a thing (add a photo or drawing if you like) and Claude makes it as an Object: its 2D symbol and 3D primitive. In a project you keep it there, and can have its detailed version made next (Detail an Object); in the studio you propose it to the Library.",
+  "input": {
+    "notes": true,
+    "files": true,
+    "about": "What to make: its name, sizes and how it looks; photos or drawings help."
+  },
+  "rules": [
+    {
+      "id": "R3",
+      "text": "Agents never change the Library or the project's model. They write the run's Needs, matches and draft Objects; only the owner's decisions change the project."
+    },
+    {
+      "id": "R4",
+      "text": "A made Object passes the Library check: its 2D symbol and 3D primitive agree at every parameter setting, every parameter has limits and changes something, sizes are whole millimetres."
+    },
+    {
+      "id": "R5",
+      "text": "A made Object is a Project Object: its id is project.<name>@1.0.0 and it stays in the project until the owner asks for it to be proposed to the Library."
+    },
+    {
+      "id": "R6",
+      "text": "Measure in millimetres. When a size is not given, use a usual size for the kind of thing and say so in the Need's notes."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "make",
+      "name": "Make",
+      "outcome": "The thing described is an Object whose 2D symbol and 3D primitive agree at every parameter setting.",
+      "agent": "maker",
+      "tools": [
+        "run_inputs",
+        "run_state",
+        "library_get",
+        "library_check",
+        "object_put"
+      ],
+      "files": true,
+      "checks": [
+        "objects-made",
+        "objects-make-sense"
+      ],
+      "retries": 3,
+      "context": [
+        "brief",
+        "brief-files",
+        "library-similar",
+        "project",
+        "owner-notes",
+        "lessons",
+        "owner-comments",
+        "given"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "keep",
+      "name": "Keep",
+      "question": "Keep these Objects in the project? They are pinned to it, ready to attach to a line, face or point; they stay out of the Library until you ask for them to be proposed. Not right? Write what to do differently and send it back.",
+      "form": "keep-objects",
+      "sendBack": "make"
+    },
+    {
+      "kind": "decision",
+      "id": "propose",
+      "name": "Propose to the Library",
+      "question": "Propose these Objects to the Library? Each goes by its own Propose to Library run (a pull request you merge). Not right? Write what to change and send it back.",
+      "form": "propose-objects",
+      "sendBack": "make"
+    }
+  ],
+  "output": {
+    "id": "made-objects",
+    "name": "Made Objects",
+    "about": "The Object made and whether it was kept."
+  },
+  "useWhen": "The owner describes one thing to make (with a photo or drawing if they have one) and wants it as an Object in the project."
+}

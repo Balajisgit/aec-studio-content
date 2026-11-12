@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 36._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 37._
 
 ## What this is
 
@@ -43,7 +43,7 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - A session's **Open** lists only the requests it noted or closed ("R14 noted: …", "R9 done").
 - A chat outside the app (claude.ai) writes a new record at each wrap-up, at the next free number: `memory/sessions/<number, 4 digits>.md` in the format the app writes (front matter: number, date, title, source; then the headline, Done, Decisions, Open), appends its decisions to `memory/decisions.md`, regenerates `memory/briefing.md` with `node <app>/tools/requests.mjs briefing <content>` (the app's format.js, with the requests), and commits to the content repository's main. It notes and changes requests with the same tool (`add`, `update`, `settle`), which commits and pushes each change. No wrap-up JSON, no pasting.
 - Limits: title 200 characters, headline 400, at most 12 items of 300 characters in Done, Decisions and Open. Decisions quote the owner's words.
-- Explain in plain language; the owner often reads on a phone. Never approve, merge or release: those are the owner's actions. Don't use the BuilderPluss MCP tools.
+- Explain in plain language; the owner often reads on a phone. Never approve, merge or release: those are the owner's actions. Use the Studio connector (R81) in chats, as the person signed in; never approve, merge or release through it (owner, 12 Nov 2026).
 
 ## Open now
 
@@ -63,10 +63,10 @@ _The open requests (requests/ in the content repository)._
 - R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes (in aec-studio#87)
 - R71 · Easy drawing 4/5: box select, set on all, Match (in aec-studio#88)
 - R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection (in aec-studio#89)
-- R74 · Python and Blender scripts on the Helper: a firm script that runs Blender in the background with a Python bundle
-- R75 · An image review decision: see renders side by side (reference, before, after), approve or send back with marks (in aec-studio#92)
 - R77 · Save as firm template, and making new templates (in aec-studio#90)
-- R78 · Files a pipeline makes go to the project on approval: a folder per pipeline, versioned names, where each came from; heavy files can stay on the PC by path (in aec-studio#91)
+- R79 · Runs belong nowhere: typed outputs kept in the run, placed by the owner into a project's files (indexed), a model, the Library or as detail; inputs from anywhere, chaining; no scopes (in aec-studio#95)
+- R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
+- R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
@@ -74,7 +74,6 @@ _The open requests (requests/ in the content repository)._
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
-- R73 · Objects that carry a detailed mesh: a .blend/.usdc/.glb kept by fingerprint, beside the 2D symbol and 3D primitive (in aec-studio#93)
 
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
@@ -84,6 +83,26 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 36 · 2026-11-12 · Files, image review and Object detail merged; Read a brief replaces Brief to Library; runs that belong nowhere, Blender anywhere and the Studio connector planned
+R78, R75 and R73 were built, tried on staging and merged with content #44. The detailed version is now a third form beside an Object, for renders only. Each pipeline does one job. Next: runs that belong nowhere with placing (R79), Blender jobs anywhere (R80) and the Studio connector (R81).
+
+Done:
+- R78 merged (#91): files a pipeline makes reach a project's files on approval, a folder per pipeline, versioned names, where each came from; heavy files kept on the PC by Helper folder and path, with Check.
+- R75 merged (#92): the image review, each result beside its reference and its before image; keep, or send back with a comment pinned on one image.
+- R73 merged (#93), reworked: the detailed version sits beside an Object version (a project's record, or library/objects/<contract>/<version>.detail.json by proposal), never in the model; files stay on this PC.
+- Ways into Detail: "make its detailed version next" at Keep, Library "no detail yet" with Detail it, Render views' detail-check listing Objects without detail.
+- Content #44 merged: Read a brief (replaces Brief to Library, removed), Make an Object 1.5.0, Detail an Object 1.1.0, Render views 1.1.0; detail sidecars in the proposals action and validate.js; checks files-made and detail-checked.
+- Staging updated twice with this work beside R66-R72 and R77; 252 tests pass there.
+- Requests settled: R60 and R63 done; R58, R59, R61 declined as empty test entries; R74 declined, replaced by R80.
+- R79, R80 and R81 noted.
+
+Decided:
+- Owner: "brief to library can be removed"; option 2: Read a brief keeps reading and matching, with Make buttons.
+- Owner: "detailed object is another form of a library item - 2d, 3d, detailed 3d"; "detailed variant is only meant for taking renders and not to be placed in the model"; Library detail files "store in the local as of now".
+- Owner: "all pipeline should run anywhere - no scope setting"; output "placed anywhere - in a model, in project folder, or in runs folder"; placing is the owner's act ("yes"); index, not copy.
+- Owner: Blender "in claude" when the PC is not connected; the Studio connector "yes"; server Blender only for approved scripts ("yes").
+- Owner: "ok merge #91 → #92 → #93, then content #44"; the rule on BuilderPluss MCP tools changed to allow the Studio connector ("ok").
 
 ### Session 35 · 2026-11-12 · Model 4.0 objects, levels and legacy (R64-R67), easy floor-plan drawing (R68-R72), firm templates (R77), and staging fixes
 R63, R64 and R65 merged and live; R66 step 1 merged and live. R66 steps 2-4, R67, R68-R72 and R77 are built, each in its own pull request (#81-#90, content #41-#43), and all on staging for the owner to review together. Staging could not record requests: fixed in #94.
@@ -161,27 +180,9 @@ Decided:
 - Owner on features resting on walls: "Remove them now"; shipping: "Stacked PRs, staging, merge together".
 - Owner on faces: "Made it auto detect and form" (the Face tool removed).
 
-### Session 31 · 2026-11-10 · The Helper runs PC apps and firm scripts, a Docs tab, staging live, and Fit to plot (R60)
-Firms' apps and scripts run on their own Helper (R21 step 2c); the Studio gained a Docs tab with guides for the platform and for firms, plus requests and offers to BuilderPluss; staging went live; Fit to plot fits the largest rectangle at any angle inside a plot's setbacks and draws it as the ground floor's outer walls, now deployed with the fixes from its first live run.
-
-Done:
-- R21 step 2c: PC apps (MCP servers in helper-tools.json) and the firm's scripts run on the Helper, scripts under Node's permission model; tools pc_tools, app_tool, script_run (#58).
-- Docs tab beside Storage, read from content docs/*.md by audience: the platform guide for BuilderPluss, the firm guide for firms; a firm's Request to BuilderPluss and Offer to BuilderPluss, without showing the firm the internal list (#59, content #28).
-- Staging live at staging.studio.builderpluss.com (DNS, deploy setup with target staging, certificate).
-- Fit to plot (R60): model.site with set_site and clear_site; kernel/site.js finds the largest rectangle at any angle inside front, rear and side setbacks (matches a search every 0.5°); Site tool on the canvas (P); code stages, the pick-footprint decision and checks (#60, content #29).
-- First live run's fixes: the chat could not answer any run's decision when hosted (run_decide access keyed on the wrong field; a test now checks every chat tool's key); the chat's footprint pick; the canvas frames a new plot; Canvas13 draws it (#62).
-- The Site reader never makes up a plot: with no plot and an empty brief the run stops and asks for the Site tool (#62, content #30).
-- Checks on main green again: the smoke check expects the Docs tab (#61); a test no longer writes a file named undefined (removed in #60).
-- Deployed to production: app 59f473c, content 4365796; 175 tests pass.
-- Discussed: HuskyBIM is complementary (their MCP connectors could plug into our Helper; check their terms); safe Claude marketing wording ("built on Claude by Anthropic", no logo or endorsement without permission).
-
-Decided:
-- Owner: improving the app is either code or a pipeline; docs as "Two documents - one for platform users and another for firms. Both enabled in Builderpluss and only one in firms account", in "a docs tab in the app next to storage updated from git content".
-- Owner: "Request to BuilderPluss" that the platform's people see, without showing the firm the internal list.
-- Owner on Fit to plot: "Any angle, best area"; setbacks "Front, rear and sides"; plot input "all three above" (canvas, coordinates or survey file read by an agent, notes); result "Outer walls on the ground floor".
-
 ## Earlier sessions
 
+- **31** · 2026-11-10 · The Helper runs PC apps and firm scripts, a Docs tab, staging live, and Fit to plot (R60) — Firms' apps and scripts run on their own Helper (R21 step 2c); the Studio gained a Docs tab with guides for the platform and for firms, plus requests and offers to BuilderPluss; staging went live; Fit to plot fits the largest rectangle at any angle inside a plot's setbacks and draws it as the ground floor's outer walls, now deployed with the fixes from its first live run.
 - **30** · 2026-11-09 · Hosted at studio.builderpluss.com, the Helper, organizations and roles, knowledge layers, staging and security — BuilderPluss Studio runs on the Hostinger server at studio.builderpluss.com; PCs connect out through the Helper with their own Claude; firms, workspaces, roles, guests, FDEs and platform roles are built from first principles, each firm with its own knowledge layer and Claude usage; a staging site and two-factor sign-in complete it (R20, R21 step 2a, R22, R56).
 - **29** · 2026-11-08 · One kernel for 2D and 3D, BuilderPluss Studio and Innowa, the kernel split, agents that learn — The kernel became one schema for plan and 3D and then a design kernel with its own geometry engine; the app is BuilderPluss Studio with Innowa as its assistant; the canvas got a floating tool bar; and agents now learn from corrections, start from patterns and are measured by replayed briefs.
 - **28** · 2026-11-06 · Runs anywhere, requests, context assembly, chat and plan polish, real curves, a Claude-like layout — Pipelines run in a project, the Library or the studio; requests are noted from any page and worked through; agents and the chat get assembled context; the chat takes files and drives runs; plans are drafted with real curves; the canvas is home, and app updates restart the server by themselves.

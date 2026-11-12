@@ -112,3 +112,8 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-12 · Session 35** — Owner on house defaults: "firm default plus a choice per project", "live", "allow a small set of per-project overrides"; on hand edits, hold the whole element: "yes as per ur suggestion".
 - **2026-11-12 · Session 35** — Owner: "Complete R66 , R67, then R68 to R72. Put it in stage first. I ll review together".
 - **2026-11-12 · Session 35** — Owner on Save as firm template and new templates: "As u suggest" (proposals he merges; projects stay on their version until switched; anyone in a firm suggests, its owner or an admin approves).
+- **2026-11-12 · Session 36** — Owner: "brief to library can be removed"; option 2: Read a brief keeps reading and matching, with Make buttons.
+- **2026-11-12 · Session 36** — Owner: "detailed object is another form of a library item - 2d, 3d, detailed 3d"; "detailed variant is only meant for taking renders and not to be placed in the model"; Library detail files "store in the local as of now".
+- **2026-11-12 · Session 36** — Owner: "all pipeline should run anywhere - no scope setting"; output "placed anywhere - in a model, in project folder, or in runs folder"; placing is the owner's act ("yes"); index, not copy.
+- **2026-11-12 · Session 36** — Owner: Blender "in claude" when the PC is not connected; the Studio connector "yes"; server Blender only for approved scripts ("yes").
+- **2026-11-12 · Session 36** — Owner: "ok merge #91 → #92 → #93, then content #44"; the rule on BuilderPluss MCP tools changed to allow the Studio connector ("ok").
