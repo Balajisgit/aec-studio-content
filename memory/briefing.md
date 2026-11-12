@@ -79,7 +79,7 @@ _The open requests (requests/ in the content repository)._
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
-- R73 · Objects that carry a detailed mesh: a .blend/.usdc/.glb kept by fingerprint, beside the 2D symbol and 3D primitive
+- R73 · Objects that carry a detailed mesh: a .blend/.usdc/.glb kept by fingerprint, beside the 2D symbol and 3D primitive (planned)
 
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
