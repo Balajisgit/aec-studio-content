@@ -64,7 +64,6 @@ _The open requests (requests/ in the content repository)._
 - R71 · Easy drawing 4/5: box select, set on all, Match (in aec-studio#88)
 - R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection (in aec-studio#89)
 - R74 · Python and Blender scripts on the Helper: a firm script that runs Blender in the background with a Python bundle
-- R75 · An image review decision: see renders side by side (reference, before, after), approve or send back with marks (in aec-studio#92)
 - R77 · Save as firm template, and making new templates (in aec-studio#90)
 - R78 · Files a pipeline makes go to the project on approval: a folder per pipeline, versioned names, where each came from; heavy files can stay on the PC by path (in aec-studio#91)
 
