@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 35._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 36._
 
 ## What this is
 
@@ -56,10 +56,6 @@ _The open requests (requests/ in the content repository)._
 - R46 · Python helper on the server for IFC export
 - R56 · RBAC from first principles: platform roles, organizations, workspaces, project roles, FDEs, agents
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
-- R58 · requests · from project test1
-- R59 · requetst
-- R61 · project
-- R63 · Primers and meanings: nodes, segments and faces with roles by category; functions from the Library; walls, doors and windows out of the kernel (in aec-studio#71)
 - R66 · Levels in model 4.0: heights from levels, walls through floors, columns in walls, stair and void holes in slabs (in aec-studio#83)
 - R67 · Move the 2.x/3.0 kernel into kernel/legacy/ (kept only to open, replay and convert older projects) (in aec-studio#84)
 - R68 · Easy drawing 1/5: draw-as presets and house defaults (as templates in content) (in aec-studio#85)
@@ -74,7 +70,6 @@ _The open requests (requests/ in the content repository)._
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
-- R60 · Fit to plot: the largest rectangle inside an irregular plot's setbacks, as the ground floor's outer walls
 - R76 · Hybrid render: a quick Blender render and product mask, then Krea enhance as a firm script with the firm's own Krea key
 
 **The Library**
@@ -89,6 +84,26 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 35 · 2026-11-12 · Model 4.0 objects, levels and legacy (R64-R67), easy floor-plan drawing (R68-R72), firm templates (R77), and staging fixes
+R63, R64 and R65 merged and live; R66 step 1 merged and live. R66 steps 2-4, R67, R68-R72 and R77 are built, each in its own pull request (#81-#90, content #41-#43), and all on staging for the owner to review together. Staging could not record requests: fixed in #94.
+
+Done:
+- Merged R63 (primers and meanings) and R64 (Objects on lines, corners, faces with two functions, points); R65 (Put in: doors, windows, gates into walls) merged and live.
+- R66 levels: step 1 heights merged and live; steps 2-4 in #81-#83 (walls through floors, columns in walls, stair and void holes in slabs) with content #41 (Void).
+- #82 also fixes the production Stair Object (an Object's own rise now wins over the level's). R67: the 2.x/3.0 kernel moved to kernel/legacy/ (#84).
+- R68 house defaults from content templates (#85, content #42): draw-as presets, outer/inner walls and Room + Slab kept live, a few per-project overrides, hand edits held.
+- R69 typed lengths and angles, 15° snap, Alt to wall faces, lengths on the plan (#86). R70 Room tool with clear or centre-line sizes, snapping to nearby walls (#87).
+- R71 box and Shift-click select, set on all, delete all, Match (#88). R72 move, copy, turn, mirror, offset, extend and Trim tool, each one undoable step (#89).
+- R77 Save as firm template and a Templates section on the Library page, as proposals the owner merges (#90, content #43 with a new Action). R73-R76 were taken by other requests.
+- Fixed R68 on hosted sites: the template requests were missing from the access list; a new test checks every page request is listed.
+- Fixed staging refusing to record requests and sessions: CONTENT_BRANCH from .env now reaches the recorders (#94), with a test.
+- Discussed the floor-plan workflow with the new tools and grouped the open requests.
+
+Decided:
+- Owner on house defaults: "firm default plus a choice per project", "live", "allow a small set of per-project overrides"; on hand edits, hold the whole element: "yes as per ur suggestion".
+- Owner: "Complete R66 , R67, then R68 to R72. Put it in stage first. I ll review together".
+- Owner on Save as firm template and new templates: "As u suggest" (proposals he merges; projects stay on their version until switched; anyone in a firm suggests, its owner or an admin approves).
 
 ### Session 34 · 2026-11-12 · Where the visualization pipelines fit in Studio, and files a pipeline makes reach the project on approval (R78)
 The five pipelines were read against the three visualization phases: Brief to Library covers reading the deck, Fit to plot is the pattern for reading CAD, and Render views and Detail an Object are new. Files a pipeline makes reach the project only on approval, in a folder per pipeline (R78); R73, R75 and R78 are grouped and planned.
@@ -165,31 +180,9 @@ Decided:
 - Owner: "Request to BuilderPluss" that the platform's people see, without showing the firm the internal list.
 - Owner on Fit to plot: "Any angle, best area"; setbacks "Front, rear and sides"; plot input "all three above" (canvas, coordinates or survey file read by an agent, notes); result "Outer walls on the ground floor".
 
-### Session 30 · 2026-11-09 · Hosted at studio.builderpluss.com, the Helper, organizations and roles, knowledge layers, staging and security
-BuilderPluss Studio runs on the Hostinger server at studio.builderpluss.com; PCs connect out through the Helper with their own Claude; firms, workspaces, roles, guests, FDEs and platform roles are built from first principles, each firm with its own knowledge layer and Claude usage; a staging site and two-factor sign-in complete it (R20, R21 step 2a, R22, R56).
-
-Done:
-- R20 phase 1: server mode (sign-in, owner account by setup code, sessions, offsite copies to R2), setup.sh and the deploy action (app #46); fixes #47, #48.
-- Live at https://studio.builderpluss.com behind nginx with Let's Encrypt; owner account made.
-- R21 step 2a, the Helper: pair a PC with a one-time code, it connects out, runs Claude there with no built-in tools, the Studio's tools called back; files_read/files_glob over the run's folders (#49); the Helper as one download that pairs by itself, Start-Helper.bat, Mac/Linux script (#51).
-- R22 first part: team accounts by invitation (#50).
-- R56 step 1: organizations, workspaces, roles per level, can(), the platform plane, migration (BuilderPluss, workspace Main closed), support access with emergency grant (#52).
-- R56 step 2: project guests from other firms; the shared memory only for the platform's people (#53). Step 3: Claude usage per firm, workspace, project, person; monthly limits; runs on each person's own Helper (#54).
-- R56 step 4: knowledge layers per firm; Innowa drafts firm pipelines; pipeline stages edit the model; check model-changed-soundly (#55, content #27).
-- R56 step 5: staging site beside production (#56); two-factor sign-in and its requirement, access reviews, audit across firms (#57).
-- Leaks found and closed on the way: shared memory readable by anyone signed in (#53); the corrections reader and Library suggestions reading every firm's projects (#55).
-- Checks: 162 tests at the end.
-
-Decided:
-- Owner: "Studio on server, Helper on the client pc which connects claude code and studio"; "Hostinger server"; "no tailscale needed.. lets deploy in www.studio.builderpluss.com".
-- Owner: team access "Own projects only"; then "lets create a actual rbac type of user management along with creating organozation and workspace from the first primciple - aec saas"; FDE and platform roles added.
-- Owner: staging "second site on the same box"; break-glass "Platform Owner approve it in an emergency (with the client told afterwards)"; "you as Platform Owner and Ops, Bikal as Developer & Platform FDE".
-- Owner: the standalone Helper (option C), not a company API key on the server.
-- Owner: "I want to use subscription now. I am testing only. Not going commercial" (API keys or Anthropic's approval before going commercial).
-- Owner on firm code: "let that runs in the Helper", not on the server (recorded on R21 with step 2c).
-
 ## Earlier sessions
 
+- **30** · 2026-11-09 · Hosted at studio.builderpluss.com, the Helper, organizations and roles, knowledge layers, staging and security — BuilderPluss Studio runs on the Hostinger server at studio.builderpluss.com; PCs connect out through the Helper with their own Claude; firms, workspaces, roles, guests, FDEs and platform roles are built from first principles, each firm with its own knowledge layer and Claude usage; a staging site and two-factor sign-in complete it (R20, R21 step 2a, R22, R56).
 - **29** · 2026-11-08 · One kernel for 2D and 3D, BuilderPluss Studio and Innowa, the kernel split, agents that learn — The kernel became one schema for plan and 3D and then a design kernel with its own geometry engine; the app is BuilderPluss Studio with Innowa as its assistant; the canvas got a floating tool bar; and agents now learn from corrections, start from patterns and are measured by replayed briefs.
 - **28** · 2026-11-06 · Runs anywhere, requests, context assembly, chat and plan polish, real curves, a Claude-like layout — Pipelines run in a project, the Library or the studio; requests are noted from any page and worked through; agents and the chat get assembled context; the chat takes files and drives runs; plans are drafted with real curves; the canvas is home, and app updates restart the server by themselves.
 - **27** · 2026-11-03 · Library proposals: Project Objects reach the Library with one tap; the review setting and its button — Project Objects now reach the Library without a chat: the app suggests them, one tap sends a pull request, and projects switch to the Library version after the merge. The quick review setting is shown and changed from the Studio page by pull request.
