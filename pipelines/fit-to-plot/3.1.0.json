@@ -1,0 +1,76 @@
+{
+  "id": "fit-to-plot@3.1.0",
+  "name": "Fit to plot",
+  "about": "Finds the largest rectangle that fits a plot inside its front, rear and side setbacks, at any angle, and draws the one you pick as the building's footprint: lines and a face with the Footprint function. The plot is a face with the Plot function, its road edge marked Front: drawn on the canvas, or read from the notes or a survey by the Site reader.",
+  "useWhen": "The owner wants the biggest rectangular building footprint a plot allows after its setbacks, as a start for the plan.",
+  "input": {
+    "notes": true,
+    "files": true,
+    "optional": true,
+    "about": "Nothing when the plot is drawn already (a face with the Plot function and its Front edge). Otherwise the plot's corners in the notes (x, y in metres or mm, in order) or a survey or coordinates file, which side faces the road and the setbacks. Optional params: maxCoverage (0 to 1 of the plot), minSide (mm)."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "Work in whole millimetres on the project's plan axes (x east, y north)."
+    },
+    {
+      "id": "R2",
+      "text": "The plot is a face with the Plot function: its edges are lines, its setbacks are the function's values. The line on the road is marked Front (a position in the plot); the edge facing away from it is worked out as the rear, the others as sides. A line with its own setback is marked Own setback."
+    },
+    {
+      "id": "R3",
+      "text": "Never make up a plot: with nothing in the brief to read it from, the run asks for it to be drawn."
+    },
+    {
+      "id": "R4",
+      "text": "The footprint is a rectangle at any angle, wholly inside the plot and at least each edge's setback away from it. Only the owner's pick draws it, as lines and a face with the Footprint function: one logged, undoable step. Nothing is built: walls come later."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "read-site",
+      "name": "Read the plot",
+      "outcome": "The project has the plot from the brief: a face with the Plot function and its setbacks, its road edge marked Front.",
+      "agent": "site-reader",
+      "when": "plot-to-read",
+      "tools": [
+        "run_inputs",
+        "run_state",
+        "project_model",
+        "project_ops",
+        "project_edit"
+      ],
+      "files": true,
+      "checks": [
+        "plot-set",
+        "model-changed-soundly"
+      ],
+      "retries": 2
+    },
+    {
+      "kind": "stage",
+      "id": "fit",
+      "name": "Fit the largest rectangle",
+      "outcome": "The largest rectangles that fit inside the setbacks, at any angle: the best and up to two others.",
+      "solver": "fit-max-rectangle@2.0.0",
+      "checks": [
+        "candidates-found"
+      ],
+      "retries": 0
+    },
+    {
+      "kind": "decision",
+      "id": "pick",
+      "name": "Pick the footprint",
+      "question": "Which footprint should the building take? Click it on the plan or pick it here.",
+      "form": "pick-candidate"
+    }
+  ],
+  "output": {
+    "id": "footprint",
+    "name": "Footprint on the plot",
+    "about": "The footprint picked, its area and share of the plot, drawn as a face with the Footprint function."
+  }
+}
