@@ -73,6 +73,7 @@ _The open requests (requests/ in the content repository)._
 - R76 · Hybrid render: a quick Blender render and product mask, then Krea enhance as a firm script with the firm's own Krea key
 - R83 · Make a scene: a session on the owner's PC builds one Blender scene from a project's model (shell, placed Objects from their detail, lights, cameras from the reference slides)
 - R84 · Render views as a session: render the scene's cameras in Blender on the owner's PC instead of the firm's scripts
+- R85 · Innowa chains the pipelines from one ask: deck to scene and renders
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
