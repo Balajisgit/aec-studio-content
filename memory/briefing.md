@@ -70,6 +70,7 @@ _The open requests (requests/ in the content repository)._
 - R74 · Python and Blender scripts on the Helper: a firm script that runs Blender in the background with a Python bundle
 - R75 · An image review decision: see renders side by side (reference, before, after), approve or send back with marks
 - R77 · Save as firm template, and making new templates (in aec-studio#90)
+- R78 · Files a pipeline makes go to the project on approval: a folder per pipeline, versioned names, where each came from; heavy files can stay on the PC by path
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
