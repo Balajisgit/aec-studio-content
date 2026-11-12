@@ -1,0 +1,6 @@
+{
+  "id": "files-made",
+  "name": "Files were made",
+  "about": "A stage that runs a script on a PC (script_run) made at least one file: sent to the run, or kept on the PC by its folder and path (R78).",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}
