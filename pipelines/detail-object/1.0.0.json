@@ -1,0 +1,46 @@
+{
+  "id": "detail-object@1.0.0",
+  "name": "Detail an Object",
+  "about": "A Project Object built as a detailed Blender model from the brief and its photos, to the instancing standard, on a PC; you keep the files, and the Object's next version points to them, used wherever it was.",
+  "useWhen": "The owner wants a Project Object (made by Brief to Library or Make an Object) as a full model for rendering, matching the real product in the photos.",
+  "scopes": ["project"],
+  "input": {
+    "notes": true,
+    "files": true,
+    "about": "The Project Object to detail (params.object, e.g. project.raft) and the photos and pages that show it, from the project's files; anything to know in the notes."
+  },
+  "rules": [
+    { "id": "R1", "text": "Real-world scale; one master mesh per repeated part and linked duplicates for the repeats; the instance audit passes." },
+    { "id": "R2", "text": "The model matches the real product in the photos: proportions, joints, thicknesses, finishes and colours; where the photo and the brief differ, the brief wins and the difference is said." },
+    { "id": "R3", "text": "The .blend stays on the PC that built it, by its Helper's named folder and path; the .usdc, .glb and the preview come to the run." },
+    { "id": "R4", "text": "Only the owner's decision changes the project: the Object's next version, pinned and used wherever the old one was, as one undoable step." }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "build",
+      "name": "Build",
+      "outcome": "The Object is built as a detailed model: its .blend kept on the PC, its .usdc, .glb, a preview and a passing audit sent to the run.",
+      "agent": "detailer",
+      "tools": ["run_inputs", "run_state", "library_get", "pc_tools", "script_run"],
+      "files": true,
+      "checks": ["files-made"],
+      "retries": 2,
+      "context": ["brief", "brief-files", "owner-notes", "owner-comments"]
+    },
+    {
+      "kind": "decision",
+      "id": "keep",
+      "name": "Keep the detail",
+      "question": "Does the preview match the photos? Keep the files as the Object's detail, or send it back with what to change.",
+      "form": "keep-detail",
+      "sendBack": "build"
+    }
+  ],
+  "output": {
+    "id": "detail",
+    "name": "Detail",
+    "about": "The detailed files kept, and the Object's new version that points to them.",
+    "files": { "folder": "Objects", "keep": ["*.blend", "*.usdc", "*.usd", "*.glb", "*_preview.png"] }
+  }
+}
