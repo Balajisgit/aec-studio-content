@@ -1,4 +1,4 @@
-// .github/scripts/template-proposals.mjs — run by .github/workflows/template-proposals.yml (R73).
+// .github/scripts/template-proposals.mjs — run by .github/workflows/template-proposals.yml (R77).
 //   open            for every record in templates/proposals/ on main without a branch yet: a branch template/<id>-<version>
 //                   that adds templates/<id>/<version>.json (and, when asked, makes it the default in templates/default.json),
 //                   or template/default-<id> that only changes the default; the record removed; a pull request for the owner;

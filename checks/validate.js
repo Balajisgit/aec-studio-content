@@ -54,7 +54,7 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
 // templates/<id>/<version>.json (R68): house defaults; every Object they name is in the Library, every meaning exists.
 try { const td = join(root, "templates");
   for (const id of readdirSync(td)) { const dir = join(td, id);
-    if (id === "proposals") { // records the app commits (R73); the template-proposals Action turns each into a pull request
+    if (id === "proposals") { // records the app commits (R77); the template-proposals Action turns each into a pull request
       for (const n of readdirSync(dir)) { if (n === ".gitkeep") continue; const rel = `templates/proposals/${n}`, m = /^(?:([a-z][a-z0-9-]*)@(\d+\.\d+\.\d+)|default-([a-z][a-z0-9-]*))\.json$/.exec(n);
         if (!m) { problems.push(`${rel}: name it <id>@<version>.json or default-<id>.json`); continue; } let r; try { r = JSON.parse(readFileSync(join(dir, n), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
         if (m[1] && (!r.template || r.template.id !== `${m[1]}@${m[2]}`)) problems.push(`${rel}: template.id must be ${m[1]}@${m[2]}`);

@@ -1,4 +1,4 @@
-# Template proposals (R73): AEC Studio commits a record templates/proposals/<id>@<version>.json (or default-<id>.json) to main;
+# Template proposals (R77): AEC Studio commits a record templates/proposals/<id>@<version>.json (or default-<id>.json) to main;
 # this turns each into a pull request that adds templates/<id>/<version>.json (or changes templates/default.json)
 # and removes the record. Only the owner merges. A pull request closed without merging removes its record, so it
 # can be proposed again. Needs, in Settings → Actions → General: "Read and write permissions" and "Allow GitHub Actions to

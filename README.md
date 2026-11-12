@@ -31,7 +31,7 @@ solvers/<id>/<version>.js          a solver (R62): solve(input, geo) gives candi
 semantics/<id>.json               positions: where a line or point is in a face (front, rear, side, own-setback), what it goes on, its values (R63)
 templates/<id>/<version>.json      house defaults (R68): draw-as presets, house rules (outer and inner walls, every room a Room + Slab),
                                   the usual openings and floor height; templates/default.json names the one new projects follow
-templates/proposals/               new templates, new versions and a new default proposed from the app (R73): the template-proposals
+templates/proposals/               new templates, new versions and a new default proposed from the app (R77): the template-proposals
                                   Action turns each record into a pull request the owner merges
 library/meanings/<id>.json        functions: what a node, line or face is (wall, door, gate, room, plot…), one per primer, picked from the Library (R63); a firm adds its own in its layer
 settings.json                     shared settings: models per tier; library.review (quick review of Library proposals: off, unsure, always)
