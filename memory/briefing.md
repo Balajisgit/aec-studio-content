@@ -63,7 +63,6 @@ _The open requests (requests/ in the content repository)._
 - R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes (in aec-studio#87)
 - R71 · Easy drawing 4/5: box select, set on all, Match (in aec-studio#88)
 - R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection (in aec-studio#89)
-- R74 · Python and Blender scripts on the Helper: a firm script that runs Blender in the background with a Python bundle
 - R77 · Save as firm template, and making new templates (in aec-studio#90)
 - R78 · Files a pipeline makes go to the project on approval: a folder per pipeline, versioned names, where each came from; heavy files can stay on the PC by path (in aec-studio#91)
 - R79 · Runs belong nowhere: typed outputs kept in the run, placed by the owner into a project's files (indexed), a model, the Library or as detail; inputs from anywhere, chaining; no scopes
