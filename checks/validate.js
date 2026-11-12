@@ -53,7 +53,14 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/objects: ${e.message}`); }
 // templates/<id>/<version>.json (R68): house defaults; every Object they name is in the Library, every meaning exists.
 try { const td = join(root, "templates");
-  for (const id of readdirSync(td)) { const dir = join(td, id); if (id === "default.json") { try { const d = JSON.parse(readFileSync(dir, "utf8")); if (!existsSync(join(td, String(d.template)))) problems.push(`templates/default.json: there is no template ${d.template}`); } catch (e) { problems.push(`templates/default.json: ${e.message}`); } continue; }
+  for (const id of readdirSync(td)) { const dir = join(td, id);
+    if (id === "proposals") { // records the app commits (R73); the template-proposals Action turns each into a pull request
+      for (const n of readdirSync(dir)) { if (n === ".gitkeep") continue; const rel = `templates/proposals/${n}`, m = /^(?:([a-z][a-z0-9-]*)@(\d+\.\d+\.\d+)|default-([a-z][a-z0-9-]*))\.json$/.exec(n);
+        if (!m) { problems.push(`${rel}: name it <id>@<version>.json or default-<id>.json`); continue; } let r; try { r = JSON.parse(readFileSync(join(dir, n), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
+        if (m[1] && (!r.template || r.template.id !== `${m[1]}@${m[2]}`)) problems.push(`${rel}: template.id must be ${m[1]}@${m[2]}`);
+        if (m[3] && r.default !== m[3]) problems.push(`${rel}: default must be ${m[3]}`); }
+      continue; }
+    if (id === "default.json") { try { const d = JSON.parse(readFileSync(dir, "utf8")); if (!existsSync(join(td, String(d.template)))) problems.push(`templates/default.json: there is no template ${d.template}`); } catch (e) { problems.push(`templates/default.json: ${e.message}`); } continue; }
     if (!statSync(dir).isDirectory()) { problems.push(`templates/${id}: a template lives in a folder per id`); continue; }
     for (const v of readdirSync(dir)) { const rel = `templates/${id}/${v}`; let t; try { t = JSON.parse(readFileSync(join(dir, v), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
       if (t.id !== `${id}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${id}@${v.slice(0, -5)}`);
