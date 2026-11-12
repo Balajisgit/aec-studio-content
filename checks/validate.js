@@ -151,6 +151,10 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
           if (s.agent !== undefined || s.code !== undefined) problems.push(`${rel}: stage ${s.id}: a solver stage has no agent or code`); }
         else if (s.code !== undefined) { if (!/^[a-z][a-z0-9-]*$/.test(String(s.code))) problems.push(`${rel}: stage ${s.id}: code names a code stage, like prepare-proposal`); if (s.agent !== undefined) problems.push(`${rel}: stage ${s.id}: a code stage has no agent`); }
         else if (!agents.has(s.agent)) problems.push(`${rel}: stage ${s.id} names agent ${s.agent}, which is not in agents/`);
+        // R82: a session stage (session: true) is a full Claude session on the owner's PC; its skills are skills/<name>/SKILL.md
+        if (s.session !== undefined && s.session !== true) problems.push(`${rel}: stage ${s.id}: session is true or left out`);
+        if (s.skills !== undefined) { if (!s.session) problems.push(`${rel}: stage ${s.id}: skills are for a session stage (session: true)`);
+          if (!Array.isArray(s.skills)) problems.push(`${rel}: stage ${s.id}: skills is a list of skill names`); else for (const k of s.skills) if (!existsSync(join(root, "skills", String(k), "SKILL.md"))) problems.push(`${rel}: stage ${s.id} names skill ${k}, which is not in skills/`); }
         if (!Array.isArray(s.checks) || !s.checks.length) problems.push(`${rel}: stage ${s.id} has no checks`); for (const c of s.checks || []) if (!checks.has(c)) problems.push(`${rel}: stage ${s.id} names check ${c}, which is not in checks/definitions/`); }
       else if (s.kind === "decision") { if (!FORMS.includes(s.form)) problems.push(`${rel}: decision ${s.id} must use a form the app knows: ${FORMS.join(", ")}`); if (!s.question) problems.push(`${rel}: decision ${s.id} has no question`); }
       else problems.push(`${rel}: step ${s.id} must be a stage or a decision`); }
@@ -184,4 +188,10 @@ for (const id of (() => { try { return readdirSync(join(root, "solvers")); } cat
       if (j.roles !== undefined && !(Array.isArray(j.roles) && j.roles.every((r) => /^[a-z][a-z0-9-]*$/.test(r)))) problems.push(`${rel}: roles lists role ids`); }
     else if (!/function solve\s*\(/.test(readFileSync(join(root, rel), "utf8"))) problems.push(`${rel}: it must define function solve(input, geo)`); } }
 for (const p of problems) console.log("FAIL", p);
+// skills/<name>/SKILL.md (R82): front matter with name (matching the folder) and about; the text a session stage is given
+for (const n of (() => { try { return readdirSync(join(root, "skills")); } catch { return []; } })()) { if (n === ".gitkeep" || n === "README.md") continue;
+  const f = join(root, "skills", n, "SKILL.md"); if (!/^[a-z][a-z0-9-]*$/.test(n)) { problems.push(`skills/${n}: a skill's folder name is lower case, like blender-detail`); continue; }
+  if (!existsSync(f)) { problems.push(`skills/${n}: SKILL.md is missing`); continue; }
+  const t = readFileSync(f, "utf8"), fm = /^---\n([\s\S]*?)\n---\n/.exec(t);
+  if (!fm || !new RegExp(`^name: ${n}$`, "m").test(fm[1]) || !/^about: \S/m.test(fm[1])) problems.push(`skills/${n}/SKILL.md: front matter needs name: ${n} and about: …`); }
 console.log(`content: ${problems.length} problem${problems.length === 1 ? "" : "s"}`); process.exit(problems.length ? 1 : 0);
