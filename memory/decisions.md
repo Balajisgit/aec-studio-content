@@ -109,3 +109,6 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-12 · Session 34** — Owner: "Also heavy files can have a option to stored locally with its file path stored in the db as usual. For eg files of proposed detail an object pipeline."
 - **2026-11-12 · Session 34** — Owner on grouping R73, R75 and R78 as one piece of work: "Ok".
 - **2026-11-12 · Session 34** — Owner: "Build all in the order" (R78, R75, R73, then the pipeline drafts).
+- **2026-11-12 · Session 35** — Owner on house defaults: "firm default plus a choice per project", "live", "allow a small set of per-project overrides"; on hand edits, hold the whole element: "yes as per ur suggestion".
+- **2026-11-12 · Session 35** — Owner: "Complete R66 , R67, then R68 to R72. Put it in stage first. I ll review together".
+- **2026-11-12 · Session 35** — Owner on Save as firm template and new templates: "As u suggest" (proposals he merges; projects stay on their version until switched; anyone in a firm suggests, its owner or an admin approves).
