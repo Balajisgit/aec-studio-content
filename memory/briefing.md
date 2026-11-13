@@ -83,7 +83,7 @@ _The open requests (requests/ in the content repository)._
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
 
 **Something broken**
-- R87 · Read a run's files on a PC's Helper with Claude Code's own Read (PDF pages), only in the run's own folder
+- R87 · Read a run's files on a PC's Helper with Claude Code's own Read (PDF pages), only in the run's own folder (in aec-studio#97)
 
 **Other**
 - R5 · Archive the old app (AEC Agent Studio 2)
