@@ -1,0 +1,64 @@
+{
+  "id": "split-deck@1.0.0",
+  "name": "Slides from a deck",
+  "about": "A deck (PDF) becomes one picture per slide, slide<N>.png, made on the owner's PC by a Claude session, with a list of what each slide shows; kept in the project's Slides/ folder, so cameras and the render review match views to slides by name.",
+  "useWhen": "A deck is the brief and later steps need its slides as pictures: before Make a scene and Render views, or when the owner wants the slides.",
+  "input": {
+    "notes": true,
+    "about": "The deck (from the project's files or the chat), and which slides in the notes (else all)."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "One picture per slide asked for, named slide<N>.png with N the slide's number; nothing installed on the PC outside the session's folder."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "split",
+      "name": "Draw the slides",
+      "outcome": "Each slide asked for is a picture slide<N>.png, with slides.md saying what each shows.",
+      "agent": "slide-maker",
+      "session": true,
+      "skills": [
+        "deck-slides"
+      ],
+      "tools": [
+        "run_inputs",
+        "run_state"
+      ],
+      "checks": [
+        "files-made"
+      ],
+      "retries": 1,
+      "context": [
+        "brief",
+        "brief-files",
+        "given"
+      ],
+      "files": true
+    },
+    {
+      "kind": "decision",
+      "id": "keep",
+      "name": "Keep the slides",
+      "question": "Are these the slides? Keep them in the project's Slides/ folder.",
+      "form": "keep-files",
+      "sendBack": "split"
+    }
+  ],
+  "output": {
+    "id": "slides",
+    "name": "Slides",
+    "about": "The slides as pictures, and slides.md.",
+    "files": {
+      "folder": "Slides",
+      "keep": [
+        "slide*.png",
+        "slide*.jpg",
+        "slides.md"
+      ]
+    }
+  }
+}
