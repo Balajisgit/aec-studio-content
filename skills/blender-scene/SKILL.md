@@ -19,6 +19,14 @@ You are in your own working folder on the owner's PC with a shell. You build ONE
 - The brief's files (files_read / files_glob, or the brief files you can read): the reference slides or photos. Look at each one: the view, the mood, the light, the finishes.
 - The notes and the owner's comments (if the run was sent back, change only what they ask).
 
+## 2b. No project: an assumed layout
+
+When `scene_get` says `layout: "assumed"`, the run has no project, so there is no model: only the Objects it was given (each with its detail, or its `params` and `primitive3d` for a plain shape).
+- Lay the room out from the brief's slides and photos: its size and shape, where the walls, glazing, columns and feature walls are, the floor and ceiling finishes, and where each given Object sits. Keep to what the slides show; where they don't say, choose plainly and write it down.
+- Real sizes: read them from the slides (dimensions, a door 2.1 m high, a chair seat 450 mm) and keep the whole room to scale.
+- Name the top collection `<PROJECT>_LAYOUT_ASSUMED` and the file `<project>_scene_assumed.blend` (preview `<project>_scene_assumed_preview.png`).
+- The report starts with **ASSUMED LAYOUT** and lists every size and position you chose and the slide you read it from, so the owner can check them before the real layout is drawn.
+
 ## 3. Units and placing
 
 - The model is integer mm, x east, y north, z up. Blender is metres: divide by 1000.
@@ -51,12 +59,12 @@ You are in your own working folder on the owner's PC with a shell. You build ONE
 
 | File | What |
 |---|---|
-| `out/<project>_scene.blend` | the scene, with images packed (`bpy.ops.file.pack_all()`); it stays on this PC |
+| `out/<project>_scene.blend` (or `_scene_assumed.blend`) | the scene, with images packed (`bpy.ops.file.pack_all()`); it stays on this PC |
 | `out/<project>_scene_preview.png` | the first camera, Cycles, 1280 x 800, 16 to 24 samples with denoising (GPU if there is one: OptiX, CUDA, HIP, else CPU at 960 x 600, 8 samples) |
 | `out/scene_report.md` | levels; items placed by meaning; which Objects came from their detail and which are plain (and why); the cameras and the slide each matches; anything scaled or missing; how long the build and the preview took |
 | `out/session-log.md` | the Blender found and the commands you ran |
 
-`<project>` is the project's name in lower case with spaces as underscores. Render the preview from the saved .blend in a second Blender call, so a crash in rendering never loses the scene.
+`<project>` is the project's name in lower case with spaces as underscores (with no project, the brief's name, like `collab_01`). Render the preview from the saved .blend in a second Blender call, so a crash in rendering never loses the scene.
 
 ## 8. Check before you answer
 
