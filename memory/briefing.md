@@ -68,7 +68,7 @@ _The open requests (requests/ in the content repository)._
 - R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
 - R82 · Session stage: a full Claude Code session (shell, Blender) on the owner's PC, trial in Detail an Object (in aec-studio#97)
 - R86 · Innowa reads from the PC's named folders through the Helper: list a folder, bring a file into the chat (in aec-studio#97)
-- R88 · Innowa conducts: a job with a plan and limits, the pipelines as tasks that keep results by themselves, Innowa woken when they end, one review at the end
+- R88 · Innowa conducts: a job with a plan and limits, the pipelines as tasks that keep results by themselves, Innowa woken when they end, one review at the end (in aec-studio#98)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
