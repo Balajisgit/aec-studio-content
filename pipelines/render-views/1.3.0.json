@@ -1,0 +1,82 @@
+{
+  "id": "render-views@1.3.0",
+  "name": "Render views",
+  "about": "The scene's views rendered quickly in Blender by a Claude session on the owner's PC (about 30 s a view on a GPU), each with a mask that protects the products, named after its reference slide; you review each beside its reference. In a project, kept renders go to Renders/; elsewhere they stay with the run, approved. Krea enhancement follows once it is built (R76).",
+  "useWhen": "The owner wants images of a scene: after Make a scene, from a project (its Scenes/) or from the Make a scene run itself.",
+  "input": {
+    "notes": true,
+    "about": "The scene: kept in the project's Scenes/, or given from a Make a scene run (Use in a pipeline). The reference slides or photos to compare with (tick them). Which cameras in the notes (else all CAM_ cameras)."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "The scene the owner kept is never changed: the session renders a copy."
+    },
+    {
+      "id": "R2",
+      "text": "Each render is named after the reference its camera matches, and comes with a mask: black for the products, white for what an AI may change."
+    },
+    {
+      "id": "R3",
+      "text": "Only the owner's review keeps a render: in a project into Renders/, elsewhere approved with the run."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "render",
+      "name": "Render",
+      "outcome": "Each camera asked for is rendered quickly with its mask by a session on the owner's PC, named after its reference slide, with a report of the device and the time per view.",
+      "agent": "session-renderer",
+      "session": true,
+      "skills": [
+        "blender-render"
+      ],
+      "tools": [
+        "run_inputs",
+        "run_state",
+        "scene_files"
+      ],
+      "checks": [
+        "files-made"
+      ],
+      "retries": 1,
+      "context": [
+        "brief",
+        "brief-files",
+        "owner-comments",
+        "given"
+      ],
+      "files": true
+    },
+    {
+      "kind": "decision",
+      "id": "review",
+      "name": "Review",
+      "question": "Does each render show the view of its reference? Keep the ones that pass; or pin a comment on an image and send it back.",
+      "form": "review-images",
+      "sendBack": "render",
+      "compare": {
+        "reference": [
+          "*.jpg",
+          "*.jpeg",
+          "*.png"
+        ],
+        "after": [
+          "*_cycles.png"
+        ]
+      }
+    }
+  ],
+  "output": {
+    "id": "views",
+    "name": "Views",
+    "about": "Each view rendered, and the ones kept (in a project, in Renders/).",
+    "files": {
+      "folder": "Renders",
+      "keep": [
+        "*_cycles.png"
+      ]
+    }
+  }
+}
