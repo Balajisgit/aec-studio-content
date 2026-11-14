@@ -56,7 +56,6 @@ _The open requests (requests/ in the content repository)._
 - R46 · Python helper on the server for IFC export
 - R56 · RBAC from first principles: platform roles, organizations, workspaces, project roles, FDEs, agents
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
-- R77 · Save as firm template, and making new templates (in aec-studio#90)
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
 
