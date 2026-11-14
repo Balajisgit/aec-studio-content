@@ -1,0 +1,49 @@
+{
+  "id": "residential-brick@1.0.0",
+  "name": "Residential, brick 230 / 115",
+  "about": "Brick walls: 230 outside, 115 between rooms; every room a tiled floor on an RCC slab; a single-leaf door and a casement window; 3 m floors.",
+  "presets": [
+    {
+      "id": "external",
+      "name": "External wall",
+      "role": "wall",
+      "objectRef": "wall.brick-230@1.2.0"
+    },
+    {
+      "id": "partition",
+      "name": "Partition",
+      "role": "wall",
+      "objectRef": "wall.partition-115@1.2.0"
+    },
+    {
+      "id": "boundary",
+      "name": "Boundary fence",
+      "role": "fence",
+      "objectRef": "fence.mesh@1.1.0"
+    }
+  ],
+  "rules": {
+    "lines": {
+      "outer": "external",
+      "inner": "partition"
+    },
+    "faces": [
+      {
+        "role": "room",
+        "objectRef": "room.tiled-floor@1.0.0"
+      },
+      {
+        "role": "slab",
+        "objectRef": "slab.rcc-150@1.0.0"
+      }
+    ]
+  },
+  "openings": {
+    "door": "door.single-leaf@1.0.0",
+    "window": "window.casement@1.0.0",
+    "gate": "gate.swing@1.0.0"
+  },
+  "levels": {
+    "height": 3000
+  }
+}
