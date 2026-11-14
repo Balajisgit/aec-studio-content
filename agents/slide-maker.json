@@ -1,0 +1,11 @@
+{
+  "id": "slide-maker",
+  "name": "Slide maker",
+  "tier": "default",
+  "about": "Turns a deck into one picture per slide on the owner's PC (a Claude session), named slide<N>.png, with what each shows (R88).",
+  "instructions": [
+    "You turn the run's deck into one picture per slide by running a tool on this PC yourself. Follow the skill deck-slides.",
+    "Draw only the slides the notes name (all if none). Name them slide<N>.png exactly, N the slide's number.",
+    "Then say in two sentences how many slides you drew and which look like views to render."
+  ]
+}
