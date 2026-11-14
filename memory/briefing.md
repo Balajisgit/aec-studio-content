@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 37._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 38._
 
 ## What this is
 
@@ -92,6 +92,27 @@ _The open requests (requests/ in the content repository)._
 
 ## Recent sessions
 
+### Session 37 · 2026-11-14 · Runs that belong nowhere merged; Claude sessions on the owner's PC; Make a scene, Render views, chains and Innowa conducting a job, tried on staging with Collab 01
+R79 was merged. Then a full Claude Code session on the owner's PC became a stage kind (R82), and on it Make a scene, Render views, chains and Innowa conducting a job were built (R83-R88). The Collab 01 deck ran through the chain and then as a conducted job on staging. All of it waits in PRs #97, #98 and content #46, #47.
+
+Done:
+- R79 merged (#95, #96, content #45): placing outputs anywhere, inputs from runs, projects and the Library, no scopes, model changes on the run's draft copy.
+- R82 session stage: Claude Code with a shell on the owner's own PC (helper-tools.json sessions); files in out/ come back, the .blend stays on the PC. Detail an Object 1.3.0 runs as one; the armchair trial passed (6 min).
+- R83 Make a scene (scene_get from the model, or an assumed layout from the slides) and R84 Render views 1.3.0 as a session (quick render plus mask, named after its slide).
+- R85 chains: a run carries then; each missing / each undetailed fan out and the next step waits for them; a chat follows the whole chain.
+- R86 Innowa reads the PC's named folders (pc_folders, pc_file_get); R87 a run on a Helper reads PDFs with Claude Code's own Read in its own folder.
+- R88 Innowa conducts: a job per ask with plan and limits, tasks that keep their own results, waking when they are through, one review; job card with Stop.
+- Helper 2g: several sessions at once (sessions.parallel), files back in parts, PDFs in Innowa's chat; Slides from a deck (split-deck), review pairs by file name.
+- Fixed on the way: keeping a Library Object's detail, staging stuck by a Start-*.bat change, a fresh download pairing with its own Studio, honest last lines of detail runs.
+- Security: no run is ever given a broad Read rule; reads stay in the working folders, and runs with no shell also block reads outside them (server and PC).
+- Collab 01 ran as a chain, then as a conducted job ($6.74, 1.6 h at the screenshot); six Details started outside the job waited for the owner: fixed so runs started during a job are its tasks, and the chat panel folds the card and runs.
+- Requests R82-R88 noted; all on staging (app 693f792), PRs #97, #98, content #46, #47.
+
+Decided:
+- Owner: session stage "ok we ll do this only in deatil an object workflow and lets chk how it does".
+- Owner: when there is no layout, "Go as per ur suggestion": an assumed layout from the slides, named and reported as assumed; Keep asks everywhere, with previews as pictures.
+- Owner: "Innowa conducts", with "OK with at most $20 of Claude use and 4 hours, then it stops to ask" and "post the plan and start straight away".
+
 ### Session 36 · 2026-11-12 · Files, image review and Object detail merged; Read a brief replaces Brief to Library; runs that belong nowhere, Blender anywhere and the Studio connector planned
 R78, R75 and R73 were built, tried on staging and merged with content #44. The detailed version is now a third form beside an Object, for renders only. Each pipeline does one job. Next: runs that belong nowhere with placing (R79), Blender jobs anywhere (R80) and the Studio connector (R81).
 
@@ -167,29 +188,9 @@ Decided:
 - Owner: "I am gonna use this doc for building it as a pipeline in my builderpluss studio artifact"; "Exclude 3js part. Also include ur step by step logs, scripts etc inside each process."
 - Owner on writing the doc in Studio's terms and noting the four gaps as requests: "Ok".
 
-### Session 32 · 2026-11-11 · The model becomes primers and meanings: R62's three layers shipped, then R63 (model 4.0) built and on staging
-R62 shipped and runs on production: geometry, roles and Objects, with solvers in content and a Run tab on the canvas. R63 then made the kernel draw only nodes, segments and faces with their meanings. That is four stacked PRs plus content #35, all on staging and waiting for the owner's merge. Faces now form by themselves.
-
-Done:
-- R62 (model 3.0) merged (#63 to #70), live on production: three layers, sandboxed solvers in content (fit-max-rectangle), Run tab on the canvas, plot face with setback line, staging reads its own content branch, records go only to content main (#70).
-- R63 recorded, then built as stacked PRs: #71 model 4.0 kernel (nodes, segments, faces; roles by category; members worked out; old projects convert in one logged step), #72 meanings from the Library, #73 canvas, #74 pipelines.
-- Canvas 4.0: Select, Line and Point tools. The inspector shows function ("From the Library…"), positions per face and greyed worked-out meanings. The plan draws each primer by what it means.
-- Faces form by themselves: every area the lines close becomes a face. A line across a bare face splits it; a face with a meaning stays (faces_from_lines auto).
-- Fit to plot 3.0 draws the pick as a face with the Footprint function, nothing built (solver fit-max-rectangle 2.0.0); the Site reader draws lines and a plot face.
-- Content #35: functions moved to library/meanings (gate and footprint added), positions in semantics (rear and side added, plot-corner dropped), make-object 1.4.0 and brief-to-library 1.5.0 without placing, patterns/ and evals/ removed.
-- Removed from the app: layout patterns, Canvas13, the 3D wall view, placing made Objects, the chat's plan previews, studio brief replays.
-- Staging runs the whole set (app f10ec3d, content staging = r63-meanings). R63 marked in-pr.
-
-Decided:
-- Owner on R62: "model should have - three layers - geometric, semantic and paarmetric and solver should be pipeline code - no app code".
-- Owner on R63: "nodes, segments and faces are the primers. kernel draws only these with meanings - as of now. next will attach objects".
-- Owner: "remove door, window and wall if it has. these should be in the library and attached as a role. roles dropdown - give option as select form library".
-- Owner's answers for R63: existing projects "convert them - i agree", status "later", member meanings "Automatic", "One function per primer", functions from the Library "as u suggested".
-- Owner on features resting on walls: "Remove them now"; shipping: "Stacked PRs, staging, merge together".
-- Owner on faces: "Made it auto detect and form" (the Face tool removed).
-
 ## Earlier sessions
 
+- **32** · 2026-11-11 · The model becomes primers and meanings: R62's three layers shipped, then R63 (model 4.0) built and on staging — R62 shipped and runs on production: geometry, roles and Objects, with solvers in content and a Run tab on the canvas. R63 then made the kernel draw only nodes, segments and faces with their meanings. That is four stacked PRs plus content #35, all on staging and waiting for the owner's merge. Faces now form by themselves.
 - **31** · 2026-11-10 · The Helper runs PC apps and firm scripts, a Docs tab, staging live, and Fit to plot (R60) — Firms' apps and scripts run on their own Helper (R21 step 2c); the Studio gained a Docs tab with guides for the platform and for firms, plus requests and offers to BuilderPluss; staging went live; Fit to plot fits the largest rectangle at any angle inside a plot's setbacks and draws it as the ground floor's outer walls, now deployed with the fixes from its first live run.
 - **30** · 2026-11-09 · Hosted at studio.builderpluss.com, the Helper, organizations and roles, knowledge layers, staging and security — BuilderPluss Studio runs on the Hostinger server at studio.builderpluss.com; PCs connect out through the Helper with their own Claude; firms, workspaces, roles, guests, FDEs and platform roles are built from first principles, each firm with its own knowledge layer and Claude usage; a staging site and two-factor sign-in complete it (R20, R21 step 2a, R22, R56).
 - **29** · 2026-11-08 · One kernel for 2D and 3D, BuilderPluss Studio and Innowa, the kernel split, agents that learn — The kernel became one schema for plan and 3D and then a design kernel with its own geometry engine; the app is BuilderPluss Studio with Innowa as its assistant; the canvas got a floating tool bar; and agents now learn from corrections, start from patterns and are measured by replayed briefs.

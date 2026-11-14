@@ -117,3 +117,6 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-12 · Session 36** — Owner: "all pipeline should run anywhere - no scope setting"; output "placed anywhere - in a model, in project folder, or in runs folder"; placing is the owner's act ("yes"); index, not copy.
 - **2026-11-12 · Session 36** — Owner: Blender "in claude" when the PC is not connected; the Studio connector "yes"; server Blender only for approved scripts ("yes").
 - **2026-11-12 · Session 36** — Owner: "ok merge #91 → #92 → #93, then content #44"; the rule on BuilderPluss MCP tools changed to allow the Studio connector ("ok").
+- **2026-11-12 · Session 37** — Owner: session stage "ok we ll do this only in deatil an object workflow and lets chk how it does", then "go".
+- **2026-11-13 · Session 37** — Owner: when there is no layout, "Go as per ur suggestion": an assumed layout from the slides, named and reported as assumed; Keep asks everywhere, with previews as pictures.
+- **2026-11-13 · Session 37** — Owner: "Innowa conducts", with "OK with at most $20 of Claude use and 4 hours, then it stops to ask" and "post the plan and start straight away".
