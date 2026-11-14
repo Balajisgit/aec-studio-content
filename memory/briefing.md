@@ -59,6 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
 - R89 · Kernel clean-up: 4.0 only, legacy removed, one schema and one rule list
+- R90 · Kernel hardening: check only what a step touched, remember what was worked out, one door for derived answers
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
