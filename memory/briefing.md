@@ -56,7 +56,6 @@ _The open requests (requests/ in the content repository)._
 - R46 · Python helper on the server for IFC export
 - R56 · RBAC from first principles: platform roles, organizations, workspaces, project roles, FDEs, agents
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
-- R67 · Move the 2.x/3.0 kernel into kernel/legacy/ (kept only to open, replay and convert older projects) (in aec-studio#84)
 - R68 · Easy drawing 1/5: draw-as presets and house defaults (as templates in content) (in aec-studio#85)
 - R69 · Easy drawing 2/5: typed lengths, live dimensions, edit a dimension (in aec-studio#86)
 - R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes (in aec-studio#87)
