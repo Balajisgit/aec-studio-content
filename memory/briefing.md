@@ -59,7 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
 - R89 · Kernel clean-up: 4.0 only, legacy removed, one schema and one rule list (in aec-studio#100)
-- R90 · Kernel hardening: check only what a step touched, remember what was worked out, one door for derived answers
+- R90 · Kernel hardening: check only what a step touched, remember what was worked out, one door for derived answers (in aec-studio#101)
 - R91 · Built-in canvas: split into small parts and redraw only what changed
 - R92 · Built-in 3D view: materials from the Library's finishes, sections, later editing in 3D
 - R93 · Rename House defaults to Model defaults (in aec-studio#99)
