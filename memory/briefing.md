@@ -61,6 +61,7 @@ _The open requests (requests/ in the content repository)._
 - R89 · Kernel clean-up: 4.0 only, legacy removed, one schema and one rule list
 - R90 · Kernel hardening: check only what a step touched, remember what was worked out, one door for derived answers
 - R91 · Built-in canvas: split into small parts and redraw only what changed
+- R92 · Built-in 3D view: materials from the Library's finishes, sections, later editing in 3D
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
