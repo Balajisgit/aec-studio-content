@@ -1,0 +1,92 @@
+{
+  "id": "make-scene@1.0.0",
+  "name": "Make a scene",
+  "about": "One Blender scene, for renders, built by a Claude session on the owner's PC: from a project's model (walls, floors, ceilings) or, with no project, an assumed layout read from the brief's slides; each Object from its detailed .blend (else its plain 3D shape), lights, and cameras matched to the reference slides. The .blend stays on that PC. In a project the owner keeps it into Scenes/; elsewhere it stays with the run, approved, to place in any project later.",
+  "useWhen": "The owner wants a Blender scene to render: from a project once its layout is in the model, or straight from a brief (a deck in the chat) with an assumed layout.",
+  "input": {
+    "notes": true,
+    "about": "A project (its model, and the reference slides or photos from its files), or with no project the brief's files (a deck, photos) and the Objects to place (from the Library or earlier runs). Anything to know in the notes (the mood, which views)."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "The model is never changed: the scene is built from it, or with no project from an assumed layout that is named so and listed in the report. Real-world scale in metres; repeats are linked duplicates of one master."
+    },
+    {
+      "id": "R2",
+      "text": "Each placed Object comes from its detailed .blend when it has one; one without is built as its plain 3D shape and listed, never invented."
+    },
+    {
+      "id": "R3",
+      "text": "One camera per reference slide or photo, framed to match it; the preview is checked against its slide."
+    },
+    {
+      "id": "R4",
+      "text": "The scene .blend stays on the PC that built it, by its Helper's named folder and path; only the owner's decision keeps it in the project's files."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "details",
+      "name": "Check the detail",
+      "outcome": "Every Object placed in the project is known to have its detailed version, or is listed as built with its plain 3D shape.",
+      "code": "detail-check",
+      "checks": [
+        "detail-checked"
+      ],
+      "retries": 0
+    },
+    {
+      "kind": "stage",
+      "id": "build",
+      "name": "Build the scene",
+      "outcome": "The scene is built by a session on the owner's PC: its .blend kept there, a preview and a report sent to the run.",
+      "agent": "scene-builder",
+      "session": true,
+      "skills": [
+        "blender-scene",
+        "blender-detail"
+      ],
+      "tools": [
+        "run_inputs",
+        "run_state",
+        "scene_get",
+        "library_get"
+      ],
+      "checks": [
+        "files-made"
+      ],
+      "retries": 1,
+      "context": [
+        "brief",
+        "brief-files",
+        "owner-notes",
+        "owner-comments",
+        "given"
+      ],
+      "files": true
+    },
+    {
+      "kind": "decision",
+      "id": "keep",
+      "name": "Keep the scene",
+      "question": "Does the preview look like the reference slide (and, if the layout is assumed, are its sizes and positions right)? Keep the scene, or send it back with what to change.",
+      "form": "keep-files",
+      "sendBack": "build"
+    }
+  ],
+  "output": {
+    "id": "scene",
+    "name": "Scene",
+    "about": "The scene .blend (kept on the PC), its preview and report: in a project, kept in Scenes/; elsewhere, approved with the run.",
+    "files": {
+      "folder": "Scenes",
+      "keep": [
+        "*_scene*.blend",
+        "*_scene*_preview.png",
+        "scene_report.md"
+      ]
+    }
+  }
+}

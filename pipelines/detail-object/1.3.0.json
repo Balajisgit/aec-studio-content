@@ -1,0 +1,81 @@
+{
+  "id": "detail-object@1.3.0",
+  "name": "Detail an Object",
+  "about": "The detailed version of an Object, for renders only (it is never placed in the model): built in Blender from the brief and its photos, to the instancing standard, by a Claude session on the owner's PC (trial, R82). A Project Object's detail is kept in its project; a Library Object's is proposed to the Library. The .blend stays on that PC.",
+  "useWhen": "The owner wants an Object's full model for renders: a Project Object (in a project) or a Library Object (from the Library), matching the real product in its photos.",
+  "input": {
+    "notes": true,
+    "about": "In a project: the Project Object to detail (params.object) and its photos from the project's files. From the Library: the Library Object is the run's subject. From a chat: photos uploaded in the chat come with the run. Anything to know in the notes."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "Real-world scale; one master mesh per repeated part and linked duplicates for the repeats; the instance audit passes."
+    },
+    {
+      "id": "R2",
+      "text": "The model matches the real product in the photos: proportions, joints, thicknesses, finishes and colours; where the photo and the brief differ, the brief wins and the difference is said."
+    },
+    {
+      "id": "R3",
+      "text": "The .blend stays on the PC that built it, by its Helper's named folder and path; the .usdc, .glb and the preview come to the run."
+    },
+    {
+      "id": "R4",
+      "text": "The detail is the Object's third form, for renders only: it is never placed in the model. Only the owner's decision keeps it: beside the Project Object in its project, or proposed beside the Library Object (a pull request the owner merges)."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "build",
+      "name": "Build",
+      "outcome": "The Object is built as a detailed model by a session on the owner's PC: its .blend kept there, its .usdc, .glb, a preview and a passing audit sent to the run.",
+      "agent": "session-detailer",
+      "tools": [
+        "run_inputs",
+        "run_state",
+        "library_get"
+      ],
+      "checks": [
+        "files-made"
+      ],
+      "retries": 1,
+      "context": [
+        "brief",
+        "brief-files",
+        "owner-notes",
+        "owner-comments",
+        "given"
+      ],
+      "files": true,
+      "session": true,
+      "skills": [
+        "blender-detail"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "keep",
+      "name": "Keep the detail",
+      "question": "Does the preview look like the real product: its photos if the run had any, otherwise the Object's description? Keep the files as the Object's detail, or send it back with what to change.",
+      "form": "keep-detail",
+      "sendBack": "build"
+    }
+  ],
+  "output": {
+    "id": "detail",
+    "name": "Detail",
+    "about": "The detailed files kept, and the Object's new version that points to them.",
+    "files": {
+      "folder": "Objects",
+      "keep": [
+        "*.blend",
+        "*.usdc",
+        "*.usd",
+        "*.glb",
+        "*_preview.png"
+      ]
+    }
+  }
+}
