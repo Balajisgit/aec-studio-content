@@ -56,7 +56,6 @@ _The open requests (requests/ in the content repository)._
 - R46 · Python helper on the server for IFC export
 - R56 · RBAC from first principles: platform roles, organizations, workspaces, project roles, FDEs, agents
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
-- R71 · Easy drawing 4/5: box select, set on all, Match (in aec-studio#88)
 - R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection (in aec-studio#89)
 - R77 · Save as firm template, and making new templates (in aec-studio#90)
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
