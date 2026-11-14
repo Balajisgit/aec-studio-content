@@ -56,7 +56,6 @@ _The open requests (requests/ in the content repository)._
 - R46 · Python helper on the server for IFC export
 - R56 · RBAC from first principles: platform roles, organizations, workspaces, project roles, FDEs, agents
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
-- R70 · Easy drawing 3/5: the Room tool, with clear (inside) sizes (in aec-studio#87)
 - R71 · Easy drawing 4/5: box select, set on all, Match (in aec-studio#88)
 - R72 · Easy drawing 5/5: offset, copy, mirror, move and rotate a selection (in aec-studio#89)
 - R77 · Save as firm template, and making new templates (in aec-studio#90)
