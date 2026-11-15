@@ -360,7 +360,39 @@
         "per": "seat",
         "min": 0.2
       }
-    ]
+    ],
+    "provides": {
+      "furniture.workstation": {
+        "seat": 1
+      },
+      "furniture.bench-2": {
+        "seat": 2
+      },
+      "furniture.bench-4": {
+        "seat": 4
+      },
+      "furniture.bench-6": {
+        "seat": 6
+      },
+      "furniture.desk": {
+        "seat": 1
+      },
+      "furniture.meeting-table-4": {
+        "meeting seat": 4
+      },
+      "furniture.meeting-table-8": {
+        "meeting seat": 8
+      },
+      "furniture.meeting-table-12": {
+        "meeting seat": 12
+      },
+      "furniture.cafe-table-4": {
+        "dining seat": 4
+      },
+      "furniture.phone-booth-pod": {
+        "focus seat": 1
+      }
+    }
   },
   "presets": [
     {

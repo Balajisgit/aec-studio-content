@@ -1,0 +1,169 @@
+{
+  "id": "furniture.meeting-table-8@1.0.0",
+  "name": "Meeting table for 8",
+  "contract": "furniture.meeting-table-8",
+  "role": "furniture",
+  "about": "A meeting table with three chairs on each long side and one at each end.",
+  "params": {
+    "width": 2400,
+    "depth": 1200,
+    "height": 740
+  },
+  "limits": {
+    "width": {
+      "min": 2000,
+      "max": 3000,
+      "step": 50
+    },
+    "depth": {
+      "min": 900,
+      "max": 1400,
+      "step": 10
+    },
+    "height": {
+      "min": 700,
+      "max": 780,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "top",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "wood"
+    },
+    {
+      "name": "side chairs",
+      "shape": "rect",
+      "at": [
+        "((i % 3) - 1.0) * width / 3",
+        "(i < 3 ? -1 : 1) * (depth / 2 + 330)"
+      ],
+      "size": [
+        "460",
+        "460"
+      ],
+      "style": "thin",
+      "count": "6"
+    },
+    {
+      "name": "end chairs",
+      "shape": "rect",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 + 330)",
+        "0"
+      ],
+      "size": [
+        "460",
+        "460"
+      ],
+      "style": "thin",
+      "count": "2"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "base",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "width * 0.5",
+        "depth * 0.35",
+        "height - 40"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "top",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "height - 40"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "40"
+      ],
+      "slot": "wood"
+    },
+    {
+      "name": "side chairs: seats",
+      "shape": "box",
+      "at": [
+        "((i % 3) - 1.0) * width / 3",
+        "(i < 3 ? -1 : 1) * (depth / 2 + 330)",
+        "400"
+      ],
+      "size": [
+        "460",
+        "460",
+        "60"
+      ],
+      "slot": "fabric",
+      "count": "6"
+    },
+    {
+      "name": "side chairs: backs",
+      "shape": "box",
+      "at": [
+        "((i % 3) - 1.0) * width / 3",
+        "((i < 3 ? -1 : 1) * (depth / 2 + 330)) + ((i < 3 ? -1 : 1) * 205)",
+        "460"
+      ],
+      "size": [
+        "460",
+        "50",
+        "420"
+      ],
+      "slot": "fabric",
+      "count": "6"
+    },
+    {
+      "name": "end chairs: seats",
+      "shape": "box",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 + 330)",
+        "0",
+        "400"
+      ],
+      "size": [
+        "460",
+        "460",
+        "60"
+      ],
+      "slot": "fabric",
+      "count": "2"
+    },
+    {
+      "name": "end chairs: backs",
+      "shape": "box",
+      "at": [
+        "((i == 0 ? -1 : 1) * (width / 2 + 330)) + ((i == 0 ? -1 : 1) * 205)",
+        "0",
+        "460"
+      ],
+      "size": [
+        "50",
+        "460",
+        "420"
+      ],
+      "slot": "fabric",
+      "count": "2"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "id": "furniture.task-chair@1.0.0",
+  "name": "Task chair",
+  "contract": "furniture.task-chair",
+  "role": "furniture",
+  "about": "An office chair on its own: a seat, a back and a base. A desk's own chair comes with the desk.",
+  "params": {
+    "width": 600,
+    "depth": 600,
+    "height": 900
+  },
+  "limits": {
+    "width": {
+      "min": 500,
+      "max": 700,
+      "step": 10
+    },
+    "depth": {
+      "min": 500,
+      "max": 700,
+      "step": 10
+    },
+    "height": {
+      "min": 800,
+      "max": 1100,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "base",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "hidden"
+    },
+    {
+      "name": "seat",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width * 0.8",
+        "depth * 0.8"
+      ],
+      "style": "thin"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "base",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "60"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "stem",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "60"
+      ],
+      "size": [
+        "60",
+        "60",
+        "360"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "seat",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "420"
+      ],
+      "size": [
+        "width * 0.8",
+        "depth * 0.8",
+        "60"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "back",
+      "shape": "box",
+      "at": [
+        "0",
+        "-depth * 0.4 + 25",
+        "480"
+      ],
+      "size": [
+        "width * 0.8",
+        "50",
+        "height - 480"
+      ],
+      "slot": "fabric"
+    }
+  ]
+}

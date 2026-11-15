@@ -1,0 +1,77 @@
+{
+  "id": "furniture.storage-unit@1.0.0",
+  "name": "Storage unit",
+  "contract": "furniture.storage-unit",
+  "role": "furniture",
+  "about": "A low cabinet for files and supplies, the height of a counter; along a wall or between teams.",
+  "params": {
+    "width": 800,
+    "depth": 450,
+    "height": 1100
+  },
+  "limits": {
+    "width": {
+      "min": 600,
+      "max": 1200,
+      "step": 50
+    },
+    "depth": {
+      "min": 350,
+      "max": 600,
+      "step": 10
+    },
+    "height": {
+      "min": 700,
+      "max": 2100,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "unit",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "wood"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "plinth",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "width - 40",
+        "depth - 40",
+        "80"
+      ],
+      "slot": "frame"
+    },
+    {
+      "name": "unit",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "80"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "height - 80"
+      ],
+      "slot": "wood"
+    }
+  ]
+}
