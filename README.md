@@ -29,7 +29,7 @@ docs/<id>.md                      guides shown on the app's Docs page; each says
 scripts/<name>/<version>.js       platform scripts (with a manifest .json) that run on PCs' Helpers; a firm's own live in its layer
 solvers/<id>/<version>.js          a solver (R62): solve(input, geo) gives candidates from a model's roles; with its manifest <version>.json; runs on the server, locked down
 semantics/<id>.json               positions: where a line or point is in a face (front, rear, side, own-setback), what it goes on, its values (R63)
-templates/<id>/<version>.json      model defaults (R68), one per typology (R100: villa…): its spaces (the uses a room may have, each with the
+templates/<id>/<version>.json      model defaults (R68), one per typology (R100: villa; R103: workplace-tech, -corporate, -coworking, -contact-centre, -studio): its spaces (the uses a room may have, each with the
                                   firm's smallest area and side, whether it needs a window, is wet, is open; uses kept apart), draw-as presets,
                                   rules (outer and inner walls, every room a Room + Slab), the usual openings and floor height;
                                   templates/default.json names the one new projects follow

@@ -1,0 +1,37 @@
+{
+  "id": "room.carpet-tile@1.0.0",
+  "name": "Room, carpet tiles",
+  "contract": "room.carpet-tile",
+  "role": "room",
+  "on": "face",
+  "meaning": "room",
+  "about": "A room's floor finish: carpet tiles wall to wall (to the walls' inner faces), on top of its slab or raised floor. The usual office floor.",
+  "params": {
+    "finish": 10
+  },
+  "limits": {
+    "finish": {
+      "min": 5,
+      "max": 30,
+      "step": 5
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "floor",
+      "shape": "area",
+      "style": "fill",
+      "edge": "inner"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "floor finish",
+      "shape": "area",
+      "slot": "fabric",
+      "edge": "inner",
+      "z": "0",
+      "height": "finish"
+    }
+  ]
+}

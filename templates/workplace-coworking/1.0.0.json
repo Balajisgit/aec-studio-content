@@ -1,0 +1,336 @@
+{
+  "id": "workplace-coworking@1.0.0",
+  "name": "Workplace: co-working",
+  "about": "A flexible workspace let by the desk and by the room: hot desks and dedicated desks in the open, private team offices of several sizes, a community cafe at the front, an event space, many phone booths. Outside a glazed facade, between rooms glazed partitions, carpet tiles on an RCC slab, 4.2 m floor to floor.",
+  "spaces": {
+    "uses": [
+      {
+        "id": "reception",
+        "name": "Reception",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "The front desk and where a visitor waits."
+      },
+      {
+        "id": "visitor-lounge",
+        "name": "Visitor lounge",
+        "minArea": 9,
+        "minSide": 2700
+      },
+      {
+        "id": "focus-room",
+        "name": "Focus room",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "A room for one or two to work without noise."
+      },
+      {
+        "id": "phone-booth",
+        "name": "Phone booth",
+        "minArea": 1.2,
+        "minSide": 1000,
+        "about": "One person, a call."
+      },
+      {
+        "id": "hot-desk",
+        "name": "Hot desks",
+        "minArea": 20,
+        "minSide": 3600,
+        "window": true,
+        "about": "Shared desks, taken by the day."
+      },
+      {
+        "id": "dedicated-desk",
+        "name": "Dedicated desks",
+        "minArea": 20,
+        "minSide": 3600,
+        "window": true,
+        "about": "A member's own desk in the open."
+      },
+      {
+        "id": "private-office-small",
+        "name": "Private office, up to 4",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "A team suite for 2 to 4."
+      },
+      {
+        "id": "private-office-medium",
+        "name": "Private office, up to 10",
+        "minArea": 22,
+        "minSide": 3600
+      },
+      {
+        "id": "private-office-large",
+        "name": "Private office, 10 and more",
+        "minArea": 40,
+        "minSide": 4800,
+        "window": true
+      },
+      {
+        "id": "community-cafe",
+        "name": "Community cafe",
+        "minArea": 30,
+        "minSide": 4500,
+        "window": true,
+        "wet": true,
+        "about": "The cafe and bar members meet at; the heart of the floor."
+      },
+      {
+        "id": "event-space",
+        "name": "Event space",
+        "minArea": 50,
+        "minSide": 6000
+      },
+      {
+        "id": "mail-room",
+        "name": "Mail and parcels",
+        "minArea": 4,
+        "minSide": 1800
+      },
+      {
+        "id": "community-office",
+        "name": "Community manager's office",
+        "minArea": 7.5,
+        "minSide": 2400
+      },
+      {
+        "id": "meeting-small",
+        "name": "Small meeting room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Up to 4 people."
+      },
+      {
+        "id": "meeting-medium",
+        "name": "Medium meeting room",
+        "minArea": 16,
+        "minSide": 3300,
+        "about": "6 to 8 people."
+      },
+      {
+        "id": "meeting-large",
+        "name": "Large meeting room",
+        "minArea": 28,
+        "minSide": 4200,
+        "about": "12 to 16 people."
+      },
+      {
+        "id": "collaboration",
+        "name": "Collaboration area",
+        "minArea": 10,
+        "minSide": 2700,
+        "about": "An open or half-open place to work together: sofas, a whiteboard, high tables."
+      },
+      {
+        "id": "breakout",
+        "name": "Breakout",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "A lounge to step away to."
+      },
+      {
+        "id": "pantry",
+        "name": "Pantry",
+        "minArea": 8,
+        "minSide": 2400,
+        "wet": true
+      },
+      {
+        "id": "wellness-room",
+        "name": "Wellness room",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "A quiet room: rest, prayer, a nursing mother."
+      },
+      {
+        "id": "print-area",
+        "name": "Print and copy",
+        "minArea": 3,
+        "minSide": 1500
+      },
+      {
+        "id": "store",
+        "name": "Store",
+        "minArea": 3,
+        "minSide": 1500
+      },
+      {
+        "id": "locker-area",
+        "name": "Lockers",
+        "minArea": 4,
+        "minSide": 1500
+      },
+      {
+        "id": "server-room",
+        "name": "Server room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Racks and their cooling: no water over or beside it."
+      },
+      {
+        "id": "hub-room",
+        "name": "Hub room",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "A floor's network racks."
+      },
+      {
+        "id": "ups-room",
+        "name": "UPS and electrical room",
+        "minArea": 6,
+        "minSide": 2100
+      },
+      {
+        "id": "toilet",
+        "name": "Toilets",
+        "minArea": 6,
+        "minSide": 1800,
+        "wet": true,
+        "about": "A block of cubicles and basins."
+      },
+      {
+        "id": "accessible-toilet",
+        "name": "Accessible toilet",
+        "minArea": 3.75,
+        "minSide": 1700,
+        "wet": true,
+        "about": "1.7 m by 2.2 m clear, for a wheelchair to turn."
+      },
+      {
+        "id": "janitor",
+        "name": "Janitor's room",
+        "minArea": 1.5,
+        "minSide": 1000,
+        "wet": true
+      },
+      {
+        "id": "lift-lobby",
+        "name": "Lift lobby",
+        "minArea": 9,
+        "minSide": 2400
+      },
+      {
+        "id": "passage",
+        "name": "Corridor",
+        "minSide": 1500,
+        "about": "1.5 m clear: two people pass, a wheelchair turns."
+      },
+      {
+        "id": "stair",
+        "name": "Stair",
+        "minSide": 1200,
+        "about": "An escape stair's least clear width."
+      },
+      {
+        "id": "terrace",
+        "name": "Terrace",
+        "open": "open"
+      }
+    ],
+    "apart": [
+      [
+        "toilet",
+        "pantry"
+      ],
+      [
+        "toilet",
+        "server-room"
+      ],
+      [
+        "toilet",
+        "hub-room"
+      ],
+      [
+        "accessible-toilet",
+        "pantry"
+      ],
+      [
+        "accessible-toilet",
+        "server-room"
+      ],
+      [
+        "accessible-toilet",
+        "hub-room"
+      ],
+      [
+        "janitor",
+        "pantry"
+      ],
+      [
+        "janitor",
+        "server-room"
+      ],
+      [
+        "janitor",
+        "hub-room"
+      ],
+      [
+        "pantry",
+        "server-room"
+      ],
+      [
+        "toilet",
+        "community-cafe"
+      ],
+      [
+        "accessible-toilet",
+        "community-cafe"
+      ],
+      [
+        "janitor",
+        "community-cafe"
+      ]
+    ]
+  },
+  "presets": [
+    {
+      "id": "facade",
+      "name": "Glazed facade",
+      "role": "wall",
+      "objectRef": "wall.glazed-facade-150@1.0.0"
+    },
+    {
+      "id": "drywall",
+      "name": "Drywall partition",
+      "role": "wall",
+      "objectRef": "wall.drywall-100@1.0.0"
+    },
+    {
+      "id": "glazed",
+      "name": "Glazed partition",
+      "role": "wall",
+      "objectRef": "wall.glazed-partition-50@1.0.0"
+    },
+    {
+      "id": "core",
+      "name": "Core wall (brick 230)",
+      "role": "wall",
+      "objectRef": "wall.brick-230@1.2.0"
+    }
+  ],
+  "rules": {
+    "lines": {
+      "outer": "facade",
+      "inner": "glazed"
+    },
+    "faces": [
+      {
+        "role": "room",
+        "objectRef": "room.carpet-tile@1.0.0"
+      },
+      {
+        "role": "slab",
+        "objectRef": "slab.rcc-150@1.0.0"
+      }
+    ]
+  },
+  "openings": {
+    "door": "door.glass-single@1.0.0",
+    "window": "window.casement@1.0.0",
+    "gate": "gate.swing@1.0.0"
+  },
+  "levels": {
+    "height": 4200
+  }
+}

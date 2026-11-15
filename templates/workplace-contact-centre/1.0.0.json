@@ -1,0 +1,352 @@
+{
+  "id": "workplace-contact-centre@1.0.0",
+  "name": "Workplace: contact centre",
+  "about": "A contact centre or business-process floor, worked in shifts: a dense production floor in bays with team leads among them, training rooms for each new batch, lockers and a check at the entrance, a large cafeteria, a sick room, a transport desk. Outside a glazed facade, between rooms drywall partitions, a vinyl floor on an RCC slab, 4.2 m floor to floor.",
+  "spaces": {
+    "uses": [
+      {
+        "id": "reception",
+        "name": "Reception",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "The front desk and where a visitor waits."
+      },
+      {
+        "id": "open-office",
+        "name": "Open office",
+        "minArea": 20,
+        "minSide": 3600,
+        "window": true,
+        "about": "Workstations in the open: about 6 m² a person with its share of aisles."
+      },
+      {
+        "id": "cabin",
+        "name": "Cabin",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "A manager's office."
+      },
+      {
+        "id": "production-floor",
+        "name": "Production floor",
+        "minArea": 40,
+        "minSide": 6000,
+        "window": true,
+        "about": "Agents' desks in bays: about 4.5 m² a seat with its share of aisles."
+      },
+      {
+        "id": "team-lead-bay",
+        "name": "Team lead's bay",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "Among the agents, in sight of the team."
+      },
+      {
+        "id": "quality-room",
+        "name": "Quality room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Listening to calls, coaching."
+      },
+      {
+        "id": "training-room",
+        "name": "Training room",
+        "minArea": 30,
+        "minSide": 4800,
+        "about": "A batch of 20 to 25."
+      },
+      {
+        "id": "interview-room",
+        "name": "Interview room",
+        "minArea": 6,
+        "minSide": 2100
+      },
+      {
+        "id": "security-check",
+        "name": "Security check",
+        "minArea": 6,
+        "minSide": 2400,
+        "about": "At the entrance to the production floor: bags and phones left in lockers."
+      },
+      {
+        "id": "sick-room",
+        "name": "Sick room",
+        "minArea": 7.5,
+        "minSide": 2400,
+        "about": "A bed, a basin, first aid."
+      },
+      {
+        "id": "transport-desk",
+        "name": "Transport desk",
+        "minArea": 5,
+        "minSide": 1800,
+        "about": "Cabs and rosters for the shifts."
+      },
+      {
+        "id": "battery-room",
+        "name": "Battery room",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "The UPS's batteries, ventilated, apart from the server room."
+      },
+      {
+        "id": "meeting-small",
+        "name": "Small meeting room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Up to 4 people."
+      },
+      {
+        "id": "meeting-medium",
+        "name": "Medium meeting room",
+        "minArea": 16,
+        "minSide": 3300,
+        "about": "6 to 8 people."
+      },
+      {
+        "id": "meeting-large",
+        "name": "Large meeting room",
+        "minArea": 28,
+        "minSide": 4200,
+        "about": "12 to 16 people."
+      },
+      {
+        "id": "breakout",
+        "name": "Breakout",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "A lounge to step away to."
+      },
+      {
+        "id": "pantry",
+        "name": "Pantry",
+        "minArea": 8,
+        "minSide": 2400,
+        "wet": true
+      },
+      {
+        "id": "cafeteria",
+        "name": "Cafeteria",
+        "minArea": 60,
+        "minSide": 6000,
+        "window": true,
+        "wet": true
+      },
+      {
+        "id": "wellness-room",
+        "name": "Wellness room",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "A quiet room: rest, prayer, a nursing mother."
+      },
+      {
+        "id": "print-area",
+        "name": "Print and copy",
+        "minArea": 3,
+        "minSide": 1500
+      },
+      {
+        "id": "store",
+        "name": "Store",
+        "minArea": 3,
+        "minSide": 1500
+      },
+      {
+        "id": "locker-area",
+        "name": "Lockers",
+        "minArea": 10,
+        "minSide": 2400
+      },
+      {
+        "id": "server-room",
+        "name": "Server room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Racks and their cooling: no water over or beside it."
+      },
+      {
+        "id": "hub-room",
+        "name": "Hub room",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "A floor's network racks."
+      },
+      {
+        "id": "ups-room",
+        "name": "UPS and electrical room",
+        "minArea": 6,
+        "minSide": 2100
+      },
+      {
+        "id": "toilet",
+        "name": "Toilets",
+        "minArea": 12,
+        "minSide": 2400,
+        "wet": true,
+        "about": "A block of cubicles and basins."
+      },
+      {
+        "id": "accessible-toilet",
+        "name": "Accessible toilet",
+        "minArea": 3.75,
+        "minSide": 1700,
+        "wet": true,
+        "about": "1.7 m by 2.2 m clear, for a wheelchair to turn."
+      },
+      {
+        "id": "janitor",
+        "name": "Janitor's room",
+        "minArea": 1.5,
+        "minSide": 1000,
+        "wet": true
+      },
+      {
+        "id": "lift-lobby",
+        "name": "Lift lobby",
+        "minArea": 9,
+        "minSide": 2400
+      },
+      {
+        "id": "passage",
+        "name": "Corridor",
+        "minSide": 1500,
+        "about": "1.5 m clear: two people pass, a wheelchair turns."
+      },
+      {
+        "id": "stair",
+        "name": "Stair",
+        "minSide": 1200,
+        "about": "An escape stair's least clear width."
+      },
+      {
+        "id": "terrace",
+        "name": "Terrace",
+        "open": "open"
+      }
+    ],
+    "apart": [
+      [
+        "toilet",
+        "pantry"
+      ],
+      [
+        "toilet",
+        "cafeteria"
+      ],
+      [
+        "toilet",
+        "server-room"
+      ],
+      [
+        "toilet",
+        "hub-room"
+      ],
+      [
+        "accessible-toilet",
+        "pantry"
+      ],
+      [
+        "accessible-toilet",
+        "cafeteria"
+      ],
+      [
+        "accessible-toilet",
+        "server-room"
+      ],
+      [
+        "accessible-toilet",
+        "hub-room"
+      ],
+      [
+        "janitor",
+        "pantry"
+      ],
+      [
+        "janitor",
+        "cafeteria"
+      ],
+      [
+        "janitor",
+        "server-room"
+      ],
+      [
+        "janitor",
+        "hub-room"
+      ],
+      [
+        "pantry",
+        "server-room"
+      ],
+      [
+        "cafeteria",
+        "server-room"
+      ],
+      [
+        "toilet",
+        "sick-room"
+      ],
+      [
+        "battery-room",
+        "pantry"
+      ],
+      [
+        "battery-room",
+        "cafeteria"
+      ],
+      [
+        "toilet",
+        "battery-room"
+      ]
+    ]
+  },
+  "presets": [
+    {
+      "id": "facade",
+      "name": "Glazed facade",
+      "role": "wall",
+      "objectRef": "wall.glazed-facade-150@1.0.0"
+    },
+    {
+      "id": "drywall",
+      "name": "Drywall partition",
+      "role": "wall",
+      "objectRef": "wall.drywall-100@1.0.0"
+    },
+    {
+      "id": "glazed",
+      "name": "Glazed partition",
+      "role": "wall",
+      "objectRef": "wall.glazed-partition-50@1.0.0"
+    },
+    {
+      "id": "core",
+      "name": "Core wall (brick 230)",
+      "role": "wall",
+      "objectRef": "wall.brick-230@1.2.0"
+    }
+  ],
+  "rules": {
+    "lines": {
+      "outer": "facade",
+      "inner": "drywall"
+    },
+    "faces": [
+      {
+        "role": "room",
+        "objectRef": "room.vinyl-floor@1.0.0"
+      },
+      {
+        "role": "slab",
+        "objectRef": "slab.rcc-150@1.0.0"
+      }
+    ]
+  },
+  "openings": {
+    "door": "door.single-leaf@1.0.0",
+    "window": "window.casement@1.0.0",
+    "gate": "gate.swing@1.0.0"
+  },
+  "levels": {
+    "height": 4200
+  }
+}

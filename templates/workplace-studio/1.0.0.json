@@ -1,0 +1,377 @@
+{
+  "id": "workplace-studio@1.0.0",
+  "name": "Workplace: creative studio",
+  "about": "A design, architecture, media or advertising studio: one open studio with room to pin up and review, a materials library, a workshop for models, edit and sound rooms that want no window, a gallery at the front. Outside a glazed facade, between rooms drywall partitions, polished concrete on an RCC slab, 4.5 m floor to floor.",
+  "spaces": {
+    "uses": [
+      {
+        "id": "reception",
+        "name": "Reception",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "The front desk and where a visitor waits."
+      },
+      {
+        "id": "visitor-lounge",
+        "name": "Visitor lounge",
+        "minArea": 9,
+        "minSide": 2700
+      },
+      {
+        "id": "cabin",
+        "name": "Cabin",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "A private office for one."
+      },
+      {
+        "id": "focus-room",
+        "name": "Focus room",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "A room for one or two to work without noise."
+      },
+      {
+        "id": "phone-booth",
+        "name": "Phone booth",
+        "minArea": 1.2,
+        "minSide": 1000,
+        "about": "One person, a call."
+      },
+      {
+        "id": "studio",
+        "name": "Studio",
+        "minArea": 30,
+        "minSide": 4500,
+        "window": true,
+        "about": "The open studio: long tables, screens, work on the walls."
+      },
+      {
+        "id": "review-space",
+        "name": "Review space",
+        "minArea": 15,
+        "minSide": 3600,
+        "about": "Where work is pinned up and talked through."
+      },
+      {
+        "id": "materials-library",
+        "name": "Materials library",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Samples on shelves and in drawers, a table to lay them out by daylight."
+      },
+      {
+        "id": "workshop",
+        "name": "Workshop",
+        "minArea": 15,
+        "minSide": 3000,
+        "wet": true,
+        "about": "Model making: benches, a sink, dust and noise kept in."
+      },
+      {
+        "id": "photo-studio",
+        "name": "Photo studio",
+        "minArea": 20,
+        "minSide": 4000,
+        "about": "A clear floor and height for lights; daylight shut out when needed."
+      },
+      {
+        "id": "edit-suite",
+        "name": "Edit suite",
+        "minArea": 7.5,
+        "minSide": 2400,
+        "about": "Picture and colour: no window, or one that blacks out."
+      },
+      {
+        "id": "sound-booth",
+        "name": "Sound booth",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "Recording and voice: a room within a room, no window."
+      },
+      {
+        "id": "render-room",
+        "name": "Render room",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "Machines that run hot and loud, shut away."
+      },
+      {
+        "id": "gallery",
+        "name": "Gallery",
+        "minArea": 20,
+        "minSide": 3600,
+        "about": "Work on show at the front."
+      },
+      {
+        "id": "meeting-small",
+        "name": "Small meeting room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Up to 4 people."
+      },
+      {
+        "id": "meeting-medium",
+        "name": "Medium meeting room",
+        "minArea": 16,
+        "minSide": 3300,
+        "about": "6 to 8 people."
+      },
+      {
+        "id": "meeting-large",
+        "name": "Large meeting room",
+        "minArea": 28,
+        "minSide": 4200,
+        "about": "12 to 16 people."
+      },
+      {
+        "id": "collaboration",
+        "name": "Collaboration area",
+        "minArea": 10,
+        "minSide": 2700,
+        "about": "An open or half-open place to work together: sofas, a whiteboard, high tables."
+      },
+      {
+        "id": "breakout",
+        "name": "Breakout",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "A lounge to step away to."
+      },
+      {
+        "id": "pantry",
+        "name": "Pantry",
+        "minArea": 8,
+        "minSide": 2400,
+        "wet": true
+      },
+      {
+        "id": "cafeteria",
+        "name": "Cafeteria",
+        "minArea": 30,
+        "minSide": 4500,
+        "window": true,
+        "wet": true
+      },
+      {
+        "id": "wellness-room",
+        "name": "Wellness room",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "A quiet room: rest, prayer, a nursing mother."
+      },
+      {
+        "id": "print-area",
+        "name": "Print and copy",
+        "minArea": 3,
+        "minSide": 1500
+      },
+      {
+        "id": "store",
+        "name": "Store",
+        "minArea": 3,
+        "minSide": 1500
+      },
+      {
+        "id": "locker-area",
+        "name": "Lockers",
+        "minArea": 4,
+        "minSide": 1500
+      },
+      {
+        "id": "server-room",
+        "name": "Server room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Racks and their cooling: no water over or beside it."
+      },
+      {
+        "id": "hub-room",
+        "name": "Hub room",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "A floor's network racks."
+      },
+      {
+        "id": "ups-room",
+        "name": "UPS and electrical room",
+        "minArea": 6,
+        "minSide": 2100
+      },
+      {
+        "id": "toilet",
+        "name": "Toilets",
+        "minArea": 6,
+        "minSide": 1800,
+        "wet": true,
+        "about": "A block of cubicles and basins."
+      },
+      {
+        "id": "accessible-toilet",
+        "name": "Accessible toilet",
+        "minArea": 3.75,
+        "minSide": 1700,
+        "wet": true,
+        "about": "1.7 m by 2.2 m clear, for a wheelchair to turn."
+      },
+      {
+        "id": "janitor",
+        "name": "Janitor's room",
+        "minArea": 1.5,
+        "minSide": 1000,
+        "wet": true
+      },
+      {
+        "id": "lift-lobby",
+        "name": "Lift lobby",
+        "minArea": 9,
+        "minSide": 2400
+      },
+      {
+        "id": "passage",
+        "name": "Corridor",
+        "minSide": 1500,
+        "about": "1.5 m clear: two people pass, a wheelchair turns."
+      },
+      {
+        "id": "stair",
+        "name": "Stair",
+        "minSide": 1200,
+        "about": "An escape stair's least clear width."
+      },
+      {
+        "id": "terrace",
+        "name": "Terrace",
+        "open": "open"
+      }
+    ],
+    "apart": [
+      [
+        "toilet",
+        "pantry"
+      ],
+      [
+        "toilet",
+        "cafeteria"
+      ],
+      [
+        "toilet",
+        "server-room"
+      ],
+      [
+        "toilet",
+        "hub-room"
+      ],
+      [
+        "accessible-toilet",
+        "pantry"
+      ],
+      [
+        "accessible-toilet",
+        "cafeteria"
+      ],
+      [
+        "accessible-toilet",
+        "server-room"
+      ],
+      [
+        "accessible-toilet",
+        "hub-room"
+      ],
+      [
+        "janitor",
+        "pantry"
+      ],
+      [
+        "janitor",
+        "cafeteria"
+      ],
+      [
+        "janitor",
+        "server-room"
+      ],
+      [
+        "janitor",
+        "hub-room"
+      ],
+      [
+        "pantry",
+        "server-room"
+      ],
+      [
+        "cafeteria",
+        "server-room"
+      ],
+      [
+        "toilet",
+        "gallery"
+      ],
+      [
+        "workshop",
+        "edit-suite"
+      ],
+      [
+        "workshop",
+        "sound-booth"
+      ],
+      [
+        "workshop",
+        "server-room"
+      ],
+      [
+        "workshop",
+        "render-room"
+      ]
+    ]
+  },
+  "presets": [
+    {
+      "id": "facade",
+      "name": "Glazed facade",
+      "role": "wall",
+      "objectRef": "wall.glazed-facade-150@1.0.0"
+    },
+    {
+      "id": "drywall",
+      "name": "Drywall partition",
+      "role": "wall",
+      "objectRef": "wall.drywall-100@1.0.0"
+    },
+    {
+      "id": "glazed",
+      "name": "Glazed partition",
+      "role": "wall",
+      "objectRef": "wall.glazed-partition-50@1.0.0"
+    },
+    {
+      "id": "core",
+      "name": "Core wall (brick 230)",
+      "role": "wall",
+      "objectRef": "wall.brick-230@1.2.0"
+    }
+  ],
+  "rules": {
+    "lines": {
+      "outer": "facade",
+      "inner": "drywall"
+    },
+    "faces": [
+      {
+        "role": "room",
+        "objectRef": "room.polished-concrete@1.0.0"
+      },
+      {
+        "role": "slab",
+        "objectRef": "slab.rcc-150@1.0.0"
+      }
+    ]
+  },
+  "openings": {
+    "door": "door.single-leaf@1.0.0",
+    "window": "window.casement@1.0.0",
+    "gate": "gate.swing@1.0.0"
+  },
+  "levels": {
+    "height": 4500
+  }
+}
