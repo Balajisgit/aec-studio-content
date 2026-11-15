@@ -67,7 +67,7 @@ _The open requests (requests/ in the content repository)._
 - R95 · Intent in the kernel: a room operation, put in by wall and position, faces formed after any change to the lines (in aec-studio#104)
 - R96 · Operations say what they made (in aec-studio#105)
 - R97 · A plan picture an agent can look at
-- R98 · Design-sense notes in the rule list
+- R98 · Design-sense notes in the rule list (in aec-studio#107)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
