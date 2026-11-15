@@ -1,0 +1,149 @@
+{
+  "id": "furniture.reception-desk@1.0.0",
+  "name": "Reception desk",
+  "contract": "furniture.reception-desk",
+  "role": "furniture",
+  "about": "A front desk: a high counter towards the visitor and a worktop behind it, with the receptionist's chair.",
+  "params": {
+    "width": 2400,
+    "depth": 800,
+    "height": 1100
+  },
+  "limits": {
+    "width": {
+      "min": 1600,
+      "max": 3600,
+      "step": 50
+    },
+    "depth": {
+      "min": 700,
+      "max": 1000,
+      "step": 10
+    },
+    "height": {
+      "min": 1000,
+      "max": 1200,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "counter",
+      "shape": "rect",
+      "at": [
+        "0",
+        "-depth / 2 + 150"
+      ],
+      "size": [
+        "width",
+        "300"
+      ],
+      "style": "fill",
+      "slot": "wood"
+    },
+    {
+      "name": "worktop",
+      "shape": "rect",
+      "at": [
+        "0",
+        "150"
+      ],
+      "size": [
+        "width",
+        "depth - 300"
+      ],
+      "style": "thin"
+    },
+    {
+      "name": "chair",
+      "shape": "rect",
+      "at": [
+        "0",
+        "depth / 2 + 330"
+      ],
+      "size": [
+        "460",
+        "460"
+      ],
+      "style": "thin"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "counter",
+      "shape": "box",
+      "at": [
+        "0",
+        "-depth / 2 + 150",
+        "0"
+      ],
+      "size": [
+        "width",
+        "300",
+        "height"
+      ],
+      "slot": "wood"
+    },
+    {
+      "name": "worktop",
+      "shape": "box",
+      "at": [
+        "0",
+        "150",
+        "710"
+      ],
+      "size": [
+        "width",
+        "depth - 300",
+        "30"
+      ],
+      "slot": "wood"
+    },
+    {
+      "name": "ends",
+      "shape": "box",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 - 20)",
+        "150",
+        "0"
+      ],
+      "size": [
+        "40",
+        "depth - 300",
+        "710"
+      ],
+      "slot": "wood",
+      "count": "2"
+    },
+    {
+      "name": "chair seat",
+      "shape": "box",
+      "at": [
+        "0",
+        "depth / 2 + 330",
+        "400"
+      ],
+      "size": [
+        "460",
+        "460",
+        "60"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "chair back",
+      "shape": "box",
+      "at": [
+        "0",
+        "depth / 2 + 535",
+        "460"
+      ],
+      "size": [
+        "460",
+        "50",
+        "420"
+      ],
+      "slot": "fabric"
+    }
+  ]
+}

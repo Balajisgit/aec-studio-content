@@ -1,0 +1,169 @@
+{
+  "id": "furniture.cafe-table-4@1.0.0",
+  "name": "Cafe table for 4",
+  "contract": "furniture.cafe-table-4",
+  "role": "furniture",
+  "about": "A small square table with a chair on each side: a cafeteria, a pantry, a community cafe.",
+  "params": {
+    "width": 800,
+    "depth": 800,
+    "height": 740
+  },
+  "limits": {
+    "width": {
+      "min": 700,
+      "max": 1000,
+      "step": 50
+    },
+    "depth": {
+      "min": 700,
+      "max": 1000,
+      "step": 50
+    },
+    "height": {
+      "min": 700,
+      "max": 1100,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "top",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "wood"
+    },
+    {
+      "name": "chairs across",
+      "shape": "rect",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 + 300)",
+        "0"
+      ],
+      "size": [
+        "460",
+        "460"
+      ],
+      "style": "thin",
+      "count": "2"
+    },
+    {
+      "name": "chairs along",
+      "shape": "rect",
+      "at": [
+        "0",
+        "(i == 0 ? -1 : 1) * (depth / 2 + 300)"
+      ],
+      "size": [
+        "460",
+        "460"
+      ],
+      "style": "thin",
+      "count": "2"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "stem",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "90",
+        "90",
+        "height - 30"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "top",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "height - 30"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "30"
+      ],
+      "slot": "wood"
+    },
+    {
+      "name": "chairs across: seats",
+      "shape": "box",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 + 300)",
+        "0",
+        "400"
+      ],
+      "size": [
+        "460",
+        "460",
+        "60"
+      ],
+      "slot": "fabric",
+      "count": "2"
+    },
+    {
+      "name": "chairs across: backs",
+      "shape": "box",
+      "at": [
+        "((i == 0 ? -1 : 1) * (width / 2 + 300)) + ((i == 0 ? -1 : 1) * 205)",
+        "0",
+        "460"
+      ],
+      "size": [
+        "50",
+        "460",
+        "420"
+      ],
+      "slot": "fabric",
+      "count": "2"
+    },
+    {
+      "name": "chairs along: seats",
+      "shape": "box",
+      "at": [
+        "0",
+        "(i == 0 ? -1 : 1) * (depth / 2 + 300)",
+        "400"
+      ],
+      "size": [
+        "460",
+        "460",
+        "60"
+      ],
+      "slot": "fabric",
+      "count": "2"
+    },
+    {
+      "name": "chairs along: backs",
+      "shape": "box",
+      "at": [
+        "0",
+        "((i == 0 ? -1 : 1) * (depth / 2 + 300)) + ((i == 0 ? -1 : 1) * 205)",
+        "460"
+      ],
+      "size": [
+        "460",
+        "50",
+        "420"
+      ],
+      "slot": "fabric",
+      "count": "2"
+    }
+  ]
+}

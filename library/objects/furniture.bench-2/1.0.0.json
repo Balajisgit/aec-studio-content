@@ -1,0 +1,140 @@
+{
+  "id": "furniture.bench-2@1.0.0",
+  "name": "Bench for 2",
+  "contract": "furniture.bench-2",
+  "role": "furniture",
+  "about": "Two desks side by side with their chairs. Width and depth are one person's.",
+  "params": {
+    "width": 1400,
+    "depth": 700,
+    "height": 740
+  },
+  "limits": {
+    "width": {
+      "min": 1000,
+      "max": 1800,
+      "step": 50
+    },
+    "depth": {
+      "min": 600,
+      "max": 900,
+      "step": 10
+    },
+    "height": {
+      "min": 680,
+      "max": 780,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "top",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "2 * width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "wood"
+    },
+    {
+      "name": "chairs",
+      "shape": "rect",
+      "at": [
+        "((i % 2) - 0.5) * width",
+        "-depth / 2 - 330"
+      ],
+      "size": [
+        "460",
+        "460"
+      ],
+      "style": "thin",
+      "count": "2"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "ends",
+      "shape": "box",
+      "at": [
+        "(i == 0 ? -1 : 1) * ((2 * width) / 2 - 20)",
+        "0",
+        "0"
+      ],
+      "size": [
+        "40",
+        "(depth) - 100",
+        "height - 25"
+      ],
+      "slot": "frame",
+      "count": "2"
+    },
+    {
+      "name": "top",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "height - 25"
+      ],
+      "size": [
+        "2 * width",
+        "depth",
+        "25"
+      ],
+      "slot": "wood"
+    },
+    {
+      "name": "screens",
+      "shape": "box",
+      "at": [
+        "((i % 2) - 0.5) * width",
+        "depth / 2 - 120",
+        "height"
+      ],
+      "size": [
+        "560",
+        "40",
+        "340"
+      ],
+      "slot": "metal",
+      "count": "2"
+    },
+    {
+      "name": "chairs: seats",
+      "shape": "box",
+      "at": [
+        "((i % 2) - 0.5) * width",
+        "-depth / 2 - 330",
+        "400"
+      ],
+      "size": [
+        "460",
+        "460",
+        "60"
+      ],
+      "slot": "fabric",
+      "count": "2"
+    },
+    {
+      "name": "chairs: backs",
+      "shape": "box",
+      "at": [
+        "((i % 2) - 0.5) * width",
+        "(-depth / 2 - 330) + (-205)",
+        "460"
+      ],
+      "size": [
+        "460",
+        "50",
+        "420"
+      ],
+      "slot": "fabric",
+      "count": "2"
+    }
+  ]
+}

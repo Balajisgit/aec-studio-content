@@ -1,0 +1,76 @@
+{
+  "id": "furniture.locker-bank@1.0.0",
+  "name": "Locker bank",
+  "contract": "furniture.locker-bank",
+  "role": "furniture",
+  "about": "A bank of personal lockers, three columns wide; its width sets how many fit along a wall.",
+  "params": {
+    "width": 900,
+    "depth": 500,
+    "height": 1800
+  },
+  "limits": {
+    "width": {
+      "min": 600,
+      "max": 1800,
+      "step": 300
+    },
+    "depth": {
+      "min": 400,
+      "max": 600,
+      "step": 10
+    },
+    "height": {
+      "min": 1200,
+      "max": 2100,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "bank",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "fill",
+      "slot": "metal"
+    },
+    {
+      "name": "columns",
+      "shape": "rect",
+      "at": [
+        "(i - 1) * width / 3",
+        "0"
+      ],
+      "size": [
+        "width / 3 - 20",
+        "depth - 40"
+      ],
+      "style": "hidden",
+      "count": "3"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "bank",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "height"
+      ],
+      "slot": "metal"
+    }
+  ]
+}

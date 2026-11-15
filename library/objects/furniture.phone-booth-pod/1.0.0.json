@@ -1,0 +1,150 @@
+{
+  "id": "furniture.phone-booth-pod@1.0.0",
+  "name": "Phone booth pod",
+  "contract": "furniture.phone-booth-pod",
+  "role": "furniture",
+  "about": "A freestanding booth for one: padded walls, a glass front, a perch and a shelf. For a call or an hour's quiet where no room is built for it.",
+  "params": {
+    "width": 1000,
+    "depth": 1000,
+    "height": 2200
+  },
+  "limits": {
+    "width": {
+      "min": 900,
+      "max": 1400,
+      "step": 50
+    },
+    "depth": {
+      "min": 900,
+      "max": 1400,
+      "step": 50
+    },
+    "height": {
+      "min": 2000,
+      "max": 2400,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "booth",
+      "shape": "rect",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "width",
+        "depth"
+      ],
+      "style": "outline"
+    },
+    {
+      "name": "perch",
+      "shape": "rect",
+      "at": [
+        "0",
+        "depth / 2 - 250"
+      ],
+      "size": [
+        "width - 200",
+        "400"
+      ],
+      "style": "thin"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "back",
+      "shape": "box",
+      "at": [
+        "0",
+        "depth / 2 - 30",
+        "0"
+      ],
+      "size": [
+        "width",
+        "60",
+        "height"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "sides",
+      "shape": "box",
+      "at": [
+        "(i == 0 ? -1 : 1) * (width / 2 - 30)",
+        "0",
+        "0"
+      ],
+      "size": [
+        "60",
+        "depth",
+        "height"
+      ],
+      "slot": "fabric",
+      "count": "2"
+    },
+    {
+      "name": "front",
+      "shape": "box",
+      "at": [
+        "0",
+        "-depth / 2 + 10",
+        "0"
+      ],
+      "size": [
+        "width - 120",
+        "20",
+        "height - 60"
+      ],
+      "slot": "glass"
+    },
+    {
+      "name": "roof",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "height - 60"
+      ],
+      "size": [
+        "width",
+        "depth",
+        "60"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "perch",
+      "shape": "box",
+      "at": [
+        "0",
+        "depth / 2 - 250",
+        "420"
+      ],
+      "size": [
+        "width - 200",
+        "400",
+        "60"
+      ],
+      "slot": "fabric"
+    },
+    {
+      "name": "shelf",
+      "shape": "box",
+      "at": [
+        "0",
+        "-depth / 2 + 250",
+        "1000"
+      ],
+      "size": [
+        "width - 200",
+        "300",
+        "30"
+      ],
+      "slot": "wood"
+    }
+  ]
+}
