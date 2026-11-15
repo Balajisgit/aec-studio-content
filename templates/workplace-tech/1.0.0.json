@@ -3,6 +3,7 @@
   "name": "Workplace: technology",
   "about": "An office floor for a technology firm or a global capability centre: open team neighbourhoods, many small rooms for calls and focus, scrum and war rooms, a device lab, a town hall. Outside a glazed facade, between rooms glazed partitions, carpet tiles on an RCC slab, 4.2 m floor to floor.",
   "spaces": {
+    "headUnit": "seat",
     "uses": [
       {
         "id": "reception",
@@ -23,42 +24,54 @@
         "minArea": 20,
         "minSide": 3600,
         "window": true,
-        "about": "Workstations in the open: about 6 m² a person with its share of aisles."
+        "about": "Workstations in the open: about 6 m² a person with its share of aisles.",
+        "unit": "seat",
+        "unitArea": 6
       },
       {
         "id": "cabin",
         "name": "Cabin",
         "minArea": 9,
         "minSide": 2700,
-        "about": "A private office for one."
+        "about": "A private office for one.",
+        "unit": "seat",
+        "units": 1
       },
       {
         "id": "focus-room",
         "name": "Focus room",
         "minArea": 4,
         "minSide": 1800,
-        "about": "A room for one or two to work without noise."
+        "about": "A room for one or two to work without noise.",
+        "unit": "focus seat",
+        "units": 1
       },
       {
         "id": "phone-booth",
         "name": "Phone booth",
         "minArea": 1.2,
         "minSide": 1000,
-        "about": "One person, a call."
+        "about": "One person, a call.",
+        "unit": "focus seat",
+        "units": 1
       },
       {
         "id": "scrum-room",
         "name": "Scrum room",
         "minArea": 12,
         "minSide": 3000,
-        "about": "A team's stand-up and planning room, its walls to write on."
+        "about": "A team's stand-up and planning room, its walls to write on.",
+        "unit": "meeting seat",
+        "units": 8
       },
       {
         "id": "war-room",
         "name": "War room",
         "minArea": 20,
         "minSide": 3600,
-        "about": "A project team's own room for weeks at a stretch."
+        "about": "A project team's own room for weeks at a stretch.",
+        "unit": "seat",
+        "unitArea": 3
       },
       {
         "id": "lab",
@@ -71,14 +84,18 @@
         "id": "training-room",
         "name": "Training room",
         "minArea": 30,
-        "minSide": 4800
+        "minSide": 4800,
+        "unit": "training seat",
+        "unitArea": 1.8
       },
       {
         "id": "town-hall",
         "name": "Town hall",
         "minArea": 60,
         "minSide": 6000,
-        "about": "The whole floor in one place; often the cafeteria doubles as it."
+        "about": "The whole floor in one place; often the cafeteria doubles as it.",
+        "unit": "assembly seat",
+        "unitArea": 0.8
       },
       {
         "id": "recreation",
@@ -92,28 +109,36 @@
         "name": "Small meeting room",
         "minArea": 9,
         "minSide": 2700,
-        "about": "Up to 4 people."
+        "about": "Up to 4 people.",
+        "unit": "meeting seat",
+        "units": 4
       },
       {
         "id": "meeting-medium",
         "name": "Medium meeting room",
         "minArea": 16,
         "minSide": 3300,
-        "about": "6 to 8 people."
+        "about": "6 to 8 people.",
+        "unit": "meeting seat",
+        "units": 8
       },
       {
         "id": "meeting-large",
         "name": "Large meeting room",
         "minArea": 28,
         "minSide": 4200,
-        "about": "12 to 16 people."
+        "about": "12 to 16 people.",
+        "unit": "meeting seat",
+        "units": 14
       },
       {
         "id": "collaboration",
         "name": "Collaboration area",
         "minArea": 10,
         "minSide": 2700,
-        "about": "An open or half-open place to work together: sofas, a whiteboard, high tables."
+        "about": "An open or half-open place to work together: sofas, a whiteboard, high tables.",
+        "unit": "meeting seat",
+        "unitArea": 2.5
       },
       {
         "id": "breakout",
@@ -135,7 +160,9 @@
         "minArea": 30,
         "minSide": 4500,
         "window": true,
-        "wet": true
+        "wet": true,
+        "unit": "dining seat",
+        "unitArea": 1.4
       },
       {
         "id": "wellness-room",
@@ -294,6 +321,26 @@
         "pantry",
         "lab"
       ]
+    ],
+    "ratios": [
+      {
+        "name": "Meeting seats",
+        "of": "meeting seat",
+        "per": "seat",
+        "min": 0.125
+      },
+      {
+        "name": "Focus seats",
+        "of": "focus seat",
+        "per": "seat",
+        "min": 0.05
+      },
+      {
+        "name": "Cafeteria seats",
+        "of": "dining seat",
+        "per": "seat",
+        "min": 0.25
+      }
     ]
   },
   "presets": [

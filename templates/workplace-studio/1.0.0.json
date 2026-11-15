@@ -3,6 +3,7 @@
   "name": "Workplace: creative studio",
   "about": "A design, architecture, media or advertising studio: one open studio with room to pin up and review, a materials library, a workshop for models, edit and sound rooms that want no window, a gallery at the front. Outside a glazed facade, between rooms drywall partitions, polished concrete on an RCC slab, 4.5 m floor to floor.",
   "spaces": {
+    "headUnit": "seat",
     "uses": [
       {
         "id": "reception",
@@ -22,21 +23,27 @@
         "name": "Cabin",
         "minArea": 9,
         "minSide": 2700,
-        "about": "A private office for one."
+        "about": "A private office for one.",
+        "unit": "seat",
+        "units": 1
       },
       {
         "id": "focus-room",
         "name": "Focus room",
         "minArea": 4,
         "minSide": 1800,
-        "about": "A room for one or two to work without noise."
+        "about": "A room for one or two to work without noise.",
+        "unit": "focus seat",
+        "units": 1
       },
       {
         "id": "phone-booth",
         "name": "Phone booth",
         "minArea": 1.2,
         "minSide": 1000,
-        "about": "One person, a call."
+        "about": "One person, a call.",
+        "unit": "focus seat",
+        "units": 1
       },
       {
         "id": "studio",
@@ -44,14 +51,18 @@
         "minArea": 30,
         "minSide": 4500,
         "window": true,
-        "about": "The open studio: long tables, screens, work on the walls."
+        "about": "The open studio: long tables, screens, work on the walls.",
+        "unit": "seat",
+        "unitArea": 7
       },
       {
         "id": "review-space",
         "name": "Review space",
         "minArea": 15,
         "minSide": 3600,
-        "about": "Where work is pinned up and talked through."
+        "about": "Where work is pinned up and talked through.",
+        "unit": "meeting seat",
+        "unitArea": 2
       },
       {
         "id": "materials-library",
@@ -108,28 +119,36 @@
         "name": "Small meeting room",
         "minArea": 9,
         "minSide": 2700,
-        "about": "Up to 4 people."
+        "about": "Up to 4 people.",
+        "unit": "meeting seat",
+        "units": 4
       },
       {
         "id": "meeting-medium",
         "name": "Medium meeting room",
         "minArea": 16,
         "minSide": 3300,
-        "about": "6 to 8 people."
+        "about": "6 to 8 people.",
+        "unit": "meeting seat",
+        "units": 8
       },
       {
         "id": "meeting-large",
         "name": "Large meeting room",
         "minArea": 28,
         "minSide": 4200,
-        "about": "12 to 16 people."
+        "about": "12 to 16 people.",
+        "unit": "meeting seat",
+        "units": 14
       },
       {
         "id": "collaboration",
         "name": "Collaboration area",
         "minArea": 10,
         "minSide": 2700,
-        "about": "An open or half-open place to work together: sofas, a whiteboard, high tables."
+        "about": "An open or half-open place to work together: sofas, a whiteboard, high tables.",
+        "unit": "meeting seat",
+        "unitArea": 2.5
       },
       {
         "id": "breakout",
@@ -151,7 +170,9 @@
         "minArea": 30,
         "minSide": 4500,
         "window": true,
-        "wet": true
+        "wet": true,
+        "unit": "dining seat",
+        "unitArea": 1.4
       },
       {
         "id": "wellness-room",
@@ -322,6 +343,20 @@
         "workshop",
         "render-room"
       ]
+    ],
+    "ratios": [
+      {
+        "name": "Meeting seats",
+        "of": "meeting seat",
+        "per": "seat",
+        "min": 0.125
+      },
+      {
+        "name": "Focus seats",
+        "of": "focus seat",
+        "per": "seat",
+        "min": 0.03
+      }
     ]
   },
   "presets": [

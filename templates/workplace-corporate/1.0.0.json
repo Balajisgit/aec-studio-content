@@ -3,6 +3,7 @@
   "name": "Workplace: corporate",
   "about": "A head office or a professional or financial services floor (law, consulting, banking): more cabins and enclosed rooms, a client suite at the front kept apart from the working floor, a boardroom, records. Outside a glazed facade, between rooms drywall partitions, carpet tiles on an RCC slab, 4.2 m floor to floor.",
   "spaces": {
+    "headUnit": "seat",
     "uses": [
       {
         "id": "reception",
@@ -23,28 +24,36 @@
         "minArea": 20,
         "minSide": 3600,
         "window": true,
-        "about": "Workstations in the open: about 6 m² a person with its share of aisles."
+        "about": "Workstations in the open: about 6 m² a person with its share of aisles.",
+        "unit": "seat",
+        "unitArea": 6
       },
       {
         "id": "cabin",
         "name": "Cabin",
         "minArea": 10,
         "minSide": 3000,
-        "about": "A private office for one."
+        "about": "A private office for one.",
+        "unit": "seat",
+        "units": 1
       },
       {
         "id": "focus-room",
         "name": "Focus room",
         "minArea": 4,
         "minSide": 1800,
-        "about": "A room for one or two to work without noise."
+        "about": "A room for one or two to work without noise.",
+        "unit": "focus seat",
+        "units": 1
       },
       {
         "id": "phone-booth",
         "name": "Phone booth",
         "minArea": 1.2,
         "minSide": 1000,
-        "about": "One person, a call."
+        "about": "One person, a call.",
+        "unit": "focus seat",
+        "units": 1
       },
       {
         "id": "executive-cabin",
@@ -52,28 +61,36 @@
         "minArea": 14,
         "minSide": 3300,
         "window": true,
-        "about": "A senior person's office, with a small meeting table."
+        "about": "A senior person's office, with a small meeting table.",
+        "unit": "seat",
+        "units": 1
       },
       {
         "id": "pa-area",
         "name": "Assistant's desk",
         "minArea": 5,
         "minSide": 1800,
-        "about": "Outside an executive cabin."
+        "about": "Outside an executive cabin.",
+        "unit": "seat",
+        "units": 1
       },
       {
         "id": "boardroom",
         "name": "Boardroom",
         "minArea": 35,
         "minSide": 4500,
-        "about": "16 to 20 people at one table."
+        "about": "16 to 20 people at one table.",
+        "unit": "meeting seat",
+        "units": 18
       },
       {
         "id": "client-meeting",
         "name": "Client meeting room",
         "minArea": 12,
         "minSide": 3000,
-        "about": "In the client suite, reached from reception without crossing the working floor."
+        "about": "In the client suite, reached from reception without crossing the working floor.",
+        "unit": "meeting seat",
+        "units": 6
       },
       {
         "id": "library",
@@ -94,35 +111,45 @@
         "minArea": 40,
         "minSide": 6000,
         "window": true,
-        "about": "A trading or dealing floor: desks in rows, screens, a dense floor box grid."
+        "about": "A trading or dealing floor: desks in rows, screens, a dense floor box grid.",
+        "unit": "seat",
+        "unitArea": 4.5
       },
       {
         "id": "meeting-small",
         "name": "Small meeting room",
         "minArea": 9,
         "minSide": 2700,
-        "about": "Up to 4 people."
+        "about": "Up to 4 people.",
+        "unit": "meeting seat",
+        "units": 4
       },
       {
         "id": "meeting-medium",
         "name": "Medium meeting room",
         "minArea": 16,
         "minSide": 3300,
-        "about": "6 to 8 people."
+        "about": "6 to 8 people.",
+        "unit": "meeting seat",
+        "units": 8
       },
       {
         "id": "meeting-large",
         "name": "Large meeting room",
         "minArea": 28,
         "minSide": 4200,
-        "about": "12 to 16 people."
+        "about": "12 to 16 people.",
+        "unit": "meeting seat",
+        "units": 14
       },
       {
         "id": "collaboration",
         "name": "Collaboration area",
         "minArea": 10,
         "minSide": 2700,
-        "about": "An open or half-open place to work together: sofas, a whiteboard, high tables."
+        "about": "An open or half-open place to work together: sofas, a whiteboard, high tables.",
+        "unit": "meeting seat",
+        "unitArea": 2.5
       },
       {
         "id": "breakout",
@@ -144,7 +171,9 @@
         "minArea": 30,
         "minSide": 4500,
         "window": true,
-        "wet": true
+        "wet": true,
+        "unit": "dining seat",
+        "unitArea": 1.4
       },
       {
         "id": "wellness-room",
@@ -311,6 +340,26 @@
         "toilet",
         "client-meeting"
       ]
+    ],
+    "ratios": [
+      {
+        "name": "Meeting seats",
+        "of": "meeting seat",
+        "per": "seat",
+        "min": 0.125
+      },
+      {
+        "name": "Focus seats",
+        "of": "focus seat",
+        "per": "seat",
+        "min": 0.04
+      },
+      {
+        "name": "Cafeteria seats",
+        "of": "dining seat",
+        "per": "seat",
+        "min": 0.2
+      }
     ]
   },
   "presets": [
