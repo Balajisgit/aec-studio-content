@@ -58,7 +58,6 @@ _The open requests (requests/ in the content repository)._
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
-- R99 · Layers: show and hide by meaning, and layers of your own (in aec-studio#109)
 - R100 · Model defaults as typologies: Villa first (rooms used as…, firm limits, notes) (in aec-studio#110)
 - R101 · A project's programme: what the brief asks for, against what is drawn (in aec-studio#111)
 - R102 · Mixed use: several typologies in one project, and a programme in sections
