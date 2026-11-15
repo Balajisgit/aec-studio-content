@@ -68,7 +68,7 @@ _The open requests (requests/ in the content repository)._
 - R96 · Operations say what they made (in aec-studio#105)
 - R97 · A plan picture an agent can look at (in aec-studio#108)
 - R98 · Design-sense notes in the rule list (in aec-studio#107)
-- R99 · Layers: show and hide by meaning, and layers of your own
+- R99 · Layers: show and hide by meaning, and layers of your own (in aec-studio#109)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
