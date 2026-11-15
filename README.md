@@ -34,6 +34,8 @@ templates/<id>/<version>.json      model defaults (R68), one per typology (R100:
                                   rules (outer and inner walls, every room a Room + Slab), the usual openings and floor height;
                                   templates/default.json names the one new projects follow
 library/meanings/<id>.json        functions: what a node, line or face is (wall, door, gate, room, plot…), one per primer, picked from the Library (R63); a firm adds its own in its layer
+                                  (kind, R108: what it behaves as — wall, door, window, gate, room, slab, separator — when that is not its own name:
+                                  a firm's "sliding-door" with kind "door" is put into walls and is a way in, like a door)
 settings.json                     shared settings: models per tier; library.review (quick review of Library proposals: off, unsure, always)
 checks/validate.js                this repository's automatic check
 ```
