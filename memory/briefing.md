@@ -65,7 +65,7 @@ _The open requests (requests/ in the content repository)._
 - R93 · Rename House defaults to Model defaults (in aec-studio#99)
 - R94 · Agents read what the kernel works out: a level's rooms, walls, doors and findings, what is at a point, a section
 - R95 · Intent in the kernel: a room operation, put in by wall and position, faces formed after any change to the lines (in aec-studio#104)
-- R96 · Operations say what they made
+- R96 · Operations say what they made (in aec-studio#105)
 - R97 · A plan picture an agent can look at
 - R98 · Design-sense notes in the rule list
 
