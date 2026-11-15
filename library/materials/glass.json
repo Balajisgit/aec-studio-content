@@ -1,0 +1,8 @@
+{
+  "id": "glass",
+  "name": "Glass",
+  "color": "#9cc3e0",
+  "roughness": 0.1,
+  "opacity": 0.4,
+  "about": "Clear glass: a window's pane, a shower screen."
+}

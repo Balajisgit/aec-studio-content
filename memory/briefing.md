@@ -70,7 +70,12 @@ _The open requests (requests/ in the content repository)._
 - R98 · Design-sense notes in the rule list (in aec-studio#107)
 - R99 · Layers: show and hide by meaning, and layers of your own (in aec-studio#109)
 - R100 · Model defaults as typologies: Villa first (rooms used as…, firm limits, notes) (in aec-studio#110)
-- R101 · A project's programme: what the brief asks for, against what is drawn
+- R101 · A project's programme: what the brief asks for, against what is drawn (in aec-studio#111)
+- R102 · Mixed use: several typologies in one project, and a programme in sections
+- R103 · Model defaults for the modern workplace: five verticals (in aec-studio#112)
+- R104 · Workplace limits 1: choose the typology at creation, floor heights follow it, open areas with no walls (in aec-studio#113)
+- R105 · What a room holds (seats, beds, covers): the kernel counts, the typology and Projects judge; the room-use rules move out of the kernel (in aec-studio#114)
+- R106 · Office furniture for the Library, each piece saying what it provides (in aec-studio-content#54)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)

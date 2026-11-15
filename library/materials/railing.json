@@ -1,0 +1,8 @@
+{
+  "id": "railing",
+  "name": "Railing",
+  "color": "#555555",
+  "roughness": 0.5,
+  "metalness": 0.3,
+  "about": "A railing."
+}

@@ -1,0 +1,8 @@
+{
+  "id": "metal",
+  "name": "Metal",
+  "color": "#7d858f",
+  "roughness": 0.4,
+  "metalness": 0.35,
+  "about": "Steel and aluminium: legs, handles, rails, a fence's mesh."
+}
