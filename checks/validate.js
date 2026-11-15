@@ -71,7 +71,11 @@ try { const td = join(root, "templates");
           if (!u || typeof u.name !== "string" || !u.name.trim()) problems.push(`${rel}: use ${u && u.id} has no name`);
           if (u && u.minArea != null && !(typeof u.minArea === "number" && u.minArea > 0)) problems.push(`${rel}: use ${u.id}: minArea is m², above 0`);
           if (u && u.minSide != null && !(Number.isInteger(u.minSide) && u.minSide > 0)) problems.push(`${rel}: use ${u.id}: minSide is whole mm, above 0`);
-          if (u && u.open != null && !["semi", "open"].includes(u.open)) problems.push(`${rel}: use ${u.id}: open is semi or open`); }
+          if (u && u.open != null && !["semi", "open"].includes(u.open)) problems.push(`${rel}: use ${u.id}: open is semi or open`);
+          if (u && (u.unitArea != null || u.units != null) && typeof u.unit !== "string") problems.push(`${rel}: use ${u.id}: say what it holds (unit) with unitArea or units`); }
+        // what rooms hold (R105): the ratios name units some use holds
+        { const have = new Set((U || []).map((u) => u && u.unit).filter(Boolean)); for (const q of t.spaces.ratios || []) for (const k of [q.of, q.per]) if (!have.has(k)) problems.push(`${rel}: spaces.ratios: no use holds ${k}`);
+          if (t.spaces.headUnit != null && !have.has(t.spaces.headUnit)) problems.push(`${rel}: spaces.headUnit: no use holds ${t.spaces.headUnit}`); }
         for (const p of t.spaces.apart || []) if (!Array.isArray(p) || p.length !== 2 || p.some((x) => !seen.has(x))) problems.push(`${rel}: spaces.apart names two of its uses (${JSON.stringify(p)})`); }
       const ids = new Set((t.presets || []).map((p) => p.id)); const L = t.rules && t.rules.lines; if (L) for (const k of ["outer", "inner"]) if (!ids.has(L[k])) problems.push(`${rel}: rules.lines.${k} must name a preset`); } }
 } catch (e) { if (e.code !== "ENOENT") problems.push(`templates: ${e.message}`); }

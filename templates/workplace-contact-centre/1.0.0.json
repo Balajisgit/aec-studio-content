@@ -3,6 +3,7 @@
   "name": "Workplace: contact centre",
   "about": "A contact centre or business-process floor, worked in shifts: a dense production floor in bays with team leads among them, training rooms for each new batch, lockers and a check at the entrance, a large cafeteria, a sick room, a transport desk. Outside a glazed facade, between rooms drywall partitions, a vinyl floor on an RCC slab, 4.2 m floor to floor.",
   "spaces": {
+    "headUnit": "seat",
     "uses": [
       {
         "id": "reception",
@@ -17,14 +18,18 @@
         "minArea": 20,
         "minSide": 3600,
         "window": true,
-        "about": "Workstations in the open: about 6 m² a person with its share of aisles."
+        "about": "Workstations in the open: about 6 m² a person with its share of aisles.",
+        "unit": "seat",
+        "unitArea": 6
       },
       {
         "id": "cabin",
         "name": "Cabin",
         "minArea": 9,
         "minSide": 2700,
-        "about": "A manager's office."
+        "about": "A manager's office.",
+        "unit": "seat",
+        "units": 1
       },
       {
         "id": "production-floor",
@@ -32,14 +37,18 @@
         "minArea": 40,
         "minSide": 6000,
         "window": true,
-        "about": "Agents' desks in bays: about 4.5 m² a seat with its share of aisles."
+        "about": "Agents' desks in bays: about 4.5 m² a seat with its share of aisles.",
+        "unit": "seat",
+        "unitArea": 4.5
       },
       {
         "id": "team-lead-bay",
         "name": "Team lead's bay",
         "minArea": 6,
         "minSide": 2100,
-        "about": "Among the agents, in sight of the team."
+        "about": "Among the agents, in sight of the team.",
+        "unit": "seat",
+        "units": 1
       },
       {
         "id": "quality-room",
@@ -53,13 +62,17 @@
         "name": "Training room",
         "minArea": 30,
         "minSide": 4800,
-        "about": "A batch of 20 to 25."
+        "about": "A batch of 20 to 25.",
+        "unit": "training seat",
+        "unitArea": 1.8
       },
       {
         "id": "interview-room",
         "name": "Interview room",
         "minArea": 6,
-        "minSide": 2100
+        "minSide": 2100,
+        "unit": "meeting seat",
+        "units": 3
       },
       {
         "id": "security-check",
@@ -94,21 +107,27 @@
         "name": "Small meeting room",
         "minArea": 9,
         "minSide": 2700,
-        "about": "Up to 4 people."
+        "about": "Up to 4 people.",
+        "unit": "meeting seat",
+        "units": 4
       },
       {
         "id": "meeting-medium",
         "name": "Medium meeting room",
         "minArea": 16,
         "minSide": 3300,
-        "about": "6 to 8 people."
+        "about": "6 to 8 people.",
+        "unit": "meeting seat",
+        "units": 8
       },
       {
         "id": "meeting-large",
         "name": "Large meeting room",
         "minArea": 28,
         "minSide": 4200,
-        "about": "12 to 16 people."
+        "about": "12 to 16 people.",
+        "unit": "meeting seat",
+        "units": 14
       },
       {
         "id": "breakout",
@@ -130,7 +149,9 @@
         "minArea": 60,
         "minSide": 6000,
         "window": true,
-        "wet": true
+        "wet": true,
+        "unit": "dining seat",
+        "unitArea": 1.4
       },
       {
         "id": "wellness-room",
@@ -297,6 +318,20 @@
         "toilet",
         "battery-room"
       ]
+    ],
+    "ratios": [
+      {
+        "name": "Training seats",
+        "of": "training seat",
+        "per": "seat",
+        "min": 0.1
+      },
+      {
+        "name": "Cafeteria seats",
+        "of": "dining seat",
+        "per": "seat",
+        "min": 0.3
+      }
     ]
   },
   "presets": [
