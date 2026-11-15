@@ -1,0 +1,10 @@
+{
+  "id": "void",
+  "name": "Void",
+  "category": "function",
+  "on": [
+    "face"
+  ],
+  "about": "An opening through a floor: open to the floor below (a double-height room, a stairwell). It has no slab, so the slabs round it leave it open.",
+  "values": {}
+}
