@@ -1,0 +1,7 @@
+{
+  "id": "wall",
+  "name": "Wall",
+  "color": "#e9e4da",
+  "roughness": 0.95,
+  "about": "A wall with no finish of its own: plastered and painted."
+}

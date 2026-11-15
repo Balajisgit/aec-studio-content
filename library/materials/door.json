@@ -1,0 +1,7 @@
+{
+  "id": "door",
+  "name": "Door",
+  "color": "#9a6b43",
+  "roughness": 0.6,
+  "about": "A door with no finish of its own."
+}

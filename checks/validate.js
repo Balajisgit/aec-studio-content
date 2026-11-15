@@ -182,6 +182,19 @@ for (const [dir, cat] of [["semantics", "position"], ["library/meanings", "funct
   if (r.contract != null && !/^[a-z]+(\.[a-z0-9-]+)+$/.test(String(r.contract))) problems.push(`${rel}: contract must be a Library contract (furniture.chair)`);
   for (const [k, v] of Object.entries(r.values || {})) { if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(k)) problems.push(`${rel}: value ${k}: letters and digits only`);
     if (!v || !VK.includes(v.kind)) problems.push(`${rel}: value ${k}: kind must be ${VK.join(", ")}`); else if (v.kind === "choice" && !(Array.isArray(v.options) && v.options.length)) problems.push(`${rel}: value ${k}: a choice needs options`); } }
+// materials (R92): how a finish is shown in 3D. library/materials/<id>.json, its id a part's slot (wood, metal, glass) or a
+// meaning (wall, slab, door): {id, name, color: #rrggbb, roughness?, metalness?, opacity? (each 0 to 1), about?}.
+for (const n of (() => { try { return readdirSync(join(root, "library", "materials")); } catch { return []; } })()) {
+  const rel = `library/materials/${n}`; if (n === ".gitkeep") continue;
+  if (!/^[a-z][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a material is library/materials/<id>.json`); continue; }
+  let r = null; try { r = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch { problems.push(`${rel}: not valid JSON`); continue; }
+  if (!r || typeof r !== "object" || Array.isArray(r)) { problems.push(`${rel}: a material is a JSON object`); continue; }
+  if (r.id !== n.replace(/\.json$/, "")) problems.push(`${rel}: id must be ${n.replace(/\.json$/, "")}`);
+  if (!String(r.name || "").trim()) problems.push(`${rel}: name is required`);
+  if (!/^#[0-9a-fA-F]{6}$/.test(String(r.color || ""))) problems.push(`${rel}: color must be a hex colour, #rrggbb`);
+  for (const k of ["roughness", "metalness", "opacity"]) if (r[k] != null && !(typeof r[k] === "number" && r[k] >= 0 && r[k] <= 1)) problems.push(`${rel}: ${k} must be a number from 0 to 1`);
+  if (r.opacity === 0) problems.push(`${rel}: opacity 0 would hide the part`);
+  for (const k of Object.keys(r)) if (!["id", "name", "color", "roughness", "metalness", "opacity", "about"].includes(k)) problems.push(`${rel}: ${k} is not something a material says`); }
 // solvers/<id>/<version>.js with its manifest <version>.json (R62 step 3): code that defines solve(input, geo); the manifest says what it reads
 for (const id of (() => { try { return readdirSync(join(root, "solvers")); } catch { return []; } })()) { if (id === ".gitkeep") continue;
   if (!/^[a-z0-9-]+$/.test(id)) { problems.push(`solvers/${id}: a solver's folder is its id, lower case with hyphens`); continue; }
