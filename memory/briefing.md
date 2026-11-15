@@ -75,7 +75,7 @@ _The open requests (requests/ in the content repository)._
 - R103 · Model defaults for the modern workplace: five verticals (in aec-studio#112)
 - R104 · Workplace limits 1: choose the typology at creation, floor heights follow it, open areas with no walls (in aec-studio#113)
 - R105 · What a room holds (seats, beds, covers): the kernel counts, the typology and Projects judge; the room-use rules move out of the kernel (in aec-studio#114)
-- R106 · Office furniture for the Library, each piece saying what it provides
+- R106 · Office furniture for the Library, each piece saying what it provides (in aec-studio-content#54)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
