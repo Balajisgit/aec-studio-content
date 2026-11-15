@@ -1,0 +1,37 @@
+{
+  "id": "room.vinyl-floor@1.0.0",
+  "name": "Room, vinyl floor",
+  "contract": "room.vinyl-floor",
+  "role": "room",
+  "on": "face",
+  "meaning": "room",
+  "about": "A room's floor finish: sheet or plank vinyl wall to wall (to the walls' inner faces), on top of its slab. Hard-wearing and easy to clean: a production floor, a pantry, a corridor.",
+  "params": {
+    "finish": 5
+  },
+  "limits": {
+    "finish": {
+      "min": 2,
+      "max": 20,
+      "step": 1
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "floor",
+      "shape": "area",
+      "style": "fill",
+      "edge": "inner"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "floor finish",
+      "shape": "area",
+      "slot": "stone",
+      "edge": "inner",
+      "z": "0",
+      "height": "finish"
+    }
+  ]
+}
