@@ -73,6 +73,7 @@ _The open requests (requests/ in the content repository)._
 - R101 · A project's programme: what the brief asks for, against what is drawn (in aec-studio#111)
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R103 · Model defaults for the modern workplace: five verticals (in aec-studio#112)
+- R104 · Workplace limits 1: choose the typology at creation, floor heights follow it, open areas with no walls
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
