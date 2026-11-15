@@ -69,7 +69,8 @@ _The open requests (requests/ in the content repository)._
 - R97 · A plan picture an agent can look at (in aec-studio#108)
 - R98 · Design-sense notes in the rule list (in aec-studio#107)
 - R99 · Layers: show and hide by meaning, and layers of your own (in aec-studio#109)
-- R100 · Model defaults as typologies: Villa first (rooms used as…, firm limits, notes)
+- R100 · Model defaults as typologies: Villa first (rooms used as…, firm limits, notes) (in aec-studio#110)
+- R101 · A project's programme: what the brief asks for, against what is drawn
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
