@@ -71,6 +71,7 @@ _The open requests (requests/ in the content repository)._
 - R99 · Layers: show and hide by meaning, and layers of your own (in aec-studio#109)
 - R100 · Model defaults as typologies: Villa first (rooms used as…, firm limits, notes) (in aec-studio#110)
 - R101 · A project's programme: what the brief asks for, against what is drawn (in aec-studio#111)
+- R102 · Mixed use: several typologies in one project, and a programme in sections
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
