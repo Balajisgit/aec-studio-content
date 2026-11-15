@@ -105,21 +105,21 @@
       },
       {
         "id": "meeting-small",
-        "name": "Meeting room, small",
+        "name": "Small meeting room",
         "minArea": 9,
         "minSide": 2700,
         "about": "Up to 4 people."
       },
       {
         "id": "meeting-medium",
-        "name": "Meeting room, medium",
+        "name": "Medium meeting room",
         "minArea": 16,
         "minSide": 3300,
         "about": "6 to 8 people."
       },
       {
         "id": "meeting-large",
-        "name": "Meeting room, large",
+        "name": "Large meeting room",
         "minArea": 28,
         "minSide": 4200,
         "about": "12 to 16 people."
