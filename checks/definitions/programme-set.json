@@ -1,0 +1,6 @@
+{
+  "id": "programme-set",
+  "name": "The project has a programme",
+  "about": "A programme with at least one space asked for, each one of the uses the project's model defaults bring.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}
