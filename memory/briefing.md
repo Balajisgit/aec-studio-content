@@ -58,7 +58,6 @@ _The open requests (requests/ in the content repository)._
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
-- R94 · Agents read what the kernel works out: a level's rooms, walls, doors and findings, what is at a point, a section (in aec-studio#106)
 - R95 · Intent in the kernel: a room operation, put in by wall and position, faces formed after any change to the lines (in aec-studio#104)
 - R96 · Operations say what they made (in aec-studio#105)
 - R97 · A plan picture an agent can look at (in aec-studio#108)
