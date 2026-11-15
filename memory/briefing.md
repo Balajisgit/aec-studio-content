@@ -66,7 +66,7 @@ _The open requests (requests/ in the content repository)._
 - R94 · Agents read what the kernel works out: a level's rooms, walls, doors and findings, what is at a point, a section (in aec-studio#106)
 - R95 · Intent in the kernel: a room operation, put in by wall and position, faces formed after any change to the lines (in aec-studio#104)
 - R96 · Operations say what they made (in aec-studio#105)
-- R97 · A plan picture an agent can look at
+- R97 · A plan picture an agent can look at (in aec-studio#108)
 - R98 · Design-sense notes in the rule list (in aec-studio#107)
 
 **A pipeline**
