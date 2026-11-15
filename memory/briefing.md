@@ -63,7 +63,7 @@ _The open requests (requests/ in the content repository)._
 - R91 · Built-in canvas: split into small parts and redraw only what changed (in aec-studio#102)
 - R92 · Built-in 3D view: materials from the Library's finishes, sections, later editing in 3D (in aec-studio#103)
 - R93 · Rename House defaults to Model defaults (in aec-studio#99)
-- R94 · Agents read what the kernel works out: a level's rooms, walls, doors and findings, what is at a point, a section
+- R94 · Agents read what the kernel works out: a level's rooms, walls, doors and findings, what is at a point, a section (in aec-studio#106)
 - R95 · Intent in the kernel: a room operation, put in by wall and position, faces formed after any change to the lines (in aec-studio#104)
 - R96 · Operations say what they made (in aec-studio#105)
 - R97 · A plan picture an agent can look at
