@@ -72,7 +72,7 @@ _The open requests (requests/ in the content repository)._
 - R100 · Model defaults as typologies: Villa first (rooms used as…, firm limits, notes) (in aec-studio#110)
 - R101 · A project's programme: what the brief asks for, against what is drawn (in aec-studio#111)
 - R102 · Mixed use: several typologies in one project, and a programme in sections
-- R103 · Model defaults for the modern workplace: five verticals
+- R103 · Model defaults for the modern workplace: five verticals (in aec-studio#112)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
