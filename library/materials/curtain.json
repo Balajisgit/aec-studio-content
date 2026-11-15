@@ -1,0 +1,8 @@
+{
+  "id": "curtain",
+  "name": "Curtain wall",
+  "color": "#bcd3e6",
+  "roughness": 0.1,
+  "opacity": 0.45,
+  "about": "A curtain wall: seen through."
+}
