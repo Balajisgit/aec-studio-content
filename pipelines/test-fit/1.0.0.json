@@ -1,0 +1,55 @@
+{
+  "id": "test-fit@1.0.0",
+  "name": "Test fit a floor",
+  "about": "Lays out a workplace floor from its programme: the rooms asked for along the sides of the floor, the open office filled with desks until everyone has a seat, every room furnished and given a door. It offers a few layouts ranked by how well each meets the programme, and draws the one you pick. The floor is an empty shell already drawn: its outer walls, the core's rooms and the entrance door.",
+  "useWhen": "The owner has an empty office floor drawn (outer walls, core, entrance) and a programme (how many people, which rooms), and wants a first furnished layout to react to.",
+  "input": {
+    "notes": true,
+    "files": false,
+    "optional": true,
+    "about": "Nothing: it reads the project's drawing and its programme. Optional params: top (how many layouts to offer, 1 to 6), people (when the programme gives no headcount)."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "Work in whole millimetres on the project's plan axes, on the project's planning module (1.5 m unless the project says otherwise)."
+    },
+    {
+      "id": "R2",
+      "text": "The floor to fit out is the largest room of the level; the other rooms drawn on it are the core and stay as they are. A door in the outer wall is the entrance."
+    },
+    {
+      "id": "R3",
+      "text": "The programme decides: its people are seated and its rooms placed before anything else is added; the typology's ratios add only what the programme left short."
+    },
+    {
+      "id": "R4",
+      "text": "Nothing is drawn until the owner picks a layout: the pick is one logged, undoable step."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "fit",
+      "name": "Lay out the floor",
+      "outcome": "A few layouts of the floor that meet the programme, the best first.",
+      "solver": "workplace-test-fit",
+      "checks": [
+        "candidates-found"
+      ],
+      "retries": 0
+    },
+    {
+      "kind": "decision",
+      "id": "pick",
+      "name": "Pick the layout",
+      "question": "Which layout should be drawn? Click it on the plan or pick it here.",
+      "form": "pick-candidate"
+    }
+  ],
+  "output": {
+    "id": "test-fit",
+    "name": "Test fit",
+    "about": "The layout picked: its rooms, seats and furniture drawn on the floor."
+  }
+}
