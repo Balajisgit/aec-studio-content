@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 40._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 41._
 
 ## What this is
 
@@ -75,6 +75,16 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 40 · 2026-11-16 · Main, staging and the online preview made the same
+The online preview was republished from main, and both staging branches were brought level with main. Staging has no extras of its own left: the records fix and the template-proposals workflow are on main now.
+
+Done:
+- The online preview (BuilderPluss Studio artifact) republished from main (app 43a3e02, content 10c6b92): app #94, content #57, sessions 38 and 39.
+- App and content staging branches now hold exactly main's files; their history was kept, not rewritten.
+
+Decided:
+- Owner: "update preview", then "make all 3 same" (main, staging, the online preview).
 
 ### Session 39 · 2026-11-16 · The workplace test fit merged; staging and the online preview updated; the older pull requests cleared
 The workplace test fit (R109) was merged and staging and the online preview were brought up to main. The four older pull requests were then settled: one merged, two closed as out of date, one rebuilt on main and merged. Neither repository has an open pull request.
@@ -155,28 +165,9 @@ Decided:
 - Owner: Blender "in claude" when the PC is not connected; the Studio connector "yes"; server Blender only for approved scripts ("yes").
 - Owner: "ok merge #91 → #92 → #93, then content #44"; the rule on BuilderPluss MCP tools changed to allow the Studio connector ("ok").
 
-### Session 35 · 2026-11-12 · Model 4.0 objects, levels and legacy (R64-R67), easy floor-plan drawing (R68-R72), firm templates (R77), and staging fixes
-R63, R64 and R65 merged and live; R66 step 1 merged and live. R66 steps 2-4, R67, R68-R72 and R77 are built, each in its own pull request (#81-#90, content #41-#43), and all on staging for the owner to review together. Staging could not record requests: fixed in #94.
-
-Done:
-- Merged R63 (primers and meanings) and R64 (Objects on lines, corners, faces with two functions, points); R65 (Put in: doors, windows, gates into walls) merged and live.
-- R66 levels: step 1 heights merged and live; steps 2-4 in #81-#83 (walls through floors, columns in walls, stair and void holes in slabs) with content #41 (Void).
-- #82 also fixes the production Stair Object (an Object's own rise now wins over the level's). R67: the 2.x/3.0 kernel moved to kernel/legacy/ (#84).
-- R68 house defaults from content templates (#85, content #42): draw-as presets, outer/inner walls and Room + Slab kept live, a few per-project overrides, hand edits held.
-- R69 typed lengths and angles, 15° snap, Alt to wall faces, lengths on the plan (#86). R70 Room tool with clear or centre-line sizes, snapping to nearby walls (#87).
-- R71 box and Shift-click select, set on all, delete all, Match (#88). R72 move, copy, turn, mirror, offset, extend and Trim tool, each one undoable step (#89).
-- R77 Save as firm template and a Templates section on the Library page, as proposals the owner merges (#90, content #43 with a new Action). R73-R76 were taken by other requests.
-- Fixed R68 on hosted sites: the template requests were missing from the access list; a new test checks every page request is listed.
-- Fixed staging refusing to record requests and sessions: CONTENT_BRANCH from .env now reaches the recorders (#94), with a test.
-- Discussed the floor-plan workflow with the new tools and grouped the open requests.
-
-Decided:
-- Owner on house defaults: "firm default plus a choice per project", "live", "allow a small set of per-project overrides"; on hand edits, hold the whole element: "yes as per ur suggestion".
-- Owner: "Complete R66 , R67, then R68 to R72. Put it in stage first. I ll review together".
-- Owner on Save as firm template and new templates: "As u suggest" (proposals he merges; projects stay on their version until switched; anyone in a firm suggests, its owner or an admin approves).
-
 ## Earlier sessions
 
+- **35** · 2026-11-12 · Model 4.0 objects, levels and legacy (R64-R67), easy floor-plan drawing (R68-R72), firm templates (R77), and staging fixes — R63, R64 and R65 merged and live; R66 step 1 merged and live. R66 steps 2-4, R67, R68-R72 and R77 are built, each in its own pull request (#81-#90, content #41-#43), and all on staging for the owner to review together. Staging could not record requests: fixed in #94.
 - **34** · 2026-11-12 · Where the visualization pipelines fit in Studio, and files a pipeline makes reach the project on approval (R78) — The five pipelines were read against the three visualization phases: Brief to Library covers reading the deck, Fit to plot is the pattern for reading CAD, and Render views and Detail an Object are new. Files a pipeline makes reach the project only on approval, in a folder per pipeline (R78); R73, R75 and R78 are grouped and planned.
 - **33** · 2026-11-12 · A visualization pipeline from a design deck: three phases documented as Studio pipelines, four requests noted (R73-R76) — The Collab 01 work (deck to 3D assets in Blender, an assumed layout, a 24 s quick render enhanced by Krea) was written up as a playbook of three Studio pipelines, Deck to 3D assets, Assemble layout and Hybrid render, each closed by an owner review. Studio fits as the orchestrator; four gaps were noted as requests.
 - **32** · 2026-11-11 · The model becomes primers and meanings: R62's three layers shipped, then R63 (model 4.0) built and on staging — R62 shipped and runs on production: geometry, roles and Objects, with solvers in content and a Run tab on the canvas. R63 then made the kernel draw only nodes, segments and faces with their meanings. That is four stacked PRs plus content #35, all on staging and waiting for the owner's merge. Faces now form by themselves.

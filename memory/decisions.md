@@ -127,3 +127,4 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-16 · Session 38** — Owner: "Now merge and update all staging, main app and artifact."; pipelines audit "Do only 1"; kernel boundary "Ok go", then "Merge".
 - **2026-11-16 · Session 39** — Owner: "merge and update all": app #117 then content #56 merged, staging and the online preview updated.
 - **2026-11-16 · Session 39** — Owner on the four older pull requests: "do all as u suggest" (merge app #94, close content #41 and #42, rebuild #43 on main), then "merge #57".
+- **2026-11-16 · Session 40** — Owner: "update preview", then "make all 3 same" (main, staging, the online preview).
