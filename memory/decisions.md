@@ -125,3 +125,5 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-16 · Session 38** — Owner on the built model: "accurate enough for quantities and construction drawings", "Flat roof" first; export "Yet to decide".
 - **2026-11-16 · Session 38** — Owner on the solver: "Start from first principle"; "it is an empty shell with the core and entrance already drawn, as in a fit-out"; "As per the brief"; columns "Ignore for 1st version"; "As per program"; furnished "All"; module "Per project".
 - **2026-11-16 · Session 38** — Owner: "Now merge and update all staging, main app and artifact."; pipelines audit "Do only 1"; kernel boundary "Ok go", then "Merge".
+- **2026-11-16 · Session 39** — Owner: "merge and update all": app #117 then content #56 merged, staging and the online preview updated.
+- **2026-11-16 · Session 39** — Owner on the four older pull requests: "do all as u suggest" (merge app #94, close content #41 and #42, rebuild #43 on main), then "merge #57".

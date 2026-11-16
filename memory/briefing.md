@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 39._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 40._
 
 ## What this is
 
@@ -75,6 +75,21 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 39 · 2026-11-16 · The workplace test fit merged; staging and the online preview updated; the older pull requests cleared
+The workplace test fit (R109) was merged and staging and the online preview were brought up to main. The four older pull requests were then settled: one merged, two closed as out of date, one rebuilt on main and merged. Neither repository has an open pull request.
+
+Done:
+- R109 merged: app #117, then content #56 (the test-fit solver and the pipeline Test fit a floor); the request is done.
+- Staging updated in both repositories to main through R109, each keeping its own extra, history not rewritten.
+- The online preview (BuilderPluss Studio artifact) republished from main: R107, R108 and the test fit.
+- App #94 merged (staging could not record requests): tried on today's main first, 335 tests pass.
+- Content #41 (the Void meaning) and #42 (the first template) closed without merging: main already has the Void meaning and the Villa and workplace templates.
+- Content #43 (template proposals become pull requests) rebuilt on main as #57 and merged; #43 closed with a note.
+
+Decided:
+- Owner: "merge and update all": app #117 then content #56 merged, staging and the online preview updated.
+- Owner on the four older pull requests: "do all as u suggest" (merge app #94, close content #41 and #42, rebuild #43 on main), then "merge #57".
 
 ### Session 38 · 2026-11-16 · Kernel and canvas upgrade, layers, typologies (Villa, five workplaces), programme, kernel boundary; a workplace test-fit solver built from first principles
 The kernel and canvas were upgraded (R89-R98), then layers, model defaults as typologies, a programme and five workplace templates with office Objects were added and merged (R99-R108). The kernel was held to its boundary: typology, programme and design sense live in Projects. Last, a workplace test-fit solver was built; it waits in app #117 and content #56.
@@ -160,24 +175,9 @@ Decided:
 - Owner: "Complete R66 , R67, then R68 to R72. Put it in stage first. I ll review together".
 - Owner on Save as firm template and new templates: "As u suggest" (proposals he merges; projects stay on their version until switched; anyone in a firm suggests, its owner or an admin approves).
 
-### Session 34 · 2026-11-12 · Where the visualization pipelines fit in Studio, and files a pipeline makes reach the project on approval (R78)
-The five pipelines were read against the three visualization phases: Brief to Library covers reading the deck, Fit to plot is the pattern for reading CAD, and Render views and Detail an Object are new. Files a pipeline makes reach the project only on approval, in a folder per pipeline (R78); R73, R75 and R78 are grouped and planned.
-
-Done:
-- Existing pipelines checked: Brief to Library (read, match, make, keep, propose) fits phase 1 except detailed meshes; Fit to plot's read-the-plot is the pattern for reading CAD; nothing covers rendering.
-- Proposed three new pipelines, none changed: Detail an Object (Blender detail on the Helper, image review), Read the CAD (lines, faces, Placements), Render views (quick render, Krea, image review).
-- Checked what a project run keeps: kept Objects are pinned into the model (pin_object), Fit to plot draws a face; a Helper script's files stay in the run's folder, never the project's Files.
-- R78 noted: files a pipeline makes go to the project's Files on approval, a folder per pipeline, versioned names, each file's run, stage, PC and date; heavy files may stay on the PC by the Helper's named folder and path.
-- R73, R75 and R78 grouped as one piece of work and marked planned; build order R78, R75, R73, then R74 and R76.
-
-Decided:
-- Owner on files a pipeline makes: kept "on approval"; "Folder per pipeline".
-- Owner: "Also heavy files can have a option to stored locally with its file path stored in the db as usual. For eg files of proposed detail an object pipeline."
-- Owner on grouping R73, R75 and R78 as one piece of work: "Ok".
-- Owner: "Build all in the order" (R78, R75, R73, then the pipeline drafts).
-
 ## Earlier sessions
 
+- **34** · 2026-11-12 · Where the visualization pipelines fit in Studio, and files a pipeline makes reach the project on approval (R78) — The five pipelines were read against the three visualization phases: Brief to Library covers reading the deck, Fit to plot is the pattern for reading CAD, and Render views and Detail an Object are new. Files a pipeline makes reach the project only on approval, in a folder per pipeline (R78); R73, R75 and R78 are grouped and planned.
 - **33** · 2026-11-12 · A visualization pipeline from a design deck: three phases documented as Studio pipelines, four requests noted (R73-R76) — The Collab 01 work (deck to 3D assets in Blender, an assumed layout, a 24 s quick render enhanced by Krea) was written up as a playbook of three Studio pipelines, Deck to 3D assets, Assemble layout and Hybrid render, each closed by an owner review. Studio fits as the orchestrator; four gaps were noted as requests.
 - **32** · 2026-11-11 · The model becomes primers and meanings: R62's three layers shipped, then R63 (model 4.0) built and on staging — R62 shipped and runs on production: geometry, roles and Objects, with solvers in content and a Run tab on the canvas. R63 then made the kernel draw only nodes, segments and faces with their meanings. That is four stacked PRs plus content #35, all on staging and waiting for the owner's merge. Faces now form by themselves.
 - **31** · 2026-11-10 · The Helper runs PC apps and firm scripts, a Docs tab, staging live, and Fit to plot (R60) — Firms' apps and scripts run on their own Helper (R21 step 2c); the Studio gained a Docs tab with guides for the platform and for firms, plus requests and offers to BuilderPluss; staging went live; Fit to plot fits the largest rectangle at any angle inside a plot's setbacks and draws it as the ground floor's outer walls, now deployed with the fixes from its first live run.
