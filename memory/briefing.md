@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 38._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 39._
 
 ## What this is
 
@@ -76,6 +76,29 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 38 · 2026-11-16 · Kernel and canvas upgrade, layers, typologies (Villa, five workplaces), programme, kernel boundary; a workplace test-fit solver built from first principles
+The kernel and canvas were upgraded (R89-R98), then layers, model defaults as typologies, a programme and five workplace templates with office Objects were added and merged (R99-R108). The kernel was held to its boundary: typology, programme and design sense live in Projects. Last, a workplace test-fit solver was built; it waits in app #117 and content #56.
+
+Done:
+- R89-R98 kernel and canvas upgrade: intent operations (add_room, put_in by point), what the model looks like in words and pictures, design-sense notes; merged.
+- R99 layers: groups of the owner's own beside meaning (add, edit, set, remove layer), shown and hidden on the canvas.
+- R100 model defaults as typologies: a template carries the uses a room may have and what each asks; Villa is the default; rooms get "Used as".
+- R101 programme: people and rooms asked for, kept by Projects, checked against what is drawn; pipeline Programme from a brief with its agent and check.
+- R103-R106 workplaces: five templates (technology, corporate, coworking, contact centre, studio), typology at creation, floor heights, open areas, seats and capacity, 14 office furniture Objects, glass and drywall walls, floors.
+- R107 the site reader brought up to date; R108 kernel boundary: the kernel knows behaviours (kinds), not names; typology rules, capacity and notes moved to Projects.
+- Merged to main: app #99-#116, content #48-#55. Staging and the online preview updated through R105 (not yet for R107, R108).
+- An office floor simulated by script: Workplace technology, 60 people, 8 rooms, doors, furniture; 60 seats, brief complete; a storage unit across a door caught by a note.
+- R109 workplace test-fit solver (content #56) and pipeline Test fit a floor: strips of rooms on the planning module, reception at the entrance, desks until all are seated, every room furnished, four layouts ranked by the programme.
+- R109 app side (#117): a solver may read the project and the Library, a pick pins the Objects it names, a planning module per project; a floor whose walls hold a door keeps its room.
+- Tried in tests and a real browser: 30 m by 18 m shell, 60 people: 60 seats, 7 rooms, 16 meeting and 16 dining seats, 3 booths, no notes, under half a second. 334 app tests pass.
+
+Decided:
+- Owner on the programme: "Is Programme a kernel thing? Sure?"; on seats: "Does seat should touch kernel?"; room-use rules: "Move to projects". The kernel only counts; Projects knows typology and programme.
+- Owner on mixed use and a programme in sections: "Ok let's see that later" (R102 stays open).
+- Owner on the built model: "accurate enough for quantities and construction drawings", "Flat roof" first; export "Yet to decide".
+- Owner on the solver: "Start from first principle"; "it is an empty shell with the core and entrance already drawn, as in a fit-out"; "As per the brief"; columns "Ignore for 1st version"; "As per program"; furnished "All"; module "Per project".
+- Owner: "Now merge and update all staging, main app and artifact."; pipelines audit "Do only 1"; kernel boundary "Ok go", then "Merge".
 
 ### Session 37 · 2026-11-14 · Runs that belong nowhere merged; Claude sessions on the owner's PC; Make a scene, Render views, chains and Innowa conducting a job, tried on staging with Collab 01
 R79 was merged. Then a full Claude Code session on the owner's PC became a stage kind (R82), and on it Make a scene, Render views, chains and Innowa conducting a job were built (R83-R88). The Collab 01 deck ran through the chain and then as a conducted job on staging. All of it waits in PRs #97, #98 and content #46, #47.
@@ -154,27 +177,9 @@ Decided:
 - Owner on grouping R73, R75 and R78 as one piece of work: "Ok".
 - Owner: "Build all in the order" (R78, R75, R73, then the pipeline drafts).
 
-### Session 33 · 2026-11-12 · A visualization pipeline from a design deck: three phases documented as Studio pipelines, four requests noted (R73-R76)
-The Collab 01 work (deck to 3D assets in Blender, an assumed layout, a 24 s quick render enhanced by Krea) was written up as a playbook of three Studio pipelines, Deck to 3D assets, Assemble layout and Hybrid render, each closed by an owner review. Studio fits as the orchestrator; four gaps were noted as requests.
-
-Done:
-- Playbook doc "BuilderPluss Visualization Pipeline" (claude.ai/artifact/LjMr6xYTAyWC1djhxBZDky): each step as a Stage or Decision with tools, command, outputs, checks and real logs; tabs for code and the run log; scripts zip with sha256 fingerprints.
-- Clean re-runs from an empty folder: 24 assets and the layout rebuild in 30-46 s, 70/70 instancing audits PASS; they found two fixes (a textures folder never created, a layout floor zone never saved).
-- Hybrid render tested: Blender quick preset 960x600, 8 samples, denoised, 24 s on 2 CPU cores with a product mask in 1 s; Krea Enhance to 2400x1500 95 credits, Magnific Precise 176, Ideogram masked edit 163.
-- Fit with Studio checked against the content repository: stages, decisions with send-back, checks and the Helper (app_tool, script_run) map directly; Brief to Library covers reading the deck (R4's real-deck test).
-- R73 noted: Objects that carry a detailed mesh (.blend/.usdc/.glb by fingerprint).
-- R74 noted: Python and Blender scripts on the Helper.
-- R75 noted: an image review decision (reference, before, after).
-- R76 noted: Hybrid render stage with the firm's own Krea key.
-
-Decided:
-- Owner: "Divid this ork in three phases. 1. Generate 3d assets same to same with same level of depth and detail 2. Assemble to match same layout 3. Render the scene from the same/desired angles."
-- Owner on rendering: "Planning to take normal and quick render in blender and enhance it thru ai image gen tools" and "I want something done in 30 secs from blender."
-- Owner: "I am gonna use this doc for building it as a pipeline in my builderpluss studio artifact"; "Exclude 3js part. Also include ur step by step logs, scripts etc inside each process."
-- Owner on writing the doc in Studio's terms and noting the four gaps as requests: "Ok".
-
 ## Earlier sessions
 
+- **33** · 2026-11-12 · A visualization pipeline from a design deck: three phases documented as Studio pipelines, four requests noted (R73-R76) — The Collab 01 work (deck to 3D assets in Blender, an assumed layout, a 24 s quick render enhanced by Krea) was written up as a playbook of three Studio pipelines, Deck to 3D assets, Assemble layout and Hybrid render, each closed by an owner review. Studio fits as the orchestrator; four gaps were noted as requests.
 - **32** · 2026-11-11 · The model becomes primers and meanings: R62's three layers shipped, then R63 (model 4.0) built and on staging — R62 shipped and runs on production: geometry, roles and Objects, with solvers in content and a Run tab on the canvas. R63 then made the kernel draw only nodes, segments and faces with their meanings. That is four stacked PRs plus content #35, all on staging and waiting for the owner's merge. Faces now form by themselves.
 - **31** · 2026-11-10 · The Helper runs PC apps and firm scripts, a Docs tab, staging live, and Fit to plot (R60) — Firms' apps and scripts run on their own Helper (R21 step 2c); the Studio gained a Docs tab with guides for the platform and for firms, plus requests and offers to BuilderPluss; staging went live; Fit to plot fits the largest rectangle at any angle inside a plot's setbacks and draws it as the ground floor's outer walls, now deployed with the fixes from its first live run.
 - **30** · 2026-11-09 · Hosted at studio.builderpluss.com, the Helper, organizations and roles, knowledge layers, staging and security — BuilderPluss Studio runs on the Hostinger server at studio.builderpluss.com; PCs connect out through the Helper with their own Claude; firms, workspaces, roles, guests, FDEs and platform roles are built from first principles, each firm with its own knowledge layer and Claude usage; a staging site and two-factor sign-in complete it (R20, R21 step 2a, R22, R56).

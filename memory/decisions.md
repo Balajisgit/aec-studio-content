@@ -120,3 +120,8 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-12 · Session 37** — Owner: session stage "ok we ll do this only in deatil an object workflow and lets chk how it does", then "go".
 - **2026-11-13 · Session 37** — Owner: when there is no layout, "Go as per ur suggestion": an assumed layout from the slides, named and reported as assumed; Keep asks everywhere, with previews as pictures.
 - **2026-11-13 · Session 37** — Owner: "Innowa conducts", with "OK with at most $20 of Claude use and 4 hours, then it stops to ask" and "post the plan and start straight away".
+- **2026-11-16 · Session 38** — Owner on the programme: "Is Programme a kernel thing? Sure?"; on seats: "Does seat should touch kernel?"; room-use rules: "Move to projects". The kernel only counts; Projects knows typology and programme.
+- **2026-11-16 · Session 38** — Owner on mixed use and a programme in sections: "Ok let's see that later" (R102 stays open).
+- **2026-11-16 · Session 38** — Owner on the built model: "accurate enough for quantities and construction drawings", "Flat roof" first; export "Yet to decide".
+- **2026-11-16 · Session 38** — Owner on the solver: "Start from first principle"; "it is an empty shell with the core and entrance already drawn, as in a fit-out"; "As per the brief"; columns "Ignore for 1st version"; "As per program"; furnished "All"; module "Per project".
+- **2026-11-16 · Session 38** — Owner: "Now merge and update all staging, main app and artifact."; pipelines audit "Do only 1"; kernel boundary "Ok go", then "Merge".
