@@ -128,3 +128,11 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-16 · Session 39** — Owner: "merge and update all": app #117 then content #56 merged, staging and the online preview updated.
 - **2026-11-16 · Session 39** — Owner on the four older pull requests: "do all as u suggest" (merge app #94, close content #41 and #42, rebuild #43 on main), then "merge #57".
 - **2026-11-16 · Session 40** — Owner: "update preview", then "make all 3 same" (main, staging, the online preview).
+- **2026-11-20 · Session 41** — Owner: "only nodes and segments are primers - it forms the space - has custom name and use from a select".
+- **2026-11-20 · Session 41** — Owner: "objects can attach to another object(s) - a segment attached with wall which in turns attached with a door or window and a slab. also we can solve the geometry operation too - for eg door - boolean into walls".
+- **2026-11-20 · Session 41** — Owner: "zone is a segment type that dont form a true space - either it splits or groups"; zone on a ring "ok", part of a room "allow", overlapping "allow".
+- **2026-11-20 · Session 41** — Owner: "a wall can be placed on a zone line too. a glass wall inside a bathroom. so line define by it properties alone".
+- **2026-11-20 · Session 41** — Owner on the open points: tag point "ok"; slab on its edge walls "ok"; removing a host "It takes what it holds with it, and the step lists what went"; "finish is an another object attached to a wall, floor object".
+- **2026-11-20 · Session 41** — Owner: no meanings, three line kinds, generic wall Object at once, a space's fields: "ok" to each; site positions "labels as per use type -varies - assigned".
+- **2026-11-20 · Session 41** — Owner: "library default view should be like a cataluge - ecomm experience - all others are technicals"; templates in the Library: Layout and Template "yes", Layout "only objects", "Break and Keep options".
+- **2026-11-20 · Session 41** — Owner on the Library's open points: "go as you suggest"; "build the requests as per order"; "merge" #118 and #119.

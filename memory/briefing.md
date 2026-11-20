@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 41._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 42._
 
 ## What this is
 
@@ -81,6 +81,26 @@ _The open requests (requests/ in the content repository)._
 
 ## Recent sessions
 
+### Session 41 · 2026-11-20 · The model from first principles (R113) and the Library as a catalogue (R114); line kinds and spaces as tag points merged
+Room and slab were rethought from first principles: only nodes and segments are primers, spaces are worked out round a tag point, and Objects attach to hosts (R113). The Library becomes a catalogue of Objects, Layouts and Templates (R114). R113 steps 1 and 2 were built and merged; step 3, Objects on hosts, is next, in a fresh session.
+
+Done:
+- R113 noted: two primers; room, zone and reference lines; spaces round tag points; Objects on hosts; zones on rings; geometry operations; no meanings.
+- R114 noted: the Library as a catalogue (design canvas "Library as a catalogue"), with Objects, Layouts and Templates; every open point settled.
+- R113 step 1 merged (app #118): what a line divides is its own property; set_divides; the canvas draws and switches line kinds.
+- R113 step 2 merged (app #119): model 4.1, faces no longer stored; a space is a tag point; split, merge and drift by the tag; move_tag; 4.0 projects move on by one upgrade step.
+- 341 tests pass on each; smoke and canvas browser checks pass; both tried by hand in a browser.
+
+Decided:
+- Owner: "only nodes and segments are primers - it forms the space - has custom name and use from a select".
+- Owner: "objects can attach to another object(s) - a segment attached with wall which in turns attached with a door or window and a slab. also we can solve the geometry operation too - for eg door - boolean into walls".
+- Owner: "zone is a segment type that dont form a true space - either it splits or groups"; zone on a ring "ok", part of a room "allow", overlapping "allow".
+- Owner: "a wall can be placed on a zone line too. a glass wall inside a bathroom. so line define by it properties alone".
+- Owner on the open points: tag point "ok"; slab on its edge walls "ok"; removing a host "It takes what it holds with it, and the step lists what went"; "finish is an another object attached to a wall, floor object".
+- Owner: no meanings, three line kinds, generic wall Object at once, a space's fields: "ok" to each; site positions "labels as per use type -varies - assigned".
+- Owner: "library default view should be like a cataluge - ecomm experience - all others are technicals"; templates in the Library: Layout and Template "yes", Layout "only objects", "Break and Keep options".
+- Owner on the Library's open points: "go as you suggest"; "build the requests as per order"; "merge" #118 and #119.
+
 ### Session 40 · 2026-11-16 · Main, staging and the online preview made the same
 The online preview was republished from main, and both staging branches were brought level with main. Staging has no extras of its own left: the records fix and the template-proposals workflow are on main now.
 
@@ -150,28 +170,9 @@ Decided:
 - Owner: when there is no layout, "Go as per ur suggestion": an assumed layout from the slides, named and reported as assumed; Keep asks everywhere, with previews as pictures.
 - Owner: "Innowa conducts", with "OK with at most $20 of Claude use and 4 hours, then it stops to ask" and "post the plan and start straight away".
 
-### Session 36 · 2026-11-12 · Files, image review and Object detail merged; Read a brief replaces Brief to Library; runs that belong nowhere, Blender anywhere and the Studio connector planned
-R78, R75 and R73 were built, tried on staging and merged with content #44. The detailed version is now a third form beside an Object, for renders only. Each pipeline does one job. Next: runs that belong nowhere with placing (R79), Blender jobs anywhere (R80) and the Studio connector (R81).
-
-Done:
-- R78 merged (#91): files a pipeline makes reach a project's files on approval, a folder per pipeline, versioned names, where each came from; heavy files kept on the PC by Helper folder and path, with Check.
-- R75 merged (#92): the image review, each result beside its reference and its before image; keep, or send back with a comment pinned on one image.
-- R73 merged (#93), reworked: the detailed version sits beside an Object version (a project's record, or library/objects/<contract>/<version>.detail.json by proposal), never in the model; files stay on this PC.
-- Ways into Detail: "make its detailed version next" at Keep, Library "no detail yet" with Detail it, Render views' detail-check listing Objects without detail.
-- Content #44 merged: Read a brief (replaces Brief to Library, removed), Make an Object 1.5.0, Detail an Object 1.1.0, Render views 1.1.0; detail sidecars in the proposals action and validate.js; checks files-made and detail-checked.
-- Staging updated twice with this work beside R66-R72 and R77; 252 tests pass there.
-- Requests settled: R60 and R63 done; R58, R59, R61 declined as empty test entries; R74 declined, replaced by R80.
-- R79, R80 and R81 noted.
-
-Decided:
-- Owner: "brief to library can be removed"; option 2: Read a brief keeps reading and matching, with Make buttons.
-- Owner: "detailed object is another form of a library item - 2d, 3d, detailed 3d"; "detailed variant is only meant for taking renders and not to be placed in the model"; Library detail files "store in the local as of now".
-- Owner: "all pipeline should run anywhere - no scope setting"; output "placed anywhere - in a model, in project folder, or in runs folder"; placing is the owner's act ("yes"); index, not copy.
-- Owner: Blender "in claude" when the PC is not connected; the Studio connector "yes"; server Blender only for approved scripts ("yes").
-- Owner: "ok merge #91 → #92 → #93, then content #44"; the rule on BuilderPluss MCP tools changed to allow the Studio connector ("ok").
-
 ## Earlier sessions
 
+- **36** · 2026-11-12 · Files, image review and Object detail merged; Read a brief replaces Brief to Library; runs that belong nowhere, Blender anywhere and the Studio connector planned — R78, R75 and R73 were built, tried on staging and merged with content #44. The detailed version is now a third form beside an Object, for renders only. Each pipeline does one job. Next: runs that belong nowhere with placing (R79), Blender jobs anywhere (R80) and the Studio connector (R81).
 - **35** · 2026-11-12 · Model 4.0 objects, levels and legacy (R64-R67), easy floor-plan drawing (R68-R72), firm templates (R77), and staging fixes — R63, R64 and R65 merged and live; R66 step 1 merged and live. R66 steps 2-4, R67, R68-R72 and R77 are built, each in its own pull request (#81-#90, content #41-#43), and all on staging for the owner to review together. Staging could not record requests: fixed in #94.
 - **34** · 2026-11-12 · Where the visualization pipelines fit in Studio, and files a pipeline makes reach the project on approval (R78) — The five pipelines were read against the three visualization phases: Brief to Library covers reading the deck, Fit to plot is the pattern for reading CAD, and Render views and Detail an Object are new. Files a pipeline makes reach the project only on approval, in a folder per pipeline (R78); R73, R75 and R78 are grouped and planned.
 - **33** · 2026-11-12 · A visualization pipeline from a design deck: three phases documented as Studio pipelines, four requests noted (R73-R76) — The Collab 01 work (deck to 3D assets in Blender, an assumed layout, a 24 s quick render enhanced by Krea) was written up as a playbook of three Studio pipelines, Deck to 3D assets, Assemble layout and Hybrid render, each closed by an owner review. Studio fits as the orchestrator; four gaps were noted as requests.
