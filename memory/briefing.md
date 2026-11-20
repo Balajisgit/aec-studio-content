@@ -61,6 +61,7 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R110 · canvas · from project test off1
 - R111 · project
+- R112 · requets
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
