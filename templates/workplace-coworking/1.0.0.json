@@ -286,6 +286,20 @@
             "min": 0,
             "max": 100000
           }
+        },
+        "inset": {
+          "from": "front",
+          "away": "rear",
+          "rest": "side",
+          "values": {
+            "front": "setbackFront",
+            "rear": "setbackRear",
+            "side": "setbackSide"
+          },
+          "own": {
+            "label": "own-setback",
+            "value": "setback"
+          }
         }
       },
       {

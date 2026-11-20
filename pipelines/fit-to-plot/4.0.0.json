@@ -34,7 +34,8 @@
       "name": "Read the plot",
       "outcome": "The project has the plot from the brief: a space used as the plot, with its setbacks, its road edge labelled front.",
       "agent": "site-reader",
-      "when": "plot-to-read",
+      "when": "space-to-read",
+      "space": "plot",
       "tools": [
         "run_inputs",
         "run_state",
