@@ -265,6 +265,50 @@
         "id": "terrace",
         "name": "Terrace",
         "open": "open"
+      },
+      {
+        "id": "plot",
+        "name": "Plot",
+        "room": false,
+        "about": "The site: its lines carry a boundary wall, a fence or nothing. Label its road edge front; its setbacks are said each time.",
+        "labels": [
+          "front",
+          "rear",
+          "side",
+          "own-setback"
+        ],
+        "values": {
+          "setbackFront": {
+            "name": "Front setback",
+            "kind": "mm",
+            "min": 0,
+            "max": 100000
+          },
+          "setbackRear": {
+            "name": "Rear setback",
+            "kind": "mm",
+            "min": 0,
+            "max": 100000
+          },
+          "setbackSide": {
+            "name": "Side setback",
+            "kind": "mm",
+            "min": 0,
+            "max": 100000
+          }
+        }
+      },
+      {
+        "id": "footprint",
+        "name": "Footprint",
+        "room": false,
+        "about": "Where the building goes on the plot: an outline over the rooms, nothing built yet."
+      },
+      {
+        "id": "void",
+        "name": "Void",
+        "room": false,
+        "about": "An opening in the floor: no slab goes there."
       }
     ],
     "apart": [

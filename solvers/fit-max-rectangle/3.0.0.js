@@ -20,7 +20,9 @@ function solve(input, geo) {
   if (f < 0) { f = 0; note = "No edge is marked Front: the first edge is taken as the front. "; }
   let rear = -1, best = Infinity; for (let k = 0; k < ord.length; k++) if (k !== f) { const dot = N[k].x * N[f].x + N[k].y * N[f].y; if (dot < best) { best = dot; rear = k; } }
   if (best > -0.5) rear = -1;
-  const sb = { front: p.setbackFront || 0, rear: p.setbackRear || 0, side: p.setbackSide || 0 };
+  const unset = ["setbackFront", "setbackRear", "setbackSide"].filter((k) => typeof p[k] !== "number");
+  if (unset.length) return { candidates: [], note: `The plot's setbacks are not all set (${unset.join(", ")}): set them on the plot (from the brief or the local rules); none is assumed.` };
+  const sb = { front: p.setbackFront, rear: p.setbackRear, side: p.setbackSide };
   const E = ord.map((e, k) => { const own = has(e, "own-setback"), kind = k === f ? "front" : k === rear ? "rear" : "side";
     return { a: e.a, b: e.b, kind, setback: own && own.values && own.values.setback != null ? own.values.setback : sb[kind] }; });
 
