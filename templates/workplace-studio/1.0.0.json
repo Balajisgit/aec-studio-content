@@ -395,25 +395,25 @@
     {
       "id": "facade",
       "name": "Glazed facade",
-      "role": "wall",
+      "kind": "wall",
       "objectRef": "wall.glazed-facade-150@1.0.0"
     },
     {
       "id": "drywall",
       "name": "Drywall partition",
-      "role": "wall",
+      "kind": "wall",
       "objectRef": "wall.drywall-100@1.0.0"
     },
     {
       "id": "glazed",
       "name": "Glazed partition",
-      "role": "wall",
+      "kind": "wall",
       "objectRef": "wall.glazed-partition-50@1.0.0"
     },
     {
       "id": "core",
       "name": "Core wall (brick 230)",
-      "role": "wall",
+      "kind": "wall",
       "objectRef": "wall.brick-230@1.2.0"
     }
   ],
@@ -424,11 +424,11 @@
     },
     "faces": [
       {
-        "role": "room",
+        "kind": "room",
         "objectRef": "room.polished-concrete@1.0.0"
       },
       {
-        "role": "slab",
+        "kind": "slab",
         "objectRef": "slab.rcc-150@1.0.0"
       }
     ]

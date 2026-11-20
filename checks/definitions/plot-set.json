@@ -1,6 +1,6 @@
 {
   "id": "plot-set",
   "name": "The project has a plot",
-  "about": "A face with the Plot function (its setbacks) and its road edge marked Front.",
+  "about": "A space used as the plot (its setbacks) and its road edge labelled front.",
   "implementedBy": "app: managers/pipelines/checks.js"
 }

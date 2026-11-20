@@ -20,8 +20,8 @@ function body(rec, name) {
   if (t) {
     lines.push(`Proposed from AEC Studio: the template **${t.name}** as \`${t.id}\`${rec.makeDefault ? ", and the default for new projects" : ""}.`, "");
     if (t.about) lines.push(t.about, "");
-    for (const p of t.presets || []) lines.push(`- ${p.name}: ${p.objectRef || "a meaning only"}${p.params && p.params.thickness ? `, ${p.params.thickness} mm` : ""}`);
-    for (const f of (t.rules && t.rules.faces) || []) lines.push(`- Every area: ${f.role}${f.objectRef ? `, ${f.objectRef}` : ""}`);
+    for (const p of t.presets || []) lines.push(`- ${p.name}: ${p.objectRef || `a ${p.kind || p.role} with no Object yet`}${p.params && p.params.thickness ? `, ${p.params.thickness} mm` : ""}`);
+    for (const f of (t.rules && t.rules.faces) || []) lines.push(`- Every area: ${f.kind || f.role}${f.objectRef ? `, ${f.objectRef}` : ""}`);
     const o = Object.entries(t.openings || {}); if (o.length) lines.push(`- Put in offers first: ${o.map(([k, v]) => `${k} ${v}`).join(", ")}`);
     if (t.levels && t.levels.height) lines.push(`- Floor to floor: ${t.levels.height} mm`);
     lines.push("");
