@@ -1,11 +1,9 @@
 {
   "id": "fit-max-rectangle",
   "name": "Fit the largest rectangle",
-  "about": "The largest rectangles that fit a plot inside its setbacks, at any angle: the best and up to two others. Reads the face with the Plot function (its front, rear and side setbacks), its edge marked Front, and any edge with its own setback. Each candidate draws the rectangle as lines and a face with the Footprint function: where the building goes, nothing built yet.",
-  "roles": [
-    "plot",
-    "front",
-    "own-setback"
+  "about": "The largest rectangles that fit a plot inside its setbacks, at any angle: the best and up to two others. Reads the space used as the plot (its front, rear and side setbacks), its edge labelled front, and any edge with its own setback. Each candidate draws the rectangle as lines and a space used as the footprint: where the building goes, nothing built yet.",
+  "uses": [
+    "plot"
   ],
   "settings": {
     "maxCoverage": {

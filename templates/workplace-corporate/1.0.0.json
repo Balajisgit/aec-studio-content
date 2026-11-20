@@ -265,6 +265,64 @@
         "id": "terrace",
         "name": "Terrace",
         "open": "open"
+      },
+      {
+        "id": "plot",
+        "name": "Plot",
+        "room": false,
+        "about": "The site: its lines carry a boundary wall, a fence or nothing. Label its road edge front; its setbacks are said each time.",
+        "labels": [
+          "front",
+          "rear",
+          "side",
+          "own-setback"
+        ],
+        "values": {
+          "setbackFront": {
+            "name": "Front setback",
+            "kind": "mm",
+            "min": 0,
+            "max": 100000
+          },
+          "setbackRear": {
+            "name": "Rear setback",
+            "kind": "mm",
+            "min": 0,
+            "max": 100000
+          },
+          "setbackSide": {
+            "name": "Side setback",
+            "kind": "mm",
+            "min": 0,
+            "max": 100000
+          }
+        },
+        "inset": {
+          "from": "front",
+          "away": "rear",
+          "rest": "side",
+          "values": {
+            "front": "setbackFront",
+            "rear": "setbackRear",
+            "side": "setbackSide"
+          },
+          "own": {
+            "label": "own-setback",
+            "value": "setback"
+          }
+        }
+      },
+      {
+        "id": "footprint",
+        "name": "Footprint",
+        "room": false,
+        "about": "Where the building goes on the plot: an outline over the rooms, nothing built yet."
+      },
+      {
+        "id": "void",
+        "name": "Void",
+        "room": false,
+        "about": "An opening in the floor: no slab goes there."
       }
     ],
     "apart": [
@@ -398,25 +456,25 @@
     {
       "id": "facade",
       "name": "Glazed facade",
-      "role": "wall",
+      "kind": "wall",
       "objectRef": "wall.glazed-facade-150@1.0.0"
     },
     {
       "id": "drywall",
       "name": "Drywall partition",
-      "role": "wall",
+      "kind": "wall",
       "objectRef": "wall.drywall-100@1.0.0"
     },
     {
       "id": "glazed",
       "name": "Glazed partition",
-      "role": "wall",
+      "kind": "wall",
       "objectRef": "wall.glazed-partition-50@1.0.0"
     },
     {
       "id": "core",
       "name": "Core wall (brick 230)",
-      "role": "wall",
+      "kind": "wall",
       "objectRef": "wall.brick-230@1.2.0"
     }
   ],
@@ -427,11 +485,11 @@
     },
     "faces": [
       {
-        "role": "room",
+        "kind": "room",
         "objectRef": "room.carpet-tile@1.0.0"
       },
       {
-        "role": "slab",
+        "kind": "slab",
         "objectRef": "slab.rcc-150@1.0.0"
       }
     ]

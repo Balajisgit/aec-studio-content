@@ -15,7 +15,7 @@ You are in your own working folder on the owner's PC with a shell. You build ONE
 
 ## 2. Read before you build
 
-- `scene_get`: the levels and every item (an attached Object): `object`, `meaning` (wall, door, window, slab, room, furniture, fixture ...), `on` (node, segment, face), where it stands, `params`, `parts` (plan outlines in mm with `z0`/`z1` in mm above datum, `holes` where a part has openings) and, per Object in `objects`, its `detail` files or none. Save its answer to `scene.json` in your folder and build from that file.
+- `scene_get`: the levels and every item (an attached Object): `object`, `kind` (wall, door, window, slab, room, furniture, fixture ...), `placement` (its id), `on` (node, segment, host: a door or window in its wall, ring: a slab or a floor), where it stands, `params`, `parts` (plan outlines in mm with `z0`/`z1` in mm above datum, `holes` where a part has openings) and, per Object in `objects`, its `detail` files or none. Save its answer to `scene.json` in your folder and build from that file.
 - The brief's files (files_read / files_glob, or the brief files you can read): the reference slides or photos. Look at each one: the view, the mood, the light, the finishes.
 - The notes and the owner's comments (if the run was sent back, change only what they ask).
 
@@ -32,12 +32,12 @@ When `scene_get` says `layout: "assumed"`, the run has no project, so there is n
 - The model is integer mm, x east, y north, z up. Blender is metres: divide by 1000.
 - A **node** item stands at `at` (x, y, z) turned `rotation` degrees anticlockwise about z.
 - A **segment** item runs from `line.a` to `line.b`: its origin at the middle of the line, its x along the line, turned `atan2(b.y - a.y, b.x - a.x)`; z is the level's floor.
-- A **face** item's parts are already in place.
+- A **ring** item's parts (a slab, a floor) are already in place.
 
 ## 4. The shell and plain shapes
 
 - For each item whose Object has no `detail` (walls, slabs, floors, ceilings, and Objects not yet detailed): make each part a mesh by extruding its outline (and its holes) from `z0` to `z1`, with bmesh (`bmesh.ops.triangle_fill` or `contextual_create` for the cap, then extrude). Recalculate normals; bevel visible edges 2 mm on furniture, none on walls.
-- Name them `<MEANING>_<ROLE>` (`WALL_r12`, `SLAB_r3`). Materials `MAT_SCENE_<Meaning>`, one per meaning (Paint for walls, Concrete for slabs, Oak for floors unless the slides say otherwise; match the slides' colours).
+- Name them `<KIND>_<PLACEMENT>` (`WALL_PL12`, `SLAB_PL3`). Materials `MAT_SCENE_<Kind>`, one per kind (Paint for walls, Concrete for slabs, Oak for floors unless the slides say otherwise; match the slides' colours).
 - Repeats of the same plain shape (same Object and same params) follow the instancing standard: one master mesh and linked duplicates (see the skill blender-detail and `instance_master`).
 - Put the plain-shape Objects that should have a detail in a collection `SCENE_PLAIN` so the owner can see what is still plain.
 
@@ -61,14 +61,14 @@ When `scene_get` says `layout: "assumed"`, the run has no project, so there is n
 |---|---|
 | `out/<project>_scene.blend` (or `_scene_assumed.blend`) | the scene, with images packed (`bpy.ops.file.pack_all()`); it stays on this PC |
 | `out/<project>_scene_preview.png` | the first camera, Cycles, 1280 x 800, 16 to 24 samples with denoising (GPU if there is one: OptiX, CUDA, HIP, else CPU at 960 x 600, 8 samples) |
-| `out/scene_report.md` | levels; items placed by meaning; which Objects came from their detail and which are plain (and why); the cameras and the slide each matches; anything scaled or missing; how long the build and the preview took |
+| `out/scene_report.md` | levels; items placed by kind; which Objects came from their detail and which are plain (and why); the cameras and the slide each matches; anything scaled or missing; how long the build and the preview took |
 | `out/session-log.md` | the Blender found and the commands you ran |
 
 `<project>` is the project's name in lower case with spaces as underscores (with no project, the brief's name, like `collab_01`). Render the preview from the saved .blend in a second Blender call, so a crash in rendering never loses the scene.
 
 ## 8. Check before you answer
 
-- Every item in `scene.json` is in the scene (count them by meaning) and sits on its level's floor.
+- Every item in `scene.json` is in the scene (count them by kind) and sits on its level's floor.
 - `instance_master.full_audit(fix=False, deep=True)` passes for the plain-shape masters; no generic names (`Cube`, `Plane.001`) are left.
 - Open the preview with Read and look at it beside its slide: the view, the furniture in it, the light. Fix and rebuild if it is clearly wrong (at most twice).
 - Then answer in two sentences: what is in the scene (items, how many from their detail, how many plain), the cameras, and anything missing or unclear.

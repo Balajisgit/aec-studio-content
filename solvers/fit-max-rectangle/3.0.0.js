@@ -1,29 +1,32 @@
-// solvers/fit-max-rectangle 1.0.0 — the largest rectangle that fits a plot inside its setbacks, at any angle (R60, R62).
-// In: the face with the Plot role (outline, edges in order with the roles on them: Front, Own setback) and settings. Out:
-// candidates, each with the ground floor's outer walls (their outer face on the rectangle), a preview and its numbers.
+// solvers/fit-max-rectangle 3.0.0 — the largest rectangle that fits a plot inside its setbacks, at any angle (R60, R62;
+// model 4.2 in R113). In: the space used as the plot (outline, its setbacks as values, edges in order with the labels each
+// has in it: front, own-setback) and settings. Out: candidates, each drawing the rectangle as lines and a space used as the
+// footprint, a preview and its numbers. Nothing is built: walls come later, from the footprint.
 // Method: turn the plot through every edge's direction and 0–87° in 3° steps; in each frame mark the buildable points on a
 // grid (inside the plot and at least each edge's setback from it), take the largest rectangle of buildable cells, grow each
 // side to 1 mm against the exact setbacks, and refine the best angles to a quarter degree. A 2 mm margin keeps rounded
 // corners clear. Runs in a locked-down process with only `geo` (the app's geometry helpers).
 
 function solve(input, geo) {
-  const S = input.settings || {}, plot = (input.roles || []).find((r) => r.role === "plot" && r.where && r.where.edges);
-  if (!plot) return { candidates: [], note: "There is no plot: draw it with sketch lines, make it a face (F) and give the face the Plot role." };
-  const g = plot.where, p = plot.props || {}, level = (input.levels || []).find((l) => l.id === g.level) || {};
+  const S = input.settings || {}, plot = (input.spaces || []).find((f) => f.use === "plot" && f.edges);
+  if (!plot) return { candidates: [], note: "There is no plot: draw it with lines (L), make it a space (F) and give the space the use Plot." };
+  const g = plot, p = plot.values || {};
   // the edges in the order they go round (each starts where the one before ends), with their setbacks
   const left = g.edges.filter((e) => e.a && e.b), ord = [left[0]];
   while (ord.length < left.length) { const last = ord[ord.length - 1], nx = left.find((e) => !ord.includes(e) && geo.dist(e.a, last.b) < 1); if (!nx) break; ord.push(nx); }
   if (ord.length < 3) return { candidates: [], note: "The plot's outline does not close." };
-  const P = ord.map((e) => e.a), N = geo.outwardNormals(P), has = (e, role) => (e.roles || []).find((r) => r.role === role);
+  const P = ord.map((e) => e.a), N = geo.outwardNormals(P), has = (e, label) => (e.labels || []).find((l) => l.label === label);
   let f = ord.findIndex((e) => has(e, "front")), note = "";
   if (f < 0) { f = 0; note = "No edge is marked Front: the first edge is taken as the front. "; }
   let rear = -1, best = Infinity; for (let k = 0; k < ord.length; k++) if (k !== f) { const dot = N[k].x * N[f].x + N[k].y * N[f].y; if (dot < best) { best = dot; rear = k; } }
   if (best > -0.5) rear = -1;
-  const sb = { front: p.setbackFront || 0, rear: p.setbackRear || 0, side: p.setbackSide || 0 };
+  const unset = ["setbackFront", "setbackRear", "setbackSide"].filter((k) => typeof p[k] !== "number");
+  if (unset.length) return { candidates: [], note: `The plot's setbacks are not all set (${unset.join(", ")}): set them on the plot (from the brief or the local rules); none is assumed.` };
+  const sb = { front: p.setbackFront, rear: p.setbackRear, side: p.setbackSide };
   const E = ord.map((e, k) => { const own = has(e, "own-setback"), kind = k === f ? "front" : k === rear ? "rear" : "side";
-    return { a: e.a, b: e.b, kind, setback: own && own.props && own.props.setback != null ? own.props.setback : sb[kind] }; });
+    return { a: e.a, b: e.b, kind, setback: own && own.values && own.values.setback != null ? own.values.setback : sb[kind] }; });
 
-  const t0 = Number(S.wallThickness) || 230, top = Math.max(1, Math.min(6, Number(S.top) || 3)), plotArea = geo.area(P);
+  const top = Math.max(1, Math.min(6, Number(S.top) || 3)), plotArea = geo.area(P);
   const MARGIN = 2, rotP = (q, deg) => geo.rotate(q, deg);
   const segRect = (a, b, R) => { const inR = (q) => q.x >= R.x0 && q.x <= R.x1 && q.y >= R.y0 && q.y <= R.y1; if (inR(a) || inR(b)) return 0;
     const C = [{ x: R.x0, y: R.y0 }, { x: R.x1, y: R.y0 }, { x: R.x1, y: R.y1 }, { x: R.x0, y: R.y1 }];
@@ -73,10 +76,11 @@ function solve(input, geo) {
   return {
     note: `${note}Plot ${plotArea.toFixed(1)} m²; front ${sb.front}, rear ${rear >= 0 ? sb.rear : "none"}, sides ${sb.side} mm.`,
     context: { polygons: [P], lines: [[...setback, setback[0]]] },
-    candidates: out.map((x) => { const corners = geo.rectCorners(x.cx, x.cy, x.width, x.depth, x.angle), line = geo.rectCorners(x.cx, x.cy, x.width - t0, x.depth - t0, x.angle);
+    candidates: out.map((x) => { const corners = geo.rectCorners(x.cx, x.cy, x.width, x.depth, x.angle), pts = corners.map((q) => ({ x: Math.round(q.x), y: Math.round(q.y) }));
       return { label: `${m(x.width)} × ${m(x.depth)} m at ${x.angle.toFixed(1)}°${x.capped ? " (held to the coverage limit)" : ""}`,
         numbers: { "area m²": Math.round(x.area * 10) / 10, "of the plot %": Math.round((x.area / plotArea) * 100), "width m": x.width / 1000, "depth m": x.depth / 1000, "angle °": x.angle },
         preview: { polygons: [corners] },
-        ops: [{ op: "draw_walls", input: { level: g.level, points: line, closed: true, thickness: t0, ...(S.wallHeight || level.height ? { height: Number(S.wallHeight) || level.height } : {}) } }] }; }),
+        ops: [{ op: "draw_lines", input: { level: g.level, points: pts, closed: true } },
+          { op: "faces_from_lines", input: { level: g.level, at: { x: x.cx, y: x.cy }, use: "footprint", values: { width: x.width, depth: x.depth, angle: x.angle } } }] }; }),
   };
 }

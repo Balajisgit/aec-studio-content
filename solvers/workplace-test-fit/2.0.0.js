@@ -1,7 +1,7 @@
-// solvers/workplace-test-fit 1.0.0 — a first test fit of a workplace floor (R109): the rooms of the programme set along the
+// solvers/workplace-test-fit 2.0.0 — a first test fit of a workplace floor (R109; model 4.2 in R113): the rooms of the programme set along the
 // sides of an empty floor, the rest left as the open office and filled with desks, every room furnished and given a door.
-// In: the level's rooms as geometry (the largest is the floor to fit out; the others are its core, left alone), its doors
-// (one in the outer wall is the entrance), the project's typology (what each use asks, the ratios, what furniture provides),
+// In: the level's spaces as geometry (the largest is the floor to fit out; the others are its core, left alone), its doors
+// (Placements in its walls; one in the outer wall is the entrance), the furniture standing on it, the project's typology (what each use asks, the ratios, what furniture provides),
 // its planning module and its programme (people, and the rooms asked for), and the Library's Objects by name.
 // Out: up to six candidates, ranked by how well each meets the programme. Each one's operations draw its rooms, put in its
 // doors, name the open office and stand its furniture; nothing is changed until the owner picks one.
@@ -17,12 +17,14 @@ function solve(input, geo) {
   const M = Math.round(Number(PJ.module) || Number(S.module) || 1500), none = (note) => ({ candidates: [], note });
   const U = new Map((SP.uses || []).map((u) => [u.id, u])), head = SP.headUnit || "seat", m1 = (v) => Math.round(v / 100) / 10;
   // ---- the floor: the largest room of the level; the other rooms inside its outline are the core
-  const all = (input.roles || []).filter((r) => r.role === "room" && r.where && r.where.outline && r.where.outline.length >= 4);
+  // a space comes as {id, level, name, use, outline}; here as {id, where: {level, outline}, props: {name, use}} to read alike
+  const OUT = ["plot", "footprint", "void"], PL = input.placements || [];
+  const all = (input.spaces || []).filter((f) => !OUT.includes(f.use) && f.outline && f.outline.length >= 4).map((f) => ({ id: f.id, where: { level: f.level, outline: f.outline }, props: { name: f.name || "", use: f.use || null } }));
   if (!all.length) return none("There is no floor to fit out: draw the floor's outer walls first (the Room tool, R), with the core's rooms and the entrance door.");
   const big = (rs) => rs.reduce((a, b) => (geo.area(b.where.outline) > geo.area(a.where.outline) ? b : a));
   const lv = S.level && all.some((r) => r.where.level === S.level) ? S.level : big(all).where.level, onLv = all.filter((r) => r.where.level === lv), plate = big(onLv), O = plate.where.outline;
   if (O.some((p, k) => { const q = O[(k + 1) % O.length]; return Math.abs(p.x - q.x) > 2 && Math.abs(p.y - q.y) > 2; })) return none("This first version fits a floor whose walls are square to the axes: this floor has a wall at an angle.");
-  const standing = (input.roles || []).filter((r) => r.role === "furniture" && r.where && r.where.level === lv && r.where.x != null && geo.inside({ x: r.where.x, y: r.where.y }, O)).length;
+  const standing = PL.filter((r) => r.kind === "furniture" && r.where && r.where.level === lv && r.where.x != null && geo.inside({ x: r.where.x, y: r.where.y }, O)).length;
   if (standing) return none(`This floor is furnished already (${standing} pieces stand on it): a test fit starts from an empty floor. Undo the earlier layout first, or clear the floor.`);
   const B = geo.bbox(O), W = B.x1 - B.x0, H = B.y1 - B.y0, clip = (R) => ({ x0: Math.max(R.x0, B.x0), y0: Math.max(R.y0, B.y0), x1: Math.min(R.x1, B.x1), y1: Math.min(R.y1, B.y1) }), areaR = (R) => Math.max(0, R.x1 - R.x0) * Math.max(0, R.y1 - R.y0) / 1e6;
   const cores = onLv.filter((r) => r !== plate).map((r) => ({ ...clip(geo.bbox(r.where.outline)), use: (r.props || {}).use || null, name: (r.props || {}).name || "" })).filter((R) => areaR(R) > 0.01);
@@ -37,7 +39,7 @@ function solve(input, geo) {
   const hits = (A, C, gap = 0) => A.x0 < C.x1 + gap - 1 && A.x1 > C.x0 - gap + 1 && A.y0 < C.y1 + gap - 1 && A.y1 > C.y0 - gap + 1, mid = (R) => ({ x: Math.round((R.x0 + R.x1) / 2), y: Math.round((R.y0 + R.y1) / 2) });
   // ---- the entrance: a door in the outer wall that is not a core room's own
   const sideOf = (a, b) => Math.abs(a.y - B.y0) < 6 && Math.abs(b.y - B.y0) < 6 ? "S" : Math.abs(a.y - B.y1) < 6 && Math.abs(b.y - B.y1) < 6 ? "N" : Math.abs(a.x - B.x0) < 6 && Math.abs(b.x - B.x0) < 6 ? "W" : Math.abs(a.x - B.x1) < 6 && Math.abs(b.x - B.x1) < 6 ? "E" : null;
-  const doors = (input.roles || []).filter((r) => r.role === "door" && r.where && r.where.a && r.where.b && r.where.level === lv).map((r) => { const k = sideOf(r.where.a, r.where.b); if (!k) return null;
+  const doors = PL.filter((r) => r.kind === "door" && r.where && r.where.a && r.where.b && r.where.level === lv).map((r) => { const k = sideOf(r.where.a, r.where.b); if (!k) return null;
     const p = { x: (r.where.a.x + r.where.b.x) / 2, y: (r.where.a.y + r.where.b.y) / 2 }, sp = span(k, { x0: Math.min(r.where.a.x, r.where.b.x), x1: Math.max(r.where.a.x, r.where.b.x), y0: Math.min(r.where.a.y, r.where.b.y), y1: Math.max(r.where.a.y, r.where.b.y) });
     return cores.some((R) => p.x >= R.x0 - 6 && p.x <= R.x1 + 6 && p.y >= R.y0 - 6 && p.y <= R.y1 + 6) ? null : { side: k, s0: sp.s0, s1: sp.s1, at: p }; }).filter(Boolean);
   const entrance = doors.sort((a, b) => (b.s1 - b.s0) - (a.s1 - a.s0))[0] || null;
@@ -143,18 +145,17 @@ function solve(input, geo) {
   const sig = (c) => c.rooms.map((r) => `${r.use}:${r.x0},${r.y0},${r.x1},${r.y1}`).sort().join("|"), seen = new Set(), best = tried.sort((a, b) => b.score - a.score).filter((c) => { const k = sig(c); if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, Math.max(1, Math.min(6, Number(S.top) || 4)));
   if (!best.length) return none("The floor is too small for a strip of rooms and desks beside it.");
   // ids for the points furniture stands on: a run number no earlier fit of this floor has used
-  const runNo = 1 + Math.max(0, ...(input.roles || []).map((r) => { const x = /^TF(\d+)_/.exec((r.where && r.where.node) || ""); return x ? Number(x[1]) : 0; }));
+  const runNo = 1 + Math.max(0, ...PL.map((r) => { const x = /^TF(\d+)_/.exec((r.where && r.where.node) || ""); return x ? Number(x[1]) : 0; }));
   const ring = (R) => [{ x: R.x0, y: R.y0 }, { x: R.x1, y: R.y0 }, { x: R.x1, y: R.y1 }, { x: R.x0, y: R.y1 }], rr = (R) => ({ x0: Math.round(R.x0), y0: Math.round(R.y0), x1: Math.round(R.x1), y1: Math.round(R.y1) });
   const candidates = best.map((c) => { const ops = [], sidesTxt = c.sides.map((k) => SIDES[k].name).join(" and ");
-    if (c.rooms.length) ops.push({ op: "edit_role", input: { id: plate.id, auto: { by: "faces" } } });
     for (const r of [...c.rooms].sort((a, b) => solid(b.u) - solid(a.u))) { const R = rr(r), hard = solid(r.u) && dry;
-      ops.push({ op: "add_room", input: { level: lv, a: { x: R.x0, y: R.y0 }, b: { x: R.x1, y: R.y1 }, sizes: "centre", as: hard ? { role: "wall", objectRef: dry.id, auto: { by: "preset", preset: "drywall" } } : { role: "wall", auto: { by: "lines" } }, room: { role: "room", props: { name: r.name, use: r.use }, auto: { by: "faces" } } } }); }
-    const door = (at, o) => ops.push({ op: "put_in", input: { level: lv, at: { x: Math.round(at.x), y: Math.round(at.y) }, role: "door", ...(o ? { objectRef: o.id } : {}) } });
+      ops.push({ op: "add_room", input: { level: lv, a: { x: R.x0, y: R.y0 }, b: { x: R.x1, y: R.y1 }, sizes: "centre", as: hard ? { objectRef: dry.id, auto: { by: "preset", preset: "drywall" } } : { kind: "wall", auto: { by: "lines" } }, room: { name: r.name, use: r.use } } }); }
+    const door = (at, o) => ops.push({ op: "put_in", input: { level: lv, at: { x: Math.round(at.x), y: Math.round(at.y) }, ...(o ? { objectRef: o.id } : { kind: "door", width: 900 }) } });
     if (c.made) door(c.made.at, glassDoor); for (const r of c.rooms) door(r.door, solid(r.u) ? leafDoor || glassDoor : glassDoor);
     const free = c.things.find((t) => /bench/.test(t.c)), at = free ? free.at : (() => { for (let y = B.y0 + M; y < B.y1; y += M / 2) for (let x = B.x0 + M; x < B.x1; x += M / 2) if (![...cores, ...c.rooms].some((R) => hits({ x0: x - 1, x1: x + 1, y0: y - 1, y1: y + 1 }, R, 100))) return { x, y }; return mid(B); })();
     const open = { name: openUse.name || "Open office", use: openUse.id };
-    ops.push(c.rooms.length ? { op: "faces_from_lines", input: { level: lv, at, role: "room", props: open, auto: { by: "faces" } } } : { op: "edit_role", input: { id: plate.id, props: open, auto: { by: "faces" } } });
-    c.things.forEach((t, k) => { const o = lib(t.c); if (!o) return; const id = `TF${runNo}_${k + 1}`; ops.push({ op: "add_node", input: { id, level: lv, x: t.at.x, y: t.at.y } }, { op: "assign_role", input: { role: "furniture", on: { node: id }, objectRef: o.id, ...(t.rot ? { rotation: t.rot } : {}) } }); });
+    ops.push(c.rooms.length ? { op: "faces_from_lines", input: { level: lv, at, ...open } } : { op: "edit_space", input: { id: plate.id, ...open } });
+    c.things.forEach((t, k) => { const o = lib(t.c); if (!o) return; const id = `TF${runNo}_${k + 1}`; ops.push({ op: "add_node", input: { id, level: lv, x: t.at.x, y: t.at.y } }, { op: "place", input: { objectRef: o.id, on: { node: id }, ...(t.rot ? { rotation: t.rot } : {}) } }); });
     const numbers = { seats: c.seats, ...(people ? { "people in the brief": people } : {}), rooms: c.rooms.length, ...(c.left.length ? { "rooms left out": c.left.length } : {}), ...(c.meet ? { "meeting seats": c.meet } : {}), ...(c.dine ? { "dining seats": c.dine } : {}), ...(c.booths ? { booths: c.booths } : {}), "open office m²": c.openArea, ...(c.seats ? { "m² a seat": Math.round(W * H / 1e4 / c.seats) / 100 } : {}) };
     const why = [c.left.length ? `left out: ${c.left.map((r) => r.u.name).join(", ")}` : "", c.spill ? "rooms ran on to another side" : "", c.clashes ? `${c.clashes} rooms beside one they should be apart from` : "", ...c.notes, people && c.seats < people ? `${people - c.seats} seats short` : ""].filter(Boolean);
     return { label: `Rooms along the ${sidesTxt}, ${m1(c.D)} m deep: ${c.seats} seats${people ? ` for ${people}` : ""}, ${c.rooms.length} rooms${why.length ? ` (${why.join("; ")})` : ""}`.slice(0, 200), numbers,

@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { settingProblem } from "./settings.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", ".."), problems = [];
-const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "docs", "scripts", "semantics", "templates", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
+const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "docs", "scripts", "templates", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
 for (const n of readdirSync(root)) if (!n.startsWith(".git") && !TOP.has(n)) problems.push(`${n}: not part of the content layout (see README.md)`);
 const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n === "node_modules") continue; const f = join(d, n); if (statSync(f).isDirectory()) walk(f); else if (n.endsWith(".json")) {
   try { JSON.parse(readFileSync(f, "utf8")); } catch (e) { problems.push(`${relative(root, f).split(sep).join("/")}: not valid JSON (${e.message})`); } } } };
@@ -28,7 +28,7 @@ try { for (const n of readdirSync(sessDir)) { if (n === ".gitkeep") continue; co
   for (const sec of ["Done", "Decisions", "Open"]) if (!new RegExp(`^## ${sec}$`, "m").test(t)) problems.push(`${rel}: no "## ${sec}" section`);
 } } catch (e) { if (e.code !== "ENOENT") problems.push(`memory/sessions: ${e.message}`); }
 // library/objects/<contract>/<version>.json: the id matches the path, and the parts every Object needs are there; an Object on
-// a segment (R64) names a meaning that exists and the length of line it fits.
+// a segment (R64) says the length of line it fits. Its role is its kind: what it behaves as (R113: there are no meanings).
 // (The full check, 2D symbol and 3D primitive agreeing at every parameter case, runs in the app: Library page, checkObject.)
 const ROLES = ["wall", "door", "window", "fence", "gate", "slab", "room", "furniture", "fixture", "column", "beam", "footing", "stair", "railing", "panel", "fin", "louvre", "frame", "profile", "entourage", "vegetation", "vehicle", "site", "equipment", "generic"];
 const objDir = join(root, "library", "objects");
@@ -45,18 +45,15 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
     if (o.id !== `${c}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${c}@${v.slice(0, -5)}`);
     if (o.contract !== c) problems.push(`${rel}: contract must be ${c}`);
     if (!o.name) problems.push(`${rel}: name is missing`);
-    if (!ROLES.includes(o.role)) problems.push(`${rel}: role must be one of ${ROLES.join(", ")}`);
+    if (!ROLES.includes(o.role)) problems.push(`${rel}: role (its kind) must be one of ${ROLES.join(", ")}`);
     for (const k of ["symbol2d", "primitive3d"]) if (!Array.isArray(o[k]) || !o[k].length) problems.push(`${rel}: ${k} is missing`);
     if (o.params && typeof o.params !== "object") problems.push(`${rel}: params must be an object of defaults`);
-    // R64: an Object on a segment (a wall, a door) says the meaning it is for (one in library/meanings/) and the stretch of line it fits
+    // R64: an Object on a segment (a wall, a door) says the stretch of line it fits; on a face: it goes on a ring of lines (a slab, a floor)
     if (o.on != null && !["node", "segment", "face"].includes(o.on)) problems.push(`${rel}: on must be node, segment or face`);
-    if (o.on === "face" && o.meaning == null) problems.push(`${rel}: an Object on a face says which meaning it is for (meaning)`);
-    if (o.meaning != null && !existsSync(join(root, "library", "meanings", `${o.meaning}.json`))) problems.push(`${rel}: meaning ${o.meaning} is not in library/meanings/`);
     if (o.on === "segment") { const l = o.length || {};
-      if (o.meaning == null) problems.push(`${rel}: an Object on a segment says which meaning it is for (meaning)`);
       if (!(Number.isInteger(l.min) && Number.isInteger(l.max) && Number.isInteger(l.default) && 0 < l.min && l.min <= l.default && l.default <= l.max)) problems.push(`${rel}: an Object on a segment needs length {default, min, max} in whole mm`); }
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/objects: ${e.message}`); }
-// templates/<id>/<version>.json (R68): house defaults; every Object they name is in the Library, every meaning exists.
+// templates/<id>/<version>.json (R68): house defaults; every Object they name is in the Library, every preset says its kind.
 try { const td = join(root, "templates");
   for (const id of readdirSync(td)) { const dir = join(td, id);
     if (id === "proposals") { // records the app commits (R77); the template-proposals Action turns each into a pull request
@@ -71,7 +68,7 @@ try { const td = join(root, "templates");
       if (t.id !== `${id}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${id}@${v.slice(0, -5)}`);
       const refs = [...(t.presets || []), ...((t.rules && t.rules.faces) || [])].map((p) => p.objectRef).concat(Object.values(t.openings || {})).filter(Boolean);
       for (const r of refs) { const [c, ver] = String(r).split("@"); if (!existsSync(join(root, "library", "objects", c, `${ver}.json`))) problems.push(`${rel}: there is no Library Object ${r}`); }
-      for (const p of [...(t.presets || []), ...((t.rules && t.rules.faces) || [])]) if (p.role && !existsSync(join(root, "library", "meanings", `${p.role}.json`))) problems.push(`${rel}: there is no meaning ${p.role}`);
+      for (const p of [...(t.presets || []), ...((t.rules && t.rules.faces) || [])]) if (!ROLES.includes(p.kind || p.role)) problems.push(`${rel}: a preset's kind must be one of ${ROLES.join(", ")} (${p.kind || p.role})`);
       // a typology's spaces (R100): the uses a room may have, each with an id and a name, its sizes numbers; apart names uses there are
       if (t.spaces != null) { const U = Array.isArray(t.spaces.uses) ? t.spaces.uses : null, seen = new Set(); if (!U || !U.length) problems.push(`${rel}: spaces.uses lists at least one use`);
         for (const u of U || []) { if (!u || !/^[a-z][a-z0-9-]*$/.test(String(u.id || ""))) problems.push(`${rel}: a use's id is lower case, with hyphens (${u && u.id})`); else if (seen.has(u.id)) problems.push(`${rel}: use ${u.id} twice`); else seen.add(u.id);
@@ -173,26 +170,8 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`pipelines: ${e.message}`); }
 // lessons/<agent id>.md and lessons/all.md: Markdown, one lesson per line (agents that name the lessons source are given them).
 for (const n of (() => { try { return readdirSync(join(root, "lessons")); } catch { return []; } })()) if (n !== ".gitkeep" && n !== "README.md" && !(/^[a-z][a-z0-9-]*\.md$/.test(n) && (n === "all.md" || agents.has(n.slice(0, -3))))) problems.push(`lessons/${n}: lessons are lessons/all.md or lessons/<agent id>.md for an agent in agents/`);
-// meanings (R63): what a node, a segment or a face can mean. library/meanings/<id>.json holds functions (what it is: a
-// wall, a door, a plot), semantics/<id>.json positions (where it is in a face: front, own-setback). Each names its category,
-// what it goes on (node, segment, face: a position not a face) and its values.
-const PRIMERS = ["node", "segment", "face"], VK = ["mm", "number", "text", "choice", "yes-no"];
-for (const [dir, cat] of [["semantics", "position"], ["library/meanings", "function"]]) for (const n of (() => { try { return readdirSync(join(root, dir)); } catch { return []; } })()) {
-  const rel = `${dir}/${n}`; if (n === ".gitkeep") continue;
-  if (!/^[a-z][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a meaning is ${dir}/<id>.json`); continue; }
-  let r = null; try { r = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch { problems.push(`${rel}: not valid JSON`); continue; }
-  if (r.id !== n.replace(/\.json$/, "")) problems.push(`${rel}: id must be ${n.replace(/\.json$/, "")}`);
-  if (!String(r.name || "").trim()) problems.push(`${rel}: name is required`);
-  if (r.category !== cat) problems.push(`${rel}: ${dir} holds ${cat}s: category must be ${cat}`);
-  // what it behaves as (R108): the app's kernel knows behaviours, not names; a meaning named after one is that one
-  if (r.kind != null && !["wall", "door", "window", "gate", "room", "slab", "separator"].includes(r.kind)) problems.push(`${rel}: kind is what it behaves as: wall, door, window, gate, room, slab or separator`);
-  if (!Array.isArray(r.on) || !r.on.length || r.on.some((x) => !PRIMERS.includes(x))) problems.push(`${rel}: on must list some of ${PRIMERS.join(", ")}`);
-  else if (cat === "position" && r.on.includes("face")) problems.push(`${rel}: a position goes on a member of a face (node or segment), not a face`);
-  if (r.contract != null && !/^[a-z]+(\.[a-z0-9-]+)+$/.test(String(r.contract))) problems.push(`${rel}: contract must be a Library contract (furniture.chair)`);
-  for (const [k, v] of Object.entries(r.values || {})) { if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(k)) problems.push(`${rel}: value ${k}: letters and digits only`);
-    if (!v || !VK.includes(v.kind)) problems.push(`${rel}: value ${k}: kind must be ${VK.join(", ")}`); else if (v.kind === "choice" && !(Array.isArray(v.options) && v.options.length)) problems.push(`${rel}: value ${k}: a choice needs options`); } }
 // materials (R92): how a finish is shown in 3D. library/materials/<id>.json, its id a part's slot (wood, metal, glass) or a
-// meaning (wall, slab, door): {id, name, color: #rrggbb, roughness?, metalness?, opacity? (each 0 to 1), about?}.
+// kind (wall, slab, door): {id, name, color: #rrggbb, roughness?, metalness?, opacity? (each 0 to 1), about?}.
 for (const n of (() => { try { return readdirSync(join(root, "library", "materials")); } catch { return []; } })()) {
   const rel = `library/materials/${n}`; if (n === ".gitkeep") continue;
   if (!/^[a-z][a-z0-9-]*\.json$/.test(n)) { problems.push(`${rel}: a material is library/materials/<id>.json`); continue; }
@@ -212,7 +191,8 @@ for (const id of (() => { try { return readdirSync(join(root, "solvers")); } cat
     const other = join(root, "solvers", id, `${m[1]}.${m[2] === "js" ? "json" : "js"}`); if (!existsSync(other)) problems.push(`${rel}: its ${m[2] === "js" ? "manifest .json" : "code .js"} is missing`);
     if (m[2] === "json") { let j = null; try { j = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch { problems.push(`${rel}: not valid JSON`); continue; }
       if (j.id !== id) problems.push(`${rel}: id must be ${id}`); if (!String(j.name || "").trim() || !String(j.about || "").trim()) problems.push(`${rel}: name and about are required`);
-      if (j.roles !== undefined && !(Array.isArray(j.roles) && j.roles.every((r) => /^[a-z][a-z0-9-]*$/.test(r)))) problems.push(`${rel}: roles lists role ids`); }
+      if (j.roles !== undefined && !(Array.isArray(j.roles) && j.roles.every((r) => /^[a-z][a-z0-9-]*$/.test(r)))) problems.push(`${rel}: roles lists role ids`); // a solver for a model before 4.2
+      if (j.uses !== undefined && !(Array.isArray(j.uses) && j.uses.every((r) => /^[a-z][a-z0-9-]*$/.test(r)))) problems.push(`${rel}: uses lists the space uses and Placement kinds it reads`); }
     else if (!/function solve\s*\(/.test(readFileSync(join(root, rel), "utf8"))) problems.push(`${rel}: it must define function solve(input, geo)`); } }
 for (const p of problems) console.log("FAIL", p);
 // skills/<name>/SKILL.md (R82): front matter with name (matching the folder) and about; the text a session stage is given

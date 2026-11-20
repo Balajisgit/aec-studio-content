@@ -1,6 +1,18 @@
 {
   "id": "plot-set",
   "name": "The project has a plot",
-  "about": "A face with the Plot function (its setbacks) and its road edge marked Front.",
-  "implementedBy": "app: managers/pipelines/checks.js"
+  "about": "A space used as the plot, its road edge labelled front, and its front, rear and side setbacks set (none is assumed).",
+  "does": "space-set",
+  "space": {
+    "use": "plot",
+    "labels": [
+      "front"
+    ],
+    "values": [
+      "setbackFront",
+      "setbackRear",
+      "setbackSide"
+    ]
+  },
+  "implementedBy": "app: managers/pipelines/checks.js (space-set: what to look for is said here)"
 }
