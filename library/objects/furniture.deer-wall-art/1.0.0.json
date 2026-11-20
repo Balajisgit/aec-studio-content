@@ -2,7 +2,8 @@
   "id": "furniture.deer-wall-art@1.0.0",
   "name": "Geometric deer wall art",
   "contract": "furniture.deer-wall-art",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "Flat matte black laser-cut metal wall art: a tall thin portrait frame with an open back, holding a standing antlered deer whose head, antlers, chest and front legs are faceted line-work inside the frame, while its rear body and hind legs break out past the frame's left side as a solid cut-out silhouette. Its back goes against the wall (front is +y); diagonal lines are stepped because the 3D has only boxes. Sizes are not given in the brief: 600 x 1200 mm frame, 350 mm break-out, 20 mm depth and 1000 mm hanging height are usual sizes judged by eye.",
   "params": {
     "frame_width": 600,

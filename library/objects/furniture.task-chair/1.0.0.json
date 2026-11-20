@@ -2,7 +2,8 @@
   "id": "furniture.task-chair@1.0.0",
   "name": "Task chair",
   "contract": "furniture.task-chair",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "An office chair on its own: a seat, a back and a base. A desk's own chair comes with the desk.",
   "params": {
     "width": 600,

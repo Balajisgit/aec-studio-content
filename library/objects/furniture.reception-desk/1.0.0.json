@@ -2,7 +2,8 @@
   "id": "furniture.reception-desk@1.0.0",
   "name": "Reception desk",
   "contract": "furniture.reception-desk",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A front desk: a high counter towards the visitor and a worktop behind it, with the receptionist's chair.",
   "params": {
     "width": 2400,

@@ -2,7 +2,8 @@
   "id": "furniture.chair@1.0.0",
   "name": "Chair",
   "contract": "furniture.chair",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A dining or side chair: seat, four legs and a back; arms optional.",
   "params": {
     "width": 450,

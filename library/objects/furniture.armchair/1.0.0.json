@@ -2,7 +2,8 @@
   "id": "furniture.armchair@1.0.0",
   "name": "Armchair",
   "contract": "furniture.armchair",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "An upholstered armchair: back, two arms and a seat cushion.",
   "params": {
     "width": 800,

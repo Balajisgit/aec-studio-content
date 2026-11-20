@@ -2,7 +2,8 @@
   "id": "furniture.storage-unit@1.0.0",
   "name": "Storage unit",
   "contract": "furniture.storage-unit",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A low cabinet for files and supplies, the height of a counter; along a wall or between teams.",
   "params": {
     "width": 800,

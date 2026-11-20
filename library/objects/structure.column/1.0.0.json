@@ -2,7 +2,10 @@
   "id": "structure.column@1.0.0",
   "name": "Column",
   "contract": "structure.column",
-  "role": "column",
+  "kind": "column",
+  "behaves": [
+    "stops-bands"
+  ],
   "about": "A concrete column, rectangular or circular, from the floor up.",
   "params": {
     "width": 300,

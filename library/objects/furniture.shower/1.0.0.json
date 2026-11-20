@@ -2,7 +2,8 @@
   "id": "furniture.shower@1.0.0",
   "name": "Shower",
   "contract": "furniture.shower",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A shower tray with a fixed glass screen on half of its open front.",
   "params": {
     "width": 900,

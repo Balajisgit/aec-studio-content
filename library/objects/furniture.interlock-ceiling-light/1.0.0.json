@@ -2,7 +2,8 @@
   "id": "furniture.interlock-ceiling-light@1.0.0",
   "name": "Interlocking LED ceiling light",
   "contract": "furniture.interlock-ceiling-light",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A flush LED ceiling light of two hollow square frames in flat bars, offset along their diagonal and woven so each passes in front of the other at one of the two crossings, leaving the ceiling visible through the open centre: one matte black metal, one white with a warm LED diffuser on its room-facing side. Modelled hanging from the ceiling (ceiling_height is the top of the light). In the photo it is turned 45 degrees to the room, so place it rotated 45. Sizes are not given in the brief: 600 mm frames, 50 mm bars, 150 mm offset and 90 mm body are usual sizes judged by eye, and 750 mm is the overall size that follows.",
   "params": {
     "frame_size": 600,

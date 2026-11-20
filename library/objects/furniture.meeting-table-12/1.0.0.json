@@ -2,7 +2,8 @@
   "id": "furniture.meeting-table-12@1.0.0",
   "name": "Meeting table for 12",
   "contract": "furniture.meeting-table-12",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A boardroom table with five chairs on each long side and one at each end.",
   "params": {
     "width": 3800,

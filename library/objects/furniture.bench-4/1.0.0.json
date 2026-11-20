@@ -2,7 +2,8 @@
   "id": "furniture.bench-4@1.0.0",
   "name": "Bench for 4",
   "contract": "furniture.bench-4",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "Four desks, two facing two across a low screen, with their chairs. Width and depth are one person's.",
   "params": {
     "width": 1400,

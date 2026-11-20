@@ -2,7 +2,8 @@
   "id": "furniture.wardrobe@1.0.0",
   "name": "Wardrobe",
   "contract": "furniture.wardrobe",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A full-height wardrobe with 1 to 4 hinged doors on its front.",
   "params": {
     "width": 1200,

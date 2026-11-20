@@ -2,9 +2,12 @@
   "id": "gate.swing@1.0.0",
   "name": "Swing gate",
   "contract": "gate.swing",
-  "role": "gate",
+  "kind": "gate",
+  "behaves": [
+    "opening",
+    "way-through"
+  ],
   "on": "segment",
-  "meaning": "gate",
   "about": "A gate filling its line in a fence or a boundary: one leaf, drawn across in plan.",
   "length": {
     "default": 3000,

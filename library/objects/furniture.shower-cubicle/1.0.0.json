@@ -2,7 +2,8 @@
   "id": "furniture.shower-cubicle@1.0.0",
   "name": "Shower cubicle",
   "contract": "furniture.shower-cubicle",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A shower enclosure on a low tray: clear glass panels on back and sides, a fixed front panel and a hinged glass door; drain in the tray.",
   "params": {
     "width": 900,

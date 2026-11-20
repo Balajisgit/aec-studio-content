@@ -2,9 +2,12 @@
   "id": "fence.mesh@1.1.0",
   "name": "Mesh fence",
   "contract": "fence.mesh",
-  "role": "fence",
+  "kind": "fence",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
   "on": "segment",
-  "meaning": "fence",
   "about": "A mesh fence along its line, one thickness from the ground to its height. Where it meets other fences the Studio joins them.",
   "length": {
     "default": 3000,

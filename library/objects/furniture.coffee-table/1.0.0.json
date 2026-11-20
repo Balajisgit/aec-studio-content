@@ -2,7 +2,8 @@
   "id": "furniture.coffee-table@1.0.0",
   "name": "Coffee table",
   "contract": "furniture.coffee-table",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A low rectangular coffee table with a wooden top on four legs, to stand in front of a sofa. No style or materials beyond the wooden top were given, so the 30 mm top and 50 mm square legs are usual sizes.",
   "params": {
     "width": 1100,

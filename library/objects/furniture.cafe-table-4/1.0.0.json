@@ -2,7 +2,8 @@
   "id": "furniture.cafe-table-4@1.0.0",
   "name": "Cafe table for 4",
   "contract": "furniture.cafe-table-4",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A small square table with a chair on each side: a cafeteria, a pantry, a community cafe.",
   "params": {
     "width": 800,

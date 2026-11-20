@@ -2,9 +2,12 @@
   "id": "wall.partition-115@1.0.0",
   "name": "Partition wall 115",
   "contract": "wall.partition-115",
-  "role": "wall",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
   "on": "segment",
-  "meaning": "wall",
   "about": "A half-brick or block partition, one thickness from floor to its height; it runs on into the walls it meets at a corner.",
   "length": {
     "default": 3000,

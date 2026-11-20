@@ -2,7 +2,8 @@
   "id": "furniture.table@1.0.0",
   "name": "Table",
   "contract": "furniture.table",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A rectangular dining or meeting table on four legs.",
   "params": {
     "width": 1600,

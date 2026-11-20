@@ -2,7 +2,8 @@
   "id": "furniture.bench-2@1.0.0",
   "name": "Bench for 2",
   "contract": "furniture.bench-2",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "Two desks side by side with their chairs. Width and depth are one person's.",
   "params": {
     "width": 1400,

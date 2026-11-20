@@ -2,7 +2,8 @@
   "id": "furniture.fridge@1.0.0",
   "name": "Fridge",
   "contract": "furniture.fridge",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A free-standing fridge with one full-height door on its front.",
   "params": {
     "width": 700,

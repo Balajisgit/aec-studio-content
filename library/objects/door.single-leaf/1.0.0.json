@@ -2,9 +2,12 @@
   "id": "door.single-leaf@1.0.0",
   "name": "Single-leaf door",
   "contract": "door.single-leaf",
-  "role": "door",
+  "kind": "door",
+  "behaves": [
+    "opening",
+    "way-through"
+  ],
   "on": "segment",
-  "meaning": "door",
   "about": "A hinged door filling its line: the leaf, its swing in plan, and the wall it stands in carried on above it.",
   "length": {
     "default": 900,

@@ -2,7 +2,8 @@
   "id": "furniture.entertainment-unit@1.0.0",
   "name": "Entertainment unit",
   "contract": "furniture.entertainment-unit",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A low TV media console on a recessed plinth: an open centre bay for AV equipment between two door cupboards.",
   "params": {
     "width": 1800,

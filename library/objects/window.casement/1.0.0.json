@@ -2,9 +2,11 @@
   "id": "window.casement@1.0.0",
   "name": "Casement window",
   "contract": "window.casement",
-  "role": "window",
+  "kind": "window",
+  "behaves": [
+    "opening"
+  ],
   "on": "segment",
-  "meaning": "window",
   "about": "A glazed window filling its line between its sill and head, with the wall it stands in carried on below and above it.",
   "length": {
     "default": 1200,

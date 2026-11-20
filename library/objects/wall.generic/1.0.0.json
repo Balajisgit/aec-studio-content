@@ -1,0 +1,57 @@
+{
+  "id": "wall.generic@1.0.0",
+  "name": "Wall",
+  "contract": "wall.generic",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
+  "on": "segment",
+  "about": "A wall whose build-up is not chosen yet: 200 mm thick, up to the floor above. Drawing a wall puts this on the line until it is swapped for the wall it is.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 200,
+    "height": 0
+  },
+  "limits": {
+    "thickness": {
+      "min": 50,
+      "max": 1000,
+      "step": 5
+    },
+    "height": {
+      "min": 0,
+      "max": 30000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "style": "fill",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "slot": "wall",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ],
+      "z": "0",
+      "height": "height > 0 ? height : rise - slab_above"
+    }
+  ]
+}

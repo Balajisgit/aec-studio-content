@@ -1,0 +1,45 @@
+{
+  "id": "slab.generic@1.0.0",
+  "name": "Slab",
+  "contract": "slab.generic",
+  "kind": "slab",
+  "behaves": [],
+  "on": "face",
+  "about": "A floor slab whose make is not chosen yet: 150 mm, to the walls' outer faces. Swap it for the slab it is.",
+  "params": {
+    "thickness": 150,
+    "edge": "outer"
+  },
+  "limits": {
+    "thickness": {
+      "min": 75,
+      "max": 500,
+      "step": 5
+    },
+    "edge": {
+      "options": [
+        "outer",
+        "centre",
+        "inner"
+      ]
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "slab edge",
+      "shape": "area",
+      "style": "hidden",
+      "edge": "edge"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "slab",
+      "shape": "area",
+      "slot": "concrete",
+      "edge": "edge",
+      "z": "-thickness",
+      "height": "thickness"
+    }
+  ]
+}
