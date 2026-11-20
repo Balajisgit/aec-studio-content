@@ -2,7 +2,8 @@
   "id": "furniture.bed@1.0.0",
   "name": "Bed",
   "contract": "furniture.bed",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A bed with headboard, mattress and one or two pillows; the head is at the back.",
   "params": {
     "width": 1600,

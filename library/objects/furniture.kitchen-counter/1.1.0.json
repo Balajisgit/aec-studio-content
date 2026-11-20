@@ -2,7 +2,8 @@
   "id": "furniture.kitchen-counter@1.1.0",
   "name": "Kitchen counter",
   "contract": "furniture.kitchen-counter",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A run of base cabinets with a stone top; a sink and a hob sit on it, each moved along the counter, the hob always kept clear of the sink (on a counter too short for both, the hob is left off).",
   "params": {
     "width": 2400,

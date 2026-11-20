@@ -2,7 +2,8 @@
   "id": "furniture.meeting-table-4@1.0.0",
   "name": "Meeting table for 4",
   "contract": "furniture.meeting-table-4",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A meeting table with two chairs on each long side.",
   "params": {
     "width": 1600,

@@ -2,9 +2,12 @@
   "id": "wall.partition-115@1.2.0",
   "name": "Partition wall 115",
   "contract": "wall.partition-115",
-  "role": "wall",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
   "on": "segment",
-  "meaning": "wall",
   "about": "A half-brick or block partition, one thickness from the floor up to the slab above (or the height you give it). Where it meets other walls the Studio joins them: a mitre at a corner, the through wall carrying on at a T.",
   "length": {
     "default": 3000,

@@ -2,9 +2,9 @@
   "id": "room.tiled-floor@1.0.0",
   "name": "Room, tiled floor",
   "contract": "room.tiled-floor",
-  "role": "room",
+  "kind": "room",
+  "behaves": [],
   "on": "face",
-  "meaning": "room",
   "about": "A room's floor finish: tiles on a bed, wall to wall (to the walls' inner faces), on top of its slab.",
   "params": {
     "finish": 20

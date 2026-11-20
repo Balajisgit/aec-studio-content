@@ -2,9 +2,12 @@
   "id": "wall.glazed-partition-50@1.0.0",
   "name": "Glazed partition 50",
   "contract": "wall.glazed-partition-50",
-  "role": "wall",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
   "on": "segment",
-  "meaning": "wall",
   "about": "A glass partition in a slim frame, 50 thick, from the floor up to the slab above (or the height you give it): for meeting rooms and cabins that should stay in view. Where it meets other walls the Studio joins them.",
   "length": {
     "default": 3000,

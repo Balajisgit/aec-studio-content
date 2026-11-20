@@ -2,7 +2,8 @@
   "id": "furniture.bench-6@1.0.0",
   "name": "Bench for 6",
   "contract": "furniture.bench-6",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "Six desks, three facing three across a low screen, with their chairs. Width and depth are one person's.",
   "params": {
     "width": 1400,

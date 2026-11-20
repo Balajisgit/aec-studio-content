@@ -30,7 +30,8 @@ try { for (const n of readdirSync(sessDir)) { if (n === ".gitkeep") continue; co
 // library/objects/<contract>/<version>.json: the id matches the path, and the parts every Object needs are there; an Object on
 // a segment (R64) says the length of line it fits. Its role is its kind: what it behaves as (R113: there are no meanings).
 // (The full check, 2D symbol and 3D primitive agreeing at every parameter case, runs in the app: Library page, checkObject.)
-const ROLES = ["wall", "door", "window", "fence", "gate", "slab", "room", "furniture", "fixture", "column", "beam", "footing", "stair", "railing", "panel", "fin", "louvre", "frame", "profile", "entourage", "vegetation", "vehicle", "site", "equipment", "generic"];
+// What an Object may say it does (R113: the app's kernel knows these behaviours and names no kind).
+const BEHAVIOURS = ["band", "holds-openings", "opening", "way-through", "stops-bands", "cuts-floor-above"], WORD = /^[a-z][a-z0-9-]*$/;
 const objDir = join(root, "library", "objects");
 try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; const cd = join(objDir, c);
   if (!statSync(cd).isDirectory()) { problems.push(`library/objects/${c}: Objects live in a folder per contract`); continue; }
@@ -45,7 +46,13 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
     if (o.id !== `${c}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${c}@${v.slice(0, -5)}`);
     if (o.contract !== c) problems.push(`${rel}: contract must be ${c}`);
     if (!o.name) problems.push(`${rel}: name is missing`);
-    if (!ROLES.includes(o.role)) problems.push(`${rel}: role (its kind) must be one of ${ROLES.join(", ")}`);
+    if (!WORD.test(String(o.kind || ""))) problems.push(`${rel}: kind is its word, lower case with hyphens (wall, sliding-door, sofa)`);
+    if (o.role !== undefined || o.meaning !== undefined) problems.push(`${rel}: role and meaning are gone (R113): it says its kind and what it does (behaves)`);
+    if (!Array.isArray(o.behaves) || o.behaves.some((b) => !BEHAVIOURS.includes(b))) problems.push(`${rel}: behaves lists what it does, from ${BEHAVIOURS.join(", ")} ([] for none)`);
+    else { const on = o.on || "node", has = (b) => o.behaves.includes(b);
+      if ((has("band") || has("holds-openings") || has("opening")) && on !== "segment") problems.push(`${rel}: band, holds-openings and opening are for an Object on a line (on: segment)`);
+      if ((has("stops-bands") || has("cuts-floor-above")) && on !== "node") problems.push(`${rel}: stops-bands and cuts-floor-above are for an Object at a point`);
+      if (has("way-through") && !has("opening")) problems.push(`${rel}: way-through is for an opening`); }
     for (const k of ["symbol2d", "primitive3d"]) if (!Array.isArray(o[k]) || !o[k].length) problems.push(`${rel}: ${k} is missing`);
     if (o.params && typeof o.params !== "object") problems.push(`${rel}: params must be an object of defaults`);
     // R64: an Object on a segment (a wall, a door) says the stretch of line it fits; on a face: it goes on a ring of lines (a slab, a floor)
@@ -68,7 +75,7 @@ try { const td = join(root, "templates");
       if (t.id !== `${id}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${id}@${v.slice(0, -5)}`);
       const refs = [...(t.presets || []), ...((t.rules && t.rules.faces) || [])].map((p) => p.objectRef).concat(Object.values(t.openings || {})).filter(Boolean);
       for (const r of refs) { const [c, ver] = String(r).split("@"); if (!existsSync(join(root, "library", "objects", c, `${ver}.json`))) problems.push(`${rel}: there is no Library Object ${r}`); }
-      for (const p of [...(t.presets || []), ...((t.rules && t.rules.faces) || [])]) if (!ROLES.includes(p.kind || p.role)) problems.push(`${rel}: a preset's kind must be one of ${ROLES.join(", ")} (${p.kind || p.role})`);
+      for (const p of [...(t.presets || []), ...((t.rules && t.rules.faces) || [])]) if (!WORD.test(String(p.kind || p.role || ""))) problems.push(`${rel}: a preset says its kind (its Object's word)`);
       // a typology's spaces (R100): the uses a room may have, each with an id and a name, its sizes numbers; apart names uses there are
       if (t.spaces != null) { const U = Array.isArray(t.spaces.uses) ? t.spaces.uses : null, seen = new Set(); if (!U || !U.length) problems.push(`${rel}: spaces.uses lists at least one use`);
         for (const u of U || []) { if (!u || !/^[a-z][a-z0-9-]*$/.test(String(u.id || ""))) problems.push(`${rel}: a use's id is lower case, with hyphens (${u && u.id})`); else if (seen.has(u.id)) problems.push(`${rel}: use ${u.id} twice`); else seen.add(u.id);
@@ -105,7 +112,8 @@ try { for (const n of readdirSync(propDir)) { if (n === ".gitkeep") continue; co
   if (o.id !== `${m[1]}@${m[2]}`) problems.push(`${rel}: object.id must be ${m[1]}@${m[2]}`);
   if (o.contract !== m[1]) problems.push(`${rel}: object.contract must be ${m[1]}`);
   if (m[1].startsWith("project.")) problems.push(`${rel}: a Library name can't start with project.`);
-  if (!ROLES.includes(o.role)) problems.push(`${rel}: object.role must be one of ${ROLES.join(", ")}`);
+  if (!WORD.test(String(o.kind || o.role || ""))) problems.push(`${rel}: object.kind is its word (wall, sofa)`);
+  if (o.behaves !== undefined && (!Array.isArray(o.behaves) || o.behaves.some((b) => !BEHAVIOURS.includes(b)))) problems.push(`${rel}: object.behaves lists what it does, from ${BEHAVIOURS.join(", ")}`);
 } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/proposals: ${e.message}`); }
 // requests/settings/<path>.json: requests the app commits when the owner asks for a setting to change; the settings-requests
 // Action turns each into a pull request that changes settings.json and removes the record.

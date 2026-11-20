@@ -1,0 +1,72 @@
+{
+  "id": "gate.generic@1.0.0",
+  "name": "Gate",
+  "contract": "gate.generic",
+  "kind": "gate",
+  "behaves": [
+    "opening",
+    "way-through"
+  ],
+  "on": "segment",
+  "about": "A gate whose make is not chosen yet: 1.5 m high. Swap it for the gate it is.",
+  "length": {
+    "default": 3000,
+    "min": 600,
+    "max": 8000
+  },
+  "params": {
+    "height": 1500
+  },
+  "limits": {
+    "height": {
+      "min": 600,
+      "max": 4000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "gate",
+      "shape": "rect",
+      "style": "outline",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "60"
+      ]
+    },
+    {
+      "name": "brace",
+      "shape": "line",
+      "style": "thin",
+      "from": [
+        "-length / 2",
+        "-30"
+      ],
+      "to": [
+        "length / 2",
+        "30"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "leaf",
+      "shape": "box",
+      "slot": "metal",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "50",
+        "height"
+      ]
+    }
+  ]
+}

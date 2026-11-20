@@ -2,9 +2,12 @@
   "id": "wall.brick-230@1.1.0",
   "name": "Brick wall 230",
   "contract": "wall.brick-230",
-  "role": "wall",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
   "on": "segment",
-  "meaning": "wall",
   "about": "A brick wall, one thickness from floor to its height. Where it meets other walls the Studio joins them: a mitre at a corner, the through wall carrying on at a T.",
   "length": {
     "default": 3000,

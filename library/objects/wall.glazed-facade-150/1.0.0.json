@@ -2,9 +2,12 @@
   "id": "wall.glazed-facade-150@1.0.0",
   "name": "Glazed facade 150",
   "contract": "wall.glazed-facade-150",
-  "role": "wall",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
   "on": "segment",
-  "meaning": "wall",
   "about": "A glazed outside wall (a curtain wall or window wall), 150 thick with its framing, from the floor up to the slab above (or the height you give it): the daylight side of an office floor. It counts as the outside for rooms that need a window only where a window stands in it.",
   "length": {
     "default": 3000,

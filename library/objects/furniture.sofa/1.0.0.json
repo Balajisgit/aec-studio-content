@@ -2,7 +2,8 @@
   "id": "furniture.sofa@1.0.0",
   "name": "Sofa",
   "contract": "furniture.sofa",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "An upholstered sofa for 2 to 4: back, arms and one cushion per seat.",
   "params": {
     "width": 2100,

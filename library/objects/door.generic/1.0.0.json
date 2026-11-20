@@ -1,0 +1,100 @@
+{
+  "id": "door.generic@1.0.0",
+  "name": "Door",
+  "contract": "door.generic",
+  "kind": "door",
+  "behaves": [
+    "opening",
+    "way-through"
+  ],
+  "on": "segment",
+  "about": "A door whose make is not chosen yet: a single leaf, 2.1 m high. Swap it for the door it is.",
+  "length": {
+    "default": 900,
+    "min": 600,
+    "max": 1500
+  },
+  "params": {
+    "height": 2100,
+    "hinge": "start",
+    "swing": "left"
+  },
+  "limits": {
+    "height": {
+      "min": 1800,
+      "max": 3000,
+      "step": 50
+    },
+    "hinge": {
+      "options": [
+        "start",
+        "end"
+      ]
+    },
+    "swing": {
+      "options": [
+        "left",
+        "right"
+      ]
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "leaf",
+      "shape": "line",
+      "from": [
+        "hinge == 'start' ? -length / 2 : length / 2",
+        "0"
+      ],
+      "to": [
+        "hinge == 'start' ? -length / 2 : length / 2",
+        "swing == 'left' ? length : -length"
+      ]
+    },
+    {
+      "name": "swing",
+      "shape": "arc",
+      "style": "thin",
+      "at": [
+        "hinge == 'start' ? -length / 2 : length / 2",
+        "0"
+      ],
+      "r": "length",
+      "start": "hinge == 'start' ? (swing == 'left' ? 0 : 270) : (swing == 'left' ? 90 : 180)",
+      "end": "(hinge == 'start' ? (swing == 'left' ? 0 : 270) : (swing == 'left' ? 90 : 180)) + 90"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "leaf",
+      "shape": "box",
+      "slot": "wood",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "40",
+        "height"
+      ]
+    },
+    {
+      "name": "wall above",
+      "shape": "box",
+      "slot": "host",
+      "when": "host_thickness > 0 && host_height > height",
+      "at": [
+        "0",
+        "0",
+        "height"
+      ],
+      "size": [
+        "length",
+        "host_thickness",
+        "host_height - height"
+      ]
+    }
+  ]
+}

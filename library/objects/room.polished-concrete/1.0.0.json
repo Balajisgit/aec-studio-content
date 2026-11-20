@@ -2,9 +2,9 @@
   "id": "room.polished-concrete@1.0.0",
   "name": "Room, polished concrete",
   "contract": "room.polished-concrete",
-  "role": "room",
+  "kind": "room",
+  "behaves": [],
   "on": "face",
-  "meaning": "room",
   "about": "A room's floor finish: a polished concrete topping wall to wall (to the walls' inner faces), on top of its slab. A studio or workshop floor.",
   "params": {
     "finish": 50

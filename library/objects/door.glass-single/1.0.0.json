@@ -2,9 +2,12 @@
   "id": "door.glass-single@1.0.0",
   "name": "Glass door, single leaf",
   "contract": "door.glass-single",
-  "role": "door",
+  "kind": "door",
+  "behaves": [
+    "opening",
+    "way-through"
+  ],
   "on": "segment",
-  "meaning": "door",
   "about": "A hinged glass door filling its line: the leaf, its swing in plan, and the wall it stands in carried on above it. For glazed partitions and office fronts.",
   "length": {
     "default": 900,

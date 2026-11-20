@@ -2,7 +2,8 @@
   "id": "furniture.training-desk-2@1.0.0",
   "name": "Training desk for 2",
   "contract": "furniture.training-desk-2",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A narrow desk for two side by side, in rows facing the front of a training room.",
   "params": {
     "width": 1400,

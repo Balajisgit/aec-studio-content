@@ -12,7 +12,7 @@ const run = (cmd, ...a) => execFileSync(cmd, a, { encoding: "utf8", stdio: ["ign
 const git = (...a) => run("git", ...a), tryGit = (...a) => { try { return git(...a); } catch { return null; } };
 const gh = (...a) => run(process.env.GH_BIN || "gh", ...a);
 const DIR = "library/proposals", NAME = /^([a-z]+(?:\.[a-z0-9-]+)+)@(\d+\.\d+\.\d+)\.json$/;
-const ROLES = ["furniture", "fixture", "column", "beam", "footing", "stair", "railing", "panel", "fin", "louvre", "frame", "profile", "entourage", "vegetation", "vehicle", "site", "equipment", "generic"];
+const BEHAVIOURS = ["band", "holds-openings", "opening", "way-through", "stops-bands", "cuts-floor-above"];
 git("config", "user.name", "github-actions[bot]"); git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com");
 
 /** What is wrong with a record, if anything. */
@@ -30,7 +30,8 @@ function problems(file, rec) {
   if (o.contract !== m[1]) out.push(`${file}: object.contract must be ${m[1]}`);
   if (m[1].startsWith("project.")) out.push(`${file}: a Library name can't start with project.`);
   if (!o.name) out.push(`${file}: object.name is missing`);
-  if (!ROLES.includes(o.role)) out.push(`${file}: object.role is not a known role`);
+  if (!/^[a-z][a-z0-9-]*$/.test(String(o.kind || o.role || ""))) out.push(`${file}: object.kind is missing`);
+  if (!Array.isArray(o.behaves) || o.behaves.some((b) => !BEHAVIOURS.includes(b))) out.push(`${file}: object.behaves lists what it does (${BEHAVIOURS.join(", ")}; [] for none)`);
   for (const k of ["symbol2d", "primitive3d"]) if (!Array.isArray(o[k]) || !o[k].length) out.push(`${file}: object.${k} is missing`);
   return out;
 }
@@ -38,7 +39,7 @@ function problems(file, rec) {
 /** The pull request's description, for the owner (often read on a phone). */
 function body(rec) {
   const o = rec.object, p = o.params || {}, lines = [];
-  lines.push(`Proposed from AEC Studio: **${o.name}** as \`${o.id}\` (${o.role}).`, "");
+  lines.push(`Proposed from AEC Studio: **${o.name}** as \`${o.id}\` (${o.kind || o.role}).`, "");
   if (o.about) lines.push(o.about, "");
   const dims = ["width", "depth", "height"].filter((k) => typeof p[k] === "number").map((k) => `${k} ${p[k]}`); if (dims.length) lines.push(`Defaults: ${dims.join(", ")} mm.`, "");
   const from = (rec.from && rec.from.projects) || []; if (from.length) lines.push(`Used in: ${from.map((x) => `${x.name} (${x.uses} use${x.uses === 1 ? "" : "s"})`).join(", ")}.`, "");

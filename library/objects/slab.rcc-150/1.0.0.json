@@ -2,9 +2,9 @@
   "id": "slab.rcc-150@1.0.0",
   "name": "RCC slab 150",
   "contract": "slab.rcc-150",
-  "role": "slab",
+  "kind": "slab",
+  "behaves": [],
   "on": "face",
-  "meaning": "slab",
   "about": "A reinforced concrete slab under its face, its top at the floor. It reaches the walls' outer faces, and meets the next room's slab under the wall between them.",
   "params": {
     "thickness": 150,

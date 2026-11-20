@@ -2,7 +2,8 @@
   "id": "furniture.workstation@1.0.0",
   "name": "Workstation",
   "contract": "furniture.workstation",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "One person's desk with its chair and screen. Width and depth are the desk's.",
   "params": {
     "width": 1400,

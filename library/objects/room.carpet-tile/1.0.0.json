@@ -2,9 +2,9 @@
   "id": "room.carpet-tile@1.0.0",
   "name": "Room, carpet tiles",
   "contract": "room.carpet-tile",
-  "role": "room",
+  "kind": "room",
+  "behaves": [],
   "on": "face",
-  "meaning": "room",
   "about": "A room's floor finish: carpet tiles wall to wall (to the walls' inner faces), on top of its slab or raised floor. The usual office floor.",
   "params": {
     "finish": 10

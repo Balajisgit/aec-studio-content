@@ -2,7 +2,8 @@
   "id": "furniture.locker-bank@1.0.0",
   "name": "Locker bank",
   "contract": "furniture.locker-bank",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A bank of personal lockers, three columns wide; its width sets how many fit along a wall.",
   "params": {
     "width": 900,

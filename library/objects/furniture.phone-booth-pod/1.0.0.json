@@ -2,7 +2,8 @@
   "id": "furniture.phone-booth-pod@1.0.0",
   "name": "Phone booth pod",
   "contract": "furniture.phone-booth-pod",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A freestanding booth for one: padded walls, a glass front, a perch and a shelf. For a call or an hour's quiet where no room is built for it.",
   "params": {
     "width": 1000,

@@ -2,7 +2,8 @@
   "id": "furniture.desk@1.0.0",
   "name": "Desk",
   "contract": "furniture.desk",
-  "role": "furniture",
+  "kind": "furniture",
+  "behaves": [],
   "about": "A work desk with panel ends; a drawer unit on the right if wanted.",
   "params": {
     "width": 1400,

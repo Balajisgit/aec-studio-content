@@ -1,0 +1,57 @@
+{
+  "id": "fence.generic@1.0.0",
+  "name": "Fence",
+  "contract": "fence.generic",
+  "kind": "fence",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
+  "on": "segment",
+  "about": "A fence whose make is not chosen yet: 50 mm, 1.5 m high. Swap it for the fence it is.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 50,
+    "height": 1500
+  },
+  "limits": {
+    "thickness": {
+      "min": 20,
+      "max": 500,
+      "step": 5
+    },
+    "height": {
+      "min": 300,
+      "max": 5000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "fence",
+      "shape": "band",
+      "style": "hidden",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "fence",
+      "shape": "band",
+      "slot": "fence",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ],
+      "z": "0",
+      "height": "height"
+    }
+  ]
+}

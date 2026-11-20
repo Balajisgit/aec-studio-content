@@ -15,7 +15,7 @@ See `docs/architecture.md` in the app repository for the whole design.
 pipelines/<id>/<version>.json     pipelines: the scopes they run in, stages (an agent or code), outcomes, checks and decisions
 agents/  skills/  solvers/  panels/
 checks/definitions/               check definitions with their pass and fail cases
-library/objects/<contract>/<version>.json   Library Objects: parameters and limits, 2D symbol, 3D primitive (formulas of the parameters)
+library/objects/<contract>/<version>.json   Library Objects: their kind (a word), what they do (behaves: band, holds-openings, opening, way-through, stops-bands, cuts-floor-above; R113), parameters and limits, 2D symbol, 3D primitive (formulas of the parameters); <kind>.generic is the one a Placement gets until it is swapped
 library/origins/<contract>/<version>.json   where each Object came from (a project, a pipeline run, the starters); written by the Action with the Object
 library/materials/<id>.json       how a finish is shown in 3D (R92): its id a part's slot (wood, metal, glass) or a kind (wall, slab); {id, name, color, roughness?, metalness?, opacity?, about?}; a firm adds its own in its layer
 requests/R<4 digits>.md   the owner's requests for the shared work (the app, a pipeline, the Library, a setting), noted from any page; files added to one in requests/files/R<n>/

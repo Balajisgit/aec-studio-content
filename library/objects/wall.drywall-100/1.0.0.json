@@ -2,9 +2,12 @@
   "id": "wall.drywall-100@1.0.0",
   "name": "Drywall partition 100",
   "contract": "wall.drywall-100",
-  "role": "wall",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
   "on": "segment",
-  "meaning": "wall",
   "about": "A gypsum-board partition on a metal stud, 100 thick, from the floor up to the slab above (or the height you give it): the usual wall between an office's rooms. Where it meets other walls the Studio joins them.",
   "length": {
     "default": 3000,
