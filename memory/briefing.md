@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 42._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 43._
 
 ## What this is
 
@@ -81,6 +81,28 @@ _The open requests (requests/ in the content repository)._
 
 ## Recent sessions
 
+### Session 42 · 2026-11-20 · Objects on hosts merged (R113 step 3); the kernel holds no specifics; Fit to plot says in content what it reads
+R113 step 3 was built and merged. Roles and meanings are gone: Library Objects are Placements on a node, a segment, a ring of lines or another Placement, and spaces carry their own name, use, number and values. At the owner's word the kernel was then emptied of specifics: plot, footprint and void are template uses, setbacks are set each time, and Fit to plot says in content what it reads.
+
+Done:
+- Placements: a door or window on a wall at a point along it; a floor finish per walled room; one slab per floor plate. Removing a host takes what it holds.
+- Spaces have name, use, number and values; labels on lines and points; 4.0 and 4.1 projects move to 4.2 by themselves.
+- The kernel names no use, label or value. A template's use says room: false (a plot, a footprint, a void: no floor, no slab, not a room).
+- Rear and side are worked out outside the kernel from the use's own inset words (managers/projects/sides.js).
+- Setbacks are the plot's values, never assumed: the plot check asks, the solver stops and the Site reader says what is missing.
+- The app names no plot: a general space-set check and space-to-read condition; the content says the use, labels and values.
+- Content: meanings and semantics removed; fit-to-plot 4.0.0, fit-max-rectangle 3.0.0 and workplace-test-fit 2.0.0; old versions removed.
+- Templates' 1.0.0 versions gained plot (with its inset and setback values), footprint and void uses, in place.
+- Merged: aec-studio#120, then aec-studio-content#58; 344 tests, smoke and canvas checks pass on main.
+
+Decided:
+- Owner on setbacks: "Should not be in kernel. Plots and foot prints are defined manually or in templates. Setbacks are rules set manually or thru pipelines or innowa."
+- Owner: "Kernel should not hold any specifics. Even site lines are a segment with boundary wall or fence attached and it's formed space is set to a specific use. Voids are where slab not placed."
+- Owner: "So remove those plots, footprint and voids and any other. All these are values set every time." Then "Ok go ahead".
+- Owner on moving Fit to plot's pieces out of the app into content: "Yes".
+- Owner: "Merge the app first, then content." Both merged in that order.
+- Owner: "Wrap up and do The next step": Objects declare how they behave, so the kernel's list of kinds goes.
+
 ### Session 41 · 2026-11-20 · The model from first principles (R113) and the Library as a catalogue (R114); line kinds and spaces as tag points merged
 Room and slab were rethought from first principles: only nodes and segments are primers, spaces are worked out round a tag point, and Objects attach to hosts (R113). The Library becomes a catalogue of Objects, Layouts and Templates (R114). R113 steps 1 and 2 were built and merged; step 3, Objects on hosts, is next, in a fresh session.
 
@@ -149,29 +171,9 @@ Decided:
 - Owner on the solver: "Start from first principle"; "it is an empty shell with the core and entrance already drawn, as in a fit-out"; "As per the brief"; columns "Ignore for 1st version"; "As per program"; furnished "All"; module "Per project".
 - Owner: "Now merge and update all staging, main app and artifact."; pipelines audit "Do only 1"; kernel boundary "Ok go", then "Merge".
 
-### Session 37 · 2026-11-14 · Runs that belong nowhere merged; Claude sessions on the owner's PC; Make a scene, Render views, chains and Innowa conducting a job, tried on staging with Collab 01
-R79 was merged. Then a full Claude Code session on the owner's PC became a stage kind (R82), and on it Make a scene, Render views, chains and Innowa conducting a job were built (R83-R88). The Collab 01 deck ran through the chain and then as a conducted job on staging. All of it waits in PRs #97, #98 and content #46, #47.
-
-Done:
-- R79 merged (#95, #96, content #45): placing outputs anywhere, inputs from runs, projects and the Library, no scopes, model changes on the run's draft copy.
-- R82 session stage: Claude Code with a shell on the owner's own PC (helper-tools.json sessions); files in out/ come back, the .blend stays on the PC. Detail an Object 1.3.0 runs as one; the armchair trial passed (6 min).
-- R83 Make a scene (scene_get from the model, or an assumed layout from the slides) and R84 Render views 1.3.0 as a session (quick render plus mask, named after its slide).
-- R85 chains: a run carries then; each missing / each undetailed fan out and the next step waits for them; a chat follows the whole chain.
-- R86 Innowa reads the PC's named folders (pc_folders, pc_file_get); R87 a run on a Helper reads PDFs with Claude Code's own Read in its own folder.
-- R88 Innowa conducts: a job per ask with plan and limits, tasks that keep their own results, waking when they are through, one review; job card with Stop.
-- Helper 2g: several sessions at once (sessions.parallel), files back in parts, PDFs in Innowa's chat; Slides from a deck (split-deck), review pairs by file name.
-- Fixed on the way: keeping a Library Object's detail, staging stuck by a Start-*.bat change, a fresh download pairing with its own Studio, honest last lines of detail runs.
-- Security: no run is ever given a broad Read rule; reads stay in the working folders, and runs with no shell also block reads outside them (server and PC).
-- Collab 01 ran as a chain, then as a conducted job ($6.74, 1.6 h at the screenshot); six Details started outside the job waited for the owner: fixed so runs started during a job are its tasks, and the chat panel folds the card and runs.
-- Requests R82-R88 noted; all on staging (app 693f792), PRs #97, #98, content #46, #47.
-
-Decided:
-- Owner: session stage "ok we ll do this only in deatil an object workflow and lets chk how it does".
-- Owner: when there is no layout, "Go as per ur suggestion": an assumed layout from the slides, named and reported as assumed; Keep asks everywhere, with previews as pictures.
-- Owner: "Innowa conducts", with "OK with at most $20 of Claude use and 4 hours, then it stops to ask" and "post the plan and start straight away".
-
 ## Earlier sessions
 
+- **37** · 2026-11-14 · Runs that belong nowhere merged; Claude sessions on the owner's PC; Make a scene, Render views, chains and Innowa conducting a job, tried on staging with Collab 01 — R79 was merged. Then a full Claude Code session on the owner's PC became a stage kind (R82), and on it Make a scene, Render views, chains and Innowa conducting a job were built (R83-R88). The Collab 01 deck ran through the chain and then as a conducted job on staging. All of it waits in PRs #97, #98 and content #46, #47.
 - **36** · 2026-11-12 · Files, image review and Object detail merged; Read a brief replaces Brief to Library; runs that belong nowhere, Blender anywhere and the Studio connector planned — R78, R75 and R73 were built, tried on staging and merged with content #44. The detailed version is now a third form beside an Object, for renders only. Each pipeline does one job. Next: runs that belong nowhere with placing (R79), Blender jobs anywhere (R80) and the Studio connector (R81).
 - **35** · 2026-11-12 · Model 4.0 objects, levels and legacy (R64-R67), easy floor-plan drawing (R68-R72), firm templates (R77), and staging fixes — R63, R64 and R65 merged and live; R66 step 1 merged and live. R66 steps 2-4, R67, R68-R72 and R77 are built, each in its own pull request (#81-#90, content #41-#43), and all on staging for the owner to review together. Staging could not record requests: fixed in #94.
 - **34** · 2026-11-12 · Where the visualization pipelines fit in Studio, and files a pipeline makes reach the project on approval (R78) — The five pipelines were read against the three visualization phases: Brief to Library covers reading the deck, Fit to plot is the pattern for reading CAD, and Render views and Detail an Object are new. Files a pipeline makes reach the project only on approval, in a folder per pipeline (R78); R73, R75 and R78 are grouped and planned.

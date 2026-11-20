@@ -136,3 +136,9 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-20 · Session 41** — Owner: no meanings, three line kinds, generic wall Object at once, a space's fields: "ok" to each; site positions "labels as per use type -varies - assigned".
 - **2026-11-20 · Session 41** — Owner: "library default view should be like a cataluge - ecomm experience - all others are technicals"; templates in the Library: Layout and Template "yes", Layout "only objects", "Break and Keep options".
 - **2026-11-20 · Session 41** — Owner on the Library's open points: "go as you suggest"; "build the requests as per order"; "merge" #118 and #119.
+- **2026-11-20 · Session 42** — Owner on setbacks: "Should not be in kernel. Plots and foot prints are defined manually or in templates. Setbacks are rules set manually or thru pipelines or innowa."
+- **2026-11-20 · Session 42** — Owner: "Kernel should not hold any specifics. Even site lines are a segment with boundary wall or fence attached and it's formed space is set to a specific use. Voids are where slab not placed."
+- **2026-11-20 · Session 42** — Owner: "So remove those plots, footprint and voids and any other. All these are values set every time." Then "Ok go ahead".
+- **2026-11-20 · Session 42** — Owner on moving Fit to plot's pieces out of the app into content: "Yes".
+- **2026-11-20 · Session 42** — Owner: "Merge the app first, then content." Both merged in that order (aec-studio#120, aec-studio-content#58).
+- **2026-11-20 · Session 42** — Owner: "Wrap up and do The next step": Objects declare how they behave, so the kernel's list of kinds goes.
