@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 43._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 44._
 
 ## What this is
 
@@ -80,6 +80,25 @@ _The open requests (requests/ in the content repository)._
 
 ## Recent sessions
 
+### Session 43 · 2026-11-21 · R113 done: Objects say how they behave (model 4.3) and zones; the online preview republished
+The kernel's list of kinds went: every Library Object now says what it does, and every Placement has an Object, a generic one until it is swapped. Zones, the last part of R113, were built: a name and a use on a closed ring of lines, with what each covers worked out. All merged at the owner's word; R113 is done and the online preview shows it.
+
+Done:
+- Behaviours: band, holds-openings, opening, way-through, stops-bands, cuts-floor-above; an Object's kind is only a word the kernel never reads.
+- Every Placement has an Object: an operation naming only a kind gets the template's Object, else the Library's generic one.
+- Model 4.3: old projects' Objects get the behaviours their kind had; Placements with no Object get the generic one.
+- Content: every Library Object says kind and behaves (role and meaning gone); eight generic Objects added.
+- Zones: add_zone and edit_zone, rule I12, the Zone tool (Z) on the canvas, and project_look saying what each zone covers.
+- Merged: aec-studio#121, then aec-studio-content#59; aec-studio#122, then aec-studio-content#60. R113 marked done.
+- Online preview republished from main (app 3c830cf): Placements, behaviours and zones.
+- 349 tests, the smoke check and the canvas browser check (now using the Zone tool) pass on main.
+
+Decided:
+- Owner on Object-less Placements: "Always an Object" (a generic one at first, swapped later).
+- Owner on giving the Library's Objects their behaviours: "Edit in place" (same ids; projects' copies get them on upgrade).
+- Owner, after the suggestion to leave behaviours out of the Object fingerprint until R114: "Ok what next".
+- Owner: "Merge and do as suggested" (#121, #59; then zones and the preview), and "Merge" (#122, #60).
+
 ### Session 42 · 2026-11-20 · Objects on hosts merged (R113 step 3); the kernel holds no specifics; Fit to plot says in content what it reads
 R113 step 3 was built and merged. Roles and meanings are gone: Library Objects are Placements on a node, a segment, a ring of lines or another Placement, and spaces carry their own name, use, number and values. At the owner's word the kernel was then emptied of specifics: plot, footprint and void are template uses, setbacks are set each time, and Fit to plot says in content what it reads.
 
@@ -147,31 +166,9 @@ Decided:
 - Owner: "merge and update all": app #117 then content #56 merged, staging and the online preview updated.
 - Owner on the four older pull requests: "do all as u suggest" (merge app #94, close content #41 and #42, rebuild #43 on main), then "merge #57".
 
-### Session 38 · 2026-11-16 · Kernel and canvas upgrade, layers, typologies (Villa, five workplaces), programme, kernel boundary; a workplace test-fit solver built from first principles
-The kernel and canvas were upgraded (R89-R98), then layers, model defaults as typologies, a programme and five workplace templates with office Objects were added and merged (R99-R108). The kernel was held to its boundary: typology, programme and design sense live in Projects. Last, a workplace test-fit solver was built; it waits in app #117 and content #56.
-
-Done:
-- R89-R98 kernel and canvas upgrade: intent operations (add_room, put_in by point), what the model looks like in words and pictures, design-sense notes; merged.
-- R99 layers: groups of the owner's own beside meaning (add, edit, set, remove layer), shown and hidden on the canvas.
-- R100 model defaults as typologies: a template carries the uses a room may have and what each asks; Villa is the default; rooms get "Used as".
-- R101 programme: people and rooms asked for, kept by Projects, checked against what is drawn; pipeline Programme from a brief with its agent and check.
-- R103-R106 workplaces: five templates (technology, corporate, coworking, contact centre, studio), typology at creation, floor heights, open areas, seats and capacity, 14 office furniture Objects, glass and drywall walls, floors.
-- R107 the site reader brought up to date; R108 kernel boundary: the kernel knows behaviours (kinds), not names; typology rules, capacity and notes moved to Projects.
-- Merged to main: app #99-#116, content #48-#55. Staging and the online preview updated through R105 (not yet for R107, R108).
-- An office floor simulated by script: Workplace technology, 60 people, 8 rooms, doors, furniture; 60 seats, brief complete; a storage unit across a door caught by a note.
-- R109 workplace test-fit solver (content #56) and pipeline Test fit a floor: strips of rooms on the planning module, reception at the entrance, desks until all are seated, every room furnished, four layouts ranked by the programme.
-- R109 app side (#117): a solver may read the project and the Library, a pick pins the Objects it names, a planning module per project; a floor whose walls hold a door keeps its room.
-- Tried in tests and a real browser: 30 m by 18 m shell, 60 people: 60 seats, 7 rooms, 16 meeting and 16 dining seats, 3 booths, no notes, under half a second. 334 app tests pass.
-
-Decided:
-- Owner on the programme: "Is Programme a kernel thing? Sure?"; on seats: "Does seat should touch kernel?"; room-use rules: "Move to projects". The kernel only counts; Projects knows typology and programme.
-- Owner on mixed use and a programme in sections: "Ok let's see that later" (R102 stays open).
-- Owner on the built model: "accurate enough for quantities and construction drawings", "Flat roof" first; export "Yet to decide".
-- Owner on the solver: "Start from first principle"; "it is an empty shell with the core and entrance already drawn, as in a fit-out"; "As per the brief"; columns "Ignore for 1st version"; "As per program"; furnished "All"; module "Per project".
-- Owner: "Now merge and update all staging, main app and artifact."; pipelines audit "Do only 1"; kernel boundary "Ok go", then "Merge".
-
 ## Earlier sessions
 
+- **38** · 2026-11-16 · Kernel and canvas upgrade, layers, typologies (Villa, five workplaces), programme, kernel boundary; a workplace test-fit solver built from first principles — The kernel and canvas were upgraded (R89-R98), then layers, model defaults as typologies, a programme and five workplace templates with office Objects were added and merged (R99-R108). The kernel was held to its boundary: typology, programme and design sense live in Projects. Last, a workplace test-fit solver was built; it waits in app #117 and content #56.
 - **37** · 2026-11-14 · Runs that belong nowhere merged; Claude sessions on the owner's PC; Make a scene, Render views, chains and Innowa conducting a job, tried on staging with Collab 01 — R79 was merged. Then a full Claude Code session on the owner's PC became a stage kind (R82), and on it Make a scene, Render views, chains and Innowa conducting a job were built (R83-R88). The Collab 01 deck ran through the chain and then as a conducted job on staging. All of it waits in PRs #97, #98 and content #46, #47.
 - **36** · 2026-11-12 · Files, image review and Object detail merged; Read a brief replaces Brief to Library; runs that belong nowhere, Blender anywhere and the Studio connector planned — R78, R75 and R73 were built, tried on staging and merged with content #44. The detailed version is now a third form beside an Object, for renders only. Each pipeline does one job. Next: runs that belong nowhere with placing (R79), Blender jobs anywhere (R80) and the Studio connector (R81).
 - **35** · 2026-11-12 · Model 4.0 objects, levels and legacy (R64-R67), easy floor-plan drawing (R68-R72), firm templates (R77), and staging fixes — R63, R64 and R65 merged and live; R66 step 1 merged and live. R66 steps 2-4, R67, R68-R72 and R77 are built, each in its own pull request (#81-#90, content #41-#43), and all on staging for the owner to review together. Staging could not record requests: fixed in #94.

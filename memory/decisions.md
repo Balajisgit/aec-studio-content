@@ -142,3 +142,7 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-20 · Session 42** — Owner on moving Fit to plot's pieces out of the app into content: "Yes".
 - **2026-11-20 · Session 42** — Owner: "Merge the app first, then content." Both merged in that order (aec-studio#120, aec-studio-content#58).
 - **2026-11-20 · Session 42** — Owner: "Wrap up and do The next step": Objects declare how they behave, so the kernel's list of kinds goes.
+- **2026-11-21 · Session 43** — Owner on Object-less Placements: "Always an Object" (a generic one at first, swapped later).
+- **2026-11-21 · Session 43** — Owner on giving the Library's Objects their behaviours: "Edit in place" (same ids; projects' copies get them on upgrade).
+- **2026-11-21 · Session 43** — Owner, after the suggestion to leave behaviours out of the Object fingerprint until R114: "Ok what next".
+- **2026-11-21 · Session 43** — Owner: "Merge and do as suggested" (aec-studio#121, aec-studio-content#59; then zones and the preview), and "Merge" (aec-studio#122, aec-studio-content#60).
