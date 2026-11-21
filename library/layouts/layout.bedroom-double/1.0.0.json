@@ -1,0 +1,23 @@
+{
+ "id": "layout.bedroom-double@1.0.0",
+ "name": "Double bedroom",
+ "contract": "layout.bedroom-double",
+ "about": "A double bed with a wardrobe beside it, its doors towards the bed.",
+ "items": [
+  {
+   "object": "furniture.bed@1.0.0",
+   "at": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  {
+   "object": "furniture.wardrobe@1.0.0",
+   "at": {
+    "x": 1700,
+    "y": 0
+   },
+   "rotation": 90
+  }
+ ]
+}

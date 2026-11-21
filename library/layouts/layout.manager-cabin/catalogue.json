@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "Desk, task chair, two visitor chairs, cabinet",
+ "uses": [
+  "cabin",
+  "executive-cabin"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "keywords": [
+  "cabin",
+  "office",
+  "desk"
+ ]
+}

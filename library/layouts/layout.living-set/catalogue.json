@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "Sofa, two armchairs, coffee table, TV unit",
+ "uses": [
+  "living",
+  "family-lounge"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "keywords": [
+  "living room",
+  "sofa set",
+  "lounge"
+ ]
+}

@@ -17,6 +17,12 @@ agents/  skills/  solvers/  panels/
 checks/definitions/               check definitions with their pass and fail cases
 library/objects/<contract>/<version>.json   Library Objects: their kind (a word), what they do (behaves: band, holds-openings, opening, way-through, stops-bands, cuts-floor-above; R113), parameters and limits, 2D symbol, 3D primitive (formulas of the parameters); <kind>.generic is the one a Placement gets until it is swapped
 library/objects/<contract>/catalogue.json   an entry's catalogue card (R114): line, uses (template use ids), typology (villa, workplace), ifc, keywords; how people find it, not versioned
+library/layouts/<contract>/<version>.json   Layouts (R114 step 3): several Library Objects arranged together, each at a point: {id: layout.<name>@x.y.z, name, items: [{object: id@version, at: {x, y}, rotation?, z?, params?}]}; its catalogue.json beside it
+library/templates/<id>/<version>.json      model defaults (R68; in the Library since R114 step 4, ids unchanged), one per typology (R100: villa; R103: workplace-tech, -corporate, -coworking, -contact-centre, -studio): its spaces (the uses a room may have, each with the
+                                  firm's smallest area and side, whether it needs a window, is wet, is open; uses kept apart), draw-as presets,
+                                  rules (outer and inner walls, every room a floor finish, every floor plate a slab), the usual openings and floor height;
+                                  library/templates/default.json names the one new projects follow; library/templates/proposals/: new templates, new versions
+                                  and a new default proposed from the app (R77), which the template-proposals Action turns into pull requests the owner merges
 library/tree.json                 the Library's browse tree (R114): categories by what a thing is for, each listing its products (a contract, or {name, line?, choices: [contracts]}); unlisted keeps the generic ones out; anything else unplaced shows under More
 library/origins/<contract>/<version>.json   where each Object came from (a project, a pipeline run, the starters); written by the Action with the Object
 library/materials/<id>.json       how a finish is shown in 3D (R92): its id a part's slot (wood, metal, glass) or a kind (wall, slab); {id, name, color, roughness?, metalness?, opacity?, about?}; a firm adds its own in its layer
@@ -31,12 +37,6 @@ docs/<id>.md                      guides shown on the app's Docs page; each says
 scripts/<name>/<version>.js       platform scripts (with a manifest .json) that run on PCs' Helpers; a firm's own live in its layer
 solvers/<id>/<version>.js          a solver (R62): solve(input, geo) gives candidates from a model's spaces and Placements (as geometry); with its manifest <version>.json; runs on the server, locked down
                                    (its manifest's reads, R109: "project" also gives it the project's typology, planning module and programme; "library" the Library's Objects by name)
-templates/<id>/<version>.json      model defaults (R68), one per typology (R100: villa; R103: workplace-tech, -corporate, -coworking, -contact-centre, -studio): its spaces (the uses a room may have, each with the
-                                  firm's smallest area and side, whether it needs a window, is wet, is open; uses kept apart), draw-as presets,
-                                  rules (outer and inner walls, every room a floor finish, every floor plate a slab), the usual openings and floor height;
-                                  templates/default.json names the one new projects follow
-templates/proposals/               new templates, new versions and a new default proposed from the app (R77): the template-proposals
-                                  Action turns each record into a pull request the owner merges
 settings.json                     shared settings: models per tier; library.review (quick review of Library proposals: off, unsure, always)
 checks/validate.js                this repository's automatic check
 ```

@@ -1,0 +1,46 @@
+{
+ "id": "layout.living-set@1.0.0",
+ "name": "Living set",
+ "contract": "layout.living-set",
+ "about": "A three-seater sofa and two armchairs round a coffee table, facing a TV unit.",
+ "items": [
+  {
+   "object": "furniture.sofa@1.0.0",
+   "at": {
+    "x": 0,
+    "y": -1350
+   }
+  },
+  {
+   "object": "furniture.coffee-table@1.0.0",
+   "at": {
+    "x": 0,
+    "y": -300
+   }
+  },
+  {
+   "object": "furniture.armchair@1.0.0",
+   "at": {
+    "x": -1650,
+    "y": -300
+   },
+   "rotation": 270
+  },
+  {
+   "object": "furniture.armchair@1.0.0",
+   "at": {
+    "x": 1650,
+    "y": -300
+   },
+   "rotation": 90
+  },
+  {
+   "object": "furniture.entertainment-unit@1.0.0",
+   "at": {
+    "x": 0,
+    "y": 1150
+   },
+   "rotation": 180
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "Table and four chairs",
+ "uses": [
+  "dining",
+  "pantry"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "keywords": [
+  "dining set",
+  "table and chairs"
+ ]
+}
