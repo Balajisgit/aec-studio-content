@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 44._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 45._
 
 ## What this is
 
@@ -21,7 +21,7 @@ Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discus
 
 ## Words
 
-Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Stage, Decision, Output (pipelines) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library). The word "type" is not used.
+Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Stage, Decision, Output (pipelines) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library) · Layout (several Objects arranged together, placed as one kept unit or broken into separate Objects; R114) · Template (a project's starting rules; in the Library since R114) · Shortlist (a project's pinned Objects and Layouts). The Library is a catalogue of Objects, Layouts and Templates. The word "type" is not used.
 
 ## The kernel (mesh-light)
 
@@ -78,6 +78,25 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 44 · 2026-11-21 · R114 done: the Library as a catalogue, placing and shortlists, Layouts with Keep or Break, templates in the Library
+All four steps of R114 were built and merged at the owner's word. The Library opens as a catalogue with pictures made from each entry's 3D shape; a project's shortlist and the canvas's Place tool place from it; Layouts arrive with Keep or Break; templates now live in the Library. The online preview shows it all.
+
+Done:
+- Step 1: browse tree and catalogue cards as content data; home, category, search and product pages; pictures from each entry's 3D shape; Technical view one tap away.
+- Step 2: a project's shortlist is its pinned Objects; Add to shortlist and Place on canvas; the canvas's Place tool (P), filtered by the selection.
+- Step 3: Layouts (kernel units, rule I13, Keep or Break, move, update, Break); five starter Layouts; Make a Layout from the selection; proposed by the same route.
+- Step 3: behaviours are now in the Object fingerprint.
+- Step 4: templates moved to library/templates (ids unchanged; the old place still read); Start from a template; a page per template with Use for and Start a new project.
+- Merged: aec-studio#123, #124, #125; aec-studio-content#61, #62. R114 marked done.
+- Online preview republished from main (app 6206499).
+- 364 tests, the smoke check and the canvas browser check pass on main.
+
+Decided:
+- Owner: "build R114 step 1", then "Merge" (aec-studio#123, aec-studio-content#61).
+- Owner: "Go step 2", then "Merge" (aec-studio#124).
+- Owner: "Step 3 and 4 go", then "Merge" (aec-studio#125, aec-studio-content#62).
+- Owner: "Ok" to republish the online preview and wrap up.
 
 ### Session 43 · 2026-11-21 · R113 done: Objects say how they behave (model 4.3) and zones; the online preview republished
 The kernel's list of kinds went: every Library Object now says what it does, and every Placement has an Object, a generic one until it is swapped. Zones, the last part of R113, were built: a name and a use on a closed ring of lines, with what each covers worked out. All merged at the owner's word; R113 is done and the online preview shows it.
@@ -150,23 +169,9 @@ Done:
 Decided:
 - Owner: "update preview", then "make all 3 same" (main, staging, the online preview).
 
-### Session 39 · 2026-11-16 · The workplace test fit merged; staging and the online preview updated; the older pull requests cleared
-The workplace test fit (R109) was merged and staging and the online preview were brought up to main. The four older pull requests were then settled: one merged, two closed as out of date, one rebuilt on main and merged. Neither repository has an open pull request.
-
-Done:
-- R109 merged: app #117, then content #56 (the test-fit solver and the pipeline Test fit a floor); the request is done.
-- Staging updated in both repositories to main through R109, each keeping its own extra, history not rewritten.
-- The online preview (BuilderPluss Studio artifact) republished from main: R107, R108 and the test fit.
-- App #94 merged (staging could not record requests): tried on today's main first, 335 tests pass.
-- Content #41 (the Void meaning) and #42 (the first template) closed without merging: main already has the Void meaning and the Villa and workplace templates.
-- Content #43 (template proposals become pull requests) rebuilt on main as #57 and merged; #43 closed with a note.
-
-Decided:
-- Owner: "merge and update all": app #117 then content #56 merged, staging and the online preview updated.
-- Owner on the four older pull requests: "do all as u suggest" (merge app #94, close content #41 and #42, rebuild #43 on main), then "merge #57".
-
 ## Earlier sessions
 
+- **39** · 2026-11-16 · The workplace test fit merged; staging and the online preview updated; the older pull requests cleared — The workplace test fit (R109) was merged and staging and the online preview were brought up to main. The four older pull requests were then settled: one merged, two closed as out of date, one rebuilt on main and merged. Neither repository has an open pull request.
 - **38** · 2026-11-16 · Kernel and canvas upgrade, layers, typologies (Villa, five workplaces), programme, kernel boundary; a workplace test-fit solver built from first principles — The kernel and canvas were upgraded (R89-R98), then layers, model defaults as typologies, a programme and five workplace templates with office Objects were added and merged (R99-R108). The kernel was held to its boundary: typology, programme and design sense live in Projects. Last, a workplace test-fit solver was built; it waits in app #117 and content #56.
 - **37** · 2026-11-14 · Runs that belong nowhere merged; Claude sessions on the owner's PC; Make a scene, Render views, chains and Innowa conducting a job, tried on staging with Collab 01 — R79 was merged. Then a full Claude Code session on the owner's PC became a stage kind (R82), and on it Make a scene, Render views, chains and Innowa conducting a job were built (R83-R88). The Collab 01 deck ran through the chain and then as a conducted job on staging. All of it waits in PRs #97, #98 and content #46, #47.
 - **36** · 2026-11-12 · Files, image review and Object detail merged; Read a brief replaces Brief to Library; runs that belong nowhere, Blender anywhere and the Studio connector planned — R78, R75 and R73 were built, tried on staging and merged with content #44. The detailed version is now a third form beside an Object, for renders only. Each pipeline does one job. Next: runs that belong nowhere with placing (R79), Blender jobs anywhere (R80) and the Studio connector (R81).

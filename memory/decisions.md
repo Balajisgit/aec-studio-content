@@ -146,3 +146,7 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-21 · Session 43** — Owner on giving the Library's Objects their behaviours: "Edit in place" (same ids; projects' copies get them on upgrade).
 - **2026-11-21 · Session 43** — Owner, after the suggestion to leave behaviours out of the Object fingerprint until R114: "Ok what next".
 - **2026-11-21 · Session 43** — Owner: "Merge and do as suggested" (aec-studio#121, aec-studio-content#59; then zones and the preview), and "Merge" (aec-studio#122, aec-studio-content#60).
+- **2026-11-21 · Session 44** — Owner: "build R114 step 1", then "Merge" (aec-studio#123, aec-studio-content#61).
+- **2026-11-21 · Session 44** — Owner: "Go step 2", then "Merge" (aec-studio#124).
+- **2026-11-21 · Session 44** — Owner: "Step 3 and 4 go", then "Merge" (aec-studio#125, aec-studio-content#62).
+- **2026-11-21 · Session 44** — Owner: "Ok" to republish the online preview and wrap up.
