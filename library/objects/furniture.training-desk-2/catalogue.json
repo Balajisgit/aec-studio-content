@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "Narrow desk for two, in rows",
+ "uses": [
+  "training-room"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "training",
+  "classroom",
+  "desk"
+ ]
+}

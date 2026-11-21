@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "Tray with a glass screen",
+ "uses": [
+  "bathroom"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "ifc": "IfcSanitaryTerminal",
+ "keywords": [
+  "shower",
+  "wet area",
+  "glass screen"
+ ]
+}

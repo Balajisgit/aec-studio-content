@@ -1,0 +1,20 @@
+{
+ "catalogue": 1,
+ "line": "A hinged glass door",
+ "uses": [
+  "reception",
+  "cabin",
+  "meeting-small",
+  "meeting-medium"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcDoor",
+ "keywords": [
+  "door",
+  "glass",
+  "hinged"
+ ]
+}

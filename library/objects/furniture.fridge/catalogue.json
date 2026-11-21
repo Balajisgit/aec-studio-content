@@ -1,0 +1,18 @@
+{
+ "catalogue": 1,
+ "line": "Free-standing, one door",
+ "uses": [
+  "kitchen",
+  "pantry"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "fridge",
+  "refrigerator",
+  "appliance"
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "catalogue": 1,
+ "line": "Gypsum board on studs, 100 thick",
+ "uses": [],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcWall",
+ "keywords": [
+  "wall",
+  "drywall",
+  "gypsum",
+  "partition"
+ ]
+}

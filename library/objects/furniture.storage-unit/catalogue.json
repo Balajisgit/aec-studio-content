@@ -1,0 +1,22 @@
+{
+ "catalogue": 1,
+ "line": "Low cabinet for files",
+ "uses": [
+  "open-office",
+  "cabin",
+  "print-area",
+  "record-room",
+  "study"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "storage",
+  "cabinet",
+  "pedestal",
+  "credenza"
+ ]
+}

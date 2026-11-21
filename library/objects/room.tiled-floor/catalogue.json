@@ -1,0 +1,24 @@
+{
+ "catalogue": 1,
+ "line": "Tiles on a bed, wall to wall",
+ "uses": [
+  "kitchen",
+  "bathroom",
+  "toilet",
+  "dining",
+  "living",
+  "pantry"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcCovering",
+ "keywords": [
+  "floor",
+  "tiles",
+  "vitrified",
+  "ceramic",
+  "wet area"
+ ]
+}

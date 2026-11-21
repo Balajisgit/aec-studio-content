@@ -1,0 +1,21 @@
+{
+ "catalogue": 1,
+ "line": "Base cabinets with sink and hob",
+ "uses": [
+  "kitchen",
+  "pantry",
+  "utility"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "kitchen",
+  "counter",
+  "sink",
+  "hob",
+  "cabinets"
+ ]
+}

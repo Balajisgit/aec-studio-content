@@ -1,0 +1,14 @@
+{
+ "catalogue": 1,
+ "line": "Curtain or window wall, 150 thick",
+ "uses": [],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcCurtainWall",
+ "keywords": [
+  "facade",
+  "curtain wall",
+  "glazing"
+ ]
+}

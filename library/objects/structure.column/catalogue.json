@@ -1,0 +1,15 @@
+{
+ "catalogue": 1,
+ "line": "Concrete, rectangular or round",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcColumn",
+ "keywords": [
+  "column",
+  "pillar",
+  "rcc"
+ ]
+}

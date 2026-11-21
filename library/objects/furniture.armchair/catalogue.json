@@ -1,0 +1,20 @@
+{
+ "catalogue": 1,
+ "line": "Lounge chair with arms",
+ "uses": [
+  "living",
+  "family-lounge",
+  "visitor-lounge",
+  "master-bedroom"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "armchair",
+  "lounge chair",
+  "seat"
+ ]
+}

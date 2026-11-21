@@ -1,0 +1,20 @@
+{
+ "catalogue": 1,
+ "line": "Sheet or plank vinyl",
+ "uses": [
+  "open-office",
+  "breakout",
+  "training-room",
+  "bedroom"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcCovering",
+ "keywords": [
+  "floor",
+  "vinyl",
+  "lvt"
+ ]
+}

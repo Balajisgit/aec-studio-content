@@ -1,0 +1,23 @@
+{
+ "catalogue": 1,
+ "line": "Boardroom table with its chairs",
+ "uses": [
+  "meeting-small",
+  "meeting-medium",
+  "meeting-large",
+  "boardroom",
+  "client-meeting",
+  "war-room",
+  "scrum-room"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "meeting table",
+  "boardroom",
+  "conference",
+  "chairs"
+ ]
+}

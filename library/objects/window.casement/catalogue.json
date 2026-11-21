@@ -1,0 +1,15 @@
+{
+ "catalogue": 1,
+ "line": "A glazed casement window",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcWindow",
+ "keywords": [
+  "window",
+  "casement",
+  "glass"
+ ]
+}

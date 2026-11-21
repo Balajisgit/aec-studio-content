@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "A mesh fence along a boundary",
+ "uses": [
+  "plot"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "ifc": "IfcRailing",
+ "keywords": [
+  "fence",
+  "mesh",
+  "boundary"
+ ]
+}

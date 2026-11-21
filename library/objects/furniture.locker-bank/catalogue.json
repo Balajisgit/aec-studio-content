@@ -1,0 +1,15 @@
+{
+ "catalogue": 1,
+ "line": "Personal lockers, three wide",
+ "uses": [
+  "locker-area"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "locker",
+  "storage"
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "catalogue": 1,
+ "line": "Laser-cut metal wall art",
+ "uses": [
+  "living",
+  "family-lounge",
+  "reception",
+  "dining"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurnishingElement",
+ "keywords": [
+  "wall art",
+  "decor",
+  "deer"
+ ]
+}

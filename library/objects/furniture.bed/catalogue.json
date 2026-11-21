@@ -1,0 +1,20 @@
+{
+ "catalogue": 1,
+ "line": "Bed with headboard and mattress",
+ "uses": [
+  "master-bedroom",
+  "bedroom",
+  "staff-room"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "bed",
+  "double",
+  "single",
+  "king",
+  "queen"
+ ]
+}

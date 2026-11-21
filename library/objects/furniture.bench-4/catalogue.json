@@ -1,0 +1,23 @@
+{
+ "catalogue": 1,
+ "line": "Desks facing across a screen",
+ "uses": [
+  "open-office",
+  "production-floor",
+  "hot-desk",
+  "dedicated-desk",
+  "collaboration",
+  "studio",
+  "lab",
+  "team-lead-bay"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "bench",
+  "desking",
+  "workstations"
+ ]
+}

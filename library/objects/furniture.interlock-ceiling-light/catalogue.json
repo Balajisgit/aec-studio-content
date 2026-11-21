@@ -1,0 +1,22 @@
+{
+ "catalogue": 1,
+ "line": "Flush LED ceiling light",
+ "uses": [
+  "living",
+  "family-lounge",
+  "dining",
+  "reception",
+  "master-bedroom"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcLightFixture",
+ "keywords": [
+  "light",
+  "ceiling",
+  "led",
+  "lamp"
+ ]
+}

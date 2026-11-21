@@ -1,0 +1,20 @@
+{
+ "catalogue": 1,
+ "line": "Glass in a slim frame, 50 thick",
+ "uses": [
+  "cabin",
+  "meeting-small",
+  "meeting-medium",
+  "meeting-large",
+  "boardroom"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcWall",
+ "keywords": [
+  "glass partition",
+  "glazed",
+  "wall"
+ ]
+}

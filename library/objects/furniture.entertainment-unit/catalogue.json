@@ -1,0 +1,17 @@
+{
+ "catalogue": 1,
+ "line": "Low TV console",
+ "uses": [
+  "living",
+  "family-lounge"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "tv unit",
+  "media console",
+  "entertainment"
+ ]
+}

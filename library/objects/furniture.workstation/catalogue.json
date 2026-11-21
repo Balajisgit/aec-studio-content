@@ -1,0 +1,23 @@
+{
+ "catalogue": 1,
+ "line": "One person's desk, chair and screen",
+ "uses": [
+  "open-office",
+  "production-floor",
+  "hot-desk",
+  "dedicated-desk",
+  "collaboration",
+  "studio",
+  "lab",
+  "team-lead-bay"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "workstation",
+  "desk",
+  "linear"
+ ]
+}

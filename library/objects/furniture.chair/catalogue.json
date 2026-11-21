@@ -1,0 +1,19 @@
+{
+ "catalogue": 1,
+ "line": "Dining or side chair",
+ "uses": [
+  "dining",
+  "study",
+  "cabin"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "chair",
+  "dining chair",
+  "seat"
+ ]
+}

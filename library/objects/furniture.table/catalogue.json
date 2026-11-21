@@ -1,0 +1,18 @@
+{
+ "catalogue": 1,
+ "line": "Rectangular table on four legs",
+ "uses": [
+  "dining",
+  "meeting-small",
+  "pantry"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "table",
+  "dining table"
+ ]
+}

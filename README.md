@@ -16,6 +16,8 @@ pipelines/<id>/<version>.json     pipelines: the scopes they run in, stages (an 
 agents/  skills/  solvers/  panels/
 checks/definitions/               check definitions with their pass and fail cases
 library/objects/<contract>/<version>.json   Library Objects: their kind (a word), what they do (behaves: band, holds-openings, opening, way-through, stops-bands, cuts-floor-above; R113), parameters and limits, 2D symbol, 3D primitive (formulas of the parameters); <kind>.generic is the one a Placement gets until it is swapped
+library/objects/<contract>/catalogue.json   an entry's catalogue card (R114): line, uses (template use ids), typology (villa, workplace), ifc, keywords; how people find it, not versioned
+library/tree.json                 the Library's browse tree (R114): categories by what a thing is for, each listing its products (a contract, or {name, line?, choices: [contracts]}); unlisted keeps the generic ones out; anything else unplaced shows under More
 library/origins/<contract>/<version>.json   where each Object came from (a project, a pipeline run, the starters); written by the Action with the Object
 library/materials/<id>.json       how a finish is shown in 3D (R92): its id a part's slot (wood, metal, glass) or a kind (wall, slab); {id, name, color, roughness?, metalness?, opacity?, about?}; a firm adds its own in its layer
 requests/R<4 digits>.md   the owner's requests for the shared work (the app, a pipeline, the Library, a setting), noted from any page; files added to one in requests/files/R<n>/
