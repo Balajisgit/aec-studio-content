@@ -1,0 +1,146 @@
+{
+  "id": "office-floor-plan@1.0.0",
+  "name": "Office floor plan",
+  "about": "A playbook Innowa works with you in a chat: the brief becomes the programme, the empty floor is drawn, the workplace test fit gives a first furnished layout, Innowa tidies it against the programme, and you decide at the programme, the layout and the final plan. Innowa's steps are worked in the chat; the app's steps (the test fit) run by themselves.",
+  "useWhen": "An office floor (a tech firm, a capability centre, a studio) from a brief: how many people, which rooms, about how big the floor is. Best in a project made from a workplace template, such as Workplace: tech.",
+  "scopes": [
+    "project"
+  ],
+  "input": {
+    "notes": true,
+    "files": true,
+    "about": "The brief: in the notes or the project's files, e.g. \"60 people, tech, about 1,000 m² floor with a central core, 4 meeting rooms, phone booths, a pantry\"."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "The programme decides. Write only what the brief asks for; ask the owner in the chat where the brief is silent on something that changes the layout (headcount, the floor's size, the core)."
+    },
+    {
+      "id": "R2",
+      "text": "Nothing reaches the project until the owner says so: Innowa works on the run's draft copy; the owner's pick of a layout and the final Accept are each one undoable step."
+    },
+    {
+      "id": "R3",
+      "text": "Work in whole millimetres on the project's plan axes. The floor to fit out is the level's largest room; the core's rooms sit inside it and stay as they are."
+    },
+    {
+      "id": "R4",
+      "text": "Say what you did in a sentence or two at each step_done, and what you left for the owner."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "brief",
+      "name": "Brief to programme",
+      "by": "innowa",
+      "outcome": "The project has its programme: the people, and the rooms the brief asks for, each one of the project's uses.",
+      "instructions": [
+        "Read the brief (step_get gives it) and the project's uses (project_programme).",
+        "Ask the owner, in one short message, only what the brief leaves open and the layout needs: the headcount, the floor's size and shape, where the core is.",
+        "Write the programme with programme_put: people, then each space by use with how many and, where the brief says, about how big. Leave out what the brief does not ask for."
+      ],
+      "tools": [
+        "run_inputs",
+        "project_programme",
+        "programme_put",
+        "project_summary"
+      ],
+      "checks": [
+        "programme-set"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "programme",
+      "name": "The programme",
+      "question": "Is this the programme to plan to? Look at the project's Programme; send it back with what to change.",
+      "form": "confirm",
+      "sendBack": "brief"
+    },
+    {
+      "kind": "stage",
+      "id": "shell",
+      "name": "The empty floor",
+      "by": "innowa",
+      "outcome": "The floor is drawn empty and ready to fit out: its outer walls, the core's rooms inside it, a door in the outer wall from the lift lobby.",
+      "instructions": [
+        "If the project already has the floor drawn, check it (project_look) and say so; else draw it on the run's draft with project_edit (project_ops lists the operations).",
+        "Draw the floor plate as one rectangular room square to the axes (add_room with its outer wall), the core's rooms inside it (lift lobby, stairs, toilets, services), and a door in the outer wall where people come in.",
+        "Leave the floor empty: no furniture. At least 9 m clear on each side of the core, so the fit has room to work.",
+        "Show the owner a picture of it (project_picture) before step_done."
+      ],
+      "tools": [
+        "project_ops",
+        "project_model",
+        "project_look",
+        "project_at",
+        "project_picture",
+        "project_edit",
+        "library_list"
+      ],
+      "checks": [
+        "shell-ready"
+      ]
+    },
+    {
+      "kind": "stage",
+      "id": "fit",
+      "name": "First layouts",
+      "outcome": "A few furnished layouts of the floor that meet the programme, the best first.",
+      "solver": "workplace-test-fit",
+      "checks": [
+        "candidates-found"
+      ],
+      "retries": 0
+    },
+    {
+      "kind": "decision",
+      "id": "pick",
+      "name": "Pick a layout",
+      "question": "Which layout should be drawn? It goes into the project as one step you can undo; Innowa then tidies it with you.",
+      "form": "pick-candidate"
+    },
+    {
+      "kind": "stage",
+      "id": "refine",
+      "name": "Tidy against the programme",
+      "by": "innowa",
+      "outcome": "The layout meets the programme: every room it asks for on the floor, everyone seated, nothing that breaks the project's rules.",
+      "instructions": [
+        "Look at the drawn layout (project_look, project_programme) and list for the owner what is short or off: rooms missing, seats short, rooms much smaller than asked, a door into a wet room from the pantry.",
+        "Fix what is clear on the run's draft with project_edit; ask the owner about anything that is a choice (which room gives way, where the town hall goes).",
+        "Show the result (project_picture) and say what changed. Small misses in size are fine to leave if the owner agrees."
+      ],
+      "tools": [
+        "project_ops",
+        "project_model",
+        "project_look",
+        "project_at",
+        "project_section",
+        "project_picture",
+        "project_programme",
+        "project_edit",
+        "library_list"
+      ],
+      "checks": [
+        "programme-met"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "accept",
+      "name": "Accept the plan",
+      "question": "Put the tidied plan into the project? Send it back to Innowa with what to change.",
+      "form": "confirm",
+      "places": "draft",
+      "sendBack": "refine"
+    }
+  ],
+  "output": {
+    "id": "floor-plan",
+    "name": "Office floor plan",
+    "about": "The floor furnished to the programme: its rooms, seats and furniture, in the project."
+  }
+}
