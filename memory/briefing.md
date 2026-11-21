@@ -60,7 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R110 · canvas (in aec-studio#126) · from project test off1
-- R111 · project
+- R111 · project (in aec-studio#126)
 - R112 · requets
 
 **A pipeline**
