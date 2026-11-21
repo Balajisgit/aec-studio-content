@@ -1,0 +1,20 @@
+{
+ "catalogue": 1,
+ "line": "Square table with four chairs",
+ "uses": [
+  "pantry",
+  "cafeteria",
+  "community-cafe",
+  "breakout"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "cafe",
+  "cafeteria",
+  "table",
+  "chairs"
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "catalogue": 1,
+ "line": "Carpet tiles, wall to wall",
+ "uses": [
+  "open-office",
+  "cabin",
+  "meeting-small",
+  "meeting-medium",
+  "meeting-large",
+  "boardroom"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcCovering",
+ "keywords": [
+  "floor",
+  "carpet"
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "catalogue": 1,
+ "line": "A door, make not chosen yet",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcDoor",
+ "keywords": [
+  "door"
+ ]
+}

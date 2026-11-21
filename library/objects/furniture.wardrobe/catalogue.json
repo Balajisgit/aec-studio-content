@@ -1,0 +1,19 @@
+{
+ "catalogue": 1,
+ "line": "Full-height, 1 to 4 doors",
+ "uses": [
+  "master-bedroom",
+  "bedroom",
+  "staff-room",
+  "dressing"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "wardrobe",
+  "cupboard",
+  "closet"
+ ]
+}

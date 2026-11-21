@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "Brick, 230 thick",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcWall",
+ "keywords": [
+  "wall",
+  "brick",
+  "masonry",
+  "outer wall"
+ ]
+}

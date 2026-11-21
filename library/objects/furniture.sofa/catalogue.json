@@ -1,0 +1,21 @@
+{
+ "catalogue": 1,
+ "line": "Upholstered, 2 to 4 seats",
+ "uses": [
+  "living",
+  "family-lounge",
+  "visitor-lounge",
+  "reception"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "sofa",
+  "couch",
+  "seater",
+  "lounge"
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "catalogue": 1,
+ "line": "Glass enclosure on a tray",
+ "uses": [
+  "bathroom"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "ifc": "IfcSanitaryTerminal",
+ "keywords": [
+  "shower",
+  "cubicle",
+  "enclosure",
+  "wet area"
+ ]
+}

@@ -1,0 +1,158 @@
+{
+ "catalogue": 1,
+ "about": "How people find things in the Library (R114): the browse tree, by what each is for. Reorganizing is changing this file; no Object moves. A product is one entry (its contract), or several shown as one product with choices ({name, line?, choices: [contracts]}, the first leading). Entries in unlisted are kept out of the catalogue (the generic ones a Placement gets until it is swapped); any other entry the tree does not place shows under More.",
+ "categories": [
+  {
+   "id": "seating",
+   "name": "Seating",
+   "about": "Sofas, chairs and seats",
+   "products": [
+    "furniture.sofa",
+    "furniture.armchair",
+    "furniture.chair",
+    "furniture.task-chair",
+    "furniture.phone-booth-pod"
+   ]
+  },
+  {
+   "id": "tables-desks",
+   "name": "Tables and desks",
+   "about": "Dining, meeting and work",
+   "products": [
+    "furniture.table",
+    "furniture.coffee-table",
+    "furniture.desk",
+    "furniture.workstation",
+    {
+     "name": "Bench",
+     "line": "For 2, 4 or 6 people",
+     "choices": [
+      "furniture.bench-4",
+      "furniture.bench-2",
+      "furniture.bench-6"
+     ]
+    },
+    {
+     "name": "Meeting table",
+     "line": "For 4, 8 or 12 people",
+     "choices": [
+      "furniture.meeting-table-8",
+      "furniture.meeting-table-4",
+      "furniture.meeting-table-12"
+     ]
+    },
+    "furniture.training-desk-2",
+    "furniture.cafe-table-4",
+    "furniture.reception-desk"
+   ]
+  },
+  {
+   "id": "beds",
+   "name": "Beds",
+   "about": "Beds for every bedroom",
+   "products": [
+    "furniture.bed"
+   ]
+  },
+  {
+   "id": "storage",
+   "name": "Storage",
+   "about": "Wardrobes, cabinets and lockers",
+   "products": [
+    "furniture.wardrobe",
+    "furniture.storage-unit",
+    "furniture.locker-bank",
+    "furniture.entertainment-unit"
+   ]
+  },
+  {
+   "id": "kitchen",
+   "name": "Kitchen",
+   "about": "Counters and appliances",
+   "products": [
+    "furniture.kitchen-counter",
+    "furniture.fridge"
+   ]
+  },
+  {
+   "id": "bathroom",
+   "name": "Bathroom",
+   "about": "Showers and fittings",
+   "products": [
+    "furniture.shower-cubicle",
+    "furniture.shower"
+   ]
+  },
+  {
+   "id": "doors-windows",
+   "name": "Doors and windows",
+   "about": "What goes in a wall",
+   "products": [
+    "door.single-leaf",
+    "door.glass-single",
+    "window.casement"
+   ]
+  },
+  {
+   "id": "walls",
+   "name": "Walls",
+   "about": "Outer walls, partitions and glazing",
+   "products": [
+    "wall.brick-230",
+    "wall.partition-115",
+    "wall.drywall-100",
+    "wall.glazed-partition-50",
+    "wall.glazed-facade-150"
+   ]
+  },
+  {
+   "id": "floors-slabs",
+   "name": "Floors and slabs",
+   "about": "Floor finishes and slabs",
+   "products": [
+    "room.tiled-floor",
+    "room.vinyl-floor",
+    "room.carpet-tile",
+    "room.polished-concrete",
+    "slab.rcc-150"
+   ]
+  },
+  {
+   "id": "structure",
+   "name": "Structure",
+   "about": "Columns and stairs",
+   "products": [
+    "structure.column",
+    "structure.stair"
+   ]
+  },
+  {
+   "id": "lighting-decor",
+   "name": "Lighting and decor",
+   "about": "Lights, art and the finishing touch",
+   "products": [
+    "furniture.interlock-ceiling-light",
+    "furniture.deer-wall-art"
+   ]
+  },
+  {
+   "id": "outdoor",
+   "name": "Outdoor",
+   "about": "Fences, gates and railings",
+   "products": [
+    "fence.mesh",
+    "gate.swing",
+    "railing.generic"
+   ]
+  }
+ ],
+ "unlisted": [
+  "door.generic",
+  "window.generic",
+  "wall.generic",
+  "slab.generic",
+  "room.generic",
+  "fence.generic",
+  "gate.generic"
+ ]
+}

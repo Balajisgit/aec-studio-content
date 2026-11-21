@@ -1,0 +1,13 @@
+{
+ "catalogue": 1,
+ "line": "A floor finish, not chosen yet",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcCovering",
+ "keywords": [
+  "floor"
+ ]
+}

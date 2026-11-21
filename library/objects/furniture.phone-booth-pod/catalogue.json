@@ -1,0 +1,19 @@
+{
+ "catalogue": 1,
+ "line": "Freestanding booth for one",
+ "uses": [
+  "phone-booth",
+  "open-office",
+  "breakout",
+  "focus-room"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "phone booth",
+  "pod",
+  "acoustic"
+ ]
+}

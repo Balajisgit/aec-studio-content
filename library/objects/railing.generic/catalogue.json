@@ -1,0 +1,18 @@
+{
+ "catalogue": 1,
+ "line": "A railing, make not chosen yet",
+ "uses": [
+  "balcony",
+  "terrace",
+  "stair"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcRailing",
+ "keywords": [
+  "railing",
+  "balustrade"
+ ]
+}

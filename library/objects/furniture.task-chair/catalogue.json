@@ -1,0 +1,24 @@
+{
+ "catalogue": 1,
+ "line": "Office chair on a base",
+ "uses": [
+  "open-office",
+  "production-floor",
+  "hot-desk",
+  "dedicated-desk",
+  "collaboration",
+  "studio",
+  "lab",
+  "team-lead-bay",
+  "cabin"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "office chair",
+  "task chair",
+  "seat"
+ ]
+}

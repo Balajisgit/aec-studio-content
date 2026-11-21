@@ -1,0 +1,17 @@
+{
+ "catalogue": 1,
+ "line": "Straight flight of solid steps",
+ "uses": [
+  "stair"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcStair",
+ "keywords": [
+  "stair",
+  "staircase",
+  "steps"
+ ]
+}

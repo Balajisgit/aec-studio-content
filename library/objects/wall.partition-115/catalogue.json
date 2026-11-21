@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "Half-brick or block, 115 thick",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcWall",
+ "keywords": [
+  "wall",
+  "partition",
+  "block",
+  "inner wall"
+ ]
+}

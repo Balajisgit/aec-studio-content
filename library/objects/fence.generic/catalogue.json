@@ -1,0 +1,12 @@
+{
+ "catalogue": 1,
+ "line": "A fence, make not chosen yet",
+ "uses": [],
+ "typology": [
+  "villa"
+ ],
+ "ifc": "IfcRailing",
+ "keywords": [
+  "fence"
+ ]
+}

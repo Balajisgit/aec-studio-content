@@ -1,0 +1,19 @@
+{
+ "catalogue": 1,
+ "line": "Work desk with panel ends",
+ "uses": [
+  "study",
+  "cabin",
+  "executive-cabin"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "desk",
+  "study table",
+  "writing desk"
+ ]
+}

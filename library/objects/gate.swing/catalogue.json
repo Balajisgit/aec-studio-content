@@ -1,0 +1,17 @@
+{
+ "catalogue": 1,
+ "line": "A one-leaf swing gate in a fence",
+ "uses": [
+  "plot",
+  "car-porch"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "ifc": "IfcDoor",
+ "keywords": [
+  "gate",
+  "swing",
+  "boundary"
+ ]
+}

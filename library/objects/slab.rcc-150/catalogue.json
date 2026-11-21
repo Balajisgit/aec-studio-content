@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "Reinforced concrete, 150 thick",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcSlab",
+ "keywords": [
+  "slab",
+  "rcc",
+  "concrete",
+  "floor slab"
+ ]
+}

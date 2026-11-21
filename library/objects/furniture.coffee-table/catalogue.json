@@ -1,0 +1,19 @@
+{
+ "catalogue": 1,
+ "line": "Low table for a sofa",
+ "uses": [
+  "living",
+  "family-lounge",
+  "visitor-lounge"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "coffee table",
+  "centre table",
+  "low table"
+ ]
+}

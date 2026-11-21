@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "High counter and worktop",
+ "uses": [
+  "reception"
+ ],
+ "typology": [
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "reception",
+  "front desk",
+  "counter"
+ ]
+}

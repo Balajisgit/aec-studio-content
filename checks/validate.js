@@ -41,6 +41,7 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
       if (!existsSync(join(cd, v.replace(".detail.json", ".json")))) problems.push(`${rel}: a detail sits beside its Object version, and ${v.replace(".detail.json", ".json")} is not there`);
       if (!dd || !Array.isArray(dd.files) || !dd.files.length || dd.files.some((f) => !f || !f.name || !/^[a-f0-9]{64}$/.test(String(f.sha256 || "")) || !["assets", "pc"].includes(f.kept))) problems.push(`${rel}: detail.files lists each detailed file with its name, sha256 and where it is kept (assets or pc)`);
       continue; }
+    if (v === "catalogue.json") continue; // its catalogue card (R114), checked below
     if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
     let o; try { o = JSON.parse(readFileSync(join(cd, v), "utf8")); } catch { continue; } // reported above
     if (o.id !== `${c}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${c}@${v.slice(0, -5)}`);
@@ -104,6 +105,39 @@ try { for (const c of readdirSync(join(root, "library", "origins"))) { const cd 
     if (o.made !== undefined && !MADE.includes(o.made)) problems.push(`${rel}: made must be ${MADE.join(", ")}`);
     if (o.via === "pipeline" && !o.pipeline) problems.push(`${rel}: a pipeline origin names the pipeline`);
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/origins: ${e.message}`); }
+// R114: the Library as a catalogue. library/objects/<contract>/catalogue.json is an entry's card (how people find it; not
+// versioned: an Object never changes, how it is found may): line, uses (template uses), typology, ifc, keywords.
+// library/tree.json is the browse tree: categories by what a thing is for, each listing its products (a contract, or
+// {name, line?, choices: [contracts]} shown as one product with choices); unlisted keeps entries out (the generic ones).
+// Every entry named is in the Library, and in one place only. The app reads the same rules (managers/library/catalogue.js).
+const CARD = ["catalogue", "line", "uses", "typology", "ifc", "keywords"], TYPOLOGIES = ["villa", "workplace"];
+const contracts = (() => { try { return readdirSync(objDir).filter((c) => c !== ".gitkeep" && statSync(join(objDir, c)).isDirectory()); } catch { return []; } })();
+const useIds = new Set(); try { for (const t of readdirSync(join(root, "templates"))) { const td = join(root, "templates", t); if (!statSync(td).isDirectory() || t === "proposals") continue;
+  for (const v of readdirSync(td)) { try { for (const u of (JSON.parse(readFileSync(join(td, v), "utf8")).spaces || {}).uses || []) useIds.add(u.id); } catch {} } } } catch {}
+for (const c of contracts) { const rel = `library/objects/${c}/catalogue.json`; if (!existsSync(join(root, rel))) continue;
+  let d; try { d = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON (${e.message})`); continue; }
+  if (!d || typeof d !== "object" || Array.isArray(d)) { problems.push(`${rel}: a card is a JSON object`); continue; }
+  if (d.catalogue !== 1) problems.push(`${rel}: catalogue must be 1`);
+  if (typeof d.line !== "string" || !d.line.trim() || d.line.length > 80) problems.push(`${rel}: line is one line under the name, up to 80 characters`);
+  if (d.uses !== undefined && (!Array.isArray(d.uses) || d.uses.some((u) => !WORD.test(String(u))))) problems.push(`${rel}: uses lists template uses by id (living, bedroom, meeting-small)`);
+  else for (const u of d.uses || []) if (useIds.size && !useIds.has(u)) problems.push(`${rel}: no template has the use ${u}`);
+  if (d.typology !== undefined && (!Array.isArray(d.typology) || d.typology.some((t) => !TYPOLOGIES.includes(t)))) problems.push(`${rel}: typology lists ${TYPOLOGIES.join(" or ")}`);
+  if (d.ifc !== undefined && !/^Ifc[A-Z][A-Za-z]+$/.test(String(d.ifc))) problems.push(`${rel}: ifc is an IFC class, like IfcFurniture or IfcDoor`);
+  if (d.keywords !== undefined && (!Array.isArray(d.keywords) || d.keywords.some((k) => typeof k !== "string" || !k.trim()))) problems.push(`${rel}: keywords lists words people search with`);
+  for (const k of Object.keys(d)) if (!CARD.includes(k)) problems.push(`${rel}: ${k} is not something a card says`); }
+if (existsSync(join(root, "library", "tree.json"))) { let t = null; try { t = JSON.parse(readFileSync(join(root, "library", "tree.json"), "utf8")); } catch (e) { problems.push(`library/tree.json: not valid JSON (${e.message})`); }
+  if (t) { const seen = new Map(), ids = new Set(), P = (m) => problems.push(`library/tree.json: ${m}`);
+    const named = (c, where) => { if (!contracts.includes(c)) P(`${where}: there is no Library entry ${c}`); if (seen.has(c)) P(`${c} is in ${seen.get(c)} and ${where}: an entry has one place`); else seen.set(c, where); };
+    if (t.catalogue !== 1 || !Array.isArray(t.categories)) P("the tree is {catalogue: 1, categories: [...], unlisted?: [...]}");
+    for (const cat of t.categories || []) { if (!cat || !WORD.test(String(cat.id || ""))) { P("each category has an id, lower case with hyphens"); continue; }
+      if (cat.id === "more") P("more is kept for what the tree does not place"); if (ids.has(cat.id)) P(`category ${cat.id} is there twice`); ids.add(cat.id);
+      if (!String(cat.name || "").trim()) P(`category ${cat.id} has no name`);
+      for (const x of Array.isArray(cat.products) ? cat.products : (P(`category ${cat.id} lists its products`), [])) {
+        if (typeof x === "string") { named(x, cat.id); continue; }
+        if (!x || !String(x.name || "").trim() || !Array.isArray(x.choices) || x.choices.length < 2) { P(`${cat.id}: a product with choices is {name, line?, choices: [two or more contracts]}`); continue; }
+        for (const c of x.choices) named(String(c), `${cat.id} (${x.name})`); } }
+    for (const c of Array.isArray(t.unlisted) ? t.unlisted : []) named(String(c), "unlisted");
+    for (const k of Object.keys(t)) if (!["catalogue", "about", "categories", "unlisted"].includes(k)) P(`${k} is not something the tree says`); } } // an entry the tree does not place shows under More: a new Object proposed from a project needs no change here
 const propDir = join(root, "library", "proposals");
 try { for (const n of readdirSync(propDir)) { if (n === ".gitkeep") continue; const rel = `library/proposals/${n}`, m = /^([a-z]+(?:\.[a-z0-9-]+)+)@(\d+\.\d+\.\d+)\.json$/.exec(n);
   if (!m) { problems.push(`${rel}: name a proposal <contract>@<version>.json, e.g. fixture.wc@1.0.0.json`); continue; }
@@ -149,6 +183,7 @@ for (const n of readDir("agents")) { try { const a = JSON.parse(readFileSync(joi
 const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects", "pick-candidate", "keep-files", "review-images", "keep-detail"], SCOPES = ["project", "library", "studio"];
 try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(root, "pipelines", p); if (!statSync(pd).isDirectory()) continue;
   for (const v of readdirSync(pd)) { const rel = `pipelines/${p}/${v}`;
+    if (v === "catalogue.json") continue; // its catalogue card (R114), checked below
     if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
     let d; try { d = JSON.parse(readFileSync(join(pd, v), "utf8")); } catch { continue; }
     if (d.id !== `${p}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${p}@${v.slice(0, -5)}`);

@@ -1,0 +1,20 @@
+{
+ "catalogue": 1,
+ "line": "Polished concrete topping",
+ "uses": [
+  "studio",
+  "cafeteria",
+  "workshop",
+  "car-porch"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcCovering",
+ "keywords": [
+  "floor",
+  "concrete",
+  "polished"
+ ]
+}

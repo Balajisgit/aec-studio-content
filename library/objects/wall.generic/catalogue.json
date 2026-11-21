@@ -1,0 +1,13 @@
+{
+ "catalogue": 1,
+ "line": "A wall, build-up not chosen yet",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcWall",
+ "keywords": [
+  "wall"
+ ]
+}

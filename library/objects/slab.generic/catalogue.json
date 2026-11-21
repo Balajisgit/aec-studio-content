@@ -1,0 +1,13 @@
+{
+ "catalogue": 1,
+ "line": "A slab, make not chosen yet",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcSlab",
+ "keywords": [
+  "slab"
+ ]
+}
