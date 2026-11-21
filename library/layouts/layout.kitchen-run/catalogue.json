@@ -1,0 +1,17 @@
+{
+ "catalogue": 1,
+ "line": "Counter with sink and hob, and a fridge",
+ "uses": [
+  "kitchen",
+  "pantry"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "keywords": [
+  "kitchen",
+  "counter",
+  "fridge"
+ ]
+}

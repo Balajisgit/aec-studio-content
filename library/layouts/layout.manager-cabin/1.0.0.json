@@ -1,0 +1,46 @@
+{
+ "id": "layout.manager-cabin@1.0.0",
+ "name": "Manager's cabin",
+ "contract": "layout.manager-cabin",
+ "about": "A desk with its chair, two visitor chairs across it and a low cabinet behind.",
+ "items": [
+  {
+   "object": "furniture.desk@1.0.0",
+   "at": {
+    "x": 0,
+    "y": 0
+   },
+   "rotation": 180
+  },
+  {
+   "object": "furniture.task-chair@1.0.0",
+   "at": {
+    "x": 0,
+    "y": 650
+   },
+   "rotation": 180
+  },
+  {
+   "object": "furniture.chair@1.0.0",
+   "at": {
+    "x": -400,
+    "y": -750
+   }
+  },
+  {
+   "object": "furniture.chair@1.0.0",
+   "at": {
+    "x": 400,
+    "y": -750
+   }
+  },
+  {
+   "object": "furniture.storage-unit@1.0.0",
+   "at": {
+    "x": 0,
+    "y": 1350
+   },
+   "rotation": 180
+  }
+ ]
+}

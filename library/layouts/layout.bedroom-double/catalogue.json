@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "Bed and wardrobe",
+ "uses": [
+  "master-bedroom",
+  "bedroom"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "keywords": [
+  "bedroom set",
+  "bed",
+  "wardrobe"
+ ]
+}

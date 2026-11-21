@@ -1,6 +1,6 @@
 // .github/scripts/template-proposals.mjs — run by .github/workflows/template-proposals.yml (R77).
-//   open            for every record in templates/proposals/ on main without a branch yet: a branch template/<id>-<version>
-//                   that adds templates/<id>/<version>.json (and, when asked, makes it the default in templates/default.json),
+//   open            for every record in library/templates/proposals/ on main without a branch yet: a branch template/<id>-<version>
+//                   that adds library/templates/<id>/<version>.json (and, when asked, makes it the default in library/templates/default.json),
 //                   or template/default-<id> that only changes the default; the record removed; a pull request for the owner;
 //                   the content checks run on it.
 //   closed <branch> its pull request was closed without merging: remove its record from main and delete the branch.
@@ -11,7 +11,7 @@ import { join } from "node:path";
 const run = (cmd, ...a) => execFileSync(cmd, a, { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
 const git = (...a) => run("git", ...a), tryGit = (...a) => { try { return git(...a); } catch { return null; } };
 const gh = (...a) => run(process.env.GH_BIN || "gh", ...a);
-const DIR = "templates/proposals", NEW = /^([a-z][a-z0-9-]*)@(\d+\.\d+\.\d+)\.json$/, DEF = /^default-([a-z][a-z0-9-]*)\.json$/;
+const DIR = "library/templates/proposals", NEW = /^([a-z][a-z0-9-]*)@(\d+\.\d+\.\d+)\.json$/, DEF = /^default-([a-z][a-z0-9-]*)\.json$/;
 git("config", "user.name", "github-actions[bot]"); git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com");
 
 /** What the owner reads (often on a phone): what it is, what each line is built as, and where it came from. */
@@ -38,15 +38,15 @@ if (cmd === "open") {
   for (const file of files) {
     let rec; try { rec = JSON.parse(readFileSync(join(DIR, file), "utf8")); } catch (e) { console.log(`::error file=${DIR}/${file}::not valid JSON (${e.message})`); failed++; continue; }
     const n = NEW.exec(file), d = DEF.exec(file); if (!n && !d) { console.log(`::error file=${DIR}/${file}::name it <id>@<version>.json or default-<id>.json`); failed++; continue; }
-    const id = n ? n[1] : d[1], branch = n ? `template/${id}-${n[2]}` : `template/default-${id}`, target = n ? `templates/${id}/${n[2]}.json` : null;
+    const id = n ? n[1] : d[1], branch = n ? `template/${id}-${n[2]}` : `template/default-${id}`, target = n ? `library/templates/${id}/${n[2]}.json` : null;
     if (n && (!rec.template || rec.template.id !== `${id}@${n[2]}`)) { console.log(`::error file=${DIR}/${file}::template.id must be ${id}@${n[2]}`); failed++; continue; }
     if (tryGit("ls-remote", "--exit-code", "--heads", "origin", branch) !== null) { console.log(`${file}: its pull request is already open (branch ${branch}).`); continue; }
     if (target && existsSync(target)) { console.log(`::warning file=${DIR}/${file}::${target} is already there; this record can be removed.`); continue; }
-    if (!n && !existsSync(join("templates", id))) { console.log(`::error file=${DIR}/${file}::there is no template ${id}`); failed++; continue; }
+    if (!n && !existsSync(join("library/templates", id))) { console.log(`::error file=${DIR}/${file}::there is no template ${id}`); failed++; continue; }
     git("checkout", "-q", "-B", branch, "origin/main");
     const add = [];
-    if (target) { mkdirSync(join("templates", id), { recursive: true }); writeFileSync(target, JSON.stringify(rec.template, null, 2) + "\n"); add.push(target); }
-    if (rec.makeDefault || !n) { const df = "templates/default.json"; let cur = {}; try { cur = JSON.parse(readFileSync(df, "utf8")); } catch {}
+    if (target) { mkdirSync(join("library/templates", id), { recursive: true }); writeFileSync(target, JSON.stringify(rec.template, null, 2) + "\n"); add.push(target); }
+    if (rec.makeDefault || !n) { const df = "library/templates/default.json"; let cur = {}; try { cur = JSON.parse(readFileSync(df, "utf8")); } catch {}
       writeFileSync(df, JSON.stringify({ ...cur, template: id }, null, 2) + "\n"); add.push(df); }
     git("rm", "-q", join(DIR, file)); git("add", ...add);
     const name = rec.template ? rec.template.name : id, title = n ? `Template: add ${name} (${id}@${n[2]})${rec.makeDefault ? " as the default" : ""}` : `Template: make ${id} the default`;

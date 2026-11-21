@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { settingProblem } from "./settings.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", ".."), problems = [];
-const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "docs", "scripts", "templates", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
+const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "docs", "scripts", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
 for (const n of readdirSync(root)) if (!n.startsWith(".git") && !TOP.has(n)) problems.push(`${n}: not part of the content layout (see README.md)`);
 const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n === "node_modules") continue; const f = join(d, n); if (statSync(f).isDirectory()) walk(f); else if (n.endsWith(".json")) {
   try { JSON.parse(readFileSync(f, "utf8")); } catch (e) { problems.push(`${relative(root, f).split(sep).join("/")}: not valid JSON (${e.message})`); } } } };
@@ -61,18 +61,18 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
     if (o.on === "segment") { const l = o.length || {};
       if (!(Number.isInteger(l.min) && Number.isInteger(l.max) && Number.isInteger(l.default) && 0 < l.min && l.min <= l.default && l.default <= l.max)) problems.push(`${rel}: an Object on a segment needs length {default, min, max} in whole mm`); }
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/objects: ${e.message}`); }
-// templates/<id>/<version>.json (R68): house defaults; every Object they name is in the Library, every preset says its kind.
-try { const td = join(root, "templates");
+// library/templates/<id>/<version>.json (R68; in the Library since R114): house defaults; every Object they name is in the Library, every preset says its kind.
+try { const td = join(root, "library", "templates");
   for (const id of readdirSync(td)) { const dir = join(td, id);
     if (id === "proposals") { // records the app commits (R77); the template-proposals Action turns each into a pull request
-      for (const n of readdirSync(dir)) { if (n === ".gitkeep") continue; const rel = `templates/proposals/${n}`, m = /^(?:([a-z][a-z0-9-]*)@(\d+\.\d+\.\d+)|default-([a-z][a-z0-9-]*))\.json$/.exec(n);
+      for (const n of readdirSync(dir)) { if (n === ".gitkeep") continue; const rel = `library/templates/proposals/${n}`, m = /^(?:([a-z][a-z0-9-]*)@(\d+\.\d+\.\d+)|default-([a-z][a-z0-9-]*))\.json$/.exec(n);
         if (!m) { problems.push(`${rel}: name it <id>@<version>.json or default-<id>.json`); continue; } let r; try { r = JSON.parse(readFileSync(join(dir, n), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
         if (m[1] && (!r.template || r.template.id !== `${m[1]}@${m[2]}`)) problems.push(`${rel}: template.id must be ${m[1]}@${m[2]}`);
         if (m[3] && r.default !== m[3]) problems.push(`${rel}: default must be ${m[3]}`); }
       continue; }
-    if (id === "default.json") { try { const d = JSON.parse(readFileSync(dir, "utf8")); if (!existsSync(join(td, String(d.template)))) problems.push(`templates/default.json: there is no template ${d.template}`); } catch (e) { problems.push(`templates/default.json: ${e.message}`); } continue; }
-    if (!statSync(dir).isDirectory()) { problems.push(`templates/${id}: a template lives in a folder per id`); continue; }
-    for (const v of readdirSync(dir)) { const rel = `templates/${id}/${v}`; let t; try { t = JSON.parse(readFileSync(join(dir, v), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
+    if (id === "default.json") { try { const d = JSON.parse(readFileSync(dir, "utf8")); if (!existsSync(join(td, String(d.template)))) problems.push(`library/templates/default.json: there is no template ${d.template}`); } catch (e) { problems.push(`library/templates/default.json: ${e.message}`); } continue; }
+    if (!statSync(dir).isDirectory()) { problems.push(`library/templates/${id}: a template lives in a folder per id`); continue; }
+    for (const v of readdirSync(dir)) { const rel = `library/templates/${id}/${v}`; let t; try { t = JSON.parse(readFileSync(join(dir, v), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
       if (t.id !== `${id}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${id}@${v.slice(0, -5)}`);
       const refs = [...(t.presets || []), ...((t.rules && t.rules.faces) || [])].map((p) => p.objectRef).concat(Object.values(t.openings || {})).filter(Boolean);
       for (const r of refs) { const [c, ver] = String(r).split("@"); if (!existsSync(join(root, "library", "objects", c, `${ver}.json`))) problems.push(`${rel}: there is no Library Object ${r}`); }
@@ -90,7 +90,7 @@ try { const td = join(root, "templates");
           if (t.spaces.headUnit != null && !have.has(t.spaces.headUnit)) problems.push(`${rel}: spaces.headUnit: no use holds ${t.spaces.headUnit}`); }
         for (const p of t.spaces.apart || []) if (!Array.isArray(p) || p.length !== 2 || p.some((x) => !seen.has(x))) problems.push(`${rel}: spaces.apart names two of its uses (${JSON.stringify(p)})`); }
       const ids = new Set((t.presets || []).map((p) => p.id)); const L = t.rules && t.rules.lines; if (L) for (const k of ["outer", "inner"]) if (!ids.has(L[k])) problems.push(`${rel}: rules.lines.${k} must name a preset`); } }
-} catch (e) { if (e.code !== "ENOENT") problems.push(`templates: ${e.message}`); }
+} catch (e) { if (e.code !== "ENOENT") problems.push(`library/templates: ${e.message}`); }
 // library/proposals/<contract>@<version>.json: records the app commits when the owner proposes a Project Object; the
 // library-proposals Action turns each into a pull request that adds it to library/objects/ and removes the record.
 // library/origins/<contract>/<version>.json: where an Object came from; its id matches the path and the Object is there.
@@ -112,9 +112,25 @@ try { for (const c of readdirSync(join(root, "library", "origins"))) { const cd 
 // Every entry named is in the Library, and in one place only. The app reads the same rules (managers/library/catalogue.js).
 const CARD = ["catalogue", "line", "uses", "typology", "ifc", "keywords"], TYPOLOGIES = ["villa", "workplace"];
 const contracts = (() => { try { return readdirSync(objDir).filter((c) => c !== ".gitkeep" && statSync(join(objDir, c)).isDirectory()); } catch { return []; } })();
-const useIds = new Set(); try { for (const t of readdirSync(join(root, "templates"))) { const td = join(root, "templates", t); if (!statSync(td).isDirectory() || t === "proposals") continue;
+// R114 step 3: library/layouts/<contract>/<version>.json, several Objects arranged together (Objects only, each at a point):
+// {id, name, contract, about?, items: [{object: id@version, at: {x, y}, rotation?, z?, params?}]}; every Object it names is
+// in the Library at that version, and stands at a point (not on a line, not an opening). Its card beside it, like an Object's.
+const layDir = join(root, "library", "layouts"), layouts = (() => { try { return readdirSync(layDir).filter((c) => statSync(join(layDir, c)).isDirectory()); } catch { return []; } })();
+for (const c of layouts) { if (!/^layout\.[a-z0-9-]+$/.test(c)) problems.push(`library/layouts/${c}: a Layout's contract is layout.<name>`);
+  for (const v of readdirSync(join(layDir, c))) { const rel = `library/layouts/${c}/${v}`; if (v === "catalogue.json") continue;
+    if (!/^\d+\.\d+\.\d+\.json$/.test(v)) { problems.push(`${rel}: name each version like 1.0.0.json`); continue; }
+    let L; try { L = JSON.parse(readFileSync(join(layDir, c, v), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON (${e.message})`); continue; }
+    if (L.id !== `${c}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${c}@${v.slice(0, -5)}`); if (L.contract !== c) problems.push(`${rel}: contract must be ${c}`);
+    if (!String(L.name || "").trim()) problems.push(`${rel}: name is missing`);
+    if (!Array.isArray(L.items) || !L.items.length) { problems.push(`${rel}: items lists the Objects it places`); continue; }
+    L.items.forEach((it, k) => { const [oc, ov] = String((it && it.object) || "").split("@"), f = join(objDir, oc || "_", `${ov}.json`);
+      if (!oc || !ov || !existsSync(f)) { problems.push(`${rel}: item ${k + 1}: there is no Library Object ${it && it.object}`); return; }
+      if (!it.at || !Number.isInteger(it.at.x) || !Number.isInteger(it.at.y)) problems.push(`${rel}: item ${k + 1}: at is {x, y} in whole mm`);
+      try { const o = JSON.parse(readFileSync(f, "utf8")); if ((o.on || "node") !== "node" || (o.behaves || []).includes("opening")) problems.push(`${rel}: item ${k + 1}: ${o.name} does not stand at a point; a Layout is Objects at points only`); } catch {} }); } }
+const cardOf = (c) => (c.startsWith("layout.") ? `library/layouts/${c}/catalogue.json` : `library/objects/${c}/catalogue.json`);
+const useIds = new Set(); try { for (const t of readdirSync(join(root, "library", "templates"))) { const td = join(root, "library", "templates", t); if (!statSync(td).isDirectory() || t === "proposals") continue;
   for (const v of readdirSync(td)) { try { for (const u of (JSON.parse(readFileSync(join(td, v), "utf8")).spaces || {}).uses || []) useIds.add(u.id); } catch {} } } } catch {}
-for (const c of contracts) { const rel = `library/objects/${c}/catalogue.json`; if (!existsSync(join(root, rel))) continue;
+for (const c of [...contracts, ...layouts]) { const rel = cardOf(c); if (!existsSync(join(root, rel))) continue;
   let d; try { d = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON (${e.message})`); continue; }
   if (!d || typeof d !== "object" || Array.isArray(d)) { problems.push(`${rel}: a card is a JSON object`); continue; }
   if (d.catalogue !== 1) problems.push(`${rel}: catalogue must be 1`);
@@ -127,7 +143,7 @@ for (const c of contracts) { const rel = `library/objects/${c}/catalogue.json`; 
   for (const k of Object.keys(d)) if (!CARD.includes(k)) problems.push(`${rel}: ${k} is not something a card says`); }
 if (existsSync(join(root, "library", "tree.json"))) { let t = null; try { t = JSON.parse(readFileSync(join(root, "library", "tree.json"), "utf8")); } catch (e) { problems.push(`library/tree.json: not valid JSON (${e.message})`); }
   if (t) { const seen = new Map(), ids = new Set(), P = (m) => problems.push(`library/tree.json: ${m}`);
-    const named = (c, where) => { if (!contracts.includes(c)) P(`${where}: there is no Library entry ${c}`); if (seen.has(c)) P(`${c} is in ${seen.get(c)} and ${where}: an entry has one place`); else seen.set(c, where); };
+    const named = (c, where) => { if (!contracts.includes(c) && !layouts.includes(c)) P(`${where}: there is no Library entry ${c}`); if (seen.has(c)) P(`${c} is in ${seen.get(c)} and ${where}: an entry has one place`); else seen.set(c, where); };
     if (t.catalogue !== 1 || !Array.isArray(t.categories)) P("the tree is {catalogue: 1, categories: [...], unlisted?: [...]}");
     for (const cat of t.categories || []) { if (!cat || !WORD.test(String(cat.id || ""))) { P("each category has an id, lower case with hyphens"); continue; }
       if (cat.id === "more") P("more is kept for what the tree does not place"); if (ids.has(cat.id)) P(`category ${cat.id} is there twice`); ids.add(cat.id);
@@ -142,6 +158,8 @@ const propDir = join(root, "library", "proposals");
 try { for (const n of readdirSync(propDir)) { if (n === ".gitkeep") continue; const rel = `library/proposals/${n}`, m = /^([a-z]+(?:\.[a-z0-9-]+)+)@(\d+\.\d+\.\d+)\.json$/.exec(n);
   if (!m) { problems.push(`${rel}: name a proposal <contract>@<version>.json, e.g. fixture.wc@1.0.0.json`); continue; }
   let r; try { r = JSON.parse(readFileSync(join(propDir, n), "utf8")); } catch { continue; } // reported above
+  if (r && r.detailOnly) continue; // an Object's detail only (R73): the Action checks it
+  if (r && r.layout) { if (r.layout.id !== `${m[1]}@${m[2]}`) problems.push(`${rel}: layout.id must be ${m[1]}@${m[2]}`); if (!m[1].startsWith("layout.")) problems.push(`${rel}: a Layout's Library name starts with layout.`); continue; } // R114 step 3
   const o = r && r.object; if (!o) { problems.push(`${rel}: no object`); continue; }
   if (o.id !== `${m[1]}@${m[2]}`) problems.push(`${rel}: object.id must be ${m[1]}@${m[2]}`);
   if (o.contract !== m[1]) problems.push(`${rel}: object.contract must be ${m[1]}`);

@@ -1,0 +1,45 @@
+{
+ "id": "layout.dining-4@1.0.0",
+ "name": "Dining for 4",
+ "contract": "layout.dining-4",
+ "about": "A dining table with two chairs on each long side.",
+ "items": [
+  {
+   "object": "furniture.table@1.0.0",
+   "at": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  {
+   "object": "furniture.chair@1.0.0",
+   "at": {
+    "x": -400,
+    "y": -700
+   }
+  },
+  {
+   "object": "furniture.chair@1.0.0",
+   "at": {
+    "x": 400,
+    "y": -700
+   }
+  },
+  {
+   "object": "furniture.chair@1.0.0",
+   "at": {
+    "x": -400,
+    "y": 700
+   },
+   "rotation": 180
+  },
+  {
+   "object": "furniture.chair@1.0.0",
+   "at": {
+    "x": 400,
+    "y": 700
+   },
+   "rotation": 180
+  }
+ ]
+}

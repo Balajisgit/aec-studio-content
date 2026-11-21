@@ -1,0 +1,22 @@
+{
+ "id": "layout.kitchen-run@1.0.0",
+ "name": "Kitchen run",
+ "contract": "layout.kitchen-run",
+ "about": "A counter run with sink and hob, and a fridge at its end, backs in one line.",
+ "items": [
+  {
+   "object": "furniture.kitchen-counter@1.1.0",
+   "at": {
+    "x": 0,
+    "y": 0
+   }
+  },
+  {
+   "object": "furniture.fridge@1.0.0",
+   "at": {
+    "x": 1570,
+    "y": 50
+   }
+  }
+ ]
+}

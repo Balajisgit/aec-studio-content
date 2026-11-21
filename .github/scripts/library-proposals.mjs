@@ -3,6 +3,7 @@
 //                   that adds library/objects/<contract>/<version>.json and its origin, library/origins/<contract>/<version>.json
 //                   (where it came from: a project, a pipeline run), and removes the record, a pull request for the owner,
 //                   and the content checks run on it (pull requests opened by an Action don't start other workflows).
+//                   A Layout (R114 step 3: a record with layout, not object) adds library/layouts/<contract>/<version>.json.
 //   closed <branch> a proposal's pull request was closed without merging: remove its record from main and delete the branch.
 import { execFileSync } from "node:child_process";
 import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
@@ -25,6 +26,12 @@ function problems(file, rec) {
   const m = NAME.exec(file), o = rec && rec.object, out = [];
   if (!m) return [`${file}: name it <contract>@<version>.json`];
   if (rec && rec.detailOnly) return [...(rec.id !== `${m[1]}@${m[2]}` ? [`${file}: id must be ${m[1]}@${m[2]}`] : []), ...(existsSync(`library/objects/${m[1]}/${m[2]}.json`) ? [] : [`${file}: ${m[1]}@${m[2]} is not in the Library`]), ...detailProblems(file, rec.detail)];
+  if (rec && rec.layout) { const L = rec.layout; // R114 step 3: several Library Objects arranged together, each at a point
+    if (L.id !== `${m[1]}@${m[2]}`) out.push(`${file}: layout.id must be ${m[1]}@${m[2]}`); if (L.contract !== m[1]) out.push(`${file}: layout.contract must be ${m[1]}`);
+    if (!m[1].startsWith("layout.")) out.push(`${file}: a Layout's Library name starts with layout.`); if (!L.name) out.push(`${file}: layout.name is missing`);
+    if (!Array.isArray(L.items) || !L.items.length) out.push(`${file}: layout.items lists the Objects it places`);
+    for (const it of L.items || []) { const [c, v] = String((it && it.object) || "").split("@"); if (!c || !v || !existsSync(`library/objects/${c}/${v}.json`)) out.push(`${file}: ${it && it.object} is not in the Library`); }
+    return out; }
   if (!o || typeof o !== "object") return [`${file}: no object`];
   if (o.id !== `${m[1]}@${m[2]}`) out.push(`${file}: object.id must be ${m[1]}@${m[2]}`);
   if (o.contract !== m[1]) out.push(`${file}: object.contract must be ${m[1]}`);
@@ -38,6 +45,10 @@ function problems(file, rec) {
 
 /** The pull request's description, for the owner (often read on a phone). */
 function body(rec) {
+  if (rec.layout) { const L = rec.layout, n = new Map(); for (const it of L.items) n.set(it.object, (n.get(it.object) || 0) + 1);
+    const from = (rec.from && rec.from.projects) || [];
+    return [`Proposed from AEC Studio: the Layout **${L.name}** as \`${L.id}\`.`, "", ...(L.about ? [L.about, ""] : []), "It places:", ...[...n].map(([id, k]) => `- ${k > 1 ? `${k} × ` : ""}\`${id}\``), "",
+      ...(from.length ? [`Made in: ${from.map((x) => x.name).join(", ")}.`, ""] : []), "Every Object it places is in the Library at that version. Merge to add it; close to turn it down (the proposal is then removed, and it can be proposed again)."].join("\n"); }
   const o = rec.object, p = o.params || {}, lines = [];
   lines.push(`Proposed from AEC Studio: **${o.name}** as \`${o.id}\` (${o.kind || o.role}).`, "");
   if (o.about) lines.push(o.about, "");
@@ -74,6 +85,13 @@ if (cmd === "open") {
       git("rm", "-q", join(DIR, file)); git("add", det); git("commit", "-q", "-m", `Library: the detailed version of ${id}`); git("push", "-q", "origin", `HEAD:refs/heads/${dbranch}`);
       const url = gh("pr", "create", "--base", "main", "--head", dbranch, "--title", `Library: the detailed version of ${id}`, "--body", `The detailed files of ${id} for renders (${rec.detail.files.map((f) => f.name).join(", ")}). Only records: the files stay on the PC that made them. Merge to add it.`);
       console.log(`${id} detail: ${url}`); opened++; git("checkout", "-q", "main"); git("reset", "-q", "--hard", "origin/main"); continue; }
+    if (rec.layout) { // R114 step 3
+      const lt = `library/layouts/${contract}/${version}.json`; if (existsSync(lt)) { console.log(`::warning file=${DIR}/${file}::${lt} is already in the Library; this record can be removed.`); continue; }
+      git("checkout", "-q", "-B", branch, "origin/main"); mkdirSync(join("library/layouts", contract), { recursive: true }); writeFileSync(lt, JSON.stringify(rec.layout, null, 2) + "\n");
+      git("rm", "-q", join(DIR, file)); git("add", lt); git("commit", "-q", "-m", `Library: add the Layout ${rec.layout.name} (${id})`); git("push", "-q", "origin", `HEAD:refs/heads/${branch}`);
+      const url = gh("pr", "create", "--base", "main", "--head", branch, "--title", `Library: add the Layout ${rec.layout.name} (${id})`, "--body", body(rec));
+      try { gh("workflow", "run", "checks.yml", "--ref", branch); } catch (e) { console.log(`::warning::Could not start the checks on ${branch}: ${e.message}`); }
+      console.log(`${id}: ${url}`); opened++; git("checkout", "-q", "main"); git("reset", "-q", "--hard", "origin/main"); continue; }
     if (existsSync(target)) { console.log(`::warning file=${DIR}/${file}::${target} is already in the Library; this record can be removed.`); continue; }
     git("checkout", "-q", "-B", branch, "origin/main");
     mkdirSync(join("library/objects", contract), { recursive: true }); writeFileSync(target, JSON.stringify(rec.object, null, 2) + "\n");
