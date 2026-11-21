@@ -150,3 +150,5 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-21 · Session 44** — Owner: "Go step 2", then "Merge" (aec-studio#124).
 - **2026-11-21 · Session 44** — Owner: "Step 3 and 4 go", then "Merge" (aec-studio#125, aec-studio-content#62).
 - **2026-11-21 · Session 44** — Owner: "Ok" to republish the online preview and wrap up.
+- **2026-11-21 · Session 45** — Owner, offered the three fixes first: "Go".
+- **2026-11-21 · Session 45** — Owner: "Merge" (aec-studio#126).

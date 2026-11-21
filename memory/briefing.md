@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 45._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 46._
 
 ## What this is
 
@@ -75,6 +75,21 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 45 · 2026-11-21 · R110, R111, R112 done: a dragged Object follows the pointer, a new project from the canvas, requests answer at once and can be edited
+The three small fixes noted on the PC were built in one pull request and merged at the owner's word. Dragging an Object on the canvas no longer lags, a new project is made from the canvas's project list, and noting a request no longer holds the app while GitHub is reached; requests can now be edited.
+
+Done:
+- R110: an Object at a point follows the pointer while dragged and stays where it is dropped while the step is saved (back if refused).
+- R111: "+ New project…" in the canvas's project list: a name and a template, made and opened on the canvas.
+- R112: requests are committed at once and sent to GitHub in the background, so the Requests tab opens straight away; another PC's same number still moves one on.
+- R112: requests can be edited (title, details, kind) on the Requests tab and by Innowa (request_update).
+- Merged: aec-studio#126. R110, R111 and R112 marked done.
+- 365 tests, the smoke check and the canvas browser check pass on main.
+
+Decided:
+- Owner, offered the three fixes first: "Go".
+- Owner: "Merge" (aec-studio#126).
 
 ### Session 44 · 2026-11-21 · R114 done: the Library as a catalogue, placing and shortlists, Layouts with Keep or Break, templates in the Library
 All four steps of R114 were built and merged at the owner's word. The Library opens as a catalogue with pictures made from each entry's 3D shape; a project's shortlist and the canvas's Place tool place from it; Layouts arrive with Keep or Break; templates now live in the Library. The online preview shows it all.
@@ -156,18 +171,9 @@ Decided:
 - Owner: "library default view should be like a cataluge - ecomm experience - all others are technicals"; templates in the Library: Layout and Template "yes", Layout "only objects", "Break and Keep options".
 - Owner on the Library's open points: "go as you suggest"; "build the requests as per order"; "merge" #118 and #119.
 
-### Session 40 · 2026-11-16 · Main, staging and the online preview made the same
-The online preview was republished from main, and both staging branches were brought level with main. Staging has no extras of its own left: the records fix and the template-proposals workflow are on main now.
-
-Done:
-- The online preview (BuilderPluss Studio artifact) republished from main (app 43a3e02, content 10c6b92): app #94, content #57, sessions 38 and 39.
-- App and content staging branches now hold exactly main's files; their history was kept, not rewritten.
-
-Decided:
-- Owner: "update preview", then "make all 3 same" (main, staging, the online preview).
-
 ## Earlier sessions
 
+- **40** · 2026-11-16 · Main, staging and the online preview made the same — The online preview was republished from main, and both staging branches were brought level with main. Staging has no extras of its own left: the records fix and the template-proposals workflow are on main now.
 - **39** · 2026-11-16 · The workplace test fit merged; staging and the online preview updated; the older pull requests cleared — The workplace test fit (R109) was merged and staging and the online preview were brought up to main. The four older pull requests were then settled: one merged, two closed as out of date, one rebuilt on main and merged. Neither repository has an open pull request.
 - **38** · 2026-11-16 · Kernel and canvas upgrade, layers, typologies (Villa, five workplaces), programme, kernel boundary; a workplace test-fit solver built from first principles — The kernel and canvas were upgraded (R89-R98), then layers, model defaults as typologies, a programme and five workplace templates with office Objects were added and merged (R99-R108). The kernel was held to its boundary: typology, programme and design sense live in Projects. Last, a workplace test-fit solver was built; it waits in app #117 and content #56.
 - **37** · 2026-11-14 · Runs that belong nowhere merged; Claude sessions on the owner's PC; Make a scene, Render views, chains and Innowa conducting a job, tried on staging with Collab 01 — R79 was merged. Then a full Claude Code session on the owner's PC became a stage kind (R82), and on it Make a scene, Render views, chains and Innowa conducting a job were built (R83-R88). The Collab 01 deck ran through the chain and then as a conducted job on staging. All of it waits in PRs #97, #98 and content #46, #47.
