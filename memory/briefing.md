@@ -62,7 +62,6 @@ _The open requests (requests/ in the content repository)._
 - R110 · canvas · from project test off1
 - R111 · project
 - R112 · requets
-- R113 · The model from first principles: nodes and segments, spaces worked out, Objects on hosts, zones on rings (in aec-studio#122)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
