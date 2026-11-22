@@ -1,0 +1,6 @@
+{
+  "id": "programme-met",
+  "name": "The drawing meets the programme",
+  "about": "Every space the programme asks for is drawn on its floor, and everyone it names has a seat. Wishes and sizes a little off are noted, not held against it.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}

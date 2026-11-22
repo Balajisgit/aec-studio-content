@@ -1,0 +1,6 @@
+{
+  "id": "shell-ready",
+  "name": "The floor is ready to fit out",
+  "about": "The level's largest room is closed by walls on every edge, has a door in an outer wall (the entrance), and has nothing standing on it yet: what the workplace test fit starts from.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}

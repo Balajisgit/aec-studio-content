@@ -198,7 +198,7 @@ const agents = new Set(readDir("agents").map((n) => n.slice(0, -5))), checks = n
 for (const n of readDir("agents")) { try { const a = JSON.parse(readFileSync(join(root, "agents", n), "utf8"));
   if (a.id !== n.slice(0, -5)) problems.push(`agents/${n}: id must be ${n.slice(0, -5)}`);
   if (!Array.isArray(a.instructions) || !a.instructions.length) problems.push(`agents/${n}: instructions are missing`); } catch { /* reported above */ } }
-const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects", "pick-candidate", "keep-files", "review-images", "keep-detail"], SCOPES = ["project", "library", "studio"];
+const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects", "pick-candidate", "keep-files", "review-images", "keep-detail", "confirm"], SCOPES = ["project", "library", "studio"];
 try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(root, "pipelines", p); if (!statSync(pd).isDirectory()) continue;
   for (const v of readdirSync(pd)) { const rel = `pipelines/${p}/${v}`;
     if (v === "catalogue.json") continue; // its catalogue card (R114), checked below
@@ -220,13 +220,18 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
         if (s.solver !== undefined) { const sid = String(s.solver).split("@")[0]; if (!existsSync(join(root, "solvers", sid))) problems.push(`${rel}: stage ${s.id} names solver ${s.solver}, which is not in solvers/`);
           if (s.agent !== undefined || s.code !== undefined) problems.push(`${rel}: stage ${s.id}: a solver stage has no agent or code`); }
         else if (s.code !== undefined) { if (!/^[a-z][a-z0-9-]*$/.test(String(s.code))) problems.push(`${rel}: stage ${s.id}: code names a code stage, like prepare-proposal`); if (s.agent !== undefined) problems.push(`${rel}: stage ${s.id}: a code stage has no agent`); }
+        else if (s.by !== undefined) { // R115: a step Innowa works in the chat with the stage's own tools; instructions say how
+          if (s.by !== "innowa") problems.push(`${rel}: stage ${s.id}: by is "innowa" or left out`);
+          if (s.agent !== undefined || s.session !== undefined) problems.push(`${rel}: stage ${s.id}: a step by Innowa has no agent and is not a session`);
+          if (s.instructions !== undefined && !(Array.isArray(s.instructions) && s.instructions.every((x) => typeof x === "string" && x.trim()))) problems.push(`${rel}: stage ${s.id}: instructions is a list of sentences`); }
         else if (!agents.has(s.agent)) problems.push(`${rel}: stage ${s.id} names agent ${s.agent}, which is not in agents/`);
         // R82: a session stage (session: true) is a full Claude session on the owner's PC; its skills are skills/<name>/SKILL.md
         if (s.session !== undefined && s.session !== true) problems.push(`${rel}: stage ${s.id}: session is true or left out`);
         if (s.skills !== undefined) { if (!s.session) problems.push(`${rel}: stage ${s.id}: skills are for a session stage (session: true)`);
           if (!Array.isArray(s.skills)) problems.push(`${rel}: stage ${s.id}: skills is a list of skill names`); else for (const k of s.skills) if (!existsSync(join(root, "skills", String(k), "SKILL.md"))) problems.push(`${rel}: stage ${s.id} names skill ${k}, which is not in skills/`); }
         if (!Array.isArray(s.checks) || !s.checks.length) problems.push(`${rel}: stage ${s.id} has no checks`); for (const c of s.checks || []) if (!checks.has(c)) problems.push(`${rel}: stage ${s.id} names check ${c}, which is not in checks/definitions/`); }
-      else if (s.kind === "decision") { if (!FORMS.includes(s.form)) problems.push(`${rel}: decision ${s.id} must use a form the app knows: ${FORMS.join(", ")}`); if (!s.question) problems.push(`${rel}: decision ${s.id} has no question`); }
+      else if (s.kind === "decision") { if (s.places !== undefined && !(s.places === "draft" && s.form === "confirm")) problems.push(`${rel}: decision ${s.id}: places is "draft", on a confirm decision`);
+        if (!FORMS.includes(s.form)) problems.push(`${rel}: decision ${s.id} must use a form the app knows: ${FORMS.join(", ")}`); if (!s.question) problems.push(`${rel}: decision ${s.id} has no question`); }
       else problems.push(`${rel}: step ${s.id} must be a stage or a decision`); }
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`pipelines: ${e.message}`); }
 // lessons/<agent id>.md and lessons/all.md: Markdown, one lesson per line (agents that name the lessons source are given them).
