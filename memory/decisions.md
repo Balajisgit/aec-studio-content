@@ -152,3 +152,8 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-21 · Session 44** — Owner: "Ok" to republish the online preview and wrap up.
 - **2026-11-21 · Session 45** — Owner, offered the three fixes first: "Go".
 - **2026-11-21 · Session 45** — Owner: "Merge" (aec-studio#126).
+- **2026-11-22 · Session 46** — Owner: "note it straight away as a request and start with. Creating a office floorplan is the first test." (R115), then "Ok build".
+- **2026-11-22 · Session 46** — Owner: "Merge" for each of aec-studio#127 to #130 and aec-studio-content#63 to #65; "Start step2"; "Merge and convert Read a brief" and "Make an Object" next."
+- **2026-11-22 · Session 46** — Owner: "Instead of pipelines, lets have only skills, scripts, tools and can we have dynamic playbooks that innowa would assemble?" then "Agree as u suggested." (R116).
+- **2026-11-22 · Session 46** — R116 approval: Innowa waits for the owner's OK on a plan that changes the project or the Library; a plan that only reads or drafts starts straight away.
+- **2026-11-22 · Session 46** — R116 unattended work: only a saved playbook or a plan the owner approved before leaving; no new plans while nobody is watching.

@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 46._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 47._
 
 ## What this is
 
@@ -77,6 +77,26 @@ _The open requests (requests/ in the content repository)._
 
 ## Recent sessions
 
+### Session 46 · 2026-11-22 · R115 done (Innowa works playbook steps in the chat) and R116 begun: skills, scripts, tools and dynamic playbooks, with the owner's gates fixed in the app
+Pipelines felt slow and narrow, so Innowa now works a playbook's steps itself in the chat, with the owner, instead of cold agents per stage. Office floor plan, Programme from a brief, Read a brief and Make an Object run this way. The owner then chose skills, scripts, tools and plans Innowa assembles over fixed pipelines (R116); step 1, the owner's gates in the app, is merged.
+
+Done:
+- R115 step 1: a step by: "innowa" waits for Innowa in the run's chat (step_get, step_tool, step_done; checks run at done); a confirm decision (places: "draft"); checks shell-ready and programme-met; the Office floor plan playbook and a sample brief (60-person tech office).
+- R115 step 2: lessons per playbook (lessons/<playbook>.md); one ledger (Innowa's chat turns count in the run's cost; a Ledger on the run page); a run started on the run page opens its chat; Programme from a brief 2.0.0 by Innowa.
+- Read a brief 2.0.0 and Make an Object 2.0.0 by Innowa; a job's tasks, a chain's runs and an asset list's Make are worked in the chat they came from; Innowa opens a run's brief files from the chat.
+- R116 step 1, the owner's gates: Innowa answers a decision for him only in a turn he wrote, quoting him; a job Innowa starts alone waits at every decision; only the owner sends to the Library, raises limits or approves a job.
+- R116 step 1: what leaves a run is checked at the gate (Objects again; a plan against the programme, shown on the card); the owner can let a step go on with checks open; every yes is in the ledger.
+- Fixed: two R115 lines where a comment swallowed code (a pipeline's "can't run here" check; page_open's access rule). checks/syntax.js now fails on a comment hiding code.
+- Trials with the real content: the office floor plan end to end (4 layouts, 128 placements); a lounge brief read, matched and a window seat made in one chat.
+- Merged: aec-studio#127, #128, #129, #130; aec-studio-content#63, #64, #65. 375 tests, smoke and canvas checks pass on main.
+
+Decided:
+- Owner: "note it straight away as a request and start with. Creating a office floorplan is the first test." (R115), then "Ok build".
+- Owner: "Merge" for each of aec-studio#127 to #130 and aec-studio-content#63 to #65; "Start step2"; "Merge and convert Read a brief" and "Make an Object" next."
+- Owner: "Instead of pipelines, lets have only skills, scripts, tools and can we have dynamic playbooks that innowa would assemble?" then "Agree as u suggested." (R116).
+- R116 approval: Innowa waits for the owner's OK on a plan that changes the project or the Library; a plan that only reads or drafts starts straight away.
+- R116 unattended work: only a saved playbook or a plan the owner approved before leaving; no new plans while nobody is watching.
+
 ### Session 45 · 2026-11-21 · R110, R111, R112 done: a dragged Object follows the pointer, a new project from the canvas, requests answer at once and can be edited
 The three small fixes noted on the PC were built in one pull request and merged at the owner's word. Dragging an Object on the canvas no longer lags, a new project is made from the canvas's project list, and noting a request no longer holds the app while GitHub is reached; requests can now be edited.
 
@@ -152,28 +172,9 @@ Decided:
 - Owner: "Merge the app first, then content." Both merged in that order.
 - Owner: "Wrap up and do The next step": Objects declare how they behave, so the kernel's list of kinds goes.
 
-### Session 41 · 2026-11-20 · The model from first principles (R113) and the Library as a catalogue (R114); line kinds and spaces as tag points merged
-Room and slab were rethought from first principles: only nodes and segments are primers, spaces are worked out round a tag point, and Objects attach to hosts (R113). The Library becomes a catalogue of Objects, Layouts and Templates (R114). R113 steps 1 and 2 were built and merged; step 3, Objects on hosts, is next, in a fresh session.
-
-Done:
-- R113 noted: two primers; room, zone and reference lines; spaces round tag points; Objects on hosts; zones on rings; geometry operations; no meanings.
-- R114 noted: the Library as a catalogue (design canvas "Library as a catalogue"), with Objects, Layouts and Templates; every open point settled.
-- R113 step 1 merged (app #118): what a line divides is its own property; set_divides; the canvas draws and switches line kinds.
-- R113 step 2 merged (app #119): model 4.1, faces no longer stored; a space is a tag point; split, merge and drift by the tag; move_tag; 4.0 projects move on by one upgrade step.
-- 341 tests pass on each; smoke and canvas browser checks pass; both tried by hand in a browser.
-
-Decided:
-- Owner: "only nodes and segments are primers - it forms the space - has custom name and use from a select".
-- Owner: "objects can attach to another object(s) - a segment attached with wall which in turns attached with a door or window and a slab. also we can solve the geometry operation too - for eg door - boolean into walls".
-- Owner: "zone is a segment type that dont form a true space - either it splits or groups"; zone on a ring "ok", part of a room "allow", overlapping "allow".
-- Owner: "a wall can be placed on a zone line too. a glass wall inside a bathroom. so line define by it properties alone".
-- Owner on the open points: tag point "ok"; slab on its edge walls "ok"; removing a host "It takes what it holds with it, and the step lists what went"; "finish is an another object attached to a wall, floor object".
-- Owner: no meanings, three line kinds, generic wall Object at once, a space's fields: "ok" to each; site positions "labels as per use type -varies - assigned".
-- Owner: "library default view should be like a cataluge - ecomm experience - all others are technicals"; templates in the Library: Layout and Template "yes", Layout "only objects", "Break and Keep options".
-- Owner on the Library's open points: "go as you suggest"; "build the requests as per order"; "merge" #118 and #119.
-
 ## Earlier sessions
 
+- **41** · 2026-11-20 · The model from first principles (R113) and the Library as a catalogue (R114); line kinds and spaces as tag points merged — Room and slab were rethought from first principles: only nodes and segments are primers, spaces are worked out round a tag point, and Objects attach to hosts (R113). The Library becomes a catalogue of Objects, Layouts and Templates (R114). R113 steps 1 and 2 were built and merged; step 3, Objects on hosts, is next, in a fresh session.
 - **40** · 2026-11-16 · Main, staging and the online preview made the same — The online preview was republished from main, and both staging branches were brought level with main. Staging has no extras of its own left: the records fix and the template-proposals workflow are on main now.
 - **39** · 2026-11-16 · The workplace test fit merged; staging and the online preview updated; the older pull requests cleared — The workplace test fit (R109) was merged and staging and the online preview were brought up to main. The four older pull requests were then settled: one merged, two closed as out of date, one rebuilt on main and merged. Neither repository has an open pull request.
 - **38** · 2026-11-16 · Kernel and canvas upgrade, layers, typologies (Villa, five workplaces), programme, kernel boundary; a workplace test-fit solver built from first principles — The kernel and canvas were upgraded (R89-R98), then layers, model defaults as typologies, a programme and five workplace templates with office Objects were added and merged (R99-R108). The kernel was held to its boundary: typology, programme and design sense live in Projects. Last, a workplace test-fit solver was built; it waits in app #117 and content #56.
