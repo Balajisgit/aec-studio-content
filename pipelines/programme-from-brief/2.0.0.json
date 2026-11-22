@@ -1,0 +1,76 @@
+{
+  "id": "programme-from-brief@2.0.0",
+  "name": "Programme from a brief",
+  "about": "The brief (the client's notes, a mail, a deck or a form) becomes the project's programme: the spaces it asks for by use, how many, about how big and on which floor, the floors and the built area. The programme is kept with the project, and the project page and the canvas then say what is still to draw (Against the brief). Nothing is drawn. Since 2.0.0 Innowa writes it with you in the chat (R115), asking what the brief leaves open, and you confirm it.",
+  "useWhen": "A project has a brief and no programme yet, or the brief changed: before any layout is tried, so everyone (and Innowa) knows what the design has to hold and when it is complete.",
+  "scopes": [
+    "project"
+  ],
+  "input": {
+    "notes": true,
+    "files": true,
+    "about": "The brief: what the client asked for, typed in the notes (\"3 BHK villa, two floors, about 180 m², a study if it fits, car porch\") or in the project's files (a mail, a form, a deck)."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "Write only what the brief asks for. A space the brief does not name is not in the programme, however usual it is in a house: a passage, a store, a stair are the designer's to add."
+    },
+    {
+      "id": "R2",
+      "text": "Every line is one of the project's uses (its model defaults bring them). If the brief asks for something the project has no use for, say so in your answer and leave it out; never bend it into another use."
+    },
+    {
+      "id": "R3",
+      "text": "Sizes, floors and the built area go in only where the brief gives them, as it gives them (about). A wish (\"if it fits\", \"would be nice\") is marked optional."
+    },
+    {
+      "id": "R4",
+      "text": "The programme is the client's wish, not the design: it is kept with the project and no drawing step changes it."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "write",
+      "name": "Write the programme",
+      "by": "innowa",
+      "outcome": "The project has its programme: the spaces the brief asks for, each one of the project's uses.",
+      "instructions": [
+        "Turn the client's brief into the project's programme and write it with programme_put. You draw nothing.",
+        "First read the brief (step_get gives it; open its files with the Read tool) and the project's uses: project_look with no level lists them under spaces, with each use's id and name. Every line of the programme is one of those uses, by its id.",
+        "Read the brief for: the spaces it asks for and how many of each (\"3 BHK\" is three bedrooms, a living room (the hall) and a kitchen; an attached bathroom to each bedroom is a bathroom each, only when the brief says attached or gives a number of bathrooms); a size where it gives one (area, in m², about, each; a size in feet is turned to m²: 1 sq ft is 0.0929 m², a 12 by 14 ft room is 15.6 m²); the floor where it says one (level 0 the lowest, 1 the next: \"master bedroom upstairs\" is level 1); how many floors (floors); the built area if it gives one (builtArea, m²; 1800 sq ft is 167 m²).",
+        "A brief for a workplace often gives a headcount instead of rooms (\"a floor for 250 people\", \"120 seats and 30 more next year\"): put it in people (how many the design is for now), and write as lines only the rooms the brief names (\"two boardrooms\", \"a cafeteria\"). When it gives a number for one kind of space (\"an open office for 180\"), that line has units: 180. Do not turn a headcount into a list of rooms yourself: how many meeting rooms 250 people need is the typology's ratio to say, not the brief's.",
+        "Write only what the brief asks for. Do not add what a house usually has (a passage, a store, a stair, a utility) unless the brief names it: those are the designer's to add, and a programme padded with them says the design is unfinished when it is not. A wish (\"a study if it fits\", \"would like a pooja\") is a line with optional: true.",
+        "Two lines of one use are fine when they differ: a master bedroom of 16 m² upstairs and two more bedrooms are two lines (use master-bedroom if the project has it, else bedroom with the name \"Master bedroom\"). Give a line a name only when the brief names that space.",
+        "If the brief asks for something the project has no use for (a home theatre, a gym), leave it out of the programme and say so plainly in your answer, so the owner can add the use to the model defaults or decide. If the brief names no spaces at all, write nothing and say in one sentence what is missing.",
+        "If the project already has a programme (project_programme), yours replaces it: keep what the brief still asks for, and say in your answer what changed.",
+        "Put the brief's own words for the whole in title (\"3 BHK villa, G+1\") and anything that matters and fits no field in notes (\"vastu: kitchen to the south-east\", \"parents' bedroom on the ground floor\"), in a sentence or two.",
+        "Before step_done, tell the owner in two or three plain sentences what the programme now asks for, what you left out and why, and ask about anything the brief leaves unclear that changes the plan (the owner is in the chat with you: ask rather than guess)."
+      ],
+      "tools": [
+        "run_inputs",
+        "run_state",
+        "project_look",
+        "project_programme",
+        "programme_put"
+      ],
+      "checks": [
+        "programme-set"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "confirm",
+      "name": "The programme",
+      "question": "Is this the programme? Look at the project's Programme; send it back with what to change.",
+      "form": "confirm",
+      "sendBack": "write"
+    }
+  ],
+  "output": {
+    "id": "programme",
+    "name": "The project's programme",
+    "about": "What the brief asks for, line by line; open the project to see it against what is drawn."
+  }
+}

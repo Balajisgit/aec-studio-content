@@ -235,7 +235,7 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
       else problems.push(`${rel}: step ${s.id} must be a stage or a decision`); }
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`pipelines: ${e.message}`); }
 // lessons/<agent id>.md and lessons/all.md: Markdown, one lesson per line (agents that name the lessons source are given them).
-for (const n of (() => { try { return readdirSync(join(root, "lessons")); } catch { return []; } })()) if (n !== ".gitkeep" && n !== "README.md" && !(/^[a-z][a-z0-9-]*\.md$/.test(n) && (n === "all.md" || agents.has(n.slice(0, -3))))) problems.push(`lessons/${n}: lessons are lessons/all.md or lessons/<agent id>.md for an agent in agents/`);
+for (const n of (() => { try { return readdirSync(join(root, "lessons")); } catch { return []; } })()) if (n !== ".gitkeep" && n !== "README.md" && !(/^[a-z][a-z0-9-]*\.md$/.test(n) && (n === "all.md" || agents.has(n.slice(0, -3)) || existsSync(join(root, "pipelines", n.slice(0, -3)))))) problems.push(`lessons/${n}: lessons are lessons/all.md, lessons/<agent id>.md for an agent in agents/, or lessons/<playbook>.md for a pipeline in pipelines/ (R115)`);
 // materials (R92): how a finish is shown in 3D. library/materials/<id>.json, its id a part's slot (wood, metal, glass) or a
 // kind (wall, slab, door): {id, name, color: #rrggbb, roughness?, metalness?, opacity? (each 0 to 1), about?}.
 for (const n of (() => { try { return readdirSync(join(root, "library", "materials")); } catch { return []; } })()) {
