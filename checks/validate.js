@@ -197,7 +197,9 @@ const readDir = (rel) => { try { return readdirSync(join(root, rel)).filter((n) 
 const agents = new Set(readDir("agents").map((n) => n.slice(0, -5))), checks = new Set(readDir("checks/definitions").map((n) => n.slice(0, -5)));
 for (const n of readDir("agents")) { try { const a = JSON.parse(readFileSync(join(root, "agents", n), "utf8"));
   if (a.id !== n.slice(0, -5)) problems.push(`agents/${n}: id must be ${n.slice(0, -5)}`);
-  if (!Array.isArray(a.instructions) || !a.instructions.length) problems.push(`agents/${n}: instructions are missing`); } catch { /* reported above */ } }
+  // R116 step 3: an agent's know-how is a skill (skill: a name in skills/), or its own instructions
+  if (a.skill !== undefined) { if (!(typeof a.skill === "string" && existsSync(join(root, "skills", a.skill, "SKILL.md")))) problems.push(`agents/${n}: skill ${a.skill} is not in skills/`); if (a.instructions !== undefined) problems.push(`agents/${n}: an agent has a skill or instructions, not both`); }
+  else if (!Array.isArray(a.instructions) || !a.instructions.length) problems.push(`agents/${n}: instructions (or a skill) are missing`); } catch { /* reported above */ } }
 const FORMS = ["pick-needs", "keep-objects", "send-proposal", "propose-objects", "pick-candidate", "keep-files", "review-images", "keep-detail", "confirm"], SCOPES = ["project", "library", "studio"];
 try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(root, "pipelines", p); if (!statSync(pd).isDirectory()) continue;
   for (const v of readdirSync(pd)) { const rel = `pipelines/${p}/${v}`;
@@ -227,7 +229,7 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
         else if (!agents.has(s.agent)) problems.push(`${rel}: stage ${s.id} names agent ${s.agent}, which is not in agents/`);
         // R82: a session stage (session: true) is a full Claude session on the owner's PC; its skills are skills/<name>/SKILL.md
         if (s.session !== undefined && s.session !== true) problems.push(`${rel}: stage ${s.id}: session is true or left out`);
-        if (s.skills !== undefined) { if (!s.session) problems.push(`${rel}: stage ${s.id}: skills are for a session stage (session: true)`);
+        if (s.skills !== undefined) { if (!s.session && s.by !== "innowa") problems.push(`${rel}: stage ${s.id}: skills are for a step by Innowa or a session stage (session: true)`); // R116 step 3
           if (!Array.isArray(s.skills)) problems.push(`${rel}: stage ${s.id}: skills is a list of skill names`); else for (const k of s.skills) if (!existsSync(join(root, "skills", String(k), "SKILL.md"))) problems.push(`${rel}: stage ${s.id} names skill ${k}, which is not in skills/`); }
         if (!Array.isArray(s.checks) || !s.checks.length) problems.push(`${rel}: stage ${s.id} has no checks`); for (const c of s.checks || []) if (!checks.has(c)) problems.push(`${rel}: stage ${s.id} names check ${c}, which is not in checks/definitions/`); }
       else if (s.kind === "decision") { if (s.places !== undefined && !(s.places === "draft" && s.form === "confirm")) problems.push(`${rel}: decision ${s.id}: places is "draft", on a confirm decision`);
