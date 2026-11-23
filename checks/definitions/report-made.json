@@ -1,0 +1,6 @@
+{
+  "id": "report-made",
+  "name": "Report made",
+  "about": "R116: a script that gives a report gave one: rows, findings or at least a note.",
+  "implementedBy": "app: managers/pipelines/checks.js"
+}

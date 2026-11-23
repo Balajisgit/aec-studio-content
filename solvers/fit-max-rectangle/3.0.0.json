@@ -2,6 +2,11 @@
   "id": "fit-max-rectangle",
   "name": "Fit the largest rectangle",
   "about": "The largest rectangles that fit a plot inside its setbacks, at any angle: the best and up to two others. Reads the space used as the plot (its front, rear and side setbacks), its edge labelled front, and any edge with its own setback. Each candidate draws the rectangle as lines and a space used as the footprint: where the building goes, nothing built yet.",
+  "useWhen": "A project's plot is drawn with its setbacks and the owner wants to know how big a building can go on it (the footprint), before any walls.",
+  "gives": "candidates",
+  "scopes": [
+    "project"
+  ],
   "uses": [
     "plot"
   ],

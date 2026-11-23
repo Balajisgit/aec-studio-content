@@ -1,0 +1,10 @@
+{
+  "id": "library-checkup",
+  "name": "Library check-up",
+  "about": "Every Object in the Library looked over: the Library check and the checks for sense (finishes that suit their parts, a description). A report of what to look at, the worst first; nothing is changed.",
+  "useWhen": "The owner asks how sound the Library is, before a release of the Library, or after many Objects were added.",
+  "gives": "report",
+  "scopes": ["library", "studio"],
+  "reads": ["library-checks"],
+  "timeoutSeconds": 20
+}
