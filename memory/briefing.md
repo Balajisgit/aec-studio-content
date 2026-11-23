@@ -1,27 +1,27 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 47._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 48._
 
 ## What this is
 
 BuilderPluss Studio (formerly AEC Studio 6), owned by Balaji (BuilderPluss): a local-first app for agentic AEC design, rebuilt from first principles in November 2026 as eight managers around one design kernel. It will be hosted later; nothing in it assumes one PC. Its chat assistant is **Innowa**, built on Claude (owner, 7 Nov 2026); pipeline agents keep their own names. Balaji is the only approver; associates (Bikal) may propose on the content repository.
 
 - **App (code):** private GitHub repository `Balajisgit/aec-studio`, branch main. Started on the PC with `Start-Builderpluss.bat` (D:\aec-studio; the old `Start-Studio.bat` still works). The repositories keep the name aec-studio, at http://127.0.0.1:3000.
-- **Content (everything shared that is not code):** private repository `Balajisgit/aec-studio-content`, cloned next to the app (D:\aec-studio-content). Pipelines, agents, skills, checks, panels, solvers; the Library; canvas setups; settings; memory (this briefing, sessions, decisions, lessons).
+- **Content (everything shared that is not code):** private repository `Balajisgit/aec-studio-content`, cloned next to the app (D:\aec-studio-content). Playbooks (pipelines/), skills, scripts (solvers/), checks, panels, the PC session agents; the Library; canvas setups; settings; memory (this briefing, sessions, decisions, lessons).
 - **PC:** the database (projects, runs, model logs, chats) and folders (project files, backups, Object assets by fingerprint; R2 later). Project work moves between PCs only by export and import.
 - **Architecture:** the owner's doc *AEC Studio 6 — Architecture* (2 Nov 2026); the short version is `docs/architecture.md` in the app repository.
 - **The old app** (AEC Agent Studio 2, `Balajisgit/aec-agent-studio`, D:\aec-agent-studio-5.1) is to be archived now that phase 5 is built (the owner's call). Its pipelines, agents, checks and rules are not carried over.
 
 ## Managers and build phases
 
-Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discussion (phase 2: the chat, sessions, briefing, decisions) · Projects and Canvas (phase 3) · Library (phase 4) · Pipelines (phase 5, new ones with the rules) · Files and Storage (phase 6, ready for hosting). All six phases are built (2 Nov 2026).
+Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discussion (phase 2: the chat, sessions, briefing, decisions) · Projects and Canvas (phase 3) · Library (phase 4) · Pipelines, now Playbooks (phase 5; since R116: playbooks, plans, skills, scripts) · Files and Storage (phase 6, ready for hosting). All six phases are built (2 Nov 2026).
 
 - **Online preview:** artifact "BuilderPluss Studio" (claude.ai/artifact/TeL8fLtYta3eXyqe1jVMt6), built from both repositories with the app's tools/online/build.mjs and republished on request; projects there are a sandbox in the browser, and chat, runs, files and storage need the PC.
 - **Pull requests always target main** (no stacked PRs).
 
 ## Words
 
-Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Stage, Decision, Output (pipelines) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library) · Layout (several Objects arranged together, placed as one kept unit or broken into separate Objects; R114) · Template (a project's starting rules; in the Library since R114) · Shortlist (a project's pinned Objects and Layouts). The Library is a catalogue of Objects, Layouts and Templates. The word "type" is not used.
+Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Playbook (a saved plan: steps by Innowa in the chat, scripts or the app, sessions on a PC, the owner's decisions; each says when to use it) · Plan (the steps Innowa writes for one ask; it waits for the owner's OK when it changes the project or the Library) · Skill (know-how a step follows, skills/<name>/SKILL.md) · Script (exact work with no tokens, in the content: gives layouts, a report or files) · Stage, Decision, Output (a playbook's steps) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library) · Layout (several Objects arranged together, placed as one kept unit or broken into separate Objects; R114) · Template (a project's starting rules; in the Library since R114) · Shortlist (a project's pinned Objects and Layouts). The Library is a catalogue of Objects, Layouts and Templates. The word "type" is not used.
 
 ## The kernel (mesh-light)
 
@@ -32,6 +32,7 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - **Code and definitions:** a pull request opened from a chat (Innowa in the app, or Claude on claude.ai) (or by an associate on content); automatic checks run on GitHub; only the owner merges. The app holds no GitHub token.
 - **Records** (sessions, decisions, lessons, layout patterns, replayed-brief results): committed straight to the content repository, by the app with the PC's Git sign-in, or by a chat outside the app.
 - **Proposals and settings requests:** the app commits a record (`library/proposals/`, `requests/settings/`) with the PC's Git sign-in; a content Action turns each into a pull request; only the owner merges, and a closed one removes its record. Project Objects reach the Library this way (Library page, "From your projects"); shared settings change this way (Studio page).
+- **Playbooks, scripts and skills (R116):** the owner saves a plan that worked as a playbook, and Innowa drafts a script or a skill with him; the app commits a record (`proposals/<kind>/`) that the content's proposals Action turns into a pull request he merges. Only the owner proposes. Tools stay the app's own operations, where the gates are kept.
 - **Project work:** logged, invertible operations on the PC; the owner decides only at declared decisions.
 - The app follows GitHub main for both repositories by itself (database backup first; a server change waits for a restart; pause and roll back on the Studio page).
 
@@ -75,6 +76,24 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 47 · 2026-11-23 · R116 done: Innowa writes plans, skills and scripts stand alone, plans that work are saved as playbooks, the fixed pipelines retire
+R116 steps 2 to 4 were built and merged at the owner's word. Innowa writes a plan for an ask from skills and scripts, or picks a playbook that suits; a plan that changes the project or the Library waits for his OK; a plan that worked is saved as a playbook; scripts give layouts, reports or files; the old fixed pipelines and lone agents are gone.
+
+Done:
+- Step 2: plan_propose and plan_change; the plan on the run page (move, edit, take out, add steps; limits $20 and 4 h); "The plan" waits for the owner's OK when it writes; no new plans while nobody is watching.
+- Step 3: six skills from the agents' know-how (read-brief, match-needs, make-object, write-programme, read-site, review-object); steps by Innowa follow skills; agents name a skill; script_list, script_try and script_apply.
+- Step 4a: Save it as a playbook (run page, or playbook_save in the chat); a generic proposals Action in the content turns records into pull requests; Innowa looks at playbooks first.
+- Step 4b: scripts give candidates, a report or files, say where they run and when to use them; the Library check-up is a script in the content; script_propose and skill_propose (tried first, owner only).
+- Step 4c: the Pipelines page is Playbooks; Fit to plot 5.0.0 and Propose to Library 2.0.0 by Innowa with skills; 26 old versions and 8 lone agents removed; an agent no longer works a stage on its own.
+- Fixed: a project's run page did nothing on a confirm's buttons or Open the chat; Propose to Library works again with one tap on a PC with no Claude.
+- Merged: aec-studio#131, #132, #133, #134, #135; aec-studio-content#66, #67, #68, #69, #70. 394 tests, smoke and canvas checks pass.
+
+Decided:
+- Owner: "build R116 step 2", then "Merge"; "go step 3", then "Merge"; "Go 4a, 4b and 4c", then "Merge".
+- Owner's vision for R116: "A free standing scripts, skills, tools. Innowa picks and assembles on the fly as a playbook if a job needs one or picks a old playbooks of that suits."
+- Only the owner saves a playbook or proposes a script or a skill; each reaches him as a pull request on the content. Tools stay in the app, where the gates are kept.
+- Every pipeline is a playbook with a "use when"; only the newest version of each is kept; an agent works only as a session on a PC.
 
 ### Session 46 · 2026-11-22 · R115 done (Innowa works playbook steps in the chat) and R116 begun: skills, scripts, tools and dynamic playbooks, with the owner's gates fixed in the app
 Pipelines felt slow and narrow, so Innowa now works a playbook's steps itself in the chat, with the owner, instead of cold agents per stage. Office floor plan, Programme from a brief, Read a brief and Make an Object run this way. The owner then chose skills, scripts, tools and plans Innowa assembles over fixed pipelines (R116); step 1, the owner's gates in the app, is merged.
@@ -149,30 +168,9 @@ Decided:
 - Owner, after the suggestion to leave behaviours out of the Object fingerprint until R114: "Ok what next".
 - Owner: "Merge and do as suggested" (#121, #59; then zones and the preview), and "Merge" (#122, #60).
 
-### Session 42 · 2026-11-20 · Objects on hosts merged (R113 step 3); the kernel holds no specifics; Fit to plot says in content what it reads
-R113 step 3 was built and merged. Roles and meanings are gone: Library Objects are Placements on a node, a segment, a ring of lines or another Placement, and spaces carry their own name, use, number and values. At the owner's word the kernel was then emptied of specifics: plot, footprint and void are template uses, setbacks are set each time, and Fit to plot says in content what it reads.
-
-Done:
-- Placements: a door or window on a wall at a point along it; a floor finish per walled room; one slab per floor plate. Removing a host takes what it holds.
-- Spaces have name, use, number and values; labels on lines and points; 4.0 and 4.1 projects move to 4.2 by themselves.
-- The kernel names no use, label or value. A template's use says room: false (a plot, a footprint, a void: no floor, no slab, not a room).
-- Rear and side are worked out outside the kernel from the use's own inset words (managers/projects/sides.js).
-- Setbacks are the plot's values, never assumed: the plot check asks, the solver stops and the Site reader says what is missing.
-- The app names no plot: a general space-set check and space-to-read condition; the content says the use, labels and values.
-- Content: meanings and semantics removed; fit-to-plot 4.0.0, fit-max-rectangle 3.0.0 and workplace-test-fit 2.0.0; old versions removed.
-- Templates' 1.0.0 versions gained plot (with its inset and setback values), footprint and void uses, in place.
-- Merged: aec-studio#120, then aec-studio-content#58; 344 tests, smoke and canvas checks pass on main.
-
-Decided:
-- Owner on setbacks: "Should not be in kernel. Plots and foot prints are defined manually or in templates. Setbacks are rules set manually or thru pipelines or innowa."
-- Owner: "Kernel should not hold any specifics. Even site lines are a segment with boundary wall or fence attached and it's formed space is set to a specific use. Voids are where slab not placed."
-- Owner: "So remove those plots, footprint and voids and any other. All these are values set every time." Then "Ok go ahead".
-- Owner on moving Fit to plot's pieces out of the app into content: "Yes".
-- Owner: "Merge the app first, then content." Both merged in that order.
-- Owner: "Wrap up and do The next step": Objects declare how they behave, so the kernel's list of kinds goes.
-
 ## Earlier sessions
 
+- **42** · 2026-11-20 · Objects on hosts merged (R113 step 3); the kernel holds no specifics; Fit to plot says in content what it reads — R113 step 3 was built and merged. Roles and meanings are gone: Library Objects are Placements on a node, a segment, a ring of lines or another Placement, and spaces carry their own name, use, number and values. At the owner's word the kernel was then emptied of specifics: plot, footprint and void are template uses, setbacks are set each time, and Fit to plot says in content what it reads.
 - **41** · 2026-11-20 · The model from first principles (R113) and the Library as a catalogue (R114); line kinds and spaces as tag points merged — Room and slab were rethought from first principles: only nodes and segments are primers, spaces are worked out round a tag point, and Objects attach to hosts (R113). The Library becomes a catalogue of Objects, Layouts and Templates (R114). R113 steps 1 and 2 were built and merged; step 3, Objects on hosts, is next, in a fresh session.
 - **40** · 2026-11-16 · Main, staging and the online preview made the same — The online preview was republished from main, and both staging branches were brought level with main. Staging has no extras of its own left: the records fix and the template-proposals workflow are on main now.
 - **39** · 2026-11-16 · The workplace test fit merged; staging and the online preview updated; the older pull requests cleared — The workplace test fit (R109) was merged and staging and the online preview were brought up to main. The four older pull requests were then settled: one merged, two closed as out of date, one rebuilt on main and merged. Neither repository has an open pull request.

@@ -3,21 +3,21 @@
 BuilderPluss Studio (formerly AEC Studio 6), owned by Balaji (BuilderPluss): a local-first app for agentic AEC design, rebuilt from first principles in November 2026 as eight managers around one design kernel. It will be hosted later; nothing in it assumes one PC. Its chat assistant is **Innowa**, built on Claude (owner, 7 Nov 2026); pipeline agents keep their own names. Balaji is the only approver; associates (Bikal) may propose on the content repository.
 
 - **App (code):** private GitHub repository `Balajisgit/aec-studio`, branch main. Started on the PC with `Start-Builderpluss.bat` (D:\aec-studio; the old `Start-Studio.bat` still works). The repositories keep the name aec-studio, at http://127.0.0.1:3000.
-- **Content (everything shared that is not code):** private repository `Balajisgit/aec-studio-content`, cloned next to the app (D:\aec-studio-content). Pipelines, agents, skills, checks, panels, solvers; the Library; canvas setups; settings; memory (this briefing, sessions, decisions, lessons).
+- **Content (everything shared that is not code):** private repository `Balajisgit/aec-studio-content`, cloned next to the app (D:\aec-studio-content). Playbooks (pipelines/), skills, scripts (solvers/), checks, panels, the PC session agents; the Library; canvas setups; settings; memory (this briefing, sessions, decisions, lessons).
 - **PC:** the database (projects, runs, model logs, chats) and folders (project files, backups, Object assets by fingerprint; R2 later). Project work moves between PCs only by export and import.
 - **Architecture:** the owner's doc *AEC Studio 6 — Architecture* (2 Nov 2026); the short version is `docs/architecture.md` in the app repository.
 - **The old app** (AEC Agent Studio 2, `Balajisgit/aec-agent-studio`, D:\aec-agent-studio-5.1) is to be archived now that phase 5 is built (the owner's call). Its pipelines, agents, checks and rules are not carried over.
 
 ## Managers and build phases
 
-Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discussion (phase 2: the chat, sessions, briefing, decisions) · Projects and Canvas (phase 3) · Library (phase 4) · Pipelines (phase 5, new ones with the rules) · Files and Storage (phase 6, ready for hosting). All six phases are built (2 Nov 2026).
+Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discussion (phase 2: the chat, sessions, briefing, decisions) · Projects and Canvas (phase 3) · Library (phase 4) · Pipelines, now Playbooks (phase 5; since R116: playbooks, plans, skills, scripts) · Files and Storage (phase 6, ready for hosting). All six phases are built (2 Nov 2026).
 
 - **Online preview:** artifact "BuilderPluss Studio" (claude.ai/artifact/TeL8fLtYta3eXyqe1jVMt6), built from both repositories with the app's tools/online/build.mjs and republished on request; projects there are a sandbox in the browser, and chat, runs, files and storage need the PC.
 - **Pull requests always target main** (no stacked PRs).
 
 ## Words
 
-Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Stage, Decision, Output (pipelines) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library) · Layout (several Objects arranged together, placed as one kept unit or broken into separate Objects; R114) · Template (a project's starting rules; in the Library since R114) · Shortlist (a project's pinned Objects and Layouts). The Library is a catalogue of Objects, Layouts and Templates. The word "type" is not used.
+Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Playbook (a saved plan: steps by Innowa in the chat, scripts or the app, sessions on a PC, the owner's decisions; each says when to use it) · Plan (the steps Innowa writes for one ask; it waits for the owner's OK when it changes the project or the Library) · Skill (know-how a step follows, skills/<name>/SKILL.md) · Script (exact work with no tokens, in the content: gives layouts, a report or files) · Stage, Decision, Output (a playbook's steps) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library) · Layout (several Objects arranged together, placed as one kept unit or broken into separate Objects; R114) · Template (a project's starting rules; in the Library since R114) · Shortlist (a project's pinned Objects and Layouts). The Library is a catalogue of Objects, Layouts and Templates. The word "type" is not used.
 
 ## The kernel (mesh-light)
 
@@ -28,6 +28,7 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - **Code and definitions:** a pull request opened from a chat (Innowa in the app, or Claude on claude.ai) (or by an associate on content); automatic checks run on GitHub; only the owner merges. The app holds no GitHub token.
 - **Records** (sessions, decisions, lessons, layout patterns, replayed-brief results): committed straight to the content repository, by the app with the PC's Git sign-in, or by a chat outside the app.
 - **Proposals and settings requests:** the app commits a record (`library/proposals/`, `requests/settings/`) with the PC's Git sign-in; a content Action turns each into a pull request; only the owner merges, and a closed one removes its record. Project Objects reach the Library this way (Library page, "From your projects"); shared settings change this way (Studio page).
+- **Playbooks, scripts and skills (R116):** the owner saves a plan that worked as a playbook, and Innowa drafts a script or a skill with him; the app commits a record (`proposals/<kind>/`) that the content's proposals Action turns into a pull request he merges. Only the owner proposes. Tools stay the app's own operations, where the gates are kept.
 - **Project work:** logged, invertible operations on the PC; the owner decides only at declared decisions.
 - The app follows GitHub main for both repositories by itself (database backup first; a server change waits for a restart; pause and roll back on the Studio page).
 

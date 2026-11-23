@@ -157,3 +157,7 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-22 · Session 46** — Owner: "Instead of pipelines, lets have only skills, scripts, tools and can we have dynamic playbooks that innowa would assemble?" then "Agree as u suggested." (R116).
 - **2026-11-22 · Session 46** — R116 approval: Innowa waits for the owner's OK on a plan that changes the project or the Library; a plan that only reads or drafts starts straight away.
 - **2026-11-22 · Session 46** — R116 unattended work: only a saved playbook or a plan the owner approved before leaving; no new plans while nobody is watching.
+- **2026-11-23 · Session 47** — Owner: "build R116 step 2", then "Merge"; "go step 3", then "Merge"; "Go 4a, 4b and 4c", then "Merge".
+- **2026-11-23 · Session 47** — Owner's vision for R116: "A free standing scripts, skills, tools. Innowa picks and assembles on the fly as a playbook if a job needs one or picks a old playbooks of that suits."
+- **2026-11-23 · Session 47** — Only the owner saves a playbook or proposes a script or a skill; each reaches him as a pull request on the content. Tools stay in the app, where the gates are kept.
+- **2026-11-23 · Session 47** — Every pipeline is a playbook with a "use when"; only the newest version of each is kept; an agent works only as a session on a PC.
