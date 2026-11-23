@@ -260,6 +260,12 @@ for (const id of (() => { try { return readdirSync(join(root, "solvers")); } cat
     const other = join(root, "solvers", id, `${m[1]}.${m[2] === "js" ? "json" : "js"}`); if (!existsSync(other)) problems.push(`${rel}: its ${m[2] === "js" ? "manifest .json" : "code .js"} is missing`);
     if (m[2] === "json") { let j = null; try { j = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch { problems.push(`${rel}: not valid JSON`); continue; }
       if (j.id !== id) problems.push(`${rel}: id must be ${id}`); if (!String(j.name || "").trim() || !String(j.about || "").trim()) problems.push(`${rel}: name and about are required`);
+      // R116 step 4b: a script says what it gives, where it runs, what it reads and when to use it
+      if (j.gives !== undefined && !["candidates", "report", "files"].includes(j.gives)) problems.push(`${rel}: gives is candidates, report or files`);
+      if (j.scopes !== undefined && !(Array.isArray(j.scopes) && j.scopes.length && j.scopes.every((x) => ["project", "library", "studio"].includes(x)))) problems.push(`${rel}: scopes lists project, library or studio`);
+      if ((j.gives || "candidates") === "candidates" && j.scopes !== undefined && j.scopes.join() !== "project") problems.push(`${rel}: a script that gives candidates works in a project`);
+      if (j.reads !== undefined && !(Array.isArray(j.reads) && j.reads.every((x) => ["project", "library", "library-checks", "given"].includes(x)))) problems.push(`${rel}: reads lists project, library, library-checks or given`);
+      if (j.useWhen !== undefined && !String(j.useWhen).trim()) problems.push(`${rel}: useWhen, when given, says when to use it`);
       if (j.roles !== undefined && !(Array.isArray(j.roles) && j.roles.every((r) => /^[a-z][a-z0-9-]*$/.test(r)))) problems.push(`${rel}: roles lists role ids`); // a solver for a model before 4.2
       if (j.uses !== undefined && !(Array.isArray(j.uses) && j.uses.every((r) => /^[a-z][a-z0-9-]*$/.test(r)))) problems.push(`${rel}: uses lists the space uses and Placement kinds it reads`); }
     else if (!/function solve\s*\(/.test(readFileSync(join(root, rel), "utf8"))) problems.push(`${rel}: it must define function solve(input, geo)`); } }
