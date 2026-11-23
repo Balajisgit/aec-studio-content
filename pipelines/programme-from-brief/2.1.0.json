@@ -1,0 +1,70 @@
+{
+  "id": "programme-from-brief@2.1.0",
+  "name": "Programme from a brief",
+  "about": "The brief (the client's notes, a mail, a deck or a form) becomes the project's programme: the spaces it asks for by use, how many, about how big and on which floor, the floors and the built area. The programme is kept with the project, and the project page and the canvas then say what is still to draw (Against the brief). Nothing is drawn. Since 2.0.0 Innowa writes it with you in the chat (R115), asking what the brief leaves open, and you confirm it.",
+  "useWhen": "A project has a brief and no programme yet, or the brief changed: before any layout is tried, so everyone (and Innowa) knows what the design has to hold and when it is complete.",
+  "scopes": [
+    "project"
+  ],
+  "input": {
+    "notes": true,
+    "files": true,
+    "about": "The brief: what the client asked for, typed in the notes (\"3 BHK villa, two floors, about 180 m², a study if it fits, car porch\") or in the project's files (a mail, a form, a deck)."
+  },
+  "rules": [
+    {
+      "id": "R1",
+      "text": "Write only what the brief asks for. A space the brief does not name is not in the programme, however usual it is in a house: a passage, a store, a stair are the designer's to add."
+    },
+    {
+      "id": "R2",
+      "text": "Every line is one of the project's uses (its model defaults bring them). If the brief asks for something the project has no use for, say so in your answer and leave it out; never bend it into another use."
+    },
+    {
+      "id": "R3",
+      "text": "Sizes, floors and the built area go in only where the brief gives them, as it gives them (about). A wish (\"if it fits\", \"would be nice\") is marked optional."
+    },
+    {
+      "id": "R4",
+      "text": "The programme is the client's wish, not the design: it is kept with the project and no drawing step changes it."
+    }
+  ],
+  "steps": [
+    {
+      "kind": "stage",
+      "id": "write",
+      "name": "Write the programme",
+      "by": "innowa",
+      "outcome": "The project has its programme: the spaces the brief asks for, each one of the project's uses.",
+      "instructions": [
+        "Before step_done, tell the owner in two or three plain sentences what the programme now asks for and what you left out, and ask about anything the brief leaves unclear that changes the plan."
+      ],
+      "skills": [
+        "write-programme"
+      ],
+      "tools": [
+        "run_inputs",
+        "run_state",
+        "project_look",
+        "project_programme",
+        "programme_put"
+      ],
+      "checks": [
+        "programme-set"
+      ]
+    },
+    {
+      "kind": "decision",
+      "id": "confirm",
+      "name": "The programme",
+      "question": "Is this the programme? Look at the project's Programme; send it back with what to change.",
+      "form": "confirm",
+      "sendBack": "write"
+    }
+  ],
+  "output": {
+    "id": "programme",
+    "name": "The project's programme",
+    "about": "What the brief asks for, line by line; open the project to see it against what is drawn."
+  }
+}
