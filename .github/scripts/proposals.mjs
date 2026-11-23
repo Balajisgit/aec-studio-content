@@ -52,11 +52,12 @@ if (cmd === "open") {
       const bad = recordProblems(kind, file, rec); if (bad.length) { for (const b of bad) console.log(`::error file=${dir}/${file}::${b}`); failed++; continue; }
       const branch = `propose/${KINDS[kind].one}-${rec.name}-${rec.version}`;
       if (tryGit("ls-remote", "--exit-code", "--heads", "origin", branch) !== null) { console.log(`${file}: its pull request is already open (branch ${branch}).`); continue; }
-      const there = Object.keys(rec.files).filter((f) => existsSync(f)); if (there.length) { console.log(`::warning file=${dir}/${file}::${there.join(", ")} is already there; this record can be removed.`); continue; }
+      // a skill may be a better version of one already there; anything else is added only once
+      const there = Object.keys(rec.files).filter((f) => existsSync(f)), changes = kind === "skills" && there.length > 0; if (there.length && !changes) { console.log(`::warning file=${dir}/${file}::${there.join(", ")} is already there; this record can be removed.`); continue; }
       git("checkout", "-q", "-B", branch, "origin/main");
       for (const [f, text] of Object.entries(rec.files)) { mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, text.endsWith("\n") ? text : text + "\n"); }
       git("rm", "-q", join(dir, file)); git("add", ...Object.keys(rec.files));
-      const title = `${KINDS[kind].one[0].toUpperCase()}${KINDS[kind].one.slice(1)}: add ${rec.title || rec.name} (${rec.name}@${rec.version})`;
+      const title = `${KINDS[kind].one[0].toUpperCase()}${KINDS[kind].one.slice(1)}: ${changes ? "change" : "add"} ${rec.title || rec.name}${kind === "skills" ? "" : ` (${rec.name}@${rec.version})`}`;
       git("commit", "-q", "-m", title); git("push", "-q", "origin", `HEAD:refs/heads/${branch}`);
       const url = gh("pr", "create", "--base", "main", "--head", branch, "--title", title, "--body", body(kind, rec));
       try { gh("workflow", "run", "checks.yml", "--ref", branch); } catch (e) { console.log(`::warning::Could not start the checks on ${branch}: ${e.message}`); }
