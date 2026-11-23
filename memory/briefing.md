@@ -63,7 +63,6 @@ _The open requests (requests/ in the content repository)._
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
 - R76 · Hybrid render: a quick Blender render and product mask, then Krea enhance as a firm script with the firm's own Krea key
-- R116 · Skills, scripts, tools and dynamic playbooks Innowa assembles, instead of pipelines (in aec-studio#133)
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
