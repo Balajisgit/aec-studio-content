@@ -1,6 +1,7 @@
 {
   "id": "split-deck@1.0.0",
   "name": "Slides from a deck",
+  "playbook": true,
   "about": "A deck (PDF) becomes one picture per slide, slide<N>.png, made on the owner's PC by a Claude session, with a list of what each slide shows; kept in the project's Slides/ folder, so cameras and the render review match views to slides by name.",
   "useWhen": "A deck is the brief and later steps need its slides as pictures: before Make a scene and Render views, or when the owner wants the slides.",
   "input": {

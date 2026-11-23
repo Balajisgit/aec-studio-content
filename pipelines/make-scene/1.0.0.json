@@ -1,6 +1,7 @@
 {
   "id": "make-scene@1.0.0",
   "name": "Make a scene",
+  "playbook": true,
   "about": "One Blender scene, for renders, built by a Claude session on the owner's PC: from a project's model (walls, floors, ceilings) or, with no project, an assumed layout read from the brief's slides; each Object from its detailed .blend (else its plain 3D shape), lights, and cameras matched to the reference slides. The .blend stays on that PC. In a project the owner keeps it into Scenes/; elsewhere it stays with the run, approved, to place in any project later.",
   "useWhen": "The owner wants a Blender scene to render: from a project once its layout is in the model, or straight from a brief (a deck in the chat) with an assumed layout.",
   "input": {

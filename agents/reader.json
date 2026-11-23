@@ -1,7 +1,0 @@
-{
-  "id": "reader",
-  "name": "Reader",
-  "tier": "complex",
-  "about": "Reads a brief (deck, photos, notes) and lists what it calls for as Needs.",
-  "skill": "read-brief"
-}

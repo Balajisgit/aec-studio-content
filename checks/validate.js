@@ -228,6 +228,7 @@ try { for (const p of readdirSync(join(root, "pipelines"))) { const pd = join(ro
           if (s.agent !== undefined || s.session !== undefined) problems.push(`${rel}: stage ${s.id}: a step by Innowa has no agent and is not a session`);
           if (s.instructions !== undefined && !(Array.isArray(s.instructions) && s.instructions.every((x) => typeof x === "string" && x.trim()))) problems.push(`${rel}: stage ${s.id}: instructions is a list of sentences`); }
         else if (!agents.has(s.agent)) problems.push(`${rel}: stage ${s.id} names agent ${s.agent}, which is not in agents/`);
+        else if (s.session !== true) problems.push(`${rel}: stage ${s.id}: an agent no longer works a stage on its own (R116): make it a step by Innowa (by: innowa, with the agent's skill) or a session on a PC (session: true)`);
         // R82: a session stage (session: true) is a full Claude session on the owner's PC; its skills are skills/<name>/SKILL.md
         if (s.session !== undefined && s.session !== true) problems.push(`${rel}: stage ${s.id}: session is true or left out`);
         if (s.skills !== undefined) { if (!s.session && s.by !== "innowa") problems.push(`${rel}: stage ${s.id}: skills are for a step by Innowa or a session stage (session: true)`); // R116 step 3

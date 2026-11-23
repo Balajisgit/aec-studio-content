@@ -1,6 +1,7 @@
 {
   "id": "test-fit@1.0.0",
   "name": "Test fit a floor",
+  "playbook": true,
   "about": "Lays out a workplace floor from its programme: the rooms asked for along the sides of the floor, the open office filled with desks until everyone has a seat, every room furnished and given a door. It offers a few layouts ranked by how well each meets the programme, and draws the one you pick. The floor is an empty shell already drawn: its outer walls, the core's rooms and the entrance door.",
   "useWhen": "The owner has an empty office floor drawn (outer walls, core, entrance) and a programme (how many people, which rooms), and wants a first furnished layout to react to.",
   "input": {

@@ -1,6 +1,7 @@
 {
   "id": "detail-object@1.3.0",
   "name": "Detail an Object",
+  "playbook": true,
   "about": "The detailed version of an Object, for renders only (it is never placed in the model): built in Blender from the brief and its photos, to the instancing standard, by a Claude session on the owner's PC (trial, R82). A Project Object's detail is kept in its project; a Library Object's is proposed to the Library. The .blend stays on that PC.",
   "useWhen": "The owner wants an Object's full model for renders: a Project Object (in a project) or a Library Object (from the Library), matching the real product in its photos.",
   "input": {

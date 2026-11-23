@@ -1,7 +1,0 @@
-{
-  "id": "maker",
-  "name": "Maker",
-  "tier": "complex",
-  "about": "Makes an Object (parameters, 2D symbol, 3D primitive) for a Need.",
-  "skill": "make-object"
-}

@@ -1,7 +1,0 @@
-{
-  "id": "matcher",
-  "name": "Matcher",
-  "tier": "default",
-  "about": "Matches each Need to a Library Object, an Object to adapt, or marks it missing.",
-  "skill": "match-needs"
-}

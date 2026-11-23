@@ -1,5 +1,5 @@
 {
-  "id": "fit-to-plot@4.0.0",
+  "id": "fit-to-plot@5.0.0",
   "name": "Fit to plot",
   "about": "Finds the largest rectangle that fits a plot inside its front, rear and side setbacks, at any angle, and draws the one you pick as the building's footprint: lines and a space used as the footprint. The plot is a space used as the plot, its road edge labelled front: drawn on the canvas, or read from the notes or a survey by the Site reader.",
   "useWhen": "The owner wants the biggest rectangular building footprint a plot allows after its setbacks, as a start for the plan.",
@@ -32,23 +32,29 @@
       "kind": "stage",
       "id": "read-site",
       "name": "Read the plot",
+      "by": "innowa",
       "outcome": "The project has the plot from the brief: a space used as the plot, with its setbacks, its road edge labelled front.",
-      "agent": "site-reader",
       "when": "space-to-read",
       "space": "plot",
+      "instructions": [
+        "Where the brief gives no corners, no file to read them from and no dimensions, ask the owner in the chat rather than draw anything."
+      ],
+      "skills": [
+        "read-site"
+      ],
       "tools": [
         "run_inputs",
         "run_state",
         "project_model",
         "project_ops",
+        "project_look",
+        "project_picture",
         "project_edit"
       ],
-      "files": true,
       "checks": [
         "plot-set",
         "model-changed-soundly"
-      ],
-      "retries": 2
+      ]
     },
     {
       "kind": "stage",
@@ -73,5 +79,6 @@
     "id": "footprint",
     "name": "Footprint on the plot",
     "about": "The footprint picked, its area and share of the plot, drawn as a space used as the footprint."
-  }
+  },
+  "playbook": true
 }

@@ -1,7 +1,0 @@
-{
-  "id": "reviewer",
-  "name": "Reviewer",
-  "tier": "quick",
-  "about": "Looks over a Project Object proposed to the Library and says what to look at. Never changes it.",
-  "skill": "review-object"
-}

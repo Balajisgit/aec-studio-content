@@ -1,7 +1,0 @@
-{
-  "id": "programme-writer",
-  "name": "Programme writer",
-  "tier": "default",
-  "about": "Reads a brief and writes the project's programme: the spaces it asks for by use, how many, about how big, on which floor.",
-  "skill": "write-programme"
-}
