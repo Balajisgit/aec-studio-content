@@ -1,6 +1,7 @@
 {
   "id": "office-floor-plan@1.1.0",
   "name": "Office floor plan",
+  "playbook": true,
   "about": "A playbook Innowa works with you in a chat: the brief becomes the programme, the empty floor is drawn, the workplace test fit gives a first furnished layout, Innowa tidies it against the programme, and you decide at the programme, the layout and the final plan. Innowa's steps are worked in the chat; the app's steps (the test fit) run by themselves.",
   "useWhen": "An office floor (a tech firm, a capability centre, a studio) from a brief: how many people, which rooms, about how big the floor is. Best in a project made from a workplace template, such as Workplace: tech.",
   "scopes": [

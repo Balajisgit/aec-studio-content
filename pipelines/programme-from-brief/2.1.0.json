@@ -1,6 +1,7 @@
 {
   "id": "programme-from-brief@2.1.0",
   "name": "Programme from a brief",
+  "playbook": true,
   "about": "The brief (the client's notes, a mail, a deck or a form) becomes the project's programme: the spaces it asks for by use, how many, about how big and on which floor, the floors and the built area. The programme is kept with the project, and the project page and the canvas then say what is still to draw (Against the brief). Nothing is drawn. Since 2.0.0 Innowa writes it with you in the chat (R115), asking what the brief leaves open, and you confirm it.",
   "useWhen": "A project has a brief and no programme yet, or the brief changed: before any layout is tried, so everyone (and Innowa) knows what the design has to hold and when it is complete.",
   "scopes": [

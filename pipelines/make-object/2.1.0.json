@@ -1,6 +1,7 @@
 {
   "id": "make-object@2.1.0",
   "name": "Make an Object",
+  "playbook": true,
   "freestyle": true,
   "about": "Describe a thing (add a photo or drawing if you like) and Claude makes it as an Object: its 2D symbol and 3D primitive. In a project you keep it there, and can have its detailed version made next (Detail an Object); in the studio you propose it to the Library. Since 2.0.0 Innowa makes it with you in the chat (R115): ask for a change and it is made straight away.",
   "input": {

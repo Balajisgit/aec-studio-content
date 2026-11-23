@@ -1,6 +1,7 @@
 {
   "id": "render-views@1.3.0",
   "name": "Render views",
+  "playbook": true,
   "about": "The scene's views rendered quickly in Blender by a Claude session on the owner's PC (about 30 s a view on a GPU), each with a mask that protects the products, named after its reference slide; you review each beside its reference. In a project, kept renders go to Renders/; elsewhere they stay with the run, approved. Krea enhancement follows once it is built (R76).",
   "useWhen": "The owner wants images of a scene: after Make a scene, from a project (its Scenes/) or from the Make a scene run itself.",
   "input": {

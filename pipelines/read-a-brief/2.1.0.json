@@ -1,6 +1,7 @@
 {
   "id": "read-a-brief@2.1.0",
   "name": "Read a brief",
+  "playbook": true,
   "about": "A deck, photos or notes become the asset list: every item the brief calls for, with the slide or photo it comes from, matched to the Library or marked missing. Each missing item has a Make button (Make an Object), and each made Object can be detailed next (Detail an Object). Since 2.0.0 Innowa reads it with you in the chat (R115) and asks what the brief leaves unclear.",
   "useWhen": "The owner has a brief (a deck, photos, drawings or notes) and wants the list of what it calls for, with what the Library already has and what is missing.",
   "input": {

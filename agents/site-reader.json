@@ -1,7 +1,0 @@
-{
-  "id": "site-reader",
-  "name": "Site reader",
-  "tier": "default",
-  "about": "Reads a plot from the brief (typed coordinates, a coordinates file, or a survey drawing) and draws it on the project: lines round it, a space used as the plot with its setbacks, its road edge labelled front.",
-  "skill": "read-site"
-}
