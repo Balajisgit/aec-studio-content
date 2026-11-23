@@ -4,9 +4,10 @@ import { readdirSync, readFileSync, statSync, existsSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { settingProblem } from "./settings.mjs";
+import { KINDS as PROPOSAL_KINDS, recordProblems } from "../.github/scripts/proposals.mjs";
 
 const root = join(fileURLToPath(import.meta.url), "..", ".."), problems = [];
-const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "docs", "scripts", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
+const TOP = new Set(["pipelines", "agents", "skills", "checks", "solvers", "panels", "library", "canvases", "memory", "lessons", "requests", "docs", "scripts", "proposals", "settings.json", "README.md", "package.json", ".github", ".gitkeep"]);
 for (const n of readdirSync(root)) if (!n.startsWith(".git") && !TOP.has(n)) problems.push(`${n}: not part of the content layout (see README.md)`);
 const walk = (d) => { for (const n of readdirSync(d)) { if (n === ".git" || n === "node_modules") continue; const f = join(d, n); if (statSync(f).isDirectory()) walk(f); else if (n.endsWith(".json")) {
   try { JSON.parse(readFileSync(f, "utf8")); } catch (e) { problems.push(`${relative(root, f).split(sep).join("/")}: not valid JSON (${e.message})`); } } } };
@@ -269,4 +270,9 @@ for (const n of (() => { try { return readdirSync(join(root, "skills")); } catch
   if (!existsSync(f)) { problems.push(`skills/${n}: SKILL.md is missing`); continue; }
   const t = readFileSync(f, "utf8"), fm = /^---\n([\s\S]*?)\n---\n/.exec(t);
   if (!fm || !new RegExp(`^name: ${n}$`, "m").test(fm[1]) || !/^about: \S/m.test(fm[1])) problems.push(`skills/${n}/SKILL.md: front matter needs name: ${n} and about: …`); }
+// proposals/<kind>/<name>@<version>.json (R116 step 4): records the app commits (a playbook, a script, a skill); the proposals
+// Action turns each into a pull request that adds its files and removes the record
+for (const kind of (() => { try { return readdirSync(join(root, "proposals")); } catch { return []; } })()) { if (kind === ".gitkeep" || kind === "README.md") continue;
+  if (!PROPOSAL_KINDS[kind]) { problems.push(`proposals/${kind}: the kinds are ${Object.keys(PROPOSAL_KINDS).join(", ")}`); continue; }
+  for (const n of readdirSync(join(root, "proposals", kind))) { if (n === ".gitkeep") continue; let rec = null; try { rec = JSON.parse(readFileSync(join(root, "proposals", kind, n), "utf8")); } catch { continue; } problems.push(...recordProblems(kind, n, rec)); } }
 console.log(`content: ${problems.length} problem${problems.length === 1 ? "" : "s"}`); process.exit(problems.length ? 1 : 0);
