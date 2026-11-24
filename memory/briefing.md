@@ -60,6 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
 - R102 · Mixed use: several typologies in one project, and a programme in sections
+- R118 · The hosted Studio does skills and cloud sessions too
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
