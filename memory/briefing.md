@@ -72,6 +72,7 @@ _The open requests (requests/ in the content repository)._
 
 **Something broken**
 - R119 · Cloud sessions can't start: the app runs Claude with --cloud and --print together, which is refused · from project L-type office floor 500 m²
+- R120 · Net room area slightly off where walls of different thickness meet in a straight line · from project L-type office floor 500 m²
 
 **Other**
 - R5 · Archive the old app (AEC Agent Studio 2)
