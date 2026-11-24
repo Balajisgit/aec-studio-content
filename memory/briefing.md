@@ -70,6 +70,9 @@ _The open requests (requests/ in the content repository)._
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
 
+**Something broken**
+- R119 · Cloud sessions can't start: the app runs Claude with --cloud and --print together, which is refused · from project L-type office floor 500 m²
+
 **Other**
 - R5 · Archive the old app (AEC Agent Studio 2)
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
