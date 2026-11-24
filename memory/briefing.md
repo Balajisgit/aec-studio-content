@@ -59,6 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
+- R125 · The Studio connector saves a file into a project's files
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
