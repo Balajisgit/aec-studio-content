@@ -161,3 +161,4 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-23 · Session 47** — Owner's vision for R116: "A free standing scripts, skills, tools. Innowa picks and assembles on the fly as a playbook if a job needs one or picks a old playbooks of that suits."
 - **2026-11-23 · Session 47** — Only the owner saves a playbook or proposes a script or a skill; each reaches him as a pull request on the content. Tools stay in the app, where the gates are kept.
 - **2026-11-23 · Session 47** — Every pipeline is a playbook with a "use when"; only the newest version of each is kept; an agent works only as a session on a PC.
+- **2026-11-24 · Session 48** — Owner: "start a cloud session to make a script that lists every room's area"; the session could not start (R119), so offered to write it in the chat: "A"

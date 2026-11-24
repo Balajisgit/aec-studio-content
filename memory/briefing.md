@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 48._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 49._
 
 ## What this is
 
@@ -80,6 +80,17 @@ _The open requests (requests/ in the content repository)._
 
 ## Recent sessions
 
+### Session 48 · 2026-11-24 · Script room-areas proposed
+A no-token script that lists every room's net and gross area was written in the chat, tried on two projects and sent as a proposal for the owner to merge.
+
+Done:
+- room-areas@1.0.0 proposed (report; project scope; reads project and library): level, room, use, net and gross m², totals; notes unnamed rooms and rooms with no use
+- Calculation tried on L-type office floor (19 rooms); final version tried in full on test1 (8 rooms)
+- Not tested: curved walls, several levels, plot/footprint/void left out, wall thickness set by hand
+
+Decided:
+- Owner: "start a cloud session to make a script that lists every room's area"; the session could not start (R119), so offered to write it in the chat: "A"
+
 ### Session 47 · 2026-11-23 · R116 done: Innowa writes plans, skills and scripts stand alone, plans that work are saved as playbooks, the fixed pipelines retire
 R116 steps 2 to 4 were built and merged at the owner's word. Innowa writes a plan for an ask from skills and scripts, or picks a playbook that suits; a plan that changes the project or the Library waits for his OK; a plan that worked is saved as a playbook; scripts give layouts, reports or files; the old fixed pipelines and lone agents are gone.
 
@@ -152,27 +163,9 @@ Decided:
 - Owner: "Step 3 and 4 go", then "Merge" (aec-studio#125, aec-studio-content#62).
 - Owner: "Ok" to republish the online preview and wrap up.
 
-### Session 43 · 2026-11-21 · R113 done: Objects say how they behave (model 4.3) and zones; the online preview republished
-The kernel's list of kinds went: every Library Object now says what it does, and every Placement has an Object, a generic one until it is swapped. Zones, the last part of R113, were built: a name and a use on a closed ring of lines, with what each covers worked out. All merged at the owner's word; R113 is done and the online preview shows it.
-
-Done:
-- Behaviours: band, holds-openings, opening, way-through, stops-bands, cuts-floor-above; an Object's kind is only a word the kernel never reads.
-- Every Placement has an Object: an operation naming only a kind gets the template's Object, else the Library's generic one.
-- Model 4.3: old projects' Objects get the behaviours their kind had; Placements with no Object get the generic one.
-- Content: every Library Object says kind and behaves (role and meaning gone); eight generic Objects added.
-- Zones: add_zone and edit_zone, rule I12, the Zone tool (Z) on the canvas, and project_look saying what each zone covers.
-- Merged: aec-studio#121, then aec-studio-content#59; aec-studio#122, then aec-studio-content#60. R113 marked done.
-- Online preview republished from main (app 3c830cf): Placements, behaviours and zones.
-- 349 tests, the smoke check and the canvas browser check (now using the Zone tool) pass on main.
-
-Decided:
-- Owner on Object-less Placements: "Always an Object" (a generic one at first, swapped later).
-- Owner on giving the Library's Objects their behaviours: "Edit in place" (same ids; projects' copies get them on upgrade).
-- Owner, after the suggestion to leave behaviours out of the Object fingerprint until R114: "Ok what next".
-- Owner: "Merge and do as suggested" (#121, #59; then zones and the preview), and "Merge" (#122, #60).
-
 ## Earlier sessions
 
+- **43** · 2026-11-21 · R113 done: Objects say how they behave (model 4.3) and zones; the online preview republished — The kernel's list of kinds went: every Library Object now says what it does, and every Placement has an Object, a generic one until it is swapped. Zones, the last part of R113, were built: a name and a use on a closed ring of lines, with what each covers worked out. All merged at the owner's word; R113 is done and the online preview shows it.
 - **42** · 2026-11-20 · Objects on hosts merged (R113 step 3); the kernel holds no specifics; Fit to plot says in content what it reads — R113 step 3 was built and merged. Roles and meanings are gone: Library Objects are Placements on a node, a segment, a ring of lines or another Placement, and spaces carry their own name, use, number and values. At the owner's word the kernel was then emptied of specifics: plot, footprint and void are template uses, setbacks are set each time, and Fit to plot says in content what it reads.
 - **41** · 2026-11-20 · The model from first principles (R113) and the Library as a catalogue (R114); line kinds and spaces as tag points merged — Room and slab were rethought from first principles: only nodes and segments are primers, spaces are worked out round a tag point, and Objects attach to hosts (R113). The Library becomes a catalogue of Objects, Layouts and Templates (R114). R113 steps 1 and 2 were built and merged; step 3, Objects on hosts, is next, in a fresh session.
 - **40** · 2026-11-16 · Main, staging and the online preview made the same — The online preview was republished from main, and both staging branches were brought level with main. Staging has no extras of its own left: the records fix and the template-proposals workflow are on main now.
