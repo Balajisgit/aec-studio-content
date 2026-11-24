@@ -1,0 +1,16 @@
+{
+  "id": "room-areas",
+  "name": "Room areas",
+  "about": "Every room of a project with its level, name, use, net area (inside the walls) and gross area (to the wall centre lines) in m², with totals for each level and the project. Leaves out uses that are not rooms (plot, footprint, void). Notes a room with no name or no use, a wall whose thickness is not known, and a curved side (its net area is approximate). Nothing is changed.",
+  "useWhen": "The owner wants the list of a project's rooms with their areas (an area schedule), or the total net and gross area.",
+  "gives": "report",
+  "scopes": [
+    "project"
+  ],
+  "reads": [
+    "project",
+    "library"
+  ],
+  "settings": {},
+  "timeoutSeconds": 20
+}
