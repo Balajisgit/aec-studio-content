@@ -59,7 +59,6 @@ _The open requests (requests/ in the content repository)._
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
-- R121 · A run checks its project has not moved on before its draft goes in (in aec-studio#142)
 - R122 · When an app step fails, Innowa does it by hand inside the run (in aec-studio#142)
 - R124 · A run worked through the connector says so in the Studio (in aec-studio#142)
 
