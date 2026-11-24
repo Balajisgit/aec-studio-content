@@ -58,7 +58,7 @@ _The open requests (requests/ in the content repository)._
 - R56 · RBAC from first principles: platform roles, organizations, workspaces, project roles, FDEs, agents
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
-- R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector
+- R81 · The Studio connector: a public MCP server with sign-in as the person, added in Claude as a custom connector (in aec-studio#139)
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R118 · The hosted Studio does skills and cloud sessions too
 
