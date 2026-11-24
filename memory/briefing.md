@@ -64,7 +64,6 @@ _The open requests (requests/ in the content repository)._
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
 - R76 · Hybrid render: a quick Blender render and product mask, then Krea enhance as a firm script with the firm's own Krea key
-- R123 · The workplace test fit reads real floor shapes and columns (in aec-studio-content#75)
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
