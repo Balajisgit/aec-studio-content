@@ -12,7 +12,7 @@ BuilderPluss Studio (formerly AEC Studio 6), owned by Balaji (BuilderPluss): a l
 
 Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discussion (phase 2: the chat, sessions, briefing, decisions) · Projects and Canvas (phase 3) · Library (phase 4) · Pipelines, now Playbooks (phase 5; since R116: playbooks, plans, skills, scripts) · Files and Storage (phase 6, ready for hosting). All six phases are built (2 Nov 2026).
 
-- **Online preview:** artifact "BuilderPluss Studio" (claude.ai/artifact/TeL8fLtYta3eXyqe1jVMt6), built from both repositories with the app's tools/online/build.mjs and republished on request; projects there are a sandbox in the browser, and chat, runs, files and storage need the PC.
+- **Online preview:** artifact "BuilderPluss Studio" (claude.ai/artifact/TeL8fLtYta3eXyqe1jVMt6), built from both repositories with the app's tools/online/build.mjs and republished only when the owner asks (staging.studio.builderpluss.com likewise: not after every merge; owner, 24 Nov 2026); projects there are a sandbox in the browser, and chat, runs, files and storage need the PC.
 - **Pull requests always target main** (no stacked PRs).
 
 ## Words
@@ -40,4 +40,4 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - A session's **Open** lists only the requests it noted or closed ("R14 noted: …", "R9 done").
 - A chat outside the app (claude.ai) writes a new record at each wrap-up, at the next free number: `memory/sessions/<number, 4 digits>.md` in the format the app writes (front matter: number, date, title, source; then the headline, Done, Decisions, Open), appends its decisions to `memory/decisions.md`, regenerates `memory/briefing.md` with `node <app>/tools/requests.mjs briefing <content>` (the app's format.js, with the requests), and commits to the content repository's main. It notes and changes requests with the same tool (`add`, `update`, `settle`), which commits and pushes each change. No wrap-up JSON, no pasting.
 - Limits: title 200 characters, headline 400, at most 12 items of 300 characters in Done, Decisions and Open. Decisions quote the owner's words.
-- Explain in plain language; the owner often reads on a phone. Never approve, merge or release: those are the owner's actions. Use the Studio connector (R81) in chats, as the person signed in; never approve, merge or release through it (owner, 12 Nov 2026).
+- Explain in plain language; the owner often reads on a phone. Never approve, merge or release: those are the owner's actions. Use the Studio connector (R81) in chats, as the person signed in; never approve, merge or release through it (owner, 12 Nov 2026). The BuilderPluss Studio connector's tools are the ones to use; the older BuilderPluss connector's tools are still not used (owner, 24 Nov 2026).

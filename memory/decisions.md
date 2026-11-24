@@ -162,3 +162,9 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-23 · Session 47** — Only the owner saves a playbook or proposes a script or a skill; each reaches him as a pull request on the content. Tools stay in the app, where the gates are kept.
 - **2026-11-23 · Session 47** — Every pipeline is a playbook with a "use when"; only the newest version of each is kept; an agent works only as a session on a PC.
 - **2026-11-24 · Session 48** — Owner: "start a cloud session to make a script that lists every room's area"; the session could not start (R119), so offered to write it in the chat: "A"
+- **2026-11-24 · Session 49** — Owner on cloud sessions: "innowa will use claude.ai itself to write the script and proposes even the larger one too. even i wanted this only", then "ok" to removing them; and "merge".
+- **2026-11-24 · Session 49** — Owner: "both are different connectors ... use BuilderPluss Studio tools" (the older BuilderPluss connector stays unused).
+- **2026-11-24 · Session 49** — Owner: "ok make as requuests for ths fixes and do all in the order" (R121 to R124), then "merge".
+- **2026-11-24 · Session 49** — Owner: "no need to update this all the time. will do once a while": staging and the online preview are updated only when he asks.
+- **2026-11-24 · Session 49** — Owner: "dont square off": a floor is drawn with its real outline and its columns.
+- **2026-11-24 · Session 49** — Owner on R125: "yes do now", then "merge".

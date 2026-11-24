@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 49._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 50._
 
 ## What this is
 
@@ -16,7 +16,7 @@ BuilderPluss Studio (formerly AEC Studio 6), owned by Balaji (BuilderPluss): a l
 
 Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discussion (phase 2: the chat, sessions, briefing, decisions) · Projects and Canvas (phase 3) · Library (phase 4) · Pipelines, now Playbooks (phase 5; since R116: playbooks, plans, skills, scripts) · Files and Storage (phase 6, ready for hosting). All six phases are built (2 Nov 2026).
 
-- **Online preview:** artifact "BuilderPluss Studio" (claude.ai/artifact/TeL8fLtYta3eXyqe1jVMt6), built from both repositories with the app's tools/online/build.mjs and republished on request; projects there are a sandbox in the browser, and chat, runs, files and storage need the PC.
+- **Online preview:** artifact "BuilderPluss Studio" (claude.ai/artifact/TeL8fLtYta3eXyqe1jVMt6), built from both repositories with the app's tools/online/build.mjs and republished only when the owner asks (staging.studio.builderpluss.com likewise: not after every merge; owner, 24 Nov 2026); projects there are a sandbox in the browser, and chat, runs, files and storage need the PC.
 - **Pull requests always target main** (no stacked PRs).
 
 ## Words
@@ -44,7 +44,7 @@ The model stores intent, never triangles: nodes, segments (walls and others), op
 - A session's **Open** lists only the requests it noted or closed ("R14 noted: …", "R9 done").
 - A chat outside the app (claude.ai) writes a new record at each wrap-up, at the next free number: `memory/sessions/<number, 4 digits>.md` in the format the app writes (front matter: number, date, title, source; then the headline, Done, Decisions, Open), appends its decisions to `memory/decisions.md`, regenerates `memory/briefing.md` with `node <app>/tools/requests.mjs briefing <content>` (the app's format.js, with the requests), and commits to the content repository's main. It notes and changes requests with the same tool (`add`, `update`, `settle`), which commits and pushes each change. No wrap-up JSON, no pasting.
 - Limits: title 200 characters, headline 400, at most 12 items of 300 characters in Done, Decisions and Open. Decisions quote the owner's words.
-- Explain in plain language; the owner often reads on a phone. Never approve, merge or release: those are the owner's actions. Use the Studio connector (R81) in chats, as the person signed in; never approve, merge or release through it (owner, 12 Nov 2026).
+- Explain in plain language; the owner often reads on a phone. Never approve, merge or release: those are the owner's actions. Use the Studio connector (R81) in chats, as the person signed in; never approve, merge or release through it (owner, 12 Nov 2026). The BuilderPluss Studio connector's tools are the ones to use; the older BuilderPluss connector's tools are still not used (owner, 24 Nov 2026).
 
 ## Open now
 
@@ -78,6 +78,29 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 49 · 2026-11-24 · The Studio connector (R81), hosted skills (R118), cloud sessions removed (R119), runs that never stop halfway (R121 to R124), files through the connector (R125)
+Claude in claude.ai now works in the Studio as the person, through the connector. Cloud sessions were found never to start and were removed at the owner's word: Innowa makes scripts and skills in its own chat. A run whose app step fails now passes it to Innowa, never lands on newer work, and the test fit reads real floor shapes and columns.
+
+Done:
+- R117 built and merged (aec-studio#136, #137, #138; content#71, #72): skills load the way Claude loads them; drafts tried on the owner's work first.
+- R81: the Studio connector, OAuth and /mcp (aec-studio#139); never approves, merges or releases.
+- R118: skills in a chat on a PC's Helper on the hosted Studio, Helper 2h (aec-studio#140).
+- R119: cloud sessions never started (the CLI starts one only in a real terminal); removed (aec-studio#141, content#74). Innowa makes scripts and skills in its chat; app code goes to a claude.ai chat.
+- room-areas script merged (content#73), written by Innowa in its chat.
+- R121: a run checks its project has not moved on before its draft or pick goes in; offers to redo on the project as it is (aec-studio#142).
+- R122: an app step can fall back to Innowa inside the run; Office floor plan 1.2.0 uses it (aec-studio#142, content#75).
+- R123: workplace test fit 3.0.0 reads non-rectangular floors (voids, notches, bumps) and keeps desks, tables and booths off columns (content#75).
+- R124: runs worked by Claude through the connector say so in the Studio's chat and on the run page (aec-studio#142).
+- R125: files_put saves a file from a claude.ai chat into a project's files (aec-studio#143). 407 tests, smoke and canvas pass.
+
+Decided:
+- Owner on cloud sessions: "innowa will use claude.ai itself to write the script and proposes even the larger one too. even i wanted this only", then "ok" to removing them; and "merge".
+- Owner: "both are different connectors ... use BuilderPluss Studio tools" (the older BuilderPluss connector stays unused).
+- Owner: "ok make as requuests for ths fixes and do all in the order" (R121 to R124), then "merge".
+- Owner: "no need to update this all the time. will do once a while": staging and the online preview are updated only when he asks.
+- Owner: "dont square off": a floor is drawn with its real outline and its columns.
+- Owner on R125: "yes do now", then "merge".
 
 ### Session 48 · 2026-11-24 · Script room-areas proposed
 A no-token script that lists every room's net and gross area was written in the chat, tried on two projects and sent as a proposal for the owner to merge.
@@ -143,27 +166,9 @@ Decided:
 - Owner, offered the three fixes first: "Go".
 - Owner: "Merge" (aec-studio#126).
 
-### Session 44 · 2026-11-21 · R114 done: the Library as a catalogue, placing and shortlists, Layouts with Keep or Break, templates in the Library
-All four steps of R114 were built and merged at the owner's word. The Library opens as a catalogue with pictures made from each entry's 3D shape; a project's shortlist and the canvas's Place tool place from it; Layouts arrive with Keep or Break; templates now live in the Library. The online preview shows it all.
-
-Done:
-- Step 1: browse tree and catalogue cards as content data; home, category, search and product pages; pictures from each entry's 3D shape; Technical view one tap away.
-- Step 2: a project's shortlist is its pinned Objects; Add to shortlist and Place on canvas; the canvas's Place tool (P), filtered by the selection.
-- Step 3: Layouts (kernel units, rule I13, Keep or Break, move, update, Break); five starter Layouts; Make a Layout from the selection; proposed by the same route.
-- Step 3: behaviours are now in the Object fingerprint.
-- Step 4: templates moved to library/templates (ids unchanged; the old place still read); Start from a template; a page per template with Use for and Start a new project.
-- Merged: aec-studio#123, #124, #125; aec-studio-content#61, #62. R114 marked done.
-- Online preview republished from main (app 6206499).
-- 364 tests, the smoke check and the canvas browser check pass on main.
-
-Decided:
-- Owner: "build R114 step 1", then "Merge" (aec-studio#123, aec-studio-content#61).
-- Owner: "Go step 2", then "Merge" (aec-studio#124).
-- Owner: "Step 3 and 4 go", then "Merge" (aec-studio#125, aec-studio-content#62).
-- Owner: "Ok" to republish the online preview and wrap up.
-
 ## Earlier sessions
 
+- **44** · 2026-11-21 · R114 done: the Library as a catalogue, placing and shortlists, Layouts with Keep or Break, templates in the Library — All four steps of R114 were built and merged at the owner's word. The Library opens as a catalogue with pictures made from each entry's 3D shape; a project's shortlist and the canvas's Place tool place from it; Layouts arrive with Keep or Break; templates now live in the Library. The online preview shows it all.
 - **43** · 2026-11-21 · R113 done: Objects say how they behave (model 4.3) and zones; the online preview republished — The kernel's list of kinds went: every Library Object now says what it does, and every Placement has an Object, a generic one until it is swapped. Zones, the last part of R113, were built: a name and a use on a closed ring of lines, with what each covers worked out. All merged at the owner's word; R113 is done and the online preview shows it.
 - **42** · 2026-11-20 · Objects on hosts merged (R113 step 3); the kernel holds no specifics; Fit to plot says in content what it reads — R113 step 3 was built and merged. Roles and meanings are gone: Library Objects are Placements on a node, a segment, a ring of lines or another Placement, and spaces carry their own name, use, number and values. At the owner's word the kernel was then emptied of specifics: plot, footprint and void are template uses, setbacks are set each time, and Fit to plot says in content what it reads.
 - **41** · 2026-11-20 · The model from first principles (R113) and the Library as a catalogue (R114); line kinds and spaces as tag points merged — Room and slab were rethought from first principles: only nodes and segments are primers, spaces are worked out round a tag point, and Objects attach to hosts (R113). The Library becomes a catalogue of Objects, Layouts and Templates (R114). R113 steps 1 and 2 were built and merged; step 3, Objects on hosts, is next, in a fresh session.
