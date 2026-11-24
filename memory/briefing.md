@@ -71,7 +71,6 @@ _The open requests (requests/ in the content repository)._
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
 
 **Something broken**
-- R119 · Cloud sessions can't start: the app runs Claude with --cloud and --print together, which is refused (in aec-studio#141) · from project L-type office floor 500 m²
 - R120 · Net room area slightly off where walls of different thickness meet in a straight line · from project L-type office floor 500 m²
 
 **Other**
