@@ -59,7 +59,7 @@ _The open requests (requests/ in the content repository)._
 - R57 · Export schedules (e.g. opening schedule) as PDF · from project test1
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
-- R126 · Project page: Programme first with Spaces beside it; click a programme line to light its spaces
+- R126 · Project page: Programme first with Spaces beside it; click a programme line to light its spaces (in aec-studio#144)
 - R127 · Programme options: several programmes per project (A, B, C), one current, compared side by side
 - R128 · Design options: a full copy of the model per option, each answering a programme option, compared and one marked preferred
 - R129 · Measures per typology: what options are compared on, declared in content by the firm and by the project
