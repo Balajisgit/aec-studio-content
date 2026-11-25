@@ -61,7 +61,7 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R127 · Programme options: several programmes per project (A, B, C), one current, compared side by side (in aec-studio#145)
 - R128 · Design options: a full copy of the model per option, each answering a programme option, compared and one marked preferred
-- R129 · Measures per typology: what options are compared on, declared in content by the firm and by the project
+- R129 · Measures per typology: what options are compared on, declared in content by the firm and by the project (in aec-studio#145)
 - R130 · Canvas: light the spaces of a programme line there too (second step of the programme check)
 - R132 · chat
 
