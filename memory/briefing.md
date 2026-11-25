@@ -64,6 +64,7 @@ _The open requests (requests/ in the content repository)._
 - R128 · Design options: a full copy of the model per option, each answering a programme option, compared and one marked preferred
 - R129 · Measures per typology: what options are compared on, declared in content by the firm and by the project
 - R130 · Canvas: light the spaces of a programme line there too (second step of the programme check)
+- R132 · chat
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
