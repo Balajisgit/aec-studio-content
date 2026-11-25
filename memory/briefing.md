@@ -60,7 +60,6 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R128 · Design options: a full copy of the model per option, each answering a programme option, compared and one marked preferred
-- R129 · Measures per typology: what options are compared on, declared in content by the firm and by the project (in aec-studio#145)
 - R130 · Canvas: light the spaces of a programme line there too (second step of the programme check)
 - R132 · chat
 
