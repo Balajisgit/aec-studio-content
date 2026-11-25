@@ -168,3 +168,10 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-24 · Session 49** — Owner: "no need to update this all the time. will do once a while": staging and the online preview are updated only when he asks.
 - **2026-11-24 · Session 49** — Owner: "dont square off": a floor is drawn with its real outline and its columns.
 - **2026-11-24 · Session 49** — Owner on R125: "yes do now", then "merge".
+- **2026-11-25 · Session 50** — Owner: "put programm card first and spaces next to it. when i click a programm item it should highlight here. this is to chk against the program."
+- **2026-11-25 · Session 50** — Owner: "undo/redo not needed in the project page"; "programme tab if available for a project - can be given as a tab in the canvas left side panal next to run".
+- **2026-11-25 · Session 50** — Owner on options: "both. yes" (programme and design options, a layout tied to one programme option), "full copy per option", "ok canvas at second step".
+- **2026-11-25 · Session 50** — Owner on measures: "can be declared in content as per the firm and also as per the project"; on the core set and the villa's measures: "so u decide this".
+- **2026-11-25 · Session 50** — Owner on dropped files: "should they go into the open project by default, with the chip showing it? yes also if the chat has a new proj context, it should ask that too".
+- **2026-11-25 · Session 50** — Owner on notes: "make notes recorded in the model json whoever creates", then "ok" to keeping them outside the model itself.
+- **2026-11-25 · Session 50** — Owner: "merge" (#144); "merge" (#145, content#76); "lets merge together. so build wat left in the order", then "Merge first and wrap up" (#146 to #149).

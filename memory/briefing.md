@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 50._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 51._
 
 ## What this is
 
@@ -21,7 +21,7 @@ Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discus
 
 ## Words
 
-Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Playbook (a saved plan: steps by Innowa in the chat, scripts or the app, sessions on a PC, the owner's decisions; each says when to use it) · Plan (the steps Innowa writes for one ask; it waits for the owner's OK when it changes the project or the Library) · Skill (know-how a step follows, skills/<name>/SKILL.md) · Script (exact work with no tokens, in the content: gives layouts, a report or files) · Stage, Decision, Output (a playbook's steps) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library) · Layout (several Objects arranged together, placed as one kept unit or broken into separate Objects; R114) · Template (a project's starting rules; in the Library since R114) · Shortlist (a project's pinned Objects and Layouts). The Library is a catalogue of Objects, Layouts and Templates. The word "type" is not used.
+Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Playbook (a saved plan: steps by Innowa in the chat, scripts or the app, sessions on a PC, the owner's decisions; each says when to use it) · Plan (the steps Innowa writes for one ask; it waits for the owner's OK when it changes the project or the Library) · Skill (know-how a step follows, skills/<name>/SKILL.md) · Script (exact work with no tokens, in the content: gives layouts, a report or files) · Stage, Decision, Output (a playbook's steps) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library) · Layout (several Objects arranged together, placed as one kept unit or broken into separate Objects; R114) · Template (a project's starting rules; in the Library since R114) · Shortlist (a project's pinned Objects and Layouts). Programme option (one of a project's programmes, A, B…; one is current; R127) · Design option (a full copy of a project's model, a project of its own under it, answering a programme option; R128) · Measure (what a design is compared on: the core set, the typology's, the project's; R129). The Library is a catalogue of Objects, Layouts and Templates. The word "type" is not used.
 
 ## The kernel (mesh-light)
 
@@ -80,6 +80,29 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 50 · 2026-11-25 · Programme and spaces side by side (R126), programme and design options with measures (R127 to R129), the canvas Programme tab (R130), dropped files and notes (R133, R134)
+A floor drawn from claude.ai showed what checking against the programme lacked. Now the project page and the canvas light a programme line's rooms. A project holds programme options and design options, each measured on what its typology says. Files dropped in the chat say where they go, and every project keeps notes whoever works on it. All merged at the owner's word.
+
+Done:
+- Loaded context; a tech office floor was drawn from claude.ai through the connector (project work: in that project's notes). The test fit left most rooms out on a deep floor with a central core: noted as R131.
+- R126 (aec-studio#144): the project page opens with Programme and Spaces side by side; a programme line or gap lights its rooms in the list and on the plan; the Faces card became Spaces; Undo and Redo are off the page.
+- R127 (aec-studio#145): programme options A, B, C…, one current, a tab each, compared side by side (the lines that differ, and the measures against each); tools for Innowa and the connector.
+- R129 (aec-studio#145, content#76): measures: a core set (programme met, rooms under size, net and gross area, efficiency), the typology's in its template (workplaces, villa; added to the 1.0.0 templates in place), the project's own in its overrides.
+- R128 (aec-studio#146): design options, each a full copy of the model as a project of its own under the project, answering a programme option; a Design options strip with plans, measures, the best marked, one preferred; roles and files are the project's.
+- R130 (aec-studio#147): a Programme tab on the canvas after Inspector and Run; a line selects its rooms on the plan, a picked room lights its line.
+- R133 (aec-studio#148): a chip says where dropped files go (the open project by default); a new-project message asks first; the project the chat makes takes them; Move to… on the Files card.
+- R134 (aec-studio#149): a note from the log for whoever made steps; connector steps logged as "Claude (claude.ai)"; the connector tells Claude to keep project notes; notes go out and back in with model.json, never in the model.
+- checks/syntax.js also catches a comment hiding a call further on its line (an R130 slip found when the four pull requests were tried together); their clashing changes were moved apart so they merged in order. 428 tests, smoke and canvas pass on main.
+
+Decided:
+- Owner: "put programm card first and spaces next to it. when i click a programm item it should highlight here. this is to chk against the program."
+- Owner: "undo/redo not needed in the project page"; "programme tab if available for a project - can be given as a tab in the canvas left side panal next to run".
+- Owner on options: "both. yes" (programme and design options, a layout tied to one programme option), "full copy per option", "ok canvas at second step".
+- Owner on measures: "can be declared in content as per the firm and also as per the project"; on the core set and the villa's measures: "so u decide this".
+- Owner on dropped files: "should they go into the open project by default, with the chip showing it? yes also if the chat has a new proj context, it should ask that too".
+- Owner on notes: "make notes recorded in the model json whoever creates", then "ok" to keeping them outside the model itself.
+- Owner: "merge" (#144); "merge" (#145, content#76); "lets merge together. so build wat left in the order", then "Merge first and wrap up" (#146 to #149).
 
 ### Session 49 · 2026-11-24 · The Studio connector (R81), hosted skills (R118), cloud sessions removed (R119), runs that never stop halfway (R121 to R124), files through the connector (R125)
 Claude in claude.ai now works in the Studio as the person, through the connector. Cloud sessions were found never to start and were removed at the owner's word: Innowa makes scripts and skills in its own chat. A run whose app step fails now passes it to Innowa, never lands on newer work, and the test fit reads real floor shapes and columns.
@@ -153,23 +176,9 @@ Decided:
 - R116 approval: Innowa waits for the owner's OK on a plan that changes the project or the Library; a plan that only reads or drafts starts straight away.
 - R116 unattended work: only a saved playbook or a plan the owner approved before leaving; no new plans while nobody is watching.
 
-### Session 45 · 2026-11-21 · R110, R111, R112 done: a dragged Object follows the pointer, a new project from the canvas, requests answer at once and can be edited
-The three small fixes noted on the PC were built in one pull request and merged at the owner's word. Dragging an Object on the canvas no longer lags, a new project is made from the canvas's project list, and noting a request no longer holds the app while GitHub is reached; requests can now be edited.
-
-Done:
-- R110: an Object at a point follows the pointer while dragged and stays where it is dropped while the step is saved (back if refused).
-- R111: "+ New project…" in the canvas's project list: a name and a template, made and opened on the canvas.
-- R112: requests are committed at once and sent to GitHub in the background, so the Requests tab opens straight away; another PC's same number still moves one on.
-- R112: requests can be edited (title, details, kind) on the Requests tab and by Innowa (request_update).
-- Merged: aec-studio#126. R110, R111 and R112 marked done.
-- 365 tests, the smoke check and the canvas browser check pass on main.
-
-Decided:
-- Owner, offered the three fixes first: "Go".
-- Owner: "Merge" (aec-studio#126).
-
 ## Earlier sessions
 
+- **45** · 2026-11-21 · R110, R111, R112 done: a dragged Object follows the pointer, a new project from the canvas, requests answer at once and can be edited — The three small fixes noted on the PC were built in one pull request and merged at the owner's word. Dragging an Object on the canvas no longer lags, a new project is made from the canvas's project list, and noting a request no longer holds the app while GitHub is reached; requests can now be edited.
 - **44** · 2026-11-21 · R114 done: the Library as a catalogue, placing and shortlists, Layouts with Keep or Break, templates in the Library — All four steps of R114 were built and merged at the owner's word. The Library opens as a catalogue with pictures made from each entry's 3D shape; a project's shortlist and the canvas's Place tool place from it; Layouts arrive with Keep or Break; templates now live in the Library. The online preview shows it all.
 - **43** · 2026-11-21 · R113 done: Objects say how they behave (model 4.3) and zones; the online preview republished — The kernel's list of kinds went: every Library Object now says what it does, and every Placement has an Object, a generic one until it is swapped. Zones, the last part of R113, were built: a name and a use on a closed ring of lines, with what each covers worked out. All merged at the owner's word; R113 is done and the online preview shows it.
 - **42** · 2026-11-20 · Objects on hosts merged (R113 step 3); the kernel holds no specifics; Fit to plot says in content what it reads — R113 step 3 was built and merged. Roles and meanings are gone: Library Objects are Placements on a node, a segment, a ring of lines or another Placement, and spaces carry their own name, use, number and values. At the owner's word the kernel was then emptied of specifics: plot, footprint and void are template uses, setbacks are set each time, and Fit to plot says in content what it reads.
