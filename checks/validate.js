@@ -78,6 +78,14 @@ try { const td = join(root, "library", "templates");
       const refs = [...(t.presets || []), ...((t.rules && t.rules.faces) || [])].map((p) => p.objectRef).concat(Object.values(t.openings || {})).filter(Boolean);
       for (const r of refs) { const [c, ver] = String(r).split("@"); if (!existsSync(join(root, "library", "objects", c, `${ver}.json`))) problems.push(`${rel}: there is no Library Object ${r}`); }
       for (const p of [...(t.presets || []), ...((t.rules && t.rules.faces) || [])]) if (!WORD.test(String(p.kind || p.role || ""))) problems.push(`${rel}: a preset says its kind (its Object's word)`);
+      // R129: what the typology is measured on: {id, name, of (a formula), unit?, digits?, better?}
+      if (t.measures != null) { if (!Array.isArray(t.measures)) problems.push(`${rel}: measures is a list`); else { const seen = new Set();
+        for (const [k, m] of t.measures.entries()) { const at = `${rel}: measures[${k}]`;
+          if (!m || !/^[a-z][a-z0-9-]*$/.test(String(m.id || ""))) { problems.push(`${at}: id is lower case with hyphens`); continue; } if (seen.has(m.id)) problems.push(`${at}: ${m.id} twice`); seen.add(m.id);
+          if (!String(m.name || "").trim()) problems.push(`${at} (${m.id}): it needs a name`);
+          if (!String(m.of || "").trim() || !/^[A-Za-z0-9_+\-*\/%().?:<>=!&| ]+$/.test(String(m.of))) problems.push(`${at} (${m.id}): of is a formula of the numbers Projects works out (net, built, seat, people, count_<use>…)`);
+          if (m.better != null && !["higher", "lower"].includes(m.better)) problems.push(`${at} (${m.id}): better is higher or lower`);
+          if (m.digits != null && !(Number.isInteger(m.digits) && m.digits >= 0 && m.digits <= 3)) problems.push(`${at} (${m.id}): digits is 0 to 3`); } } }
       // a typology's spaces (R100): the uses a room may have, each with an id and a name, its sizes numbers; apart names uses there are
       if (t.spaces != null) { const U = Array.isArray(t.spaces.uses) ? t.spaces.uses : null, seen = new Set(); if (!U || !U.length) problems.push(`${rel}: spaces.uses lists at least one use`);
         for (const u of U || []) { if (!u || !/^[a-z][a-z0-9-]*$/.test(String(u.id || ""))) problems.push(`${rel}: a use's id is lower case, with hyphens (${u && u.id})`); else if (seen.has(u.id)) problems.push(`${rel}: use ${u.id} twice`); else seen.add(u.id);

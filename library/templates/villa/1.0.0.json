@@ -276,5 +276,50 @@
   },
   "levels": {
     "height": 3000
-  }
+  },
+  "measures": [
+    {
+      "id": "bedrooms",
+      "name": "Bedrooms",
+      "of": "count_bedroom + count_master_bedroom",
+      "digits": 0
+    },
+    {
+      "id": "bathrooms",
+      "name": "Bathrooms",
+      "of": "count_bathroom",
+      "digits": 0
+    },
+    {
+      "id": "carpet-area",
+      "name": "Carpet area",
+      "of": "net",
+      "unit": "m²",
+      "digits": 0,
+      "better": "higher",
+      "about": "Every room inside its walls (a city's own rule may differ: change it for the project)."
+    },
+    {
+      "id": "built-up-area",
+      "name": "Built-up area",
+      "of": "built",
+      "unit": "m²",
+      "digits": 0
+    },
+    {
+      "id": "far",
+      "name": "FAR",
+      "of": "built / area_plot",
+      "digits": 2,
+      "about": "Built area over the plot's; once the plot is drawn."
+    },
+    {
+      "id": "ground-coverage",
+      "name": "Ground coverage",
+      "of": "built_0 / area_plot * 100",
+      "unit": "%",
+      "digits": 0,
+      "about": "The ground floor's built area over the plot's; once the plot is drawn."
+    }
+  ]
 }
