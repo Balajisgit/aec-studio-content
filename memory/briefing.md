@@ -62,7 +62,7 @@ _The open requests (requests/ in the content repository)._
 - R132 · chat
 - R139 · Import a model.json as a new design option, under the programme option shown (in aec-studio#152)
 - R140 · Programme in and out: model.json carries the programme options; import a programme from CSV, Excel or JSON as a new option (in aec-studio#152)
-- R141 · Innowa and playbooks keep layouts as design options, asking where each goes
+- R141 · Innowa and playbooks keep layouts as design options, asking where each goes (in aec-studio#153)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
