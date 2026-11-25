@@ -61,6 +61,7 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
 - R135 · Project page as an analytical dashboard: Programme and Spaces in one list, key figures on top, the plan beside it, activity in tabs
+- R136 · Design options under each programme option: a preferred one per option, start another option from a design, and the tree on the canvas
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
