@@ -63,7 +63,7 @@ _The open requests (requests/ in the content repository)._
 - R130 · Canvas: light the spaces of a programme line there too (second step of the programme check) (in aec-studio#147)
 - R132 · chat
 - R133 · Files dropped in the chat: show which project they go into, ask when the chat is about a new project, and move them with it (in aec-studio#148)
-- R134 · Project notes kept whoever works on a project, and carried in model.json
+- R134 · Project notes kept whoever works on a project, and carried in model.json (in aec-studio#149)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
