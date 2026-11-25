@@ -60,7 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
-- R139 · Import a model.json as a new design option, under the programme option shown
+- R139 · Import a model.json as a new design option, under the programme option shown (in aec-studio#152)
 - R140 · Programme in and out: model.json carries the programme options; import a programme from CSV, Excel or JSON as a new option
 - R141 · Innowa and playbooks keep layouts as design options, asking where each goes
 
