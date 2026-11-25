@@ -60,7 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R128 · Design options: a full copy of the model per option, each answering a programme option, compared and one marked preferred (in aec-studio#146)
-- R130 · Canvas: light the spaces of a programme line there too (second step of the programme check)
+- R130 · Canvas: light the spaces of a programme line there too (second step of the programme check) (in aec-studio#147)
 - R132 · chat
 - R133 · Files dropped in the chat: show which project they go into, ask when the chat is about a new project, and move them with it
 - R134 · Project notes kept whoever works on a project, and carried in model.json
