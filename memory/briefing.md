@@ -61,6 +61,7 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
 - R139 · Import a model.json as a new design option, under the programme option shown
+- R140 · Programme in and out: model.json carries the programme options; import a programme from CSV, Excel or JSON as a new option
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
