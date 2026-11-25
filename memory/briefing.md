@@ -60,6 +60,7 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R126 · Project page: Programme first with Spaces beside it; click a programme line to light its spaces
+- R127 · Programme options: several programmes per project (A, B, C), one current, compared side by side
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
