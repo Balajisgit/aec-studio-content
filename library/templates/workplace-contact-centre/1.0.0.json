@@ -473,5 +473,46 @@
   },
   "levels": {
     "height": 4200
-  }
+  },
+  "measures": [
+    {
+      "id": "seats",
+      "name": "Seats",
+      "of": "seat",
+      "digits": 0,
+      "better": "higher",
+      "about": "Desks and every other place a person works from."
+    },
+    {
+      "id": "seats-per-person",
+      "name": "Seats per person",
+      "of": "seat / people",
+      "digits": 2,
+      "better": "higher",
+      "about": "Below 1: people share desks (hybrid)."
+    },
+    {
+      "id": "m2-per-seat",
+      "name": "m² per seat",
+      "of": "built / seat",
+      "unit": "m²",
+      "digits": 1,
+      "better": "lower",
+      "about": "Gross area for each seat."
+    },
+    {
+      "id": "training-seats-per-100",
+      "name": "Training seats per 100 seats",
+      "of": "training_seat / seat * 100",
+      "digits": 1,
+      "better": "higher"
+    },
+    {
+      "id": "dining-seats-per-10",
+      "name": "Dining seats per 10 seats",
+      "of": "dining_seat / seat * 10",
+      "digits": 1,
+      "better": "higher"
+    }
+  ]
 }

@@ -471,5 +471,54 @@
   },
   "levels": {
     "height": 4200
-  }
+  },
+  "measures": [
+    {
+      "id": "seats",
+      "name": "Seats",
+      "of": "seat",
+      "digits": 0,
+      "better": "higher",
+      "about": "Desks and every other place a person works from."
+    },
+    {
+      "id": "m2-per-seat",
+      "name": "m² per seat",
+      "of": "built / seat",
+      "unit": "m²",
+      "digits": 1,
+      "better": "lower",
+      "about": "Gross area for each seat."
+    },
+    {
+      "id": "meeting-seats-per-10",
+      "name": "Meeting seats per 10 people",
+      "of": "meeting_seat / people * 10",
+      "digits": 1,
+      "better": "higher"
+    },
+    {
+      "id": "collaboration-area",
+      "name": "Collaboration area",
+      "of": "area_collaboration",
+      "unit": "m²",
+      "digits": 0,
+      "better": "higher"
+    },
+    {
+      "id": "focus-seats",
+      "name": "Focus seats",
+      "of": "focus_seat",
+      "digits": 0,
+      "better": "higher",
+      "about": "Focus rooms and phone booths."
+    },
+    {
+      "id": "private-office-area",
+      "name": "Private offices",
+      "of": "area_private_office_small + area_private_office_medium + area_private_office_large",
+      "unit": "m²",
+      "digits": 0
+    }
+  ]
 }
