@@ -76,6 +76,7 @@ _The open requests (requests/ in the content repository)._
 **Something broken**
 - R120 · Net room area slightly off where walls of different thickness meet in a straight line · from project L-type office floor 500 m²
 - R131 · Test fit: deep floors with a central core leave out most rooms and seat too few · from project p17ea6a6786
+- R137 · A playbook run on a design option gets no programme: the test fit says there is none
 
 **Other**
 - R5 · Archive the old app (AEC Agent Studio 2)
