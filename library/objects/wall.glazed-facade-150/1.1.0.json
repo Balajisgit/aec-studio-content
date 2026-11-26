@@ -1,0 +1,57 @@
+{
+  "id": "wall.glazed-facade-150@1.1.0",
+  "name": "Glazed facade 150",
+  "contract": "wall.glazed-facade-150",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
+  "on": "segment",
+  "about": "A glazed outside wall (a curtain wall or window wall), 150 thick with its framing, from the floor up to the slab above (or the height you give it): the daylight side of an office floor. It counts as the outside for rooms that need a window only where a window stands in it. Since R144 its height is set by the project's relationships (the storey less the slab and beams above it); with none set, it reaches its full rise.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 150,
+    "height": 0
+  },
+  "limits": {
+    "thickness": {
+      "min": 100,
+      "max": 300,
+      "step": 5
+    },
+    "height": {
+      "min": 0,
+      "max": 30000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "style": "fill",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ],
+      "z": "0",
+      "height": "height > 0 ? height : rise",
+      "slot": "glass"
+    }
+  ]
+}
