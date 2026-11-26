@@ -1,0 +1,67 @@
+{
+  "id": "slab.rcc-150@1.1.0",
+  "name": "RCC slab 150",
+  "contract": "slab.rcc-150",
+  "kind": "slab",
+  "behaves": [],
+  "on": "face",
+  "about": "A reinforced concrete slab under its face, its top at the floor. It reaches the walls' outer faces, and meets the next room's slab under the wall between them. A cantilever (R149): label the edge it reaches past overhang, and set how far (overhang); 0 keeps it at the walls.",
+  "params": {
+    "thickness": 150,
+    "edge": "outer",
+    "overhang": 0
+  },
+  "limits": {
+    "thickness": {
+      "min": 75,
+      "max": 500,
+      "step": 5
+    },
+    "edge": {
+      "options": [
+        "outer",
+        "centre",
+        "inner"
+      ]
+    },
+    "overhang": {
+      "min": 0,
+      "max": 4000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "slab edge",
+      "shape": "area",
+      "style": "hidden",
+      "inset": {
+        "edge": "edge",
+        "from": "overhang",
+        "away": "rest",
+        "rest": "rest",
+        "by": {
+          "overhang": "-overhang"
+        }
+      }
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "slab",
+      "shape": "area",
+      "slot": "concrete",
+      "z": "-thickness",
+      "height": "thickness",
+      "inset": {
+        "edge": "edge",
+        "from": "overhang",
+        "away": "rest",
+        "rest": "rest",
+        "by": {
+          "overhang": "-overhang"
+        }
+      }
+    }
+  ]
+}
