@@ -62,7 +62,7 @@ _The open requests (requests/ in the content repository)._
 - R132 · chat
 - R142 · Typology and design-sense checks as rules in the content: nothing hard-coded (in aec-studio#156)
 - R143 · Setbacks as an Object's parameters on the plot; retire sides.js
-- R144 · Relationships between Objects in the Library, applied by the Studio; the kernel only evaluates parameters
+- R144 · Relationships between Objects in the Library, applied by the Studio; the kernel only evaluates parameters (in aec-studio#157)
 - R145 · Canvas: another level shown faint under the one being drawn (the floor below by default, any can be chosen) (in aec-studio#154)
 - R146 · Level names and room numbering as a scheme in the template, per firm (in aec-studio#155)
 
