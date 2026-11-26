@@ -64,6 +64,7 @@ _The open requests (requests/ in the content repository)._
 - R143 · Setbacks as an Object's parameters on the plot; retire sides.js
 - R144 · Relationships between Objects in the Library, applied by the Studio; the kernel only evaluates parameters
 - R145 · Canvas: another level shown faint under the one being drawn (the floor below by default, any can be chosen)
+- R146 · Level names and room numbering as a scheme in the template, per firm
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
