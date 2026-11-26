@@ -232,7 +232,11 @@
         "kind": "slab",
         "objectRef": "slab.rcc-150@1.1.0"
       }
-    ]
+    ],
+    "beams": {
+      "walls": "outer",
+      "objectRef": "structure.beam@1.0.0"
+    }
   },
   "openings": {
     "door": "door.single-leaf@1.0.0",
