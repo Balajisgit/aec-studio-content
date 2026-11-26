@@ -64,7 +64,7 @@ _The open requests (requests/ in the content repository)._
 - R143 · Setbacks as an Object's parameters on the plot; retire sides.js
 - R144 · Relationships between Objects in the Library, applied by the Studio; the kernel only evaluates parameters
 - R145 · Canvas: another level shown faint under the one being drawn (the floor below by default, any can be chosen) (in aec-studio#154)
-- R146 · Level names and room numbering as a scheme in the template, per firm
+- R146 · Level names and room numbering as a scheme in the template, per firm (in aec-studio#155)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
