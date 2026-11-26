@@ -62,6 +62,7 @@ _The open requests (requests/ in the content repository)._
 - R132 · chat
 - R142 · Typology and design-sense checks as rules in the content: nothing hard-coded
 - R143 · Setbacks as an Object's parameters on the plot; retire sides.js
+- R144 · Relationships between Objects in the Library, applied by the Studio; the kernel only evaluates parameters
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
