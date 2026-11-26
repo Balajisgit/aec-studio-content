@@ -175,3 +175,9 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-25 · Session 50** — Owner on dropped files: "should they go into the open project by default, with the chip showing it? yes also if the chat has a new proj context, it should ask that too".
 - **2026-11-25 · Session 50** — Owner on notes: "make notes recorded in the model json whoever creates", then "ok" to keeping them outside the model itself.
 - **2026-11-25 · Session 50** — Owner: "merge" (#144); "merge" (#145, content#76); "lets merge together. so build wat left in the order", then "Merge first and wrap up" (#146 to #149).
+- **2026-11-26 · Session 51** — Owner on levels: "Let's keep kernel away from this. It should only reacts as per the object params"; "No object level relationships in the kernel, let's do it in studio thru model defaults or manual?"
+- **2026-11-26 · Session 51** — Owner on rules: typology checks and design sense "no hard coded"; setbacks "objects params will do this"; relationships supplied "thru library thru relaionship js"; then "ok build".
+- **2026-11-26 · Session 51** — Owner: "the floor system and numbering may differ from firm to firm"; a new level "has its lower floor(can be chosen) as undelay".
+- **2026-11-26 · Session 51** — Owner: "Go as per ur suggestion" (heights written in on open; a stair's opening drawn above); "ya ok agree." to the kernel's inset for setbacks.
+- **2026-11-26 · Session 51** — Owner on beams: "A beam hosted on the wall: that small kernel change … go with this"; beams by default "can be done as model defaults? rit?", then "ok" with the cantilever slab.
+- **2026-11-26 · Session 51** — Owner: "merge in the order u suggested" (R142 to R146); "ok" (R147); "Merge" (R148, R149); "Update both and then wrap up".

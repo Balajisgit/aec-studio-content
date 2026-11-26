@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 51._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 52._
 
 ## What this is
 
@@ -25,7 +25,7 @@ Library (the shared collection) · Object (one Library entry: parameters, a 2D s
 
 ## The kernel (mesh-light)
 
-The model stores intent, never triangles: nodes, segments (walls and others), openings on a segment at a station in mm, spaces as cycles of segments, Placements at a level, a segment or a node, analytical primitives, rare escapes. Integer mm, snap 5 mm, nothing stores a coordinate it can derive, provenance on every element, GlobalIds as uuid5 in IFC's form. Invariants I1–I11 run after every operation; a step that adds a failure is refused. Exchange format `model.json`, schema 2.0 (`kernel/model.schema.json`). JavaScript kernel; a Python helper comes later for IFC export.
+The model stores intent, never triangles: nodes, segments (walls and others), openings on a segment at a station in mm, spaces as cycles of segments, Placements at a level, a segment or a node, analytical primitives, rare escapes. Integer mm, snap 5 mm, nothing stores a coordinate it can derive, provenance on every element, GlobalIds as uuid5 in IFC's form. Invariants I1–I11 run after every operation; a step that adds a failure is refused. Exchange format `model.json`, schema 2.0 (`kernel/model.schema.json`). JavaScript kernel; a Python helper comes later for IFC export. The kernel works each Object out from its own parameters only and holds no design rules (Session 51): how Objects stand on one another (relationships), the checks on a design, a plot's setbacks (an Object) and level naming are in the content, applied by the Studio.
 
 ## How changes happen
 
@@ -80,6 +80,30 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 51 · 2026-11-26 · The project page as a dashboard and its options (R135 to R141), checks and relationships as rules (R142, R144), setbacks, levels and naming (R143, R145, R146), beams and cantilever slab (R147 to R149)
+The project page became a dashboard with design options per programme option, imports and exports. Design rules left the code: checks, relationships between Objects, setbacks and level naming are now in the content. The kernel reads only each Object's own parameters. Beams along walls, beams by default and cantilever slabs followed. All merged at the owner's word; staging and the preview updated.
+
+Done:
+- R135, R136: the project page as an analytical dashboard (programme and spaces combined); design options per programme option, an option's design able to start the next.
+- R137, R138: fixes found on the way (a design option's test fit had no programme: the store finds its programme's home).
+- R139, R140, R141: import a model.json as a design option; programme in and out as CSV, Excel or JSON; layouts Innowa makes kept as design options, asking where the first goes.
+- R142: the typology and design-sense checks are rules in library/templates/checks.json (a template's and a project's on top); sense.js gone, nothing hard-coded.
+- R144: relationships between Objects in library/templates/relationships.json, written by the Studio after every step (wall and column heights, a stair's opening above); the kernel no longer works out the slab above. Walls and column in new versions.
+- R143: Plot setbacks, a Library Object with front, rear and side, draws the buildable line (the kernel's inset); sides.js gone; Fit to plot 6.0.0 and its solver 4.0.0 read the line.
+- R145, R146: a level shown faint under the one drawn (the floor below by default); level names and room numbering from the template's naming, per firm.
+- R147: a beam goes on a wall (behaviour spans-host) along its whole length, cutting nothing, following the wall as it moves, splits or joins; the beam-under-slab rule sets its base and the wall stops under it.
+- R148: beams by default through the model defaults (rules.beams: outer or every wall; a project's own or off); the villa turns them on along outer walls. A click on a wall goes to the wall, not its beam.
+- R149: a cantilever slab: an area's inset measured from an edge and set out by a distance below 0; RCC slab 150 1.1.0 with an overhang at the edge labelled overhang.
+- 466 tests, smoke and canvas pass on main; staging and the online preview updated to app 82e49fd, content 4b4dbe0.
+
+Decided:
+- Owner on levels: "Let's keep kernel away from this. It should only reacts as per the object params"; "No object level relationships in the kernel, let's do it in studio thru model defaults or manual?"
+- Owner on rules: typology checks and design sense "no hard coded"; setbacks "objects params will do this"; relationships supplied "thru library thru relaionship js"; then "ok build".
+- Owner: "the floor system and numbering may differ from firm to firm"; a new level "has its lower floor(can be chosen) as undelay".
+- Owner: "Go as per ur suggestion" (heights written in on open; a stair's opening drawn above); "ya ok agree." to the kernel's inset for setbacks.
+- Owner on beams: "A beam hosted on the wall: that small kernel change … go with this"; beams by default "can be done as model defaults? rit?", then "ok" with the cantilever slab.
+- Owner: "merge in the order u suggested" (R142 to R146); "ok" (R147); "Merge" (R148, R149); "Update both and then wrap up".
 
 ### Session 50 · 2026-11-25 · Programme and spaces side by side (R126), programme and design options with measures (R127 to R129), the canvas Programme tab (R130), dropped files and notes (R133, R134)
 A floor drawn from claude.ai showed what checking against the programme lacked. Now the project page and the canvas light a programme line's rooms. A project holds programme options and design options, each measured on what its typology says. Files dropped in the chat say where they go, and every project keeps notes whoever works on it. All merged at the owner's word.
@@ -156,28 +180,9 @@ Decided:
 - Only the owner saves a playbook or proposes a script or a skill; each reaches him as a pull request on the content. Tools stay in the app, where the gates are kept.
 - Every pipeline is a playbook with a "use when"; only the newest version of each is kept; an agent works only as a session on a PC.
 
-### Session 46 · 2026-11-22 · R115 done (Innowa works playbook steps in the chat) and R116 begun: skills, scripts, tools and dynamic playbooks, with the owner's gates fixed in the app
-Pipelines felt slow and narrow, so Innowa now works a playbook's steps itself in the chat, with the owner, instead of cold agents per stage. Office floor plan, Programme from a brief, Read a brief and Make an Object run this way. The owner then chose skills, scripts, tools and plans Innowa assembles over fixed pipelines (R116); step 1, the owner's gates in the app, is merged.
-
-Done:
-- R115 step 1: a step by: "innowa" waits for Innowa in the run's chat (step_get, step_tool, step_done; checks run at done); a confirm decision (places: "draft"); checks shell-ready and programme-met; the Office floor plan playbook and a sample brief (60-person tech office).
-- R115 step 2: lessons per playbook (lessons/<playbook>.md); one ledger (Innowa's chat turns count in the run's cost; a Ledger on the run page); a run started on the run page opens its chat; Programme from a brief 2.0.0 by Innowa.
-- Read a brief 2.0.0 and Make an Object 2.0.0 by Innowa; a job's tasks, a chain's runs and an asset list's Make are worked in the chat they came from; Innowa opens a run's brief files from the chat.
-- R116 step 1, the owner's gates: Innowa answers a decision for him only in a turn he wrote, quoting him; a job Innowa starts alone waits at every decision; only the owner sends to the Library, raises limits or approves a job.
-- R116 step 1: what leaves a run is checked at the gate (Objects again; a plan against the programme, shown on the card); the owner can let a step go on with checks open; every yes is in the ledger.
-- Fixed: two R115 lines where a comment swallowed code (a pipeline's "can't run here" check; page_open's access rule). checks/syntax.js now fails on a comment hiding code.
-- Trials with the real content: the office floor plan end to end (4 layouts, 128 placements); a lounge brief read, matched and a window seat made in one chat.
-- Merged: aec-studio#127, #128, #129, #130; aec-studio-content#63, #64, #65. 375 tests, smoke and canvas checks pass on main.
-
-Decided:
-- Owner: "note it straight away as a request and start with. Creating a office floorplan is the first test." (R115), then "Ok build".
-- Owner: "Merge" for each of aec-studio#127 to #130 and aec-studio-content#63 to #65; "Start step2"; "Merge and convert Read a brief" and "Make an Object" next."
-- Owner: "Instead of pipelines, lets have only skills, scripts, tools and can we have dynamic playbooks that innowa would assemble?" then "Agree as u suggested." (R116).
-- R116 approval: Innowa waits for the owner's OK on a plan that changes the project or the Library; a plan that only reads or drafts starts straight away.
-- R116 unattended work: only a saved playbook or a plan the owner approved before leaving; no new plans while nobody is watching.
-
 ## Earlier sessions
 
+- **46** · 2026-11-22 · R115 done (Innowa works playbook steps in the chat) and R116 begun: skills, scripts, tools and dynamic playbooks, with the owner's gates fixed in the app — Pipelines felt slow and narrow, so Innowa now works a playbook's steps itself in the chat, with the owner, instead of cold agents per stage. Office floor plan, Programme from a brief, Read a brief and Make an Object run this way. The owner then chose skills, scripts, tools and plans Innowa assembles over fixed pipelines (R116); step 1, the owner's gates in the app, is merged.
 - **45** · 2026-11-21 · R110, R111, R112 done: a dragged Object follows the pointer, a new project from the canvas, requests answer at once and can be edited — The three small fixes noted on the PC were built in one pull request and merged at the owner's word. Dragging an Object on the canvas no longer lags, a new project is made from the canvas's project list, and noting a request no longer holds the app while GitHub is reached; requests can now be edited.
 - **44** · 2026-11-21 · R114 done: the Library as a catalogue, placing and shortlists, Layouts with Keep or Break, templates in the Library — All four steps of R114 were built and merged at the owner's word. The Library opens as a catalogue with pictures made from each entry's 3D shape; a project's shortlist and the canvas's Place tool place from it; Layouts arrive with Keep or Break; templates now live in the Library. The online preview shows it all.
 - **43** · 2026-11-21 · R113 done: Objects say how they behave (model 4.3) and zones; the online preview republished — The kernel's list of kinds went: every Library Object now says what it does, and every Placement has an Object, a generic one until it is swapped. Zones, the last part of R113, were built: a name and a use on a closed ring of lines, with what each covers worked out. All merged at the owner's word; R113 is done and the online preview shows it.
