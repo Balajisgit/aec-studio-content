@@ -61,6 +61,7 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
 - R142 · Typology and design-sense checks as rules in the content: nothing hard-coded
+- R143 · Setbacks as an Object's parameters on the plot; retire sides.js
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
