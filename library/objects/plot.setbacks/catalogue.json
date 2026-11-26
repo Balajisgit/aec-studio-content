@@ -1,0 +1,16 @@
+{
+ "catalogue": 1,
+ "line": "The buildable line inside a plot: front, rear and side setbacks",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcAnnotation",
+ "keywords": [
+  "setback",
+  "plot",
+  "site",
+  "buildable"
+ ]
+}

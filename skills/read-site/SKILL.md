@@ -1,6 +1,6 @@
 ---
 name: read-site
-about: Read a plot from the brief (typed coordinates, a coordinates file, or a survey drawing) and draw it as the project's plot, with its front and setbacks; never a made-up plot.
+about: Read a plot from the brief (typed coordinates, a coordinates file, or a survey drawing) and draw it as the project's plot, with its front and Plot setbacks on it; never a made-up plot.
 ---
 
 # Read a site
@@ -18,12 +18,13 @@ If the brief gives no corners, no file to read them from and no dimensions to bu
 
 ## Draw it
 
-1. draw_lines on the lowest level with closed: true and the corners as points; then faces_from_lines with at a point inside the plot, use plot, and values setbackFront, setbackRear and setbackSide in mm.
-2. In a second project_edit, once you have read the line ids from project_model: set_label front on the line on the road, and set_label own-setback with values {setback} on any line the brief gives its own setback (both are labels in the plot; add of: the plot space's id if the line is in more than one space).
+1. draw_lines on the lowest level with closed: true and the corners as points; then faces_from_lines with at a point inside the plot and use plot.
+2. In a second project_edit, once you have read the line and space ids from project_model: set_label front on the line on the road (a label in the plot; add of: the plot space's id if the line is in more than one space); then put Plot setbacks (plot.setbacks from the Library) on the plot: pin_object if the project has not pinned it, then place with on: {ring: the plot's outline} and params front, rear and side in mm.
+3. The edge facing most away from the front takes rear, the others side. Where the brief gives one edge another distance (a second road, a lane at the back), label that edge rear or side so it takes that one; say so.
 
 ## Setbacks
 
-Use what the brief or the local rules it cites say, front, rear and side, in mm. Never assume them: if the brief does not give them, draw the plot without them and say plainly which are missing. If the brief does not say which side faces the road, pick the edge it calls the access or the longest edge on a road, and say so.
+Use what the brief or the local rules it cites say, front, rear and side, in mm. Never assume them: if the brief does not give them, draw the plot and its front without Plot setbacks and say plainly which are missing. If the brief does not say which side faces the road, pick the edge it calls the access or the longest edge on a road, and say so.
 
 ## Say what you drew
 

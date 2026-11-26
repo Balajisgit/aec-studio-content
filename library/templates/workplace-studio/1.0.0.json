@@ -269,47 +269,12 @@
         "id": "plot",
         "name": "Plot",
         "room": false,
-        "about": "The site: its lines carry a boundary wall, a fence or nothing. Label its road edge front; its setbacks are said each time.",
+        "about": "The site: its lines carry a boundary wall, a fence or nothing. Label its road edge front; put Plot setbacks (Library) on it for the buildable line, its distances from the brief or the local rules.",
         "labels": [
           "front",
           "rear",
-          "side",
-          "own-setback"
-        ],
-        "values": {
-          "setbackFront": {
-            "name": "Front setback",
-            "kind": "mm",
-            "min": 0,
-            "max": 100000
-          },
-          "setbackRear": {
-            "name": "Rear setback",
-            "kind": "mm",
-            "min": 0,
-            "max": 100000
-          },
-          "setbackSide": {
-            "name": "Side setback",
-            "kind": "mm",
-            "min": 0,
-            "max": 100000
-          }
-        },
-        "inset": {
-          "from": "front",
-          "away": "rear",
-          "rest": "side",
-          "values": {
-            "front": "setbackFront",
-            "rear": "setbackRear",
-            "side": "setbackSide"
-          },
-          "own": {
-            "label": "own-setback",
-            "value": "setback"
-          }
-        }
+          "side"
+        ]
       },
       {
         "id": "footprint",
