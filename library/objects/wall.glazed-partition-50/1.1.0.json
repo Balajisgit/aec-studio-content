@@ -1,0 +1,57 @@
+{
+  "id": "wall.glazed-partition-50@1.1.0",
+  "name": "Glazed partition 50",
+  "contract": "wall.glazed-partition-50",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
+  "on": "segment",
+  "about": "A glass partition in a slim frame, 50 thick, from the floor up to the slab above (or the height you give it): for meeting rooms and cabins that should stay in view. Where it meets other walls the Studio joins them. Since R144 its height is set by the project's relationships (the storey less the slab and beams above it); with none set, it reaches its full rise.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 50,
+    "height": 0
+  },
+  "limits": {
+    "thickness": {
+      "min": 30,
+      "max": 120,
+      "step": 5
+    },
+    "height": {
+      "min": 0,
+      "max": 30000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "style": "fill",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ],
+      "z": "0",
+      "height": "height > 0 ? height : rise",
+      "slot": "glass"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "wall.drywall-100@1.1.0",
+  "name": "Drywall partition 100",
+  "contract": "wall.drywall-100",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
+  "on": "segment",
+  "about": "A gypsum-board partition on a metal stud, 100 thick, from the floor up to the slab above (or the height you give it): the usual wall between an office's rooms. Where it meets other walls the Studio joins them. Since R144 its height is set by the project's relationships (the storey less the slab and beams above it); with none set, it reaches its full rise.",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 100,
+    "height": 0
+  },
+  "limits": {
+    "thickness": {
+      "min": 75,
+      "max": 200,
+      "step": 5
+    },
+    "height": {
+      "min": 0,
+      "max": 30000,
+      "step": 50
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "style": "fill",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "across": [
+        "-thickness / 2",
+        "thickness / 2"
+      ],
+      "z": "0",
+      "height": "height > 0 ? height : rise"
+    }
+  ]
+}

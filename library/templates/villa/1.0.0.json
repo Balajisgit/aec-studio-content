@@ -238,13 +238,13 @@
       "id": "external",
       "name": "External wall",
       "kind": "wall",
-      "objectRef": "wall.brick-230@1.2.0"
+      "objectRef": "wall.brick-230@1.3.0"
     },
     {
       "id": "partition",
       "name": "Partition",
       "kind": "wall",
-      "objectRef": "wall.partition-115@1.2.0"
+      "objectRef": "wall.partition-115@1.3.0"
     },
     {
       "id": "boundary",
