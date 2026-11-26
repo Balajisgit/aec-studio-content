@@ -1,0 +1,15 @@
+{
+ "catalogue": 1,
+ "line": "Concrete, along a wall under the slab",
+ "uses": [],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcBeam",
+ "keywords": [
+  "beam",
+  "lintel",
+  "rcc"
+ ]
+}

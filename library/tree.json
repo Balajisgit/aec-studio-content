@@ -132,9 +132,10 @@
   {
    "id": "structure",
    "name": "Structure",
-   "about": "Columns and stairs",
+   "about": "Columns, beams and stairs",
    "products": [
     "structure.column",
+    "structure.beam",
     "structure.stair"
    ]
   },
