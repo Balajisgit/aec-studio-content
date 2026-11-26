@@ -150,8 +150,9 @@
   {
    "id": "outdoor",
    "name": "Outdoor",
-   "about": "Fences, gates and railings",
+   "about": "Plot setbacks, fences, gates and railings",
    "products": [
+    "plot.setbacks",
     "fence.mesh",
     "gate.swing",
     "railing.generic"

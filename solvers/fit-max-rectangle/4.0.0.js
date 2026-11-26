@@ -1,11 +1,13 @@
-// solvers/fit-max-rectangle 3.0.0 — the largest rectangle that fits a plot inside its setbacks, at any angle (R60, R62;
-// model 4.2 in R113). In: the space used as the plot (outline, its setbacks as values, edges in order with the labels each
-// has in it: front, own-setback) and settings. Out: candidates, each drawing the rectangle as lines and a space used as the
-// footprint, a preview and its numbers. Nothing is built: walls come later, from the footprint.
+// solvers/fit-max-rectangle 4.0.0 — the largest rectangle that fits a plot inside its setbacks, at any angle (R60, R62;
+// model 4.2 in R113; R143: the setbacks are a Library Object on the plot). In: the space used as the plot (outline, edges in
+// order with the labels each has in it) and the Placement of kind setback on its outline, with the area that Object draws
+// (Plot setbacks: front, rear and side as its own parameters; the buildable line). A plot with no such Placement (a project
+// from before R143) is read as 3.0.0 read it: its setbacks as the plot's values, the edge labelled front. Out: candidates,
+// each drawing the rectangle as lines and a space used as the footprint, a preview and its numbers. Nothing is built.
 // Method: turn the plot through every edge's direction and 0–87° in 3° steps; in each frame mark the buildable points on a
-// grid (inside the plot and at least each edge's setback from it), take the largest rectangle of buildable cells, grow each
-// side to 1 mm against the exact setbacks, and refine the best angles to a quarter degree. A 2 mm margin keeps rounded
-// corners clear. Runs in a locked-down process with only `geo` (the app's geometry helpers).
+// grid (inside the buildable line), take the largest rectangle of buildable cells, grow each side to 1 mm against the line,
+// and refine the best angles to a quarter degree. A 2 mm margin keeps rounded corners clear. Runs in a locked-down process
+// with only `geo` (the app's geometry helpers).
 
 function solve(input, geo) {
   const S = input.settings || {}, plot = (input.spaces || []).find((f) => f.use === "plot" && f.edges);
@@ -20,11 +22,18 @@ function solve(input, geo) {
   if (f < 0) { f = 0; note = "No edge is marked Front: the first edge is taken as the front. "; }
   let rear = -1, best = Infinity; for (let k = 0; k < ord.length; k++) if (k !== f) { const dot = N[k].x * N[f].x + N[k].y * N[f].y; if (dot < best) { best = dot; rear = k; } }
   if (best > -0.5) rear = -1;
-  const unset = ["setbackFront", "setbackRear", "setbackSide"].filter((k) => typeof p[k] !== "number");
-  if (unset.length) return { candidates: [], note: `The plot's setbacks are not all set (${unset.join(", ")}): set them on the plot (from the brief or the local rules); none is assumed.` };
-  const sb = { front: p.setbackFront, rear: p.setbackRear, side: p.setbackSide };
-  const E = ord.map((e, k) => { const own = has(e, "own-setback"), kind = k === f ? "front" : k === rear ? "rear" : "side";
-    return { a: e.a, b: e.b, kind, setback: own && own.values && own.values.setback != null ? own.values.setback : sb[kind] }; });
+  // the setbacks: the line the Plot setbacks Object draws on the plot's outline (R143), else the plot's own values (older projects)
+  const ringOf = new Set(g.edges.map((e) => e.segment)), placed = (input.placements || []).find((q) => q.kind === "setback" && Array.isArray(q.area) && q.area.length >= 3 && q.where && Array.isArray(q.where.ring) && q.where.ring.length === ringOf.size && q.where.ring.every((s) => ringOf.has(s)));
+  let REG = P, E, sb, said;
+  if (placed) { const A = placed.area, pr = placed.params || {}; REG = A; E = A.map((a, k) => ({ a, b: A[(k + 1) % A.length], kind: "line", setback: 0 }));
+    sb = { front: pr.front, rear: pr.rear, side: pr.side }; said = `inside the line Plot setbacks draws${[sb.front, sb.rear, sb.side].every((x) => typeof x === "number") ? ` (front ${sb.front}, rear ${sb.rear}, sides ${sb.side} mm)` : ""}`; note = ""; }
+  else {
+    const unset = ["setbackFront", "setbackRear", "setbackSide"].filter((k) => typeof p[k] !== "number");
+    if (unset.length) return { candidates: [], note: "The plot has no setbacks: put Plot setbacks (from the Library) on the plot and set its front, rear and side distances; none is assumed." };
+    sb = { front: p.setbackFront, rear: p.setbackRear, side: p.setbackSide };
+    E = ord.map((e, k) => { const own = has(e, "own-setback"), kind = k === f ? "front" : k === rear ? "rear" : "side";
+      return { a: e.a, b: e.b, kind, setback: own && own.values && own.values.setback != null ? own.values.setback : sb[kind] }; });
+    said = `front ${sb.front}, rear ${rear >= 0 ? sb.rear : "none"}, sides ${sb.side} mm`; }
 
   const top = Math.max(1, Math.min(6, Number(S.top) || 3)), plotArea = geo.area(P);
   const MARGIN = 2, rotP = (q, deg) => geo.rotate(q, deg);
@@ -37,7 +46,7 @@ function solve(input, geo) {
     for (const c of [{ x: R.x0, y: R.y0 }, { x: R.x1, y: R.y0 }, { x: R.x1, y: R.y1 }, { x: R.x0, y: R.y1 }]) if (!geo.inside(c, Q)) return false;
     return F.every((e) => segRect(e.a, e.b, R) >= e.setback + m); };
   function bestAt(deg, n = 56) {
-    const Q = P.map((q) => rotP(q, -deg)), F = E.map((e) => ({ ...e, a: rotP(e.a, -deg), b: rotP(e.b, -deg) })), bb = geo.bbox(Q);
+    const Q = REG.map((q) => rotP(q, -deg)), F = E.map((e) => ({ ...e, a: rotP(e.a, -deg), b: rotP(e.b, -deg) })), bb = geo.bbox(Q);
     const step = Math.max(bb.x1 - bb.x0, bb.y1 - bb.y0) / n, nx = Math.max(2, Math.ceil((bb.x1 - bb.x0) / step)), ny = Math.max(2, Math.ceil((bb.y1 - bb.y0) / step));
     const ok = []; for (let j = 0; j < ny; j++) { const row = []; for (let i = 0; i < nx; i++) { const q = { x: bb.x0 + (i + 0.5) * step, y: bb.y0 + (j + 0.5) * step };
       row.push(geo.inside(q, Q) && F.every((e) => geo.segDist(q, e.a, e.b) >= e.setback - 0.5)); } ok.push(row); }
@@ -72,9 +81,9 @@ function solve(input, geo) {
   const out = []; for (const x of found) { if (out.some((y) => near(y, x))) continue; out.push(x); if (out.length >= top) break; }
   if (!out.length) return { candidates: [], note: `${note}Nothing fits inside the setbacks${min ? ` with sides of at least ${min} mm` : ""}: check the plot and its setbacks.` };
 
-  const setback = geo.offsetInward(P, E.map((e) => e.setback)), m = (x) => (x / 1000).toFixed(2);
+  const setback = placed ? REG : geo.offsetInward(P, E.map((e) => e.setback)), m = (x) => (x / 1000).toFixed(2);
   return {
-    note: `${note}Plot ${plotArea.toFixed(1)} m²; front ${sb.front}, rear ${rear >= 0 ? sb.rear : "none"}, sides ${sb.side} mm.`,
+    note: `${note}Plot ${plotArea.toFixed(1)} m²; ${said}.`,
     context: { polygons: [P], lines: [[...setback, setback[0]]] },
     candidates: out.map((x) => { const corners = geo.rectCorners(x.cx, x.cy, x.width, x.depth, x.angle), pts = corners.map((q) => ({ x: Math.round(q.x), y: Math.round(q.y) }));
       return { label: `${m(x.width)} × ${m(x.depth)} m at ${x.angle.toFixed(1)}°${x.capped ? " (held to the coverage limit)" : ""}`,

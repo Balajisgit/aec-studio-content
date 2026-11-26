@@ -1,13 +1,13 @@
 {
-  "id": "fit-to-plot@5.0.0",
+  "id": "fit-to-plot@6.0.0",
   "name": "Fit to plot",
-  "about": "Finds the largest rectangle that fits a plot inside its front, rear and side setbacks, at any angle, and draws the one you pick as the building's footprint: lines and a space used as the footprint. The plot is a space used as the plot, its road edge labelled front: drawn on the canvas, or read from the notes or a survey by the Site reader.",
+  "about": "Finds the largest rectangle that fits a plot inside its setbacks, at any angle, and draws the one you pick as the building's footprint: lines and a space used as the footprint. The plot is a space used as the plot, its road edge labelled front, with Plot setbacks (a Library Object) on its outline: drawn on the canvas, or read from the notes or a survey by the Site reader.",
   "useWhen": "The owner wants the biggest rectangular building footprint a plot allows after its setbacks, as a start for the plan.",
   "input": {
     "notes": true,
     "files": true,
     "optional": true,
-    "about": "Nothing when the plot is drawn already (a space used as the plot, with its front edge). Otherwise the plot's corners in the notes (x, y in metres or mm, in order) or a survey or coordinates file, which side faces the road and the setbacks. Optional params: maxCoverage (0 to 1 of the plot), minSide (mm)."
+    "about": "Nothing when the plot is drawn already (a space used as the plot, its front edge labelled, Plot setbacks on it). Otherwise the plot's corners in the notes (x, y in metres or mm, in order) or a survey or coordinates file, which side faces the road and the setbacks. Optional params: maxCoverage (0 to 1 of the plot), minSide (mm)."
   },
   "rules": [
     {
@@ -16,7 +16,7 @@
     },
     {
       "id": "R2",
-      "text": "The plot is a space used as the plot: its edges are lines, its setbacks are the space's values. The line on the road is labelled front (a label in the plot); the edge facing away from it is worked out as the rear, the others as sides. A line with its own setback is labelled own-setback."
+      "text": "The plot is a space used as the plot: its edges are lines; the line on the road is labelled front (a label in the plot). Its setbacks are Plot setbacks, a Library Object on the plot's outline, with front, rear and side as its parameters: the edge facing away from the front takes rear, the others side; an edge labelled rear or side itself takes that one. The line it draws is the buildable line."
     },
     {
       "id": "R3",
@@ -24,7 +24,7 @@
     },
     {
       "id": "R4",
-      "text": "The footprint is a rectangle at any angle, wholly inside the plot and at least each edge's setback away from it. Only the owner's pick draws it, as lines and a space used as the footprint: one logged, undoable step. Nothing is built: walls come later."
+      "text": "The footprint is a rectangle at any angle, wholly inside the buildable line. Only the owner's pick draws it, as lines and a space used as the footprint: one logged, undoable step. Nothing is built: walls come later."
     }
   ],
   "steps": [
@@ -33,7 +33,7 @@
       "id": "read-site",
       "name": "Read the plot",
       "by": "innowa",
-      "outcome": "The project has the plot from the brief: a space used as the plot, with its setbacks, its road edge labelled front.",
+      "outcome": "The project has the plot from the brief: a space used as the plot, its road edge labelled front, Plot setbacks on it with the brief's distances.",
       "when": "space-to-read",
       "space": "plot",
       "instructions": [
@@ -60,8 +60,8 @@
       "kind": "stage",
       "id": "fit",
       "name": "Fit the largest rectangle",
-      "outcome": "The largest rectangles that fit inside the setbacks, at any angle: the best and up to two others.",
-      "solver": "fit-max-rectangle@3.0.0",
+      "outcome": "The largest rectangles that fit inside the buildable line, at any angle: the best and up to two others.",
+      "solver": "fit-max-rectangle@4.0.0",
       "checks": [
         "candidates-found"
       ],

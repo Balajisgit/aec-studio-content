@@ -1,0 +1,37 @@
+{
+  "id": "plot.setbacks@1.0.0",
+  "name": "Plot setbacks",
+  "contract": "plot.setbacks",
+  "kind": "setback",
+  "behaves": [],
+  "on": "face",
+  "about": "The buildable line inside a plot: each edge set in by its own distance. The edge labelled front by Front, the edge facing most away from it by Rear, the others by Side; an edge labelled rear or side itself takes that one. Put it on the plot and set the three distances from the brief or the local rules; Fit to plot reads the line it draws.",
+  "params": {
+    "front": 6000,
+    "rear": 3000,
+    "side": 1500
+  },
+  "limits": {
+    "front": { "min": 0, "max": 100000, "step": 50 },
+    "rear": { "min": 0, "max": 100000, "step": 50 },
+    "side": { "min": 0, "max": 100000, "step": 50 }
+  },
+  "symbol2d": [
+    {
+      "name": "buildable line",
+      "shape": "area",
+      "style": "hidden",
+      "inset": { "from": "front", "away": "rear", "rest": "side", "by": { "front": "front", "rear": "rear", "side": "side" } }
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "buildable line",
+      "shape": "area",
+      "slot": "concrete",
+      "inset": { "from": "front", "away": "rear", "rest": "side", "by": { "front": "front", "rear": "rear", "side": "side" } },
+      "z": "0",
+      "height": "10"
+    }
+  ]
+}
