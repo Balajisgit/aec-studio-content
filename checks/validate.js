@@ -72,6 +72,8 @@ try { const td = join(root, "library", "templates");
         if (m[3] && r.default !== m[3]) problems.push(`${rel}: default must be ${m[3]}`); }
       continue; }
     if (id === "default.json") { try { const d = JSON.parse(readFileSync(dir, "utf8")); if (!existsSync(join(td, String(d.template)))) problems.push(`library/templates/default.json: there is no template ${d.template}`); } catch (e) { problems.push(`library/templates/default.json: ${e.message}`); } continue; }
+    if (id === "checks.json") { try { const c = JSON.parse(readFileSync(dir, "utf8")); for (const [k, r] of (Array.isArray(c.checks) ? c.checks : []).entries()) if (!r || !r.id || (!r.off && (!["room", "pair", "thing", "blocking", "ratio"].includes(r.of) || typeof r.when !== "string" || typeof r.say !== "string"))) problems.push(`library/templates/checks.json: checks[${k}] needs id, of, when and say (R142)`);
+        if (!Array.isArray(c.checks)) problems.push("library/templates/checks.json: checks is a list"); } catch (e) { problems.push(`library/templates/checks.json: ${e.message}`); } continue; } // the checks every project has (R142)
     if (!statSync(dir).isDirectory()) { problems.push(`library/templates/${id}: a template lives in a folder per id`); continue; }
     for (const v of readdirSync(dir)) { const rel = `library/templates/${id}/${v}`; let t; try { t = JSON.parse(readFileSync(join(dir, v), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
       if (t.id !== `${id}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${id}@${v.slice(0, -5)}`);
