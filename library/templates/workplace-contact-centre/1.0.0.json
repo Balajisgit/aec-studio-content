@@ -474,6 +474,33 @@
   "levels": {
     "height": 4200
   },
+  "naming": {
+    "levels": {
+      "names": [
+        "Ground floor",
+        "First floor",
+        "Second floor",
+        "Third floor",
+        "Fourth floor",
+        "Fifth floor"
+      ],
+      "then": "Floor {n}",
+      "below": "Basement {b}",
+      "codes": [
+        "G",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "codesThen": "{n}",
+      "codesBelow": "B{b}"
+    },
+    "rooms": {
+      "pattern": "{code}.{seq:02}"
+    }
+  },
   "measures": [
     {
       "id": "seats",
