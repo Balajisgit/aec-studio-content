@@ -68,6 +68,7 @@ _The open requests (requests/ in the content repository)._
 
 **The Library**
 - R1 · Propose test1's WC and basin to the Library when wanted · from project test1
+- R149 · Cantilever slab: a slab that reaches past its walls by its own overhang
 
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
