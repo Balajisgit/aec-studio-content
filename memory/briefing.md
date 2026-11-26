@@ -60,7 +60,6 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
-- R142 · Typology and design-sense checks as rules in the content: nothing hard-coded (in aec-studio#156)
 - R143 · Setbacks as an Object's parameters on the plot; retire sides.js (in aec-studio#158)
 - R144 · Relationships between Objects in the Library, applied by the Studio; the kernel only evaluates parameters (in aec-studio#157)
 - R147 · A beam hosted on a wall: an Object that goes on a host without being an opening
