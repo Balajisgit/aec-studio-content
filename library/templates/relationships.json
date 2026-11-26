@@ -23,6 +23,17 @@
       "when": "storey > slab_above"
     },
     {
+      "id": "beam-under-slab",
+      "for": {
+        "kind": "beam"
+      },
+      "only": "all",
+      "set": {
+        "base": "storey - slab_above - depth"
+      },
+      "when": "storey > slab_above + depth"
+    },
+    {
       "id": "stair-opening",
       "for": {
         "kind": "stair"

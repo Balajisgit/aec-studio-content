@@ -32,7 +32,7 @@ try { for (const n of readdirSync(sessDir)) { if (n === ".gitkeep") continue; co
 // a segment (R64) says the length of line it fits. Its role is its kind: what it behaves as (R113: there are no meanings).
 // (The full check, 2D symbol and 3D primitive agreeing at every parameter case, runs in the app: Library page, checkObject.)
 // What an Object may say it does (R113: the app's kernel knows these behaviours and names no kind).
-const BEHAVIOURS = ["band", "holds-openings", "opening", "way-through", "stops-bands", "cuts-floor-above"], WORD = /^[a-z][a-z0-9-]*$/;
+const BEHAVIOURS = ["band", "holds-openings", "opening", "way-through", "stops-bands", "cuts-floor-above", "spans-host"], WORD = /^[a-z][a-z0-9-]*$/;
 const objDir = join(root, "library", "objects");
 try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; const cd = join(objDir, c);
   if (!statSync(cd).isDirectory()) { problems.push(`library/objects/${c}: Objects live in a folder per contract`); continue; }
@@ -52,7 +52,8 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
     if (o.role !== undefined || o.meaning !== undefined) problems.push(`${rel}: role and meaning are gone (R113): it says its kind and what it does (behaves)`);
     if (!Array.isArray(o.behaves) || o.behaves.some((b) => !BEHAVIOURS.includes(b))) problems.push(`${rel}: behaves lists what it does, from ${BEHAVIOURS.join(", ")} ([] for none)`);
     else { const on = o.on || "node", has = (b) => o.behaves.includes(b);
-      if ((has("band") || has("holds-openings") || has("opening")) && on !== "segment") problems.push(`${rel}: band, holds-openings and opening are for an Object on a line (on: segment)`);
+      if ((has("band") || has("holds-openings") || has("opening") || has("spans-host")) && on !== "segment") problems.push(`${rel}: band, holds-openings, opening and spans-host are for an Object on a line (on: segment)`);
+      if (has("spans-host") && (has("opening") || has("band") || has("holds-openings"))) problems.push(`${rel}: spans-host runs a wall's whole length: it is not an opening or a band (R147)`);
       if ((has("stops-bands") || has("cuts-floor-above")) && on !== "node") problems.push(`${rel}: stops-bands and cuts-floor-above are for an Object at a point`);
       if (has("way-through") && !has("opening")) problems.push(`${rel}: way-through is for an opening`); }
     for (const k of ["symbol2d", "primitive3d"]) if (!Array.isArray(o[k]) || !o[k].length) problems.push(`${rel}: ${k} is missing`);

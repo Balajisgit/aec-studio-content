@@ -1,0 +1,71 @@
+{
+  "id": "structure.beam@1.0.0",
+  "name": "Beam",
+  "contract": "structure.beam",
+  "kind": "beam",
+  "behaves": [
+    "spans-host"
+  ],
+  "on": "segment",
+  "about": "A concrete beam along a wall, its whole length, under the slab above. Place it along a wall: it follows the wall as it is moved, split or joined, and cuts nothing (a door or window still goes in under it). Where it sits (base, from the floor) is set by the project's relationships: the storey less the slab above and its own depth; the wall under it stops at its underside.",
+  "length": {
+    "default": 3000,
+    "min": 300,
+    "max": 15000
+  },
+  "params": {
+    "width": 230,
+    "depth": 450,
+    "base": 2700
+  },
+  "limits": {
+    "width": {
+      "min": 150,
+      "max": 900,
+      "step": 10
+    },
+    "depth": {
+      "min": 200,
+      "max": 1500,
+      "step": 25
+    },
+    "base": {
+      "min": 0,
+      "max": 20000,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "beam",
+      "shape": "rect",
+      "style": "hidden",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "width"
+      ],
+      "slot": "concrete"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "beam",
+      "shape": "box",
+      "at": [
+        "0",
+        "0",
+        "base"
+      ],
+      "size": [
+        "length",
+        "width",
+        "depth"
+      ],
+      "slot": "concrete"
+    }
+  ]
+}
