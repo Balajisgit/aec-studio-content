@@ -1,0 +1,115 @@
+{
+  "about": "The checks every project has (R142): what a person would put right (design sense, S) and what the typology asks of a room (T). Notes only, never refusals. A template's own checks (its \"checks\") replace one here by id, add new ones, or take one out with off: true; a project's overrides.checks the same; a firm's own copy of this file wins in its work. Each rule: of (room, pair, thing, blocking, ratio), when (a formula: true says the note), say (the note; {name} from the facts, {= formula} worked out), zone (blocking: how far either side of the wall's line an opening needs clear, mm). The facts each kind has are listed in the app's managers/projects/checks.js.",
+  "values": {
+    "roomSide": 700,
+    "roomArea": 1,
+    "inWall": 30,
+    "doorClear": 600,
+    "windowNear": 250,
+    "doorWall": 100,
+    "windowWall": 150,
+    "packed": 0.75
+  },
+  "checks": [
+    {
+      "id": "S1",
+      "code": "S1",
+      "of": "room",
+      "when": "!roofless && !open_side && doors == 0 && ways == 0",
+      "say": "{room} has no door: nobody can get into it."
+    },
+    {
+      "id": "S4-narrow",
+      "code": "S4",
+      "of": "room",
+      "when": "side < roomSide",
+      "say": "{room} is {side} mm across at its narrowest: under {roomSide} mm is too narrow to use."
+    },
+    {
+      "id": "S4-small",
+      "code": "S4",
+      "of": "room",
+      "when": "!(side < roomSide) && area < roomArea",
+      "say": "{room} is {area} m²: under {roomArea} m² is too small to use."
+    },
+    {
+      "id": "S3",
+      "code": "S3",
+      "of": "thing",
+      "when": "!may_stand_in_walls && wall_depth > inWall",
+      "say": "{thing} stands in the wall {wall}: {wall_depth} mm into it."
+    },
+    {
+      "id": "S2-door",
+      "code": "S2",
+      "of": "blocking",
+      "zone": "through ? doorWall + min(doorClear, width) : 0",
+      "when": "through && !may_stand_in_walls && overlap > inWall",
+      "say": "{thing} stands in the way of the {is} {opening}."
+    },
+    {
+      "id": "S2-window",
+      "code": "S2",
+      "of": "blocking",
+      "zone": "through ? 0 : windowWall + windowNear",
+      "when": "!through && !may_stand_in_walls && top > sill && overlap > inWall",
+      "say": "{thing} stands in front of the window {opening} and is taller than its sill."
+    },
+    {
+      "id": "T1-none",
+      "code": "T1",
+      "of": "room",
+      "when": "typed && !has_use",
+      "say": "{room} has no use yet: say what it is used as ({= guess != '' ? 'a ' + guess + '?' : examples})."
+    },
+    {
+      "id": "T1-unknown",
+      "code": "T1",
+      "of": "room",
+      "when": "typed && has_use && !known_use",
+      "say": "{room} is used as {use}, which is not one of this model's uses ({typology_name}: {use_list}…)."
+    },
+    {
+      "id": "T2-side",
+      "code": "T2",
+      "of": "room",
+      "when": "known_use && side >= roomSide && area >= roomArea && use_minSide > 0 && side < use_minSide",
+      "say": "{room} is {side} mm across at its narrowest; a {use_label} is at least {use_minSide} mm {typology}."
+    },
+    {
+      "id": "T2-area",
+      "code": "T2",
+      "of": "room",
+      "when": "known_use && side >= roomSide && area >= roomArea && !(use_minSide > 0 && side < use_minSide) && use_minArea > 0 && area < use_minArea",
+      "say": "{room} is {area} m²; a {use_label} is at least {use_minArea} m² {typology}."
+    },
+    {
+      "id": "T3",
+      "code": "T3",
+      "of": "room",
+      "when": "known_use && use_window && !use_open && windows_out == 0 && !daylit",
+      "say": "{room} has no window to the outside; a {use_label} needs one {typology}."
+    },
+    {
+      "id": "T4",
+      "code": "T4",
+      "of": "pair",
+      "when": "apart",
+      "say": "{a} opens straight into {b}: a {a_use_label} and a {b_use_label} are kept apart {typology}."
+    },
+    {
+      "id": "T5",
+      "code": "T5",
+      "of": "room",
+      "when": "known_use && by_furniture && use_unitArea > 0 && each_area < use_unitArea * packed",
+      "say": "{room} holds {holds} {unit_plural} in {room_area} m²: {each_area} m² each, where about {use_unitArea} m² is usual {typology}."
+    },
+    {
+      "id": "T6",
+      "code": "T6",
+      "of": "ratio",
+      "when": "per > 0 && have < need",
+      "say": "{name}: {have} for {per} {per_plural}; at least {need} {typology} (1 for every {every})."
+    }
+  ]
+}
