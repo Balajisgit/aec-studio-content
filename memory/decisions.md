@@ -181,3 +181,7 @@ Every decision, newest last, with the session it was made in.
 - **2026-11-26 · Session 51** — Owner: "Go as per ur suggestion" (heights written in on open; a stair's opening drawn above); "ya ok agree." to the kernel's inset for setbacks.
 - **2026-11-26 · Session 51** — Owner on beams: "A beam hosted on the wall: that small kernel change … go with this"; beams by default "can be done as model defaults? rit?", then "ok" with the cantilever slab.
 - **2026-11-26 · Session 51** — Owner: "merge in the order u suggested" (R142 to R146); "ok" (R147); "Merge" (R148, R149); "Update both and then wrap up".
+- **2026-11-27 · Session 52** — Owner: "Can we create a templete(a model default) that start from placing the wall upto finishing the structure", "Need to organize model defaults into more logical and structured way", then "Ok write the request".
+- **2026-11-27 · Session 52** — Owner on R150's questions: "As u suggest. For doors, windows - scripts like structure it or by hand when manual"; "Ok" to build; "Merge and do that 2 steps"; "Ok do"; "Merge".
+- **2026-11-27 · Session 52** — Owner on the Workplace typology: "1. variants 2. firm codes - may be india codes as rules or whichever fits 3. ok", then "ok" to the typology, a fit-out construction and the templates 2.0.0; "merge".
+- **2026-11-27 · Session 52** — Owner: "any project should record a program even when the brief or starting prompt doesn not include one", then "agree", "quietly" and "ok" to a level starting from the floor below; "build r151 and 152"; "merge and wrap up".

@@ -1,6 +1,6 @@
 # Briefing
 
-_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 52._
+_Generated from memory/core.md and memory/sessions/; do not edit by hand. Next session: 53._
 
 ## What this is
 
@@ -21,7 +21,11 @@ Studio (phase 1: versions, updates, settings, Claude runtime) · Memory & Discus
 
 ## Words
 
-Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Playbook (a saved plan: steps by Innowa in the chat, scripts or the app, sessions on a PC, the owner's decisions; each says when to use it) · Plan (the steps Innowa writes for one ask; it waits for the owner's OK when it changes the project or the Library) · Skill (know-how a step follows, skills/<name>/SKILL.md) · Script (exact work with no tokens, in the content: gives layouts, a report or files) · Stage, Decision, Output (a playbook's steps) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library) · Layout (several Objects arranged together, placed as one kept unit or broken into separate Objects; R114) · Template (a project's starting rules; in the Library since R114) · Shortlist (a project's pinned Objects and Layouts). Programme option (one of a project's programmes, A, B…; one is current; R127) · Design option (a full copy of a project's model, a project of its own under it, answering a programme option; R128) · Measure (what a design is compared on: the core set, the typology's, the project's; R129). The Library is a catalogue of Objects, Layouts and Templates. The word "type" is not used.
+Library (the shared collection) · Object (one Library entry: parameters, a 2D symbol, a 3D primitive, materials; versioned, never changed in place) · Placement (an Object used in a project) · Need (what a brief calls for, before matching) · Playbook (a saved plan: steps by Innowa in the chat, scripts or the app, sessions on a PC, the owner's decisions; each says when to use it) · Plan (the steps Innowa writes for one ask; it waits for the owner's OK when it changes the project or the Library) · Skill (know-how a step follows, skills/<name>/SKILL.md) · Script (exact work with no tokens, in the content: gives layouts, a report or files) · Stage, Decision, Output (a playbook's steps) · Project Object (an Object kept in one project, id project.<name>@1.0.0, not yet in the Library) · Layout (several Objects arranged together, placed as one kept unit or broken into separate Objects; R114) · Template (a project's starting rules; in the Library since R114) · Shortlist (a project's pinned Objects and Layouts). Programme option (one of a project's programmes, A, B…; one is current; R127) · Design option (a full copy of a project's model, a project of its own under it, answering a programme option; R128) · Measure (what a design is compared on: the core set, the typology's, the project's; R129). Typology, Construction, Standards (a template's three parts: what it is for, how it is built, the firm's way; R150) · Codes (what a code asks, as checks and ratios, named by the standards; R153). The Library is a catalogue of Objects, Layouts and Templates. The word "type" is not used.
+
+## Model defaults (R150 to R153)
+
+A template names a Typology (uses, sizes, ratios, measures; a variant extends a base), a Construction (presets, placing rules, relationships, openings, levels) and Standards (naming, sizes by name, the Codes it works to), with its own few keys on top. The Studio's engines read them after every step, with no tokens: placing (on lines, edges, points, rooms, plates, hosts), relationships, checks (of a room, a pair, a floor, the building) and measures. Scripts propose what is a choice (Structure it, Doors and windows); Innowa draws the lines and names the rooms. Every project has a programme: as drawn until the owner confirms it. A new floor starts from the one below.
 
 ## The kernel (mesh-light)
 
@@ -80,6 +84,23 @@ _The open requests (requests/ in the content repository)._
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
 
 ## Recent sessions
+
+### Session 52 · 2026-11-27 · Templates in three parts and a placing engine (R150), Structure it, Doors and windows, the Workplace typology (R153), a programme always (R151), levels from below (R152)
+What the model defaults place became rules in the content, read by one placing engine. Templates are now a Typology, a Construction and Standards; Villa 2.0.0 builds an RCC frame house from lines and names. Scripts propose columns, doors and windows. A researched Workplace typology with variants and India codes followed, then a programme for every project and floors that start from the one below. All merged at the owner's word.
+
+Done:
+- R150 step 1 (aec-studio#162): the placing engine: rules.place on lines, edges, points, rooms, floor plates and hosts, run until nothing more follows; the 1.0.0 lines, faces, plates and beams kept as rules of the same kind.
+- R150 steps 2 and 3 (aec-studio#163, content#85): templates in three parts with sizes by name; Villa 2.0.0 = Villa + RCC frame with brick + BuilderPluss standards: walls on room lines, beams, parapets, railings, lintels in doors and windows, a span check.
+- R150 scripts (aec-studio#164, content#86): Structure it (column layouts that stack down) and Doors and windows (a way into every room, windows sized to the floor); a script reads the points.
+- R153 (aec-studio#165, content#87): Workplace typology and five variants (extends), people as desks times sharing, India NBC 2016 codes named by BuilderPluss standards 1.1.0, floor and building checks, an office fit-out, workplace templates 2.0.0.
+- R151, R152 (aec-studio#166, content#88): a programme always, as drawn until confirmed, saying its source; Villa 2.1.0 says what a house usually has; a new level starts from the floor below's outline and columns.
+- Tried on the live Studio through the connector: a two-storey house and a shop built from lines and names (in those projects' notes). 479 tests, smoke and canvas pass on main.
+
+Decided:
+- Owner: "Can we create a templete(a model default) that start from placing the wall upto finishing the structure", "Need to organize model defaults into more logical and structured way", then "Ok write the request".
+- Owner on R150's questions: "As u suggest. For doors, windows - scripts like structure it or by hand when manual"; "Ok" to build; "Merge and do that 2 steps"; "Ok do"; "Merge".
+- Owner on the Workplace typology: "1. variants 2. firm codes - may be india codes as rules or whichever fits 3. ok", then "ok" to the typology, a fit-out construction and the templates 2.0.0; "merge".
+- Owner: "any project should record a program even when the brief or starting prompt doesn not include one", then "agree", "quietly" and "ok" to a level starting from the floor below; "build r151 and 152"; "merge and wrap up".
 
 ### Session 51 · 2026-11-26 · The project page as a dashboard and its options (R135 to R141), checks and relationships as rules (R142, R144), setbacks, levels and naming (R143, R145, R146), beams and cantilever slab (R147 to R149)
 The project page became a dashboard with design options per programme option, imports and exports. Design rules left the code: checks, relationships between Objects, setbacks and level naming are now in the content. The kernel reads only each Object's own parameters. Beams along walls, beams by default and cantilever slabs followed. All merged at the owner's word; staging and the preview updated.
@@ -162,26 +183,9 @@ Done:
 Decided:
 - Owner: "start a cloud session to make a script that lists every room's area"; the session could not start (R119), so offered to write it in the chat: "A"
 
-### Session 47 · 2026-11-23 · R116 done: Innowa writes plans, skills and scripts stand alone, plans that work are saved as playbooks, the fixed pipelines retire
-R116 steps 2 to 4 were built and merged at the owner's word. Innowa writes a plan for an ask from skills and scripts, or picks a playbook that suits; a plan that changes the project or the Library waits for his OK; a plan that worked is saved as a playbook; scripts give layouts, reports or files; the old fixed pipelines and lone agents are gone.
-
-Done:
-- Step 2: plan_propose and plan_change; the plan on the run page (move, edit, take out, add steps; limits $20 and 4 h); "The plan" waits for the owner's OK when it writes; no new plans while nobody is watching.
-- Step 3: six skills from the agents' know-how (read-brief, match-needs, make-object, write-programme, read-site, review-object); steps by Innowa follow skills; agents name a skill; script_list, script_try and script_apply.
-- Step 4a: Save it as a playbook (run page, or playbook_save in the chat); a generic proposals Action in the content turns records into pull requests; Innowa looks at playbooks first.
-- Step 4b: scripts give candidates, a report or files, say where they run and when to use them; the Library check-up is a script in the content; script_propose and skill_propose (tried first, owner only).
-- Step 4c: the Pipelines page is Playbooks; Fit to plot 5.0.0 and Propose to Library 2.0.0 by Innowa with skills; 26 old versions and 8 lone agents removed; an agent no longer works a stage on its own.
-- Fixed: a project's run page did nothing on a confirm's buttons or Open the chat; Propose to Library works again with one tap on a PC with no Claude.
-- Merged: aec-studio#131, #132, #133, #134, #135; aec-studio-content#66, #67, #68, #69, #70. 394 tests, smoke and canvas checks pass.
-
-Decided:
-- Owner: "build R116 step 2", then "Merge"; "go step 3", then "Merge"; "Go 4a, 4b and 4c", then "Merge".
-- Owner's vision for R116: "A free standing scripts, skills, tools. Innowa picks and assembles on the fly as a playbook if a job needs one or picks a old playbooks of that suits."
-- Only the owner saves a playbook or proposes a script or a skill; each reaches him as a pull request on the content. Tools stay in the app, where the gates are kept.
-- Every pipeline is a playbook with a "use when"; only the newest version of each is kept; an agent works only as a session on a PC.
-
 ## Earlier sessions
 
+- **47** · 2026-11-23 · R116 done: Innowa writes plans, skills and scripts stand alone, plans that work are saved as playbooks, the fixed pipelines retire — R116 steps 2 to 4 were built and merged at the owner's word. Innowa writes a plan for an ask from skills and scripts, or picks a playbook that suits; a plan that changes the project or the Library waits for his OK; a plan that worked is saved as a playbook; scripts give layouts, reports or files; the old fixed pipelines and lone agents are gone.
 - **46** · 2026-11-22 · R115 done (Innowa works playbook steps in the chat) and R116 begun: skills, scripts, tools and dynamic playbooks, with the owner's gates fixed in the app — Pipelines felt slow and narrow, so Innowa now works a playbook's steps itself in the chat, with the owner, instead of cold agents per stage. Office floor plan, Programme from a brief, Read a brief and Make an Object run this way. The owner then chose skills, scripts, tools and plans Innowa assembles over fixed pipelines (R116); step 1, the owner's gates in the app, is merged.
 - **45** · 2026-11-21 · R110, R111, R112 done: a dragged Object follows the pointer, a new project from the canvas, requests answer at once and can be edited — The three small fixes noted on the PC were built in one pull request and merged at the owner's word. Dragging an Object on the canvas no longer lags, a new project is made from the canvas's project list, and noting a request no longer holds the app while GitHub is reached; requests can now be edited.
 - **44** · 2026-11-21 · R114 done: the Library as a catalogue, placing and shortlists, Layouts with Keep or Break, templates in the Library — All four steps of R114 were built and merged at the owner's word. The Library opens as a catalogue with pictures made from each entry's 3D shape; a project's shortlist and the canvas's Place tool place from it; Layouts arrive with Keep or Break; templates now live in the Library. The online preview shows it all.
