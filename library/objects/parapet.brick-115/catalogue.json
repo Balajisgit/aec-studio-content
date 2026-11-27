@@ -1,0 +1,18 @@
+{
+ "catalogue": 1,
+ "line": "Half-brick parapet, 115 thick, 1 m high",
+ "uses": [
+  "terrace",
+  "balcony"
+ ],
+ "typology": [
+  "villa"
+ ],
+ "ifc": "IfcWall",
+ "keywords": [
+  "parapet",
+  "terrace",
+  "balcony",
+  "roof edge"
+ ]
+}

@@ -156,7 +156,8 @@
     "plot.setbacks",
     "fence.mesh",
     "gate.swing",
-    "railing.generic"
+    "railing.generic",
+    "parapet.brick-115"
    ]
   }
  ],

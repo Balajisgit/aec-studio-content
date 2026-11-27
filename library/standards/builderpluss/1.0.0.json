@@ -1,0 +1,40 @@
+{
+  "id": "builderpluss@1.0.0",
+  "name": "BuilderPluss standards",
+  "about": "How BuilderPluss names levels and numbers rooms, and its standard sizes, mm: what a Construction's rules and the relationships read by name ($column_width and so on). A firm's own standards replace these in its work.",
+  "naming": {
+    "levels": {
+      "names": [
+        "Ground floor",
+        "First floor",
+        "Second floor",
+        "Third floor",
+        "Fourth floor",
+        "Fifth floor"
+      ],
+      "then": "Floor {n}",
+      "below": "Basement {b}",
+      "codes": [
+        "G",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "codesThen": "{n}",
+      "codesBelow": "B{b}"
+    },
+    "rooms": {
+      "pattern": "{code}.{seq:02}"
+    }
+  },
+  "sizes": {
+    "column_width": 230,
+    "column_depth": 300,
+    "beam_width": 230,
+    "beam_depth": 450,
+    "lintel": 150,
+    "parapet": 1000
+  }
+}
