@@ -62,7 +62,7 @@ _The open requests (requests/ in the content repository)._
 - R132 · chat
 - R151 · Every project has a programme, saying where it came from: a brief, a prompt, or drawn (following the drawing quietly until the owner confirms it)
 - R152 · A new level starts from the floor below: its outer lines and column points copied, the stair opening cut; start empty is the other choice
-- R153 · The Workplace typology: a base and five variants, planned from people, with codes as the firm's choice (India NBC 2016 first), an office fit-out construction and the workplace templates 2.0.0
+- R153 · The Workplace typology: a base and five variants, planned from people, with codes as the firm's choice (India NBC 2016 first), an office fit-out construction and the workplace templates 2.0.0 (in aec-studio#165)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
