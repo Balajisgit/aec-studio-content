@@ -1,0 +1,111 @@
+{
+  "id": "workplace-studio@1.0.0",
+  "name": "Workplace: creative studio",
+  "about": "A design, architecture, media or advertising studio: one open studio with room to pin up and review, a materials library, a workshop for models, edit and sound rooms that want no window, a gallery at the front. The Workplace typology underneath it; only what this kind of office adds or sizes differently is said here.",
+  "extends": "workplace@1.0.0",
+  "spaces": {
+    "name": "Workplace: creative studio",
+    "uses": [
+      {
+        "id": "studio",
+        "name": "Studio",
+        "minArea": 30,
+        "minSide": 4500,
+        "window": true,
+        "about": "The open studio: long tables, screens, work on the walls.",
+        "unit": "seat",
+        "unitArea": 7,
+        "group": "individual"
+      },
+      {
+        "id": "review-space",
+        "name": "Review space",
+        "minArea": 15,
+        "minSide": 3600,
+        "about": "Where work is pinned up and talked through.",
+        "unit": "meeting seat",
+        "unitArea": 2,
+        "group": "together"
+      },
+      {
+        "id": "materials-library",
+        "name": "Materials library",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Samples on shelves and in drawers, a table to lay them out by daylight.",
+        "group": "support"
+      },
+      {
+        "id": "workshop",
+        "name": "Workshop",
+        "minArea": 15,
+        "minSide": 3000,
+        "wet": true,
+        "about": "Model making: benches, a sink, dust and noise kept in.",
+        "group": "support"
+      },
+      {
+        "id": "photo-studio",
+        "name": "Photo studio",
+        "minArea": 20,
+        "minSide": 4000,
+        "about": "A clear floor and height for lights; daylight shut out when needed.",
+        "group": "support"
+      },
+      {
+        "id": "edit-suite",
+        "name": "Edit suite",
+        "minArea": 7.5,
+        "minSide": 2400,
+        "about": "Picture and colour: no window, or one that blacks out.",
+        "group": "support"
+      },
+      {
+        "id": "sound-booth",
+        "name": "Sound booth",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "Recording and voice: a room within a room, no window.",
+        "group": "support"
+      },
+      {
+        "id": "render-room",
+        "name": "Render room",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "Machines that run hot and loud, shut away.",
+        "group": "support"
+      },
+      {
+        "id": "gallery",
+        "name": "Gallery",
+        "minArea": 20,
+        "minSide": 3600,
+        "about": "Work on show at the front.",
+        "group": "social"
+      }
+    ],
+    "apart": [
+      [
+        "toilet",
+        "gallery"
+      ],
+      [
+        "workshop",
+        "edit-suite"
+      ],
+      [
+        "workshop",
+        "sound-booth"
+      ],
+      [
+        "workshop",
+        "server-room"
+      ],
+      [
+        "workshop",
+        "render-room"
+      ]
+    ]
+  }
+}

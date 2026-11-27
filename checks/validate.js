@@ -68,7 +68,15 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
 // for: spaces, measures, checks), library/constructions (how it is built: presets, rules, openings, levels, relationships,
 // checks) and library/standards (naming, module, sizes). A part's "$name" is a standards size. Each part file is checked
 // here; a template that names parts is put together and checked like any other.
-const PARTS = { typology: ["typologies", ["spaces", "measures", "checks", "module"]], construction: ["constructions", ["presets", "rules", "openings", "levels", "relationships", "checks"]], standards: ["standards", ["naming", "module", "sizes"]] };
+const PARTS = { typology: ["typologies", ["spaces", "measures", "checks", "module", "extends"]], construction: ["constructions", ["presets", "rules", "openings", "levels", "relationships", "checks"]], standards: ["standards", ["naming", "module", "sizes", "codes"]], codes: ["codes", ["checks", "ratios", "values"]] };
+// R153: a typology may extend another (its uses by id on top, off: true takes one out; ratios by name; measures by id; pairs
+// kept apart added); codes (library/codes) are named by the standards or the template: their ratios join the typology's.
+const byKey = (list, key) => { const m = new Map(); for (const x of list) if (x) m.set(key(x), { ...(m.get(key(x)) || {}), ...x }); return [...m.values()].filter((x) => !x.off); };
+const typologyOf = (ref, rel, depth = 0) => { const x = partOf("typology", ref); if (!x) { problems.push(`${rel}: its typology ${ref} is not in the Library`); return {}; } if (!x.extends || depth > 3) return x;
+  const b = typologyOf(x.extends, rel, depth + 1), bs = b.spaces || {}, xs = x.spaces || {}, uses = byKey([...(bs.uses || []), ...(xs.uses || [])], (u) => u.id), ids = new Set(uses.map((u) => u.id));
+  const apart = [...new Map([...(bs.apart || []), ...(xs.apart || [])].map((p) => [[...p].sort().join("|"), p])).values()].filter((p) => p.every((id) => ids.has(id)));
+  return { ...b, ...x, spaces: { ...bs, ...xs, uses, apart, ratios: byKey([...(bs.ratios || []), ...(xs.ratios || [])], (r) => r.name), provides: { ...(bs.provides || {}), ...(xs.provides || {}) } },
+    measures: byKey([...(b.measures || []), ...(x.measures || [])], (m) => m.id), checks: byKey([...(b.checks || []), ...(x.checks || [])], (c) => c.id) }; };
 const partOf = (kind, ref) => { const [i, v] = String(ref || "").split("@"); try { return JSON.parse(readFileSync(join(root, "library", PARTS[kind][0], i, `${v}.json`), "utf8")); } catch { return null; } };
 for (const [kind, [folder, keys]] of Object.entries(PARTS)) { const pd = join(root, "library", folder); if (!existsSync(pd)) continue;
   for (const id of readdirSync(pd)) { const dir = join(pd, id); if (!statSync(dir).isDirectory()) { problems.push(`library/${folder}/${id}: a ${kind} lives in a folder per id`); continue; }
@@ -79,9 +87,14 @@ for (const [kind, [folder, keys]] of Object.entries(PARTS)) { const pd = join(ro
 /** A template with its parts put together (the app's composeTemplate does the same). @param {any} t @param {string} rel */
 function composed(t, rel) {
   if (!t || !(t.typology || t.construction || t.standards)) return t;
-  const got = {}; for (const k of Object.keys(PARTS)) if (t[k]) { got[k] = partOf(k, t[k]); if (!got[k]) problems.push(`${rel}: its ${k} ${t[k]} is not in the Library`); }
-  const ty = got.typology || {}, co = got.construction || {}, st = got.standards || {}, sizes = { ...(st.sizes || {}), ...(t.sizes || {}) };
-  const out = { ...ty, ...co, ...st, ...t, checks: [...(ty.checks || []), ...(co.checks || []), ...(t.checks || [])] };
+  const got = {}; for (const k of ["construction", "standards"]) if (t[k]) { got[k] = partOf(k, t[k]); if (!got[k]) problems.push(`${rel}: its ${k} ${t[k]} is not in the Library`); }
+  const ty = t.typology ? typologyOf(t.typology, rel) : {}, co = got.construction || {}, st = got.standards || {}, sizes = { ...(st.sizes || {}), ...(t.sizes || {}) };
+  const codesRef = t.codes || st.codes, cd = codesRef ? partOf("codes", codesRef) : null; if (codesRef && !cd) problems.push(`${rel}: its codes ${codesRef} are not in the Library`);
+  const spaces = ty.spaces ? { ...ty.spaces, ratios: byKey([...(ty.spaces.ratios || []), ...((cd && cd.ratios) || [])], (r) => r.name) } : undefined;
+  const out = { ...ty, ...co, ...st, ...t, ...(spaces ? { spaces } : {}), checks: [...(ty.checks || []), ...(co.checks || []), ...((cd && cd.checks) || []), ...(t.checks || [])] };
+  for (const k of ["presets"]) if (t[k] && co[k]) out[k] = byKey([...co[k], ...t[k]], (p) => p.id);
+  if (t.rules && co.rules) out.rules = { ...co.rules, ...t.rules, faces: byKey([...(co.rules.faces || []), ...(t.rules.faces || [])], (f) => f.kind || f.role), place: byKey([...(co.rules.place || []), ...(t.rules.place || [])], (r) => r.id) };
+  for (const k of ["openings", "levels"]) if (t[k] && co[k]) out[k] = { ...co[k], ...t[k] };
   const sized = (x) => (typeof x === "string" && /^\$[a-z][a-z0-9_]*$/.test(x) ? (x.slice(1) in sizes ? sizes[x.slice(1)] : (problems.push(`${rel}: ${x}: its standards have no size of that name`), x)) : Array.isArray(x) ? x.map(sized) : x && typeof x === "object" ? Object.fromEntries(Object.entries(x).map(([k, v]) => [k, sized(v)])) : x);
   return sized(out);
 }
@@ -124,7 +137,7 @@ try { const td = join(root, "library", "templates");
           if (u && u.open != null && !["semi", "open"].includes(u.open)) problems.push(`${rel}: use ${u.id}: open is semi or open`);
           if (u && (u.unitArea != null || u.units != null) && typeof u.unit !== "string") problems.push(`${rel}: use ${u.id}: say what it holds (unit) with unitArea or units`); }
         // what rooms hold (R105): the ratios name units some use holds
-        { const have = new Set((U || []).map((u) => u && u.unit).filter(Boolean)); for (const q of t.spaces.ratios || []) for (const k of [q.of, q.per]) if (!have.has(k)) problems.push(`${rel}: spaces.ratios: no use holds ${k}`);
+        { const have = new Set((U || []).map((u) => u && u.unit).filter(Boolean)); if (t.spaces.sharing != null && t.spaces.headUnit) have.add("person"); // R153: people, as desks times sharing for (const q of t.spaces.ratios || []) for (const k of [q.of, q.per]) if (!have.has(k)) problems.push(`${rel}: spaces.ratios: no use holds ${k}`);
           if (t.spaces.headUnit != null && !have.has(t.spaces.headUnit)) problems.push(`${rel}: spaces.headUnit: no use holds ${t.spaces.headUnit}`); }
         for (const p of t.spaces.apart || []) if (!Array.isArray(p) || p.length !== 2 || p.some((x) => !seen.has(x))) problems.push(`${rel}: spaces.apart names two of its uses (${JSON.stringify(p)})`); }
       const ids = new Set((t.presets || []).map((p) => p.id)); const L = t.rules && t.rules.lines; if (L) for (const k of ["outer", "inner"]) if (!ids.has(L[k])) problems.push(`${rel}: rules.lines.${k} must name a preset`); } }

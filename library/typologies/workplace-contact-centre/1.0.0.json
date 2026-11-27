@@ -1,0 +1,157 @@
+{
+  "id": "workplace-contact-centre@1.0.0",
+  "name": "Workplace: contact centre",
+  "about": "A contact centre or business-process floor, worked in shifts: a dense production floor in bays with team leads among them, training rooms for each new batch, lockers and a check at the entrance, a large cafeteria, a sick room, a transport desk. The Workplace typology underneath it; only what this kind of office adds or sizes differently is said here.",
+  "extends": "workplace@1.0.0",
+  "spaces": {
+    "name": "Workplace: contact centre",
+    "uses": [
+      {
+        "id": "production-floor",
+        "name": "Production floor",
+        "minArea": 40,
+        "minSide": 6000,
+        "window": true,
+        "about": "Agents' desks in bays: about 4.5 m² a seat with its share of aisles.",
+        "unit": "seat",
+        "unitArea": 4.5,
+        "group": "individual"
+      },
+      {
+        "id": "team-lead-bay",
+        "name": "Team lead's bay",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "Among the agents, in sight of the team.",
+        "unit": "seat",
+        "units": 1,
+        "group": "individual"
+      },
+      {
+        "id": "quality-room",
+        "name": "Quality room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Listening to calls, coaching.",
+        "group": "together"
+      },
+      {
+        "id": "interview-room",
+        "name": "Interview room",
+        "minArea": 6,
+        "minSide": 2100,
+        "unit": "meeting seat",
+        "units": 3,
+        "group": "together"
+      },
+      {
+        "id": "security-check",
+        "name": "Security check",
+        "minArea": 6,
+        "minSide": 2400,
+        "about": "At the entrance to the production floor: bags and phones left in lockers.",
+        "group": "arrival"
+      },
+      {
+        "id": "sick-room",
+        "name": "Sick room",
+        "minArea": 7.5,
+        "minSide": 2400,
+        "about": "A bed, a basin, first aid.",
+        "group": "social"
+      },
+      {
+        "id": "transport-desk",
+        "name": "Transport desk",
+        "minArea": 5,
+        "minSide": 1800,
+        "about": "Cabs and rosters for the shifts.",
+        "group": "support"
+      },
+      {
+        "id": "battery-room",
+        "name": "Battery room",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "The UPS's batteries, ventilated, apart from the server room.",
+        "group": "technical"
+      },
+      {
+        "id": "cafeteria",
+        "minArea": 60,
+        "minSide": 6000
+      },
+      {
+        "id": "locker-area",
+        "minArea": 10,
+        "minSide": 2400
+      },
+      {
+        "id": "toilet",
+        "minArea": 12,
+        "minSide": 2400
+      }
+    ],
+    "ratios": [
+      {
+        "name": "Training seats",
+        "of": "training seat",
+        "per": "seat",
+        "min": 0.1
+      },
+      {
+        "name": "Cafeteria seats",
+        "of": "dining seat",
+        "per": "person",
+        "min": 0.3
+      },
+      {
+        "name": "Seats for working together",
+        "of": "meeting seat",
+        "per": "seat",
+        "min": 0.1
+      },
+      {
+        "name": "Focus seats",
+        "of": "focus seat",
+        "per": "seat",
+        "min": 0.02
+      }
+    ],
+    "apart": [
+      [
+        "toilet",
+        "sick-room"
+      ],
+      [
+        "battery-room",
+        "pantry"
+      ],
+      [
+        "battery-room",
+        "cafeteria"
+      ],
+      [
+        "toilet",
+        "battery-room"
+      ]
+    ],
+    "sharing": 1.0
+  },
+  "measures": [
+    {
+      "id": "training-seats-per-100",
+      "name": "Training seats per 100 seats",
+      "of": "training_seat / seat * 100",
+      "digits": 1,
+      "better": "higher"
+    },
+    {
+      "id": "dining-seats-per-10",
+      "name": "Dining seats per 10 seats",
+      "of": "dining_seat / seat * 10",
+      "digits": 1,
+      "better": "higher"
+    }
+  ]
+}

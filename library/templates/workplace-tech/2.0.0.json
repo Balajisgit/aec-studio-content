@@ -1,0 +1,19 @@
+{
+  "id": "workplace-tech@2.0.0",
+  "name": "Workplace: technology",
+  "about": "An office floor for a technology firm or a global capability centre: open team neighbourhoods, many small rooms for calls and focus, scrum and war rooms, a device lab, a town hall. In three parts: the Workplace: technology typology (on the Workplace one), an office fit-out on an RCC shell, and the BuilderPluss standards with the Indian codes.",
+  "typology": "workplace-tech@1.0.0",
+  "construction": "fit-out-rcc-shell@1.0.0",
+  "standards": "builderpluss@1.1.0",
+  "presets": [
+    {
+      "id": "partition",
+      "name": "Glazed partition",
+      "kind": "wall",
+      "objectRef": "wall.glazed-partition-50@1.1.0"
+    }
+  ],
+  "openings": {
+    "door": "door.glass-single@1.0.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "workplace-corporate@2.0.0",
+  "name": "Workplace: corporate",
+  "about": "A head office or a professional or financial services floor (law, consulting, banking): more cabins and enclosed rooms, a client suite at the front kept apart from the working floor, a boardroom, records. In three parts: the Workplace: corporate typology (on the Workplace one), an office fit-out on an RCC shell, and the BuilderPluss standards with the Indian codes.",
+  "typology": "workplace-corporate@1.0.0",
+  "construction": "fit-out-rcc-shell@1.0.0",
+  "standards": "builderpluss@1.1.0"
+}

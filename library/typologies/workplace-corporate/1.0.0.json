@@ -1,0 +1,115 @@
+{
+  "id": "workplace-corporate@1.0.0",
+  "name": "Workplace: corporate",
+  "about": "A head office or a professional or financial services floor (law, consulting, banking): more cabins and enclosed rooms, a client suite at the front kept apart from the working floor, a boardroom, records. The Workplace typology underneath it; only what this kind of office adds or sizes differently is said here.",
+  "extends": "workplace@1.0.0",
+  "spaces": {
+    "name": "Workplace: corporate",
+    "uses": [
+      {
+        "id": "cabin",
+        "minArea": 10,
+        "minSide": 3000
+      },
+      {
+        "id": "executive-cabin",
+        "name": "Executive cabin",
+        "minArea": 14,
+        "minSide": 3300,
+        "window": true,
+        "about": "A senior person's office, with a small meeting table.",
+        "unit": "seat",
+        "units": 1,
+        "group": "individual"
+      },
+      {
+        "id": "pa-area",
+        "name": "Assistant's desk",
+        "minArea": 5,
+        "minSide": 1800,
+        "about": "Outside an executive cabin.",
+        "unit": "seat",
+        "units": 1,
+        "group": "individual"
+      },
+      {
+        "id": "boardroom",
+        "name": "Boardroom",
+        "minArea": 35,
+        "minSide": 4500,
+        "about": "16 to 20 people at one table.",
+        "unit": "meeting seat",
+        "units": 18,
+        "group": "together"
+      },
+      {
+        "id": "client-meeting",
+        "name": "Client meeting room",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "In the client suite, reached from reception without crossing the working floor.",
+        "unit": "meeting seat",
+        "units": 6,
+        "group": "together"
+      },
+      {
+        "id": "library",
+        "name": "Library",
+        "minArea": 12,
+        "minSide": 3000,
+        "group": "support"
+      },
+      {
+        "id": "record-room",
+        "name": "Record room",
+        "minArea": 8,
+        "minSide": 2400,
+        "about": "Files under lock; no water over or beside it.",
+        "group": "support"
+      },
+      {
+        "id": "dealing-room",
+        "name": "Dealing room",
+        "minArea": 40,
+        "minSide": 6000,
+        "window": true,
+        "about": "A trading or dealing floor: desks in rows, screens, a dense floor box grid.",
+        "unit": "seat",
+        "unitArea": 4.5,
+        "group": "individual"
+      }
+    ],
+    "ratios": [
+      {
+        "name": "Cafeteria seats",
+        "of": "dining seat",
+        "per": "person",
+        "min": 0.2
+      },
+      {
+        "name": "Seats for working together",
+        "of": "meeting seat",
+        "per": "seat",
+        "min": 0.35
+      }
+    ],
+    "apart": [
+      [
+        "toilet",
+        "record-room"
+      ],
+      [
+        "pantry",
+        "record-room"
+      ],
+      [
+        "toilet",
+        "boardroom"
+      ],
+      [
+        "toilet",
+        "client-meeting"
+      ]
+    ]
+  }
+}

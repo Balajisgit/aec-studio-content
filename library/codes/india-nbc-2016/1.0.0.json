@@ -1,0 +1,43 @@
+{
+  "id": "india-nbc-2016@1.0.0",
+  "name": "India: NBC 2016 and labour law",
+  "about": "What Indian codes ask of a building's people, as checks and ratios a firm's standards name: WCs for the staff of an office (NBC 2016, Part 9: 1 for every 25 men and 1 for every 15 women; an even split is taken, so about 1 for every 19 people), a cleaner's sink on every floor (NBC 2016), a crèche for an establishment of 50 or more employees (Maternity Benefit (Amendment) Act 2017), an accessible toilet on every floor that has people. Notes only; a project takes one off where it does not apply (a crèche shared within a short distance).",
+  "ratios": [
+    {
+      "name": "WCs (NBC 2016: staff, 1 per 25 men and 1 per 15 women; an even split)",
+      "of": "wc",
+      "per": "person",
+      "min": 0.0534
+    }
+  ],
+  "checks": [
+    {
+      "id": "NBC-toilets-floor",
+      "code": "NBC",
+      "of": "level",
+      "when": "people > 0 && count_toilet == 0",
+      "say": "{level_name} seats about {people} people and has no toilets: give the floor its own (NBC 2016 counts them by the people they serve)."
+    },
+    {
+      "id": "NBC-cleaner",
+      "code": "NBC",
+      "of": "level",
+      "when": "people > 0 && count_janitor == 0",
+      "say": "{level_name} has no janitor's room: NBC 2016 asks for a cleaner's sink on every floor."
+    },
+    {
+      "id": "ACC-toilet-floor",
+      "code": "ACC",
+      "of": "level",
+      "when": "people > 0 && count_accessible_toilet == 0",
+      "say": "{level_name} has no accessible toilet: a wheelchair user working on this floor needs one on it."
+    },
+    {
+      "id": "MBA-creche",
+      "code": "MBA",
+      "of": "building",
+      "when": "people >= 50 && count_creche == 0",
+      "say": "About {people} people work here and there is no crèche: the Maternity Benefit Act (2017 amendment) asks for one from 50 employees, here or within a short distance (if it is elsewhere, take this note off for the project)."
+    }
+  ]
+}
