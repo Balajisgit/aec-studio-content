@@ -1,0 +1,37 @@
+{
+  "id": "structure-it",
+  "name": "Structure it",
+  "about": "Columns for an RCC frame, as two or three layouts to pick from: a column wherever walls meet and turn or branch, and more along a straight run of wall so no span between columns is longer than the longest span asked; or only round the outer walls; or with longer spans. Columns stack: one on an upper floor comes down through every floor below it. Each layout gives the columns, the longest span and the count on each floor. The layout picked places the columns as set by hand (the model defaults never move them). Footings follow later, with a foundation level.",
+  "useWhen": "The plan of an RCC frame house is settled (its walls are drawn on every floor) and the owner wants its columns: after the layout, before details.",
+  "gives": "candidates",
+  "scopes": [
+    "project"
+  ],
+  "reads": [
+    "project"
+  ],
+  "settings": {
+    "maxSpan": {
+      "name": "Longest span between columns",
+      "kind": "mm",
+      "default": 4500,
+      "min": 2000,
+      "max": 9000
+    },
+    "width": {
+      "name": "Column width (along its wall)",
+      "kind": "mm",
+      "default": 300,
+      "min": 200,
+      "max": 900
+    },
+    "depth": {
+      "name": "Column depth (across its wall)",
+      "kind": "mm",
+      "default": 230,
+      "min": 200,
+      "max": 900
+    }
+  },
+  "timeoutSeconds": 20
+}
