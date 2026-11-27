@@ -1,0 +1,16 @@
+{
+  "id": "workplace-contact-centre@2.0.0",
+  "name": "Workplace: contact centre",
+  "about": "A contact centre or business-process floor, worked in shifts: a dense production floor in bays with team leads among them, training rooms for each new batch, lockers and a check at the entrance, a large cafeteria, a sick room, a transport desk. In three parts: the Workplace: contact centre typology (on the Workplace one), an office fit-out on an RCC shell, and the BuilderPluss standards with the Indian codes.",
+  "typology": "workplace-contact-centre@1.0.0",
+  "construction": "fit-out-rcc-shell@1.0.0",
+  "standards": "builderpluss@1.1.0",
+  "rules": {
+    "faces": [
+      {
+        "kind": "room",
+        "objectRef": "room.vinyl-floor@1.0.0"
+      }
+    ]
+  }
+}

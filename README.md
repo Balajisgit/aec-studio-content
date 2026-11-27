@@ -28,6 +28,8 @@ library/typologies/<id>/<version>.json   what a building is for: spaces (uses, s
 library/constructions/<id>/<version>.json how it is built: presets, rules (faces, place: the placing rules), openings, levels,
                                   relationships, checks (R150; rcc-frame-brick: walls on room lines, beams, parapets, railings, lintels)
 library/standards/<id>/<version>.json    the firm's way: naming, module, sizes (named mm a construction reads as $name) (R150)
+                                  R153: a typology may extend another (Workplace: tech on Workplace); standards name the codes they work to
+library/codes/<id>/<version>.json        what a code asks, as checks (of a room, a floor, the building) and ratios: india-nbc-2016 (R153)
 library/tree.json                 the Library's browse tree (R114): categories by what a thing is for, each listing its products (a contract, or {name, line?, choices: [contracts]}); unlisted keeps the generic ones out; anything else unplaced shows under More
 library/origins/<contract>/<version>.json   where each Object came from (a project, a pipeline run, the starters); written by the Action with the Object
 library/materials/<id>.json       how a finish is shown in 3D (R92): its id a part's slot (wood, metal, glass) or a kind (wall, slab); {id, name, color, roughness?, metalness?, opacity?, about?}; a firm adds its own in its layer

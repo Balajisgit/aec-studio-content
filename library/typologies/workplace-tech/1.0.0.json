@@ -1,0 +1,84 @@
+{
+  "id": "workplace-tech@1.0.0",
+  "name": "Workplace: technology",
+  "about": "An office floor for a technology firm or a global capability centre: open team neighbourhoods, many small rooms for calls and focus, scrum and war rooms, a device lab, a town hall. The Workplace typology underneath it; only what this kind of office adds or sizes differently is said here.",
+  "extends": "workplace@1.0.0",
+  "spaces": {
+    "name": "Workplace: technology",
+    "uses": [
+      {
+        "id": "scrum-room",
+        "name": "Scrum room",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "A team's stand-up and planning room, its walls to write on.",
+        "unit": "meeting seat",
+        "units": 8,
+        "group": "together"
+      },
+      {
+        "id": "war-room",
+        "name": "War room",
+        "minArea": 20,
+        "minSide": 3600,
+        "about": "A project team's own room for weeks at a stretch.",
+        "unit": "seat",
+        "unitArea": 3,
+        "group": "together"
+      },
+      {
+        "id": "lab",
+        "name": "Lab",
+        "minArea": 15,
+        "minSide": 3000,
+        "about": "Devices, hardware, test benches.",
+        "group": "support"
+      },
+      {
+        "id": "town-hall",
+        "name": "Town hall",
+        "minArea": 60,
+        "minSide": 6000,
+        "about": "The whole floor in one place; often the cafeteria doubles as it.",
+        "unit": "assembly seat",
+        "unitArea": 0.8,
+        "group": "together"
+      },
+      {
+        "id": "recreation",
+        "name": "Recreation room",
+        "minArea": 20,
+        "minSide": 3600,
+        "about": "Games and time off.",
+        "group": "social"
+      }
+    ],
+    "ratios": [
+      {
+        "name": "Cafeteria seats",
+        "of": "dining seat",
+        "per": "person",
+        "min": 0.25
+      }
+    ],
+    "apart": [
+      [
+        "toilet",
+        "lab"
+      ],
+      [
+        "pantry",
+        "lab"
+      ]
+    ]
+  },
+  "measures": [
+    {
+      "id": "training-seats",
+      "name": "Training seats",
+      "of": "training_seat",
+      "digits": 0,
+      "better": "higher"
+    }
+  ]
+}

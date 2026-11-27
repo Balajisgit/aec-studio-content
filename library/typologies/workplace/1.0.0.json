@@ -1,0 +1,575 @@
+{
+  "id": "workplace@1.0.0",
+  "name": "Workplace",
+  "about": "An office floor: what it is for, the part every kind of office shares. Its uses in groups by what people do there (arrival, individual work, working together, social and care, support, technical, wet, core, site), each with the firm's smallest sizes and what it holds. Planned from people: desks are shared by 1.2 people (CBRE 2025: most organisations aim at 1.01 to 1.49) at about 10 m² a person (BCO 2023). Working together about 0.4 seats a desk (CBRE's average 0.39), focus 0.1. The codes the firm works to (toilets, crèche, accessibility) come with its standards, not here. A variant (Workplace: tech and the rest) extends it.",
+  "spaces": {
+    "name": "Workplace",
+    "headUnit": "seat",
+    "sharing": 1.2,
+    "uses": [
+      {
+        "id": "reception",
+        "name": "Reception",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "The front desk and where a visitor waits.",
+        "group": "arrival"
+      },
+      {
+        "id": "visitor-lounge",
+        "name": "Visitor lounge",
+        "minArea": 9,
+        "minSide": 2700,
+        "group": "arrival"
+      },
+      {
+        "id": "open-office",
+        "name": "Open office",
+        "minArea": 20,
+        "minSide": 3600,
+        "window": true,
+        "about": "Workstations in the open: about 6 m² a person with its share of aisles.",
+        "unit": "seat",
+        "unitArea": 6,
+        "group": "individual"
+      },
+      {
+        "id": "cabin",
+        "name": "Cabin",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "A private office for one.",
+        "unit": "seat",
+        "units": 1,
+        "group": "individual"
+      },
+      {
+        "id": "focus-room",
+        "name": "Focus room",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "A room for one or two to work without noise.",
+        "unit": "focus seat",
+        "units": 1,
+        "group": "individual"
+      },
+      {
+        "id": "phone-booth",
+        "name": "Phone booth",
+        "minArea": 1.2,
+        "minSide": 1000,
+        "about": "One person, a call.",
+        "unit": "focus seat",
+        "units": 1,
+        "group": "individual"
+      },
+      {
+        "id": "quiet-room",
+        "name": "Quiet room",
+        "minArea": 9,
+        "minSide": 2700,
+        "window": true,
+        "about": "A library-quiet room of desks for deep work: no calls.",
+        "unit": "focus seat",
+        "unitArea": 4,
+        "group": "individual"
+      },
+      {
+        "id": "huddle",
+        "name": "Huddle room",
+        "minArea": 5,
+        "minSide": 2000,
+        "about": "Two to four people for a short call or talk, no booking.",
+        "unit": "meeting seat",
+        "unitArea": 1.5,
+        "group": "together"
+      },
+      {
+        "id": "meeting-small",
+        "name": "Small meeting room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Up to 4 people.",
+        "unit": "meeting seat",
+        "units": 4,
+        "group": "together"
+      },
+      {
+        "id": "meeting-medium",
+        "name": "Medium meeting room",
+        "minArea": 16,
+        "minSide": 3300,
+        "about": "6 to 8 people.",
+        "unit": "meeting seat",
+        "units": 8,
+        "group": "together"
+      },
+      {
+        "id": "meeting-large",
+        "name": "Large meeting room",
+        "minArea": 28,
+        "minSide": 4200,
+        "about": "12 to 16 people.",
+        "unit": "meeting seat",
+        "units": 14,
+        "group": "together"
+      },
+      {
+        "id": "collaboration",
+        "name": "Collaboration area",
+        "minArea": 10,
+        "minSide": 2700,
+        "about": "An open or half-open place to work together: sofas, a whiteboard, high tables.",
+        "unit": "meeting seat",
+        "unitArea": 2.5,
+        "group": "together"
+      },
+      {
+        "id": "training-room",
+        "name": "Training room",
+        "minArea": 30,
+        "minSide": 4800,
+        "unit": "training seat",
+        "unitArea": 1.8,
+        "group": "together"
+      },
+      {
+        "id": "pantry",
+        "name": "Pantry",
+        "minArea": 8,
+        "minSide": 2400,
+        "wet": true,
+        "group": "social"
+      },
+      {
+        "id": "cafeteria",
+        "name": "Cafeteria",
+        "minArea": 30,
+        "minSide": 4500,
+        "window": true,
+        "wet": true,
+        "unit": "dining seat",
+        "unitArea": 1.4,
+        "group": "social"
+      },
+      {
+        "id": "breakout",
+        "name": "Breakout",
+        "minArea": 12,
+        "minSide": 3000,
+        "about": "A lounge to step away to.",
+        "group": "social"
+      },
+      {
+        "id": "wellness-room",
+        "name": "Wellness room",
+        "minArea": 6,
+        "minSide": 2100,
+        "about": "A quiet room: rest, prayer, a nursing mother.",
+        "group": "social"
+      },
+      {
+        "id": "mother-room",
+        "name": "Mother's room",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "Private, lockable, a chair, a sink near: for nursing mothers.",
+        "group": "social"
+      },
+      {
+        "id": "creche",
+        "name": "Crèche",
+        "minArea": 20,
+        "minSide": 3600,
+        "window": true,
+        "about": "Day care for employees' young children; may be within a short distance instead of in the office.",
+        "group": "social"
+      },
+      {
+        "id": "mail-room",
+        "name": "Mail room",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "Post and parcels in and out.",
+        "group": "arrival"
+      },
+      {
+        "id": "print-area",
+        "name": "Print and copy",
+        "minArea": 3,
+        "minSide": 1500,
+        "group": "support"
+      },
+      {
+        "id": "store",
+        "name": "Store",
+        "minArea": 3,
+        "minSide": 1500,
+        "group": "support"
+      },
+      {
+        "id": "locker-area",
+        "name": "Lockers",
+        "minArea": 4,
+        "minSide": 1500,
+        "group": "support"
+      },
+      {
+        "id": "it-desk",
+        "name": "IT desk",
+        "minArea": 6,
+        "minSide": 2000,
+        "about": "Where people bring a laptop to be fixed or a device to collect.",
+        "group": "support"
+      },
+      {
+        "id": "server-room",
+        "name": "Server room",
+        "minArea": 9,
+        "minSide": 2700,
+        "about": "Racks and their cooling: no water over or beside it.",
+        "group": "technical"
+      },
+      {
+        "id": "hub-room",
+        "name": "Hub room",
+        "minArea": 4,
+        "minSide": 1800,
+        "about": "A floor's network racks.",
+        "group": "technical"
+      },
+      {
+        "id": "ups-room",
+        "name": "UPS and electrical room",
+        "minArea": 6,
+        "minSide": 2100,
+        "group": "technical"
+      },
+      {
+        "id": "toilet",
+        "name": "Toilets",
+        "minArea": 6,
+        "minSide": 1800,
+        "wet": true,
+        "about": "A block of WCs and basins; about 3 m² a WC with its basin and share of the way in.",
+        "unit": "wc",
+        "unitArea": 3,
+        "group": "wet"
+      },
+      {
+        "id": "accessible-toilet",
+        "name": "Accessible toilet",
+        "minArea": 3.75,
+        "minSide": 1700,
+        "wet": true,
+        "about": "1.7 m by 2.2 m clear, for a wheelchair to turn.",
+        "group": "wet"
+      },
+      {
+        "id": "janitor",
+        "name": "Janitor's room",
+        "minArea": 1.5,
+        "minSide": 1000,
+        "wet": true,
+        "group": "wet"
+      },
+      {
+        "id": "shower",
+        "name": "Shower",
+        "minArea": 2.5,
+        "minSide": 1200,
+        "wet": true,
+        "about": "For people who cycle or run in.",
+        "group": "wet"
+      },
+      {
+        "id": "lift-lobby",
+        "name": "Lift lobby",
+        "minArea": 9,
+        "minSide": 2400,
+        "group": "core"
+      },
+      {
+        "id": "passage",
+        "name": "Corridor",
+        "minSide": 1500,
+        "about": "1.5 m clear: two people pass, a wheelchair turns.",
+        "group": "core"
+      },
+      {
+        "id": "stair",
+        "name": "Stair",
+        "minSide": 1200,
+        "about": "An escape stair's least clear width.",
+        "group": "core"
+      },
+      {
+        "id": "terrace",
+        "name": "Terrace",
+        "open": "open",
+        "group": "site"
+      },
+      {
+        "id": "plot",
+        "name": "Plot",
+        "room": false,
+        "about": "The site: its lines carry a boundary wall, a fence or nothing. Label its road edge front; put Plot setbacks (Library) on it for the buildable line, its distances from the brief or the local rules.",
+        "labels": [
+          "front",
+          "rear",
+          "side"
+        ],
+        "group": "site"
+      },
+      {
+        "id": "footprint",
+        "name": "Footprint",
+        "room": false,
+        "about": "Where the building goes on the plot: an outline over the rooms, nothing built yet.",
+        "group": "site"
+      },
+      {
+        "id": "void",
+        "name": "Void",
+        "room": false,
+        "about": "An opening in the floor: no slab goes there.",
+        "group": "site"
+      }
+    ],
+    "apart": [
+      [
+        "toilet",
+        "pantry"
+      ],
+      [
+        "toilet",
+        "cafeteria"
+      ],
+      [
+        "toilet",
+        "server-room"
+      ],
+      [
+        "toilet",
+        "hub-room"
+      ],
+      [
+        "accessible-toilet",
+        "pantry"
+      ],
+      [
+        "accessible-toilet",
+        "cafeteria"
+      ],
+      [
+        "accessible-toilet",
+        "server-room"
+      ],
+      [
+        "accessible-toilet",
+        "hub-room"
+      ],
+      [
+        "janitor",
+        "pantry"
+      ],
+      [
+        "janitor",
+        "cafeteria"
+      ],
+      [
+        "janitor",
+        "server-room"
+      ],
+      [
+        "janitor",
+        "hub-room"
+      ],
+      [
+        "pantry",
+        "server-room"
+      ],
+      [
+        "cafeteria",
+        "server-room"
+      ],
+      [
+        "shower",
+        "pantry"
+      ],
+      [
+        "shower",
+        "cafeteria"
+      ],
+      [
+        "shower",
+        "server-room"
+      ],
+      [
+        "creche",
+        "toilet"
+      ],
+      [
+        "creche",
+        "janitor"
+      ],
+      [
+        "creche",
+        "server-room"
+      ],
+      [
+        "creche",
+        "ups-room"
+      ],
+      [
+        "mother-room",
+        "toilet"
+      ]
+    ],
+    "provides": {
+      "furniture.workstation": {
+        "seat": 1
+      },
+      "furniture.bench-2": {
+        "seat": 2
+      },
+      "furniture.bench-4": {
+        "seat": 4
+      },
+      "furniture.bench-6": {
+        "seat": 6
+      },
+      "furniture.desk": {
+        "seat": 1
+      },
+      "furniture.meeting-table-4": {
+        "meeting seat": 4
+      },
+      "furniture.meeting-table-8": {
+        "meeting seat": 8
+      },
+      "furniture.meeting-table-12": {
+        "meeting seat": 12
+      },
+      "furniture.cafe-table-4": {
+        "dining seat": 4
+      },
+      "furniture.training-desk-2": {
+        "training seat": 2
+      },
+      "furniture.phone-booth-pod": {
+        "focus seat": 1
+      }
+    },
+    "ratios": [
+      {
+        "name": "Seats for working together",
+        "of": "meeting seat",
+        "per": "seat",
+        "min": 0.4
+      },
+      {
+        "name": "Focus seats",
+        "of": "focus seat",
+        "per": "seat",
+        "min": 0.1
+      },
+      {
+        "name": "Cafeteria seats",
+        "of": "dining seat",
+        "per": "person",
+        "min": 0.25
+      }
+    ]
+  },
+  "measures": [
+    {
+      "id": "people",
+      "name": "People",
+      "of": "person",
+      "digits": 0,
+      "better": "higher",
+      "about": "The desks times how many share each (1.2)."
+    },
+    {
+      "id": "seats",
+      "name": "Desks",
+      "of": "seat",
+      "digits": 0,
+      "better": "higher",
+      "about": "Desks and every other place a person works from."
+    },
+    {
+      "id": "people-per-desk",
+      "name": "People per desk",
+      "of": "person / seat",
+      "digits": 2,
+      "about": "Above 1: desks are shared (hybrid)."
+    },
+    {
+      "id": "m2-per-person",
+      "name": "m² per person",
+      "of": "net / person",
+      "unit": "m²",
+      "digits": 1,
+      "better": "lower",
+      "about": "Net area inside the walls for each person; about 10 is the BCO's design figure (2023)."
+    },
+    {
+      "id": "m2-per-seat",
+      "name": "m² per desk",
+      "of": "built / seat",
+      "unit": "m²",
+      "digits": 1,
+      "better": "lower"
+    },
+    {
+      "id": "together-per-desk",
+      "name": "Seats for working together per desk",
+      "of": "meeting_seat / seat",
+      "digits": 2,
+      "better": "higher",
+      "about": "Meeting rooms, huddles and open collaboration; about 0.4 is the market's average."
+    },
+    {
+      "id": "focus-per-10",
+      "name": "Focus seats per 10 desks",
+      "of": "focus_seat / seat * 10",
+      "digits": 1,
+      "better": "higher",
+      "about": "Focus rooms, quiet rooms and phone booths."
+    },
+    {
+      "id": "individual-share",
+      "name": "Individual work",
+      "of": "group_individual / net * 100",
+      "unit": "%",
+      "digits": 0,
+      "about": "Of the net area."
+    },
+    {
+      "id": "together-share",
+      "name": "Working together",
+      "of": "group_together / net * 100",
+      "unit": "%",
+      "digits": 0,
+      "about": "Of the net area."
+    },
+    {
+      "id": "social-share",
+      "name": "Social and care",
+      "of": "group_social / net * 100",
+      "unit": "%",
+      "digits": 0,
+      "about": "Of the net area."
+    },
+    {
+      "id": "wcs",
+      "name": "WCs",
+      "of": "wc",
+      "digits": 0,
+      "better": "higher",
+      "about": "Worked out from the toilets' area (about 3 m² each), until fittings are placed."
+    }
+  ]
+}
