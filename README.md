@@ -23,6 +23,11 @@ library/templates/<id>/<version>.json      model defaults (R68; in the Library s
                                   rules (outer and inner walls, every room a floor finish, every floor plate a slab), the usual openings and floor height;
                                   library/templates/default.json names the one new projects follow; library/templates/proposals/: new templates, new versions
                                   and a new default proposed from the app (R77), which the template-proposals Action turns into pull requests the owner merges
+                                  R150: a template may instead name three parts (typology, construction, standards) and keep only its own on top:
+library/typologies/<id>/<version>.json   what a building is for: spaces (uses, sizes, apart, ratios), measures, checks (R150)
+library/constructions/<id>/<version>.json how it is built: presets, rules (faces, place: the placing rules), openings, levels,
+                                  relationships, checks (R150; rcc-frame-brick: walls on room lines, beams, parapets, railings, lintels)
+library/standards/<id>/<version>.json    the firm's way: naming, module, sizes (named mm a construction reads as $name) (R150)
 library/tree.json                 the Library's browse tree (R114): categories by what a thing is for, each listing its products (a contract, or {name, line?, choices: [contracts]}); unlisted keeps the generic ones out; anything else unplaced shows under More
 library/origins/<contract>/<version>.json   where each Object came from (a project, a pipeline run, the starters); written by the Action with the Object
 library/materials/<id>.json       how a finish is shown in 3D (R92): its id a part's slot (wood, metal, glass) or a kind (wall, slab); {id, name, color, roughness?, metalness?, opacity?, about?}; a firm adds its own in its layer

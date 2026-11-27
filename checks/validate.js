@@ -64,6 +64,27 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
       if (!(Number.isInteger(l.min) && Number.isInteger(l.max) && Number.isInteger(l.default) && 0 < l.min && l.min <= l.default && l.default <= l.max)) problems.push(`${rel}: an Object on a segment needs length {default, min, max} in whole mm`); }
   } } } catch (e) { if (e.code !== "ENOENT") problems.push(`library/objects: ${e.message}`); }
 // library/templates/<id>/<version>.json (R68; in the Library since R114): house defaults; every Object they name is in the Library, every preset says its kind.
+// R150: a template may be made of three parts, each in the Library with versions of its own: library/typologies (what it is
+// for: spaces, measures, checks), library/constructions (how it is built: presets, rules, openings, levels, relationships,
+// checks) and library/standards (naming, module, sizes). A part's "$name" is a standards size. Each part file is checked
+// here; a template that names parts is put together and checked like any other.
+const PARTS = { typology: ["typologies", ["spaces", "measures", "checks", "module"]], construction: ["constructions", ["presets", "rules", "openings", "levels", "relationships", "checks"]], standards: ["standards", ["naming", "module", "sizes"]] };
+const partOf = (kind, ref) => { const [i, v] = String(ref || "").split("@"); try { return JSON.parse(readFileSync(join(root, "library", PARTS[kind][0], i, `${v}.json`), "utf8")); } catch { return null; } };
+for (const [kind, [folder, keys]] of Object.entries(PARTS)) { const pd = join(root, "library", folder); if (!existsSync(pd)) continue;
+  for (const id of readdirSync(pd)) { const dir = join(pd, id); if (!statSync(dir).isDirectory()) { problems.push(`library/${folder}/${id}: a ${kind} lives in a folder per id`); continue; }
+    for (const v of readdirSync(dir)) { const rel = `library/${folder}/${id}/${v}`; let d; try { d = JSON.parse(readFileSync(join(dir, v), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
+      if (d.id !== `${id}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${id}@${v.slice(0, -5)}`); if (!String(d.name || "").trim()) problems.push(`${rel}: it needs a name`);
+      for (const k of Object.keys(d)) if (!["id", "name", "about", ...keys].includes(k)) problems.push(`${rel}: a ${kind} holds ${keys.join(", ")} (not ${k})`);
+      if (kind === "standards" && d.sizes != null) for (const [k, n] of Object.entries(d.sizes)) if (!/^[a-z][a-z0-9_]*$/.test(k) || typeof n !== "number") problems.push(`${rel}: sizes are {name: mm} (${k})`); } } }
+/** A template with its parts put together (the app's composeTemplate does the same). @param {any} t @param {string} rel */
+function composed(t, rel) {
+  if (!t || !(t.typology || t.construction || t.standards)) return t;
+  const got = {}; for (const k of Object.keys(PARTS)) if (t[k]) { got[k] = partOf(k, t[k]); if (!got[k]) problems.push(`${rel}: its ${k} ${t[k]} is not in the Library`); }
+  const ty = got.typology || {}, co = got.construction || {}, st = got.standards || {}, sizes = { ...(st.sizes || {}), ...(t.sizes || {}) };
+  const out = { ...ty, ...co, ...st, ...t, checks: [...(ty.checks || []), ...(co.checks || []), ...(t.checks || [])] };
+  const sized = (x) => (typeof x === "string" && /^\$[a-z][a-z0-9_]*$/.test(x) ? (x.slice(1) in sizes ? sizes[x.slice(1)] : (problems.push(`${rel}: ${x}: its standards have no size of that name`), x)) : Array.isArray(x) ? x.map(sized) : x && typeof x === "object" ? Object.fromEntries(Object.entries(x).map(([k, v]) => [k, sized(v)])) : x);
+  return sized(out);
+}
 try { const td = join(root, "library", "templates");
   for (const id of readdirSync(td)) { const dir = join(td, id);
     if (id === "proposals") { // records the app commits (R77); the template-proposals Action turns each into a pull request
@@ -81,7 +102,9 @@ try { const td = join(root, "library", "templates");
     if (!statSync(dir).isDirectory()) { problems.push(`library/templates/${id}: a template lives in a folder per id`); continue; }
     for (const v of readdirSync(dir)) { const rel = `library/templates/${id}/${v}`; let t; try { t = JSON.parse(readFileSync(join(dir, v), "utf8")); } catch (e) { problems.push(`${rel}: ${e.message}`); continue; }
       if (t.id !== `${id}@${v.slice(0, -5)}`) problems.push(`${rel}: id must be ${id}@${v.slice(0, -5)}`);
-      const refs = [...(t.presets || []), ...((t.rules && t.rules.faces) || [])].map((p) => p.objectRef).concat(Object.values(t.openings || {})).filter(Boolean);
+      t = composed(t, rel); // a template of three parts (R150): checked whole
+      const picks = ((t.rules && t.rules.place) || []).flatMap((r) => (Array.isArray(r.place) ? r.place : r.place ? [r.place] : []));
+      const refs = [...(t.presets || []), ...((t.rules && t.rules.faces) || []), ...picks].map((p) => p.objectRef).concat(Object.values(t.openings || {})).filter(Boolean);
       for (const r of refs) { const [c, ver] = String(r).split("@"); if (!existsSync(join(root, "library", "objects", c, `${ver}.json`))) problems.push(`${rel}: there is no Library Object ${r}`); }
       for (const p of [...(t.presets || []), ...((t.rules && t.rules.faces) || [])]) if (!WORD.test(String(p.kind || p.role || ""))) problems.push(`${rel}: a preset says its kind (its Object's word)`);
       // R129: what the typology is measured on: {id, name, of (a formula), unit?, digits?, better?}
@@ -143,7 +166,8 @@ for (const c of layouts) { if (!/^layout\.[a-z0-9-]+$/.test(c)) problems.push(`l
       if (!it.at || !Number.isInteger(it.at.x) || !Number.isInteger(it.at.y)) problems.push(`${rel}: item ${k + 1}: at is {x, y} in whole mm`);
       try { const o = JSON.parse(readFileSync(f, "utf8")); if ((o.on || "node") !== "node" || (o.behaves || []).includes("opening")) problems.push(`${rel}: item ${k + 1}: ${o.name} does not stand at a point; a Layout is Objects at points only`); } catch {} }); } }
 const cardOf = (c) => (c.startsWith("layout.") ? `library/layouts/${c}/catalogue.json` : `library/objects/${c}/catalogue.json`);
-const useIds = new Set(); try { for (const t of readdirSync(join(root, "library", "templates"))) { const td = join(root, "library", "templates", t); if (!statSync(td).isDirectory() || t === "proposals") continue;
+const useIds = new Set(); try { for (const t of readdirSync(join(root, "library", "typologies"))) for (const v of readdirSync(join(root, "library", "typologies", t))) { try { for (const u of (JSON.parse(readFileSync(join(root, "library", "typologies", t, v), "utf8")).spaces || {}).uses || []) useIds.add(u.id); } catch {} } } catch {}
+try { for (const t of readdirSync(join(root, "library", "templates"))) { const td = join(root, "library", "templates", t); if (!statSync(td).isDirectory() || t === "proposals") continue;
   for (const v of readdirSync(td)) { try { for (const u of (JSON.parse(readFileSync(join(td, v), "utf8")).spaces || {}).uses || []) useIds.add(u.id); } catch {} } } } catch {}
 for (const c of [...contracts, ...layouts]) { const rel = cardOf(c); if (!existsSync(join(root, rel))) continue;
   let d; try { d = JSON.parse(readFileSync(join(root, rel), "utf8")); } catch (e) { problems.push(`${rel}: not valid JSON (${e.message})`); continue; }

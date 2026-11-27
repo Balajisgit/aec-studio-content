@@ -1,0 +1,246 @@
+{
+  "id": "villa@1.0.0",
+  "name": "Villa",
+  "about": "A house on its own plot: what it is for. Its rooms' uses (living, dining, kitchen, bedrooms, bathrooms and the rest) with the firm's smallest sizes, which need a window and which are wet, the rooms kept apart, and what a design is measured on.",
+  "spaces": {
+    "uses": [
+      {
+        "id": "living",
+        "name": "Living room",
+        "minArea": 12,
+        "minSide": 3000,
+        "window": true
+      },
+      {
+        "id": "dining",
+        "name": "Dining",
+        "minArea": 7.5,
+        "minSide": 2400
+      },
+      {
+        "id": "family-lounge",
+        "name": "Family lounge",
+        "minArea": 9,
+        "minSide": 2700,
+        "window": true
+      },
+      {
+        "id": "kitchen",
+        "name": "Kitchen",
+        "minArea": 5.5,
+        "minSide": 1800,
+        "window": true,
+        "wet": true
+      },
+      {
+        "id": "master-bedroom",
+        "name": "Master bedroom",
+        "minArea": 12,
+        "minSide": 3000,
+        "window": true
+      },
+      {
+        "id": "bedroom",
+        "name": "Bedroom",
+        "minArea": 9.5,
+        "minSide": 2700,
+        "window": true
+      },
+      {
+        "id": "study",
+        "name": "Study",
+        "minArea": 6,
+        "minSide": 2100,
+        "window": true
+      },
+      {
+        "id": "staff-room",
+        "name": "Staff room",
+        "minArea": 7.5,
+        "minSide": 2100,
+        "window": true
+      },
+      {
+        "id": "bathroom",
+        "name": "Bathroom",
+        "minArea": 2.8,
+        "minSide": 1200,
+        "wet": true,
+        "about": "With a WC: attached to a bedroom or common."
+      },
+      {
+        "id": "powder-room",
+        "name": "Powder room",
+        "minArea": 1.2,
+        "minSide": 900,
+        "wet": true,
+        "about": "A WC and a basin for guests."
+      },
+      {
+        "id": "dressing",
+        "name": "Dressing",
+        "minArea": 2.5,
+        "minSide": 1200
+      },
+      {
+        "id": "pooja",
+        "name": "Pooja",
+        "minArea": 1.5,
+        "minSide": 1000
+      },
+      {
+        "id": "utility",
+        "name": "Utility",
+        "minArea": 2.5,
+        "minSide": 1200,
+        "wet": true
+      },
+      {
+        "id": "store",
+        "name": "Store",
+        "minArea": 2,
+        "minSide": 1000
+      },
+      {
+        "id": "passage",
+        "name": "Passage",
+        "minSide": 1000,
+        "about": "A lobby, a corridor, a foyer."
+      },
+      {
+        "id": "stair",
+        "name": "Stair",
+        "minSide": 900,
+        "about": "The stair's own space; 900 mm is its least clear width."
+      },
+      {
+        "id": "sit-out",
+        "name": "Sit-out",
+        "minArea": 3,
+        "minSide": 1200,
+        "open": "semi",
+        "about": "A verandah or porch at the entrance."
+      },
+      {
+        "id": "balcony",
+        "name": "Balcony",
+        "minArea": 1.5,
+        "minSide": 900,
+        "open": "semi"
+      },
+      {
+        "id": "car-porch",
+        "name": "Car porch",
+        "minArea": 12.5,
+        "minSide": 2500,
+        "open": "semi",
+        "about": "One car: 2.5 m by 5 m."
+      },
+      {
+        "id": "terrace",
+        "name": "Terrace",
+        "open": "open"
+      },
+      {
+        "id": "courtyard",
+        "name": "Courtyard",
+        "minSide": 1500,
+        "open": "open"
+      },
+      {
+        "id": "plot",
+        "name": "Plot",
+        "room": false,
+        "about": "The site: its lines carry a boundary wall, a fence or nothing. Label its road edge front; put Plot setbacks (Library) on it for the buildable line, its distances from the brief or the local rules.",
+        "labels": [
+          "front",
+          "rear",
+          "side"
+        ]
+      },
+      {
+        "id": "footprint",
+        "name": "Footprint",
+        "room": false,
+        "about": "Where the building goes on the plot: an outline over the rooms, nothing built yet."
+      },
+      {
+        "id": "void",
+        "name": "Void",
+        "room": false,
+        "about": "An opening in the floor: no slab goes there."
+      }
+    ],
+    "apart": [
+      [
+        "bathroom",
+        "kitchen"
+      ],
+      [
+        "bathroom",
+        "dining"
+      ],
+      [
+        "bathroom",
+        "pooja"
+      ],
+      [
+        "powder-room",
+        "kitchen"
+      ],
+      [
+        "powder-room",
+        "dining"
+      ],
+      [
+        "powder-room",
+        "pooja"
+      ]
+    ]
+  },
+  "measures": [
+    {
+      "id": "bedrooms",
+      "name": "Bedrooms",
+      "of": "count_bedroom + count_master_bedroom",
+      "digits": 0
+    },
+    {
+      "id": "bathrooms",
+      "name": "Bathrooms",
+      "of": "count_bathroom",
+      "digits": 0
+    },
+    {
+      "id": "carpet-area",
+      "name": "Carpet area",
+      "of": "net",
+      "unit": "m\u00b2",
+      "digits": 0,
+      "better": "higher",
+      "about": "Every room inside its walls (a city's own rule may differ: change it for the project)."
+    },
+    {
+      "id": "built-up-area",
+      "name": "Built-up area",
+      "of": "built",
+      "unit": "m\u00b2",
+      "digits": 0
+    },
+    {
+      "id": "far",
+      "name": "FAR",
+      "of": "built / area_plot",
+      "digits": 2,
+      "about": "Built area over the plot's; once the plot is drawn."
+    },
+    {
+      "id": "ground-coverage",
+      "name": "Ground coverage",
+      "of": "built_0 / area_plot * 100",
+      "unit": "%",
+      "digits": 0,
+      "about": "The ground floor's built area over the plot's; once the plot is drawn."
+    }
+  ]
+}
