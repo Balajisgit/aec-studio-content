@@ -61,6 +61,7 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
 - R151 · Every project has a programme, saying where it came from: a brief, a prompt, or drawn (following the drawing quietly until the owner confirms it)
+- R152 · A new level starts from the floor below: its outer lines and column points copied, the stair opening cut; start empty is the other choice
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
