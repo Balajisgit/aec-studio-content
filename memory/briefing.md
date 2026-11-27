@@ -60,7 +60,6 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
-- R151 · Every project has a programme, saying where it came from: a brief, a prompt, or drawn (following the drawing quietly until the owner confirms it) (in aec-studio#166)
 - R152 · A new level starts from the floor below: its outer lines and column points copied, the stair opening cut; start empty is the other choice (in aec-studio#166)
 
 **A pipeline**
