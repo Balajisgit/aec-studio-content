@@ -64,7 +64,7 @@ _The open requests (requests/ in the content repository)._
 - R80 · Blender jobs anywhere: on the owner's PC (Helper), in a Claude chat (through the Studio connector), or on the Studio's server when no PC is connected
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
-- R154 · Three chat homes: project chats belong to their project (and design option), Library chats, App chats; lessons go where their subject lives
+- R154 · Three chat homes: project chats belong to their project (and design option), Library chats, App chats; lessons go where their subject lives (in aec-studio#168)
 - R155 · The Library as the firm's knowledge: plain names, start from what we design, a sample building, Why is this here?, change it where you see it
 
 **A pipeline**
