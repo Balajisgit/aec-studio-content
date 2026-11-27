@@ -1,0 +1,23 @@
+{
+  "id": "doors-and-windows",
+  "name": "Doors and windows",
+  "about": "Doors and windows for a plan whose rooms are drawn and named, as two layouts to pick from. Doors: a way into every room, from the entrance (into the living room, or the sit-out's) on the ground floor and from the stair above, through the passages and living rooms first, never straight between rooms the typology keeps apart (a bathroom and a kitchen); one layout opens the bathrooms off the bedrooms next to them, the other off the passages and common rooms. Windows: on the longest outside wall of every room whose use wants daylight, about a tenth of its floor area in glass, a second one in a large room with two outside walls; a small high window in a wet room with an outside wall. A room that already has a door or a window keeps it. The doors and windows are the project's own (its template's), set by hand once picked.",
+  "useWhen": "The rooms of a floor plan are drawn and named and their walls are up, and the owner wants a first set of doors and windows to react to.",
+  "gives": "candidates",
+  "scopes": [
+    "project"
+  ],
+  "reads": [
+    "project"
+  ],
+  "settings": {
+    "glass": {
+      "name": "Glass as a share of the floor area",
+      "kind": "number",
+      "default": 0.1,
+      "min": 0.05,
+      "max": 0.3
+    }
+  },
+  "timeoutSeconds": 20
+}
