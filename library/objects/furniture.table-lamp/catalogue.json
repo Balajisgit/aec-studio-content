@@ -1,0 +1,19 @@
+{
+ "catalogue": 1,
+ "line": "Lamp that stands on a desk or a table",
+ "uses": [
+  "living",
+  "cabin",
+  "visitor-lounge"
+ ],
+ "typology": [
+  "villa",
+  "workplace"
+ ],
+ "ifc": "IfcFurniture",
+ "keywords": [
+  "table lamp",
+  "desk lamp",
+  "lamp"
+ ]
+}
