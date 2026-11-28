@@ -1,0 +1,5 @@
+{
+  "id": "parapet.brick-115@1.1.0",
+  "via": "starter",
+  "note": "R156: justify (centre, left, right), corner (mitre, butt) and priority, as its own parameters"
+}

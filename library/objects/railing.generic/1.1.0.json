@@ -1,0 +1,77 @@
+{
+  "id": "railing.generic@1.1.0",
+  "name": "Railing",
+  "contract": "railing.generic",
+  "kind": "railing",
+  "behaves": [
+    "band"
+  ],
+  "on": "segment",
+  "about": "A railing whose make is not chosen yet: 50 mm, 1 m high. justify says where it sits on its line as drawn: centre, or wholly to its left or its right (the line is then one of its faces). corner (mitre or butt) and priority (the higher carries on) say how it meets others of its kind (R156).",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 50,
+    "height": 1000,
+    "justify": "centre",
+    "corner": "mitre",
+    "priority": 0
+  },
+  "limits": {
+    "thickness": {
+      "min": 20,
+      "max": 300,
+      "step": 5
+    },
+    "height": {
+      "min": 600,
+      "max": 2000,
+      "step": 50
+    },
+    "justify": {
+      "options": [
+        "centre",
+        "left",
+        "right"
+      ]
+    },
+    "corner": {
+      "options": [
+        "mitre",
+        "butt"
+      ]
+    },
+    "priority": {
+      "min": 0,
+      "max": 9,
+      "step": 1
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "railing",
+      "shape": "band",
+      "style": "hidden",
+      "across": [
+        "justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2",
+        "justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "railing",
+      "shape": "band",
+      "slot": "railing",
+      "across": [
+        "justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2",
+        "justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2"
+      ],
+      "z": "0",
+      "height": "height"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "wall.glazed-partition-50@1.2.0",
+  "name": "Glazed partition 50",
+  "contract": "wall.glazed-partition-50",
+  "kind": "wall",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
+  "on": "segment",
+  "about": "A glass partition in a slim frame, 50 thick, from the floor up to the slab above (or the height you give it): for meeting rooms and cabins that should stay in view. Where it meets other walls the Studio joins them. Since R144 its height is set by the project's relationships (the storey less the slab and beams above it); with none set, it reaches its full rise. justify says where it sits on its line as drawn: centre, or wholly to its left or its right (the line is then one of its faces). corner (mitre or butt) and priority (the higher carries on) say how it meets others of its kind (R156).",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "thickness": 50,
+    "height": 0,
+    "justify": "centre",
+    "corner": "mitre",
+    "priority": 0
+  },
+  "limits": {
+    "thickness": {
+      "min": 30,
+      "max": 120,
+      "step": 5
+    },
+    "height": {
+      "min": 0,
+      "max": 30000,
+      "step": 50
+    },
+    "justify": {
+      "options": [
+        "centre",
+        "left",
+        "right"
+      ]
+    },
+    "corner": {
+      "options": [
+        "mitre",
+        "butt"
+      ]
+    },
+    "priority": {
+      "min": 0,
+      "max": 9,
+      "step": 1
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "style": "fill",
+      "across": [
+        "justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2",
+        "justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "wall",
+      "shape": "band",
+      "across": [
+        "justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2",
+        "justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2"
+      ],
+      "z": "0",
+      "height": "height > 0 ? height : rise",
+      "slot": "glass"
+    }
+  ]
+}
