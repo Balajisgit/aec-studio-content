@@ -36,7 +36,7 @@
       "id": "S3",
       "code": "S3",
       "of": "thing",
-      "when": "!may_stand_in_walls && wall_depth > inWall",
+      "when": "!may_stand_in_walls && thing_kind != 'stair' && wall_depth > inWall",
       "say": "{thing} stands in the wall {wall}: {wall_depth} mm into it."
     },
     {
@@ -44,7 +44,7 @@
       "code": "S2",
       "of": "blocking",
       "zone": "through ? doorWall + min(doorClear, width) : 0",
-      "when": "through && !may_stand_in_walls && overlap > inWall",
+      "when": "through && !may_stand_in_walls && thing_kind != 'stair' && overlap > inWall",
       "say": "{thing} stands in the way of the {is} {opening}."
     },
     {
@@ -52,7 +52,7 @@
       "code": "S2",
       "of": "blocking",
       "zone": "through ? 0 : windowWall + windowNear",
-      "when": "!through && !may_stand_in_walls && top > sill && overlap > inWall",
+      "when": "!through && !may_stand_in_walls && thing_kind != 'stair' && top > sill && overlap > inWall",
       "say": "{thing} stands in front of the window {opening} and is taller than its sill."
     },
     {

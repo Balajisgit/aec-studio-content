@@ -13,7 +13,7 @@ const run = (cmd, ...a) => execFileSync(cmd, a, { encoding: "utf8", stdio: ["ign
 const git = (...a) => run("git", ...a), tryGit = (...a) => { try { return git(...a); } catch { return null; } };
 const gh = (...a) => run(process.env.GH_BIN || "gh", ...a);
 const DIR = "library/proposals", NAME = /^([a-z]+(?:\.[a-z0-9-]+)+)@(\d+\.\d+\.\d+)\.json$/;
-const BEHAVIOURS = ["band", "holds-openings", "opening", "way-through", "stops-bands", "cuts-floor-above"];
+const BEHAVIOURS = ["band", "holds-openings", "opening", "way-through", "stops-bands", "spans-host", "lets-light", "stands-on", "cuts-floor-above"];
 git("config", "user.name", "github-actions[bot]"); git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com");
 
 /** What is wrong with a record, if anything. */
