@@ -66,7 +66,7 @@ _The open requests (requests/ in the content repository)._
 - R132 · chat
 - R155 · The Library as the firm's knowledge: plain names, start from what we design, a sample building, Why is this here?, change it where you see it
 - R158 · Kernel: curved lines held to the no-crossing rule, design numbers out of the kernel, one code to a rule, R144's leftovers gone (in aec-studio#171)
-- R159 · Units, scale and traced plans, the rest: a traced plan as a layer and turned, a PDF traced directly, an Object's own sizes in the project's units, the scale in an agent's plan pictures
+- R159 · Units, scale and traced plans, the rest: a traced plan as a layer and turned, a PDF traced directly, an Object's own sizes in the project's units, the scale in an agent's plan pictures (in aec-studio#172)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
