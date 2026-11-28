@@ -1,5 +1,5 @@
 {
-  "about": "How Objects stand on one another (R144): the kernel works each Object out from its own parameters; what follows from another Object is said here and the Studio writes it, after every step, in the same step. A template's relationships replace one by id, add new ones, or take one out with off: true; a project's overrides.relationships the same; a firm's own copy of this file wins in its work. A rule: for (a kind, or a behaviour its Object has), only (auto: what the model defaults own, the default; all: every one), when (a formula), set (parameters by formulas of storey, rise, slab_above, beam_on and the Object's own parameters), or opens: above (its plan outline drawn as an opening in the slab on the level above, once).",
+  "about": "How Objects stand on one another (R144): the kernel works each Object out from its own parameters; what follows from another Object is said here and the Studio writes it, after every step, in the same step. A template's relationships replace one by id, add new ones, or take one out with off: true; a project's overrides.relationships the same; a firm's own copy of this file wins in its work. A rule: for (a kind, or a behaviour its Object has), only (auto: what the model defaults own, the default; all: every one), when (a formula), set (parameters by formulas of storey, rise, slab_above, beam_on, below (1 with a wall under it on the floor below), below_lo, below_hi, below_thickness (R156) and the Object's own parameters), or opens: above (its plan outline drawn as an opening in the slab on the level above, once).",
   "values": {},
   "rules": [
     {
@@ -40,6 +40,17 @@
       },
       "only": "all",
       "opens": "above"
+    },
+    {
+      "id": "over-the-wall-below",
+      "for": {
+        "behaves": "band"
+      },
+      "only": "all",
+      "when": "below == 1",
+      "set": {
+        "offset": "align == 'left' ? below_hi - (justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2) : align == 'right' ? below_lo + (justify == 'left' ? 0 : justify == 'right' ? thickness : thickness / 2) : align == 'centre' ? (below_lo + below_hi) / 2 - (justify == 'left' ? thickness / 2 : justify == 'right' ? -thickness / 2 : 0) : 0"
+      }
     }
   ]
 }

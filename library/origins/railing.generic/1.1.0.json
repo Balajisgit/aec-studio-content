@@ -1,0 +1,5 @@
+{
+  "id": "railing.generic@1.1.0",
+  "via": "starter",
+  "note": "R156: justify (centre, left, right), corner (mitre, butt) and priority; align and offset over a wall below; as its own parameters"
+}

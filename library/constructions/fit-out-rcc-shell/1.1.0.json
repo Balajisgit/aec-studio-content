@@ -1,0 +1,81 @@
+{
+  "id": "fit-out-rcc-shell@1.1.0",
+  "name": "Office fit-out on an RCC shell",
+  "about": "How an office floor is built: an RCC frame and slab with a glazed facade outside (its lines bounding one roofed room), partitions between rooms (drywall by default; a template picks glazed), a floor finish in every room (carpet tiles by default), one RCC slab per floor (the shell's beams and columns are its own: Structure it), a railing round a floor opening, single-leaf doors and casement windows (no lintels: partitions and the facade carry none), 4.2 m floor to floor. A line labelled open is left bare (an open side between two areas). Core walls (brick 230) are drawn as the Core wall preset. Columns come from Structure it. 1.1.0: its walls, fences, railings, parapets, beams, doors and windows in the versions that say how they sit and meet (R156: justify, corner, priority, align), all as before until one is set.",
+  "presets": [
+    {
+      "id": "facade",
+      "name": "Glazed facade",
+      "kind": "wall",
+      "objectRef": "wall.glazed-facade-150@1.2.0"
+    },
+    {
+      "id": "partition",
+      "name": "Partition",
+      "kind": "wall",
+      "objectRef": "wall.drywall-100@1.2.0"
+    },
+    {
+      "id": "drywall",
+      "name": "Drywall partition",
+      "kind": "wall",
+      "objectRef": "wall.drywall-100@1.2.0"
+    },
+    {
+      "id": "glazed",
+      "name": "Glazed partition",
+      "kind": "wall",
+      "objectRef": "wall.glazed-partition-50@1.2.0"
+    },
+    {
+      "id": "core",
+      "name": "Core wall (brick 230)",
+      "kind": "wall",
+      "objectRef": "wall.brick-230@1.4.0"
+    }
+  ],
+  "rules": {
+    "faces": [
+      {
+        "kind": "room",
+        "objectRef": "room.carpet-tile@1.0.0"
+      },
+      {
+        "kind": "slab",
+        "objectRef": "slab.rcc-150@1.1.0"
+      }
+    ],
+    "place": [
+      {
+        "id": "railing",
+        "on": "edge",
+        "when": "(hole == 1 || use == 'void') && label != 'open'",
+        "place": {
+          "objectRef": "railing.generic@1.1.0"
+        }
+      },
+      {
+        "id": "walls",
+        "on": "line",
+        "when": "divides == 'room' && closed >= 1 && label != 'open'",
+        "place": [
+          {
+            "when": "closed >= 2",
+            "preset": "partition"
+          },
+          {
+            "preset": "facade"
+          }
+        ]
+      }
+    ]
+  },
+  "openings": {
+    "door": "door.single-leaf@1.2.0",
+    "window": "window.casement@1.2.0",
+    "gate": "gate.swing@1.0.0"
+  },
+  "levels": {
+    "height": 4200
+  }
+}

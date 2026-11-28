@@ -1,0 +1,78 @@
+{
+  "id": "fence.mesh@1.2.0",
+  "name": "Mesh fence",
+  "contract": "fence.mesh",
+  "kind": "fence",
+  "behaves": [
+    "band",
+    "holds-openings"
+  ],
+  "on": "segment",
+  "about": "A mesh fence along its line, one thickness from the ground to its height. Where it meets other fences the Studio joins them. justify says where it sits on its line as drawn: centre, or wholly to its left or its right (the line is then one of its faces). corner (mitre or butt) and priority (the higher carries on) say how it meets others of its kind (R156).",
+  "length": {
+    "default": 3000,
+    "min": 100,
+    "max": 100000
+  },
+  "params": {
+    "height": 1500,
+    "thickness": 50,
+    "justify": "centre",
+    "corner": "mitre",
+    "priority": 0
+  },
+  "limits": {
+    "height": {
+      "min": 300,
+      "max": 4000,
+      "step": 50
+    },
+    "thickness": {
+      "min": 10,
+      "max": 300,
+      "step": 5
+    },
+    "justify": {
+      "options": [
+        "centre",
+        "left",
+        "right"
+      ]
+    },
+    "corner": {
+      "options": [
+        "mitre",
+        "butt"
+      ]
+    },
+    "priority": {
+      "min": 0,
+      "max": 9,
+      "step": 1
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "fence",
+      "shape": "band",
+      "style": "hidden",
+      "across": [
+        "justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2",
+        "justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "fence",
+      "shape": "band",
+      "across": [
+        "justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2",
+        "justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2"
+      ],
+      "z": "0",
+      "height": "height",
+      "slot": "metal"
+    }
+  ]
+}

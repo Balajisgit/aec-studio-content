@@ -1,0 +1,108 @@
+{
+  "id": "door.glass-single@1.1.0",
+  "name": "Glass door, single leaf",
+  "contract": "door.glass-single",
+  "kind": "door",
+  "behaves": [
+    "opening",
+    "way-through"
+  ],
+  "on": "segment",
+  "about": "A hinged glass door filling its line: the leaf, its swing in plan, and the wall it stands in carried on above it. For glazed partitions and office fronts. align says where its leaf sits in the wall's depth: in the middle, or at the wall's left or right face (R156).",
+  "length": {
+    "default": 900,
+    "min": 600,
+    "max": 1500
+  },
+  "params": {
+    "height": 2100,
+    "hinge": "start",
+    "swing": "left",
+    "align": "centre"
+  },
+  "limits": {
+    "height": {
+      "min": 1800,
+      "max": 3000,
+      "step": 50
+    },
+    "hinge": {
+      "options": [
+        "start",
+        "end"
+      ]
+    },
+    "swing": {
+      "options": [
+        "left",
+        "right"
+      ]
+    },
+    "align": {
+      "options": [
+        "centre",
+        "left",
+        "right"
+      ]
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "leaf",
+      "shape": "line",
+      "from": [
+        "hinge == 'start' ? -length / 2 : length / 2",
+        "align == 'left' ? max(0, (host_thickness - 12) / 2) : align == 'right' ? -max(0, (host_thickness - 12) / 2) : 0"
+      ],
+      "to": [
+        "hinge == 'start' ? -length / 2 : length / 2",
+        "(align == 'left' ? max(0, (host_thickness - 12) / 2) : align == 'right' ? -max(0, (host_thickness - 12) / 2) : 0) + (swing == 'left' ? length : -length)"
+      ]
+    },
+    {
+      "name": "swing",
+      "shape": "arc",
+      "style": "thin",
+      "at": [
+        "hinge == 'start' ? -length / 2 : length / 2",
+        "align == 'left' ? max(0, (host_thickness - 12) / 2) : align == 'right' ? -max(0, (host_thickness - 12) / 2) : 0"
+      ],
+      "r": "length",
+      "start": "hinge == 'start' ? (swing == 'left' ? 0 : 270) : (swing == 'left' ? 90 : 180)",
+      "end": "(hinge == 'start' ? (swing == 'left' ? 0 : 270) : (swing == 'left' ? 90 : 180)) + 90"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "leaf",
+      "shape": "box",
+      "slot": "glass",
+      "at": [
+        "0",
+        "align == 'left' ? max(0, (host_thickness - 12) / 2) : align == 'right' ? -max(0, (host_thickness - 12) / 2) : 0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "12",
+        "height"
+      ]
+    },
+    {
+      "name": "wall above",
+      "shape": "box",
+      "slot": "host",
+      "when": "host_thickness > 0 && host_height > height",
+      "at": [
+        "0",
+        "0",
+        "height"
+      ],
+      "size": [
+        "length",
+        "host_thickness",
+        "host_height - height"
+      ]
+    }
+  ]
+}
