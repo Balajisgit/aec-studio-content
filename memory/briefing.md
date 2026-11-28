@@ -76,9 +76,6 @@ _The open requests (requests/ in the content repository)._
 **A setting**
 - R8 · Optional: COPY_DIR=D:\aec in .env for the folder copy
 
-**Something broken**
-- R131 · Test fit: deep floors with a central core leave out most rooms and seat too few (in aec-studio#173) · from project p17ea6a6786
-
 **Other**
 - R5 · Archive the old app (AEC Agent Studio 2)
 - R9 · Fix or confirm the example model's P1 parameters; clean up the old app's runs/ helper files
