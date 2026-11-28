@@ -1,0 +1,29 @@
+{
+  "id": "workplace-test-fit",
+  "name": "Test fit a workplace floor",
+  "about": "A first layout of a workplace floor from its programme. Reads the level's spaces (the largest is the floor to fit out; the others are its core and stay as drawn), the entrance door in its outer wall, the columns standing on it, the project's typology and planning module, and the programme (people, rooms). Sets the rooms along the sides of the floor on the module (one side to all four) and, since 4.0.0, round the core too: the rooms that ask for no window, services first, the reception over the entrance, keeps apart what the typology says must be apart, leaves the rest as the open office and fills it with desks until everyone has a seat, furnishes each room and gives it a door. Offers the patterns that meet the programme best. Floors square to the axes; since 3.0.0 not only rectangles (a notch, a bump, a void is kept clear), and no desk, table or booth stands on a column. Since 4.0.0 the rooms already drawn on the floor count towards the typology's ratios and the seats.",
+  "useWhen": "An office floor is drawn empty (its outer walls, core and entrance) and has a programme: the first furnished layouts to pick from or tidy.",
+  "gives": "candidates",
+  "scopes": [
+    "project"
+  ],
+  "reads": [
+    "project",
+    "library"
+  ],
+  "settings": {
+    "top": {
+      "name": "How many to offer",
+      "kind": "number",
+      "default": 4,
+      "min": 1,
+      "max": 6
+    },
+    "people": {
+      "name": "People, when the programme does not say",
+      "kind": "number",
+      "min": 0
+    }
+  },
+  "timeoutSeconds": 20
+}
