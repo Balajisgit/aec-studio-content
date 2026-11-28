@@ -1,0 +1,104 @@
+{
+  "id": "furniture.table-lamp@1.0.0",
+  "name": "Table lamp",
+  "contract": "furniture.table-lamp",
+  "kind": "furniture",
+  "behaves": [
+    "stands-on"
+  ],
+  "about": "A table lamp: a round base, a slim stem and a drum shade. It stands on another Object at a point (a desk, a table, a storage unit): click that Object with the lamp picked and it goes on it, and it moves, turns and goes with it. base is how high its foot is above the floor: set it to the top of what it stands on (750 for a desk or a table). On a point of its own it stands on the floor with base 0.",
+  "params": {
+    "base": 750,
+    "height": 450,
+    "shade": 300,
+    "foot": 160
+  },
+  "limits": {
+    "base": {
+      "min": 0,
+      "max": 2000,
+      "step": 10
+    },
+    "height": {
+      "min": 250,
+      "max": 800,
+      "step": 10
+    },
+    "shade": {
+      "min": 150,
+      "max": 500,
+      "step": 10
+    },
+    "foot": {
+      "min": 100,
+      "max": 300,
+      "step": 10
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "shade",
+      "shape": "circle",
+      "at": [
+        "0",
+        "0"
+      ],
+      "r": "shade / 2",
+      "style": "outline"
+    },
+    {
+      "name": "foot",
+      "shape": "circle",
+      "at": [
+        "0",
+        "0"
+      ],
+      "r": "foot / 2",
+      "style": "thin"
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "foot",
+      "shape": "cylinder",
+      "at": [
+        "0",
+        "0",
+        "base"
+      ],
+      "size": [
+        "foot",
+        "20"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "stem",
+      "shape": "cylinder",
+      "at": [
+        "0",
+        "0",
+        "base + 20"
+      ],
+      "size": [
+        "30",
+        "height - 20 - height * 0.4"
+      ],
+      "slot": "metal"
+    },
+    {
+      "name": "shade",
+      "shape": "cylinder",
+      "at": [
+        "0",
+        "0",
+        "base + height * 0.6"
+      ],
+      "size": [
+        "shade",
+        "height * 0.4"
+      ],
+      "slot": "fabric"
+    }
+  ]
+}
