@@ -65,7 +65,7 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
 - R155 · The Library as the firm's knowledge: plain names, start from what we design, a sample building, Why is this here?, change it where you see it
-- R160 · Kernel, the rest of the study: design numbers out, an Object standing on an Object, the main file in three, old-project baggage out of the core, leftover words retired
+- R160 · Kernel, the rest of the study: design numbers out, an Object standing on an Object, the main file in three, old-project baggage out of the core, leftover words retired (in aec-studio#174)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
