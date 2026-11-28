@@ -1,0 +1,108 @@
+{
+  "id": "rcc-frame-brick@1.1.0",
+  "name": "RCC frame with brick",
+  "about": "How the house is built: an RCC frame with brick infill. Every room line gets a wall (brick 230 where it bounds one roofed room, a 115 partition between two; none on a line labelled open), a tiled floor in every room on one RCC slab per floor, a beam along every outer wall, a parapet round a terrace or a balcony, a railing round a floor opening (the stair's), and doors and windows with an RCC lintel over them. Columns come from Structure it, and doors and windows from a script or by hand: they are choices, not rules. The roof is the floor of a Terrace level drawn above. 1.1.0: its walls, fences, railings, parapets, beams, doors and windows in the versions that say how they sit and meet (R156: justify, corner, priority, align), all as before until one is set.",
+  "presets": [
+    {
+      "id": "external",
+      "name": "External wall",
+      "kind": "wall",
+      "objectRef": "wall.brick-230@1.4.0"
+    },
+    {
+      "id": "partition",
+      "name": "Partition",
+      "kind": "wall",
+      "objectRef": "wall.partition-115@1.4.0"
+    },
+    {
+      "id": "parapet",
+      "name": "Parapet",
+      "kind": "parapet",
+      "objectRef": "parapet.brick-115@1.1.0",
+      "params": {
+        "height": "$parapet"
+      }
+    },
+    {
+      "id": "boundary",
+      "name": "Boundary fence",
+      "kind": "fence",
+      "objectRef": "fence.mesh@1.2.0"
+    }
+  ],
+  "rules": {
+    "faces": [
+      {
+        "kind": "room",
+        "objectRef": "room.tiled-floor@1.0.0"
+      },
+      {
+        "kind": "slab",
+        "objectRef": "slab.rcc-150@1.1.0"
+      }
+    ],
+    "place": [
+      {
+        "id": "parapet",
+        "on": "edge",
+        "when": "(use == 'terrace' || use == 'balcony') && rooms == 1 && !inner && label != 'open'",
+        "place": {
+          "preset": "parapet"
+        }
+      },
+      {
+        "id": "railing",
+        "on": "edge",
+        "when": "(hole == 1 || use == 'void') && label != 'open'",
+        "place": {
+          "objectRef": "railing.generic@1.1.0"
+        }
+      },
+      {
+        "id": "walls",
+        "on": "line",
+        "when": "divides == 'room' && closed >= 1 && label != 'open'",
+        "place": [
+          {
+            "when": "closed >= 2",
+            "preset": "partition"
+          },
+          {
+            "preset": "external"
+          }
+        ]
+      },
+      {
+        "id": "beams",
+        "on": "host",
+        "of": "wall",
+        "when": "outer",
+        "place": {
+          "objectRef": "structure.beam@1.1.0",
+          "params": {
+            "width": "$beam_width",
+            "depth": "$beam_depth"
+          }
+        }
+      }
+    ]
+  },
+  "openings": {
+    "door": "door.single-leaf@1.2.0",
+    "window": "window.casement@1.2.0",
+    "gate": "gate.swing@1.0.0"
+  },
+  "levels": {
+    "height": 3000
+  },
+  "checks": [
+    {
+      "id": "C1-span",
+      "code": "C1",
+      "of": "room",
+      "when": "!roofless && side > 4500",
+      "say": "{room} is {side} mm across at its narrowest: an RCC slab this wide wants a beam or a column under it (Structure it)."
+    }
+  ]
+}

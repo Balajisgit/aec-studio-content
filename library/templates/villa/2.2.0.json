@@ -1,0 +1,8 @@
+{
+  "id": "villa@2.2.0",
+  "name": "Villa",
+  "about": "A house on its own plot, in three parts: the Villa typology (its rooms and sizes), an RCC frame with brick (walls on every room line, floors, slabs, beams, parapets, railings, lintels) and the BuilderPluss standards (level names, room numbers, sizes). Draw the rooms as lines and name them: the rest follows. 2.1.0: the Villa typology 1.1.0 (what a house usually has). 2.2.0: its walls, fences, railings, parapets, beams, doors and windows in the versions that say how they sit and meet (R156: justify, corner, priority, align), all as before until one is set.",
+  "typology": "villa@1.1.0",
+  "construction": "rcc-frame-brick@1.1.0",
+  "standards": "builderpluss@1.0.0"
+}

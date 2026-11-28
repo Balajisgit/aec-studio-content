@@ -1,0 +1,19 @@
+{
+  "id": "workplace-studio@2.1.0",
+  "name": "Workplace: creative studio",
+  "about": "A design, architecture, media or advertising studio: one open studio with room to pin up and review, a materials library, a workshop for models, edit and sound rooms that want no window, a gallery at the front. In three parts: the Workplace: creative studio typology (on the Workplace one), an office fit-out on an RCC shell, and the BuilderPluss standards with the Indian codes. 2.1.0: its walls, fences, railings, parapets, beams, doors and windows in the versions that say how they sit and meet (R156: justify, corner, priority, align), all as before until one is set.",
+  "typology": "workplace-studio@1.0.0",
+  "construction": "fit-out-rcc-shell@1.1.0",
+  "standards": "builderpluss@1.1.0",
+  "rules": {
+    "faces": [
+      {
+        "kind": "room",
+        "objectRef": "room.polished-concrete@1.0.0"
+      }
+    ]
+  },
+  "levels": {
+    "height": 4500
+  }
+}

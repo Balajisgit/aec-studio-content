@@ -1,0 +1,138 @@
+{
+  "id": "window.casement@1.2.0",
+  "name": "Casement window",
+  "contract": "window.casement",
+  "kind": "window",
+  "behaves": [
+    "opening"
+  ],
+  "on": "segment",
+  "about": "A glazed window filling its line between its sill and head, with the wall it stands in carried on below and above it; an RCC lintel over it, lintel deep (0: none), drawn across the opening (its bearing in the wall each side is the wall's own). align says where its glass sits in the wall's depth: in the middle, or at the wall's left or right face (R156).",
+  "length": {
+    "default": 1200,
+    "min": 300,
+    "max": 4000
+  },
+  "params": {
+    "height": 1200,
+    "sill": 900,
+    "lintel": 150,
+    "align": "centre"
+  },
+  "limits": {
+    "height": {
+      "min": 300,
+      "max": 3000,
+      "step": 50
+    },
+    "sill": {
+      "min": 0,
+      "max": 2400,
+      "step": 50
+    },
+    "lintel": {
+      "min": 0,
+      "max": 450,
+      "step": 25
+    },
+    "align": {
+      "options": [
+        "centre",
+        "left",
+        "right"
+      ]
+    }
+  },
+  "symbol2d": [
+    {
+      "name": "frame",
+      "shape": "rect",
+      "style": "thin",
+      "at": [
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "host_thickness > 0 ? host_thickness : 100"
+      ]
+    },
+    {
+      "name": "glass",
+      "shape": "line",
+      "from": [
+        "-length / 2",
+        "align == 'left' ? max(0, (host_thickness - 20) / 2) : align == 'right' ? -max(0, (host_thickness - 20) / 2) : 0"
+      ],
+      "to": [
+        "length / 2",
+        "align == 'left' ? max(0, (host_thickness - 20) / 2) : align == 'right' ? -max(0, (host_thickness - 20) / 2) : 0"
+      ]
+    }
+  ],
+  "primitive3d": [
+    {
+      "name": "glass",
+      "shape": "box",
+      "slot": "glass",
+      "at": [
+        "0",
+        "align == 'left' ? max(0, (host_thickness - 20) / 2) : align == 'right' ? -max(0, (host_thickness - 20) / 2) : 0",
+        "sill"
+      ],
+      "size": [
+        "length",
+        "20",
+        "height"
+      ]
+    },
+    {
+      "name": "wall below",
+      "shape": "box",
+      "slot": "host",
+      "when": "host_thickness > 0 && sill > 0",
+      "at": [
+        "0",
+        "0",
+        "0"
+      ],
+      "size": [
+        "length",
+        "host_thickness",
+        "sill"
+      ]
+    },
+    {
+      "name": "lintel",
+      "shape": "box",
+      "slot": "concrete",
+      "when": "lintel > 0 && host_thickness > 0",
+      "at": [
+        "0",
+        "0",
+        "sill + height"
+      ],
+      "size": [
+        "length",
+        "host_thickness",
+        "lintel"
+      ]
+    },
+    {
+      "name": "wall above",
+      "shape": "box",
+      "slot": "host",
+      "when": "host_thickness > 0 && host_height > sill + height + lintel",
+      "at": [
+        "0",
+        "0",
+        "sill + height + lintel"
+      ],
+      "size": [
+        "length",
+        "host_thickness",
+        "host_height - sill - height - lintel"
+      ]
+    }
+  ]
+}
