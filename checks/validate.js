@@ -68,7 +68,7 @@ try { for (const c of readdirSync(objDir)) { if (c === ".gitkeep") continue; con
 // for: spaces, measures, checks), library/constructions (how it is built: presets, rules, openings, levels, relationships,
 // checks) and library/standards (naming, module, sizes). A part's "$name" is a standards size. Each part file is checked
 // here; a template that names parts is put together and checked like any other.
-const PARTS = { typology: ["typologies", ["spaces", "measures", "checks", "module", "extends"]], construction: ["constructions", ["presets", "rules", "openings", "levels", "relationships", "checks"]], standards: ["standards", ["naming", "module", "sizes", "codes"]], codes: ["codes", ["checks", "ratios", "values"]] };
+const PARTS = { typology: ["typologies", ["spaces", "measures", "checks", "module", "extends"]], construction: ["constructions", ["presets", "rules", "openings", "levels", "relationships", "checks"]], standards: ["standards", ["naming", "module", "sizes", "codes", "units", "drawing"]], codes: ["codes", ["checks", "ratios", "values"]] };
 // R153: a typology may extend another (its uses by id on top, off: true takes one out; ratios by name; measures by id; pairs
 // kept apart added); codes (library/codes) are named by the standards or the template: their ratios join the typology's.
 const byKey = (list, key) => { const m = new Map(); for (const x of list) if (x) m.set(key(x), { ...(m.get(key(x)) || {}), ...x }); return [...m.values()].filter((x) => !x.off); };
