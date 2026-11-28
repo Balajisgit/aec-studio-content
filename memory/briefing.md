@@ -65,7 +65,6 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
 - R155 · The Library as the firm's knowledge: plain names, start from what we design, a sample building, Why is this here?, change it where you see it
-- R156 · Walls and what meets them: justify (centre, left, right), align to a face, corner style and priority as Object parameters (in aec-studio#169)
 - R157 · Units, scale and calibration: lengths in mm, m or feet and inches; a drawing scale for pictures and prints; a plan placed under the drawing and calibrated by two points (in aec-studio#170)
 
 **A pipeline**
