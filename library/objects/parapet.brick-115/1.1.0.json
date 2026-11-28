@@ -7,7 +7,7 @@
     "band"
   ],
   "on": "segment",
-  "about": "A half-brick parapet round a terrace or a balcony, 1 m high above its floor by default. A band like a wall: it joins the walls and parapets it meets, and the relationships leave its height alone (it is not a wall). justify says where it sits on its line as drawn: centre, or wholly to its left or its right (the line is then one of its faces). corner (mitre or butt) and priority (the higher carries on) say how it meets others of its kind (R156).",
+  "about": "A half-brick parapet round a terrace or a balcony, 1 m high above its floor by default. A band like a wall: it joins the walls and parapets it meets, and the relationships leave its height alone (it is not a wall). justify says where it sits on its line as drawn: centre, or wholly to its left or its right (the line is then one of its faces). corner (mitre or butt) and priority (the higher carries on) say how it meets others of its kind (R156). Over a wall on the floor below, align says which of that wall's faces it lines up with (line: its own line; centre, left, right), and the Studio's relationships write its offset; with nothing below, offset is yours to set.",
   "length": {
     "default": 3000,
     "min": 100,
@@ -18,7 +18,9 @@
     "height": 1000,
     "justify": "centre",
     "corner": "mitre",
-    "priority": 0
+    "priority": 0,
+    "align": "line",
+    "offset": 0
   },
   "limits": {
     "thickness": {
@@ -48,6 +50,19 @@
       "min": 0,
       "max": 9,
       "step": 1
+    },
+    "align": {
+      "options": [
+        "line",
+        "centre",
+        "left",
+        "right"
+      ]
+    },
+    "offset": {
+      "min": -1000,
+      "max": 1000,
+      "step": 5
     }
   },
   "symbol2d": [
@@ -56,8 +71,8 @@
       "shape": "band",
       "style": "fill",
       "across": [
-        "justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2",
-        "justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2"
+        "(justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2) + offset",
+        "(justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2) + offset"
       ]
     }
   ],
@@ -66,8 +81,8 @@
       "name": "parapet",
       "shape": "band",
       "across": [
-        "justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2",
-        "justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2"
+        "(justify == 'left' ? 0 : justify == 'right' ? -thickness : -thickness / 2) + offset",
+        "(justify == 'left' ? thickness : justify == 'right' ? 0 : thickness / 2) + offset"
       ],
       "z": "0",
       "height": "height"

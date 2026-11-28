@@ -1,5 +1,5 @@
 {
   "id": "wall.partition-115@1.4.0",
   "via": "starter",
-  "note": "R156: justify (centre, left, right), corner (mitre, butt) and priority, as its own parameters"
+  "note": "R156: justify (centre, left, right), corner (mitre, butt) and priority; align and offset over a wall below; as its own parameters"
 }
