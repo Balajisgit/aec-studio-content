@@ -65,6 +65,7 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
 - R155 · The Library as the firm's knowledge: plain names, start from what we design, a sample building, Why is this here?, change it where you see it
+- R161 · R160 leftovers: a Library Object that stands on another, a screen for the setting-out numbers, templates take the glazed walls that say they let light through
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
