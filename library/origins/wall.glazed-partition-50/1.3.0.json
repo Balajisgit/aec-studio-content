@@ -1,0 +1,5 @@
+{
+  "id": "wall.glazed-partition-50@1.3.0",
+  "via": "starter",
+  "note": "R160: says it lets light through (lets-light), instead of being read by a part named glass"
+}
