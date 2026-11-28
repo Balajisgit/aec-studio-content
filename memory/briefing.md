@@ -65,7 +65,6 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
 - R155 · The Library as the firm's knowledge: plain names, start from what we design, a sample building, Why is this here?, change it where you see it
-- R159 · Units, scale and traced plans, the rest: a traced plan as a layer and turned, a PDF traced directly, an Object's own sizes in the project's units, the scale in an agent's plan pictures (in aec-studio#172)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
