@@ -65,7 +65,7 @@ _The open requests (requests/ in the content repository)._
 - R102 · Mixed use: several typologies in one project, and a programme in sections
 - R132 · chat
 - R155 · The Library as the firm's knowledge: plain names, start from what we design, a sample building, Why is this here?, change it where you see it
-- R156 · Walls and what meets them: justify (centre, left, right), align to a face, corner style and priority as Object parameters
+- R156 · Walls and what meets them: justify (centre, left, right), align to a face, corner style and priority as Object parameters (in aec-studio#169)
 
 **A pipeline**
 - R4 · Try Brief to Library on a real deck (planned)
